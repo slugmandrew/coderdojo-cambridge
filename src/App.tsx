@@ -4,7 +4,6 @@ import data from "./Data"
 
 function App() {
 
-
   return (
     <Container maxW={"container.xl"} bgColor={"gray.50"}>
       <Flex padding={10}>
@@ -15,11 +14,11 @@ function App() {
           </Flex>
 
           {data.map(proj => (
-            <>
+            <div key={proj.title}>
               <Heading size={"md"} paddingY={3}>{proj.title}</Heading>
               <Text>{proj.language}</Text>
               <Link href={proj.url} target={"_blank"}>{proj.url}</Link>
-            </>
+            </div>
 
           ))}
 
