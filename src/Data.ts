@@ -11,12 +11,12 @@ type Project = {
 
 const getProjects: () => Project[] = () => {
   const projects: Project[] = [
-    { language: "Scratch", level: "Beginner", title: "Space Talk", url: "https://projects.raspberrypi.org/en/projects/space-talk" },
+    { language: "Scratch", level: "Beginner", title: "Space talk", url: "https://projects.raspberrypi.org/en/projects/space-talk" },
+    { language: "Scratch", level: "Beginner", title: "Catch the bus", url: "https://projects.raspberrypi.org/en/projects/catch-the-bus" },
+    { language: "Scratch", level: "Beginner", title: "Find the bug", url: "https://projects.raspberrypi.org/en/projects/find-the-bug" },
     { language: "Scratch", level: "Intermediate", title: "Broadcasting spells", url: "https://projects.raspberrypi.org/en/projects/broadcasting-spells" },
-    { language: "Scratch", level: "Beginner", title: "1", url: "" },
-    { language: "Java", level: "Beginner", title: "2", url: "" },
-    { language: "Unity", level: "Beginner", title: "3", url: "" },
-    { language: "HTML", level: "Beginner", title: "4", url: "" },
+    { language: "Scratch", level: "Intermediate", title: "Grow a dragonfly", url: "https://projects.raspberrypi.org/en/projects/grow-a-dragonfly" },
+    { language: "Scratch", level: "Intermediate", title: "Drum star", url: "https://projects.raspberrypi.org/en/projects/drum-star" },
   ]
 
   return projects
