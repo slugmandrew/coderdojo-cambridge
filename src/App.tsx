@@ -23,8 +23,10 @@ function App() {
           <HStack spacing={5}>
             <Image src={logo} w={100} />
             <VStack>
-              <Heading size={'2xl'}>CoderDojo Cambridge</Heading>
-              <Heading alignSelf={'flex-start'} size={'md'}>
+              <Heading color={'#444'} size={'2xl'}>
+                CoderDojo Cambridge
+              </Heading>
+              <Heading color={'#A33D02'} alignSelf={'flex-start'} size={'md'}>
                 Projects, resources & other cool stuff
               </Heading>
             </VStack>
@@ -35,16 +37,16 @@ function App() {
               🖱{' '}
               <Link
                 size={'lg'}
-                color={'#E07BC5'}
+                color={'#F07832'}
                 href={'https://coderdojo-cambridge.herokuapp.com/'}
               >
                 coderdojo-cambridge.herokuapp.com
               </Link>
-            </Heading>{' '}
-            <Box w={'200px'}>
-              <FontAwesomeIcon icon={faMousePointer} />{' '}
-              <Heading size={'xs'}>Go to this link to get here...</Heading>
-            </Box>
+            </Heading>
+            <HStack p={3} bgColor={'white'} border={'1px solid black'}>
+              <FontAwesomeIcon icon={faMousePointer} />
+              <Text>Go to this link to get here...</Text>
+            </HStack>
           </HStack>
 
           <VStack spacing={2} ali w={'full'} h={'full'}>
