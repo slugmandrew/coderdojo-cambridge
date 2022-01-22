@@ -24,15 +24,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "airbnb",
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+    }
   },
   "browserslist": {
     "production": [
@@ -47,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "8.3.0",
     "prettier": "2.5.1"
   }
 }
