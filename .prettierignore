@@ -1,0 +1,9 @@
+# Ignore artifacts:
+.idea
+.yarn
+node_modules
+public
+
+# Ignore all HTML files:
+*.html
+yarn.lock
