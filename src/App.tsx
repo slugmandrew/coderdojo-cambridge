@@ -12,8 +12,12 @@ import {
 } from '@chakra-ui/react'
 import data from './Data'
 import logo from './coderdojo-cambridge-logo.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMousePointer } from '@fortawesome/free-solid-svg-icons'
+import { FaMousePointer } from 'react-icons/all'
+
+// orange        F07832
+// teal          008080
+// navy          211AA3
+// lime          66F04A
 
 function App() {
   return (
@@ -23,10 +27,8 @@ function App() {
           <HStack spacing={5}>
             <Image src={logo} w={100} />
             <VStack>
-              <Heading color={'#444'} size={'2xl'}>
-                CoderDojo Cambridge
-              </Heading>
-              <Heading color={'#A33D02'} alignSelf={'flex-start'} size={'md'}>
+              <Heading size={'2xl'}>CoderDojo Cambridge</Heading>
+              <Heading alignSelf={'flex-start'} size={'md'}>
                 Projects, resources & other cool stuff
               </Heading>
             </VStack>
@@ -37,14 +39,13 @@ function App() {
               🖱{' '}
               <Link
                 size={'lg'}
-                color={'#F07832'}
                 href={'https://coderdojo-cambridge.herokuapp.com/'}
               >
                 coderdojo-cambridge.herokuapp.com
               </Link>
             </Heading>
             <HStack p={3} bgColor={'white'} border={'1px solid black'}>
-              <FontAwesomeIcon icon={faMousePointer} />
+              <FaMousePointer />
               <Text>Go to this link to get here...</Text>
             </HStack>
           </HStack>
