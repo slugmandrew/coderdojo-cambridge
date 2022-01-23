@@ -7,6 +7,7 @@ export type Project = {
   title: string
   level: Level
   language: Language
+  slug: string
 }
 
 const getProjects: () => Project[] = () => {
@@ -16,36 +17,42 @@ const getProjects: () => Project[] = () => {
       level: 'Beginner',
       title: 'Space talk',
       url: 'https://projects.raspberrypi.org/en/projects/space-talk',
+      slug: 'space-talk',
     },
     {
       language: 'Scratch',
       level: 'Beginner',
       title: 'Catch the bus',
       url: 'https://projects.raspberrypi.org/en/projects/catch-the-bus',
+      slug: 'catch-the-bus',
     },
     {
       language: 'Scratch',
       level: 'Beginner',
       title: 'Find the bug',
       url: 'https://projects.raspberrypi.org/en/projects/find-the-bug',
+      slug: 'find-the-bug',
     },
     {
       language: 'Scratch',
       level: 'Intermediate',
       title: 'Broadcasting spells',
       url: 'https://projects.raspberrypi.org/en/projects/broadcasting-spells',
+      slug: 'broadcasting-spells',
     },
     {
       language: 'Scratch',
       level: 'Intermediate',
       title: 'Grow a dragonfly',
       url: 'https://projects.raspberrypi.org/en/projects/grow-a-dragonfly',
+      slug: 'grow-a-dragonfly',
     },
     {
       language: 'Scratch',
       level: 'Intermediate',
       title: 'Drum star',
       url: 'https://projects.raspberrypi.org/en/projects/drum-star',
+      slug: 'drum-star',
     },
   ]
 
