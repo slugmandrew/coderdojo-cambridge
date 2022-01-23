@@ -2,8 +2,9 @@ import React from 'react'
 import { Box, Container, Flex, GridItem, Heading, HStack, Image, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import data from './Data'
 import logo from './image/coderdojo-cambridge-logo.jpg'
-import { FaMousePointer } from 'react-icons/all'
 import ProjectCard from './ProjectCard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMousePointer } from '@fortawesome/free-solid-svg-icons'
 
 const App = () => (
   <Container maxW={'full'} minW={'container.sm'} padding={0}>
@@ -29,7 +30,7 @@ const App = () => (
             </Link>
           </Heading>
           <HStack p={3} bgColor={'white'} border={'1px solid black'}>
-            <FaMousePointer />
+            <FontAwesomeIcon icon={faMousePointer} />
             <Text>Go to this link to get here...</Text>
           </HStack>
         </HStack>
