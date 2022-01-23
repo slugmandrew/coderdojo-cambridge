@@ -1,8 +1,8 @@
-type Language = 'Scratch' | 'Python' | 'Unity' | 'Java' | 'HTML'
+export type Language = 'Scratch' | 'Python' | 'Unity' | 'Java' | 'HTML'
 
-type Level = 'Beginner' | 'Intermediate' | 'Advanced'
+export type Level = 'Beginner' | 'Intermediate' | 'Advanced'
 
-type Project = {
+export type Project = {
   url: string
   title: string
   level: Level
