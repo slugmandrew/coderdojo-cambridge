@@ -13,6 +13,41 @@ export type Project = {
 const getProjects: () => Project[] = () => {
   const projects: Project[] = [
     {
+      language: 'HTML',
+      level: 'Intermediate',
+      title: 'Fixme',
+      url: 'https://',
+      slug: 'fixme',
+    },
+    {
+      language: 'Unity',
+      level: 'Beginner',
+      title: 'Fixme',
+      url: 'https://',
+      slug: 'fixme',
+    },
+    {
+      language: 'Java',
+      level: 'Beginner',
+      title: 'Fixme',
+      url: 'https://',
+      slug: 'fixme',
+    },
+    {
+      language: 'Python',
+      level: 'Advanced',
+      title: 'Fixme',
+      url: 'https://',
+      slug: 'fixme',
+    },
+    {
+      language: 'Python',
+      level: 'Intermediate',
+      title: 'Fixme',
+      url: 'https://',
+      slug: 'fixme',
+    },
+    {
       language: 'Scratch',
       level: 'Beginner',
       title: 'Space talk',

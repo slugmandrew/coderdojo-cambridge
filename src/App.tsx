@@ -1,15 +1,15 @@
 import React from 'react'
-import { Box, Container, Flex, GridItem, Heading, HStack, Image, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import data from './Data'
+import { Badge, Box, Container, Flex, GridItem, Heading, HStack, Image, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import logo from './image/coderdojo-cambridge-logo.jpg'
-import ProjectCard from './ProjectCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMousePointer } from '@fortawesome/free-solid-svg-icons'
+import data from './Data'
+import ProjectCard from './ProjectCard'
 
 const App = () => (
   <Container maxW={'full'} minW={'container.sm'} padding={0}>
     <Flex w={'full'} h={'full'} padding={10} borderBottom={'2px solid'} borderBottomColor={'brand.navy'}>
-      <VStack spacing={10} ali w={'full'} h={'full'}>
+      <VStack spacing={10} w={'full'} h={'full'}>
         <HStack spacing={5}>
           <Box height={'100px'} w={'100px'}>
             <Image src={logo} fit={'fill'} />
@@ -38,9 +38,13 @@ const App = () => (
     </Flex>
     <Flex maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
       <VStack w={'full'} h={'full'}>
+        <HStack>
+          <Badge></Badge>
+        </HStack>
+
         <SimpleGrid w={'full'} spacing={5} minChildWidth={350}>
           {data.map((proj) => (
-            <GridItem>
+            <GridItem key={proj.slug}>
               <ProjectCard {...proj} />
             </GridItem>
           ))}

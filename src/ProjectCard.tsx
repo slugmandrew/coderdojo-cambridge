@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Project } from './Data'
 import { Box, Heading, Image, Link, Text } from '@chakra-ui/react'
+import { LanguageTag } from './LanguageTag'
 
 const ProjectCard: FC<Project> = ({ language, level, url, title, slug, children }) => (
   <>
@@ -11,7 +12,7 @@ const ProjectCard: FC<Project> = ({ language, level, url, title, slug, children 
       <Box p={5}>
         <Heading size={'md'}>{title}</Heading>
         <Text>
-          [{language}] [{level}]
+          <LanguageTag language={language} /> [{level}]
         </Text>
         <Link href={url} target={'_blank'}>
           {url}
