@@ -4,21 +4,30 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
-// 2. Extend the theme to include custom colors, fonts, etc
-const colors = {
-  brand: {
-    orange: '#F07832',
-    teal: '#008080',
-    navy: '#211AA3',
-    lime: '#66F04A',
+const customTheme = extendTheme({
+  colors: {
+    custom: {
+      orange: '#F07832',
+      teal: '#008080',
+      blue: '#3C5291',
+      lime: '#66F04A',
+    },
   },
-}
-
-const theme = extendTheme({ colors })
+  components: {
+    Link: {
+      fontWeight: 'medium',
+      variants: {
+        'no-wrap': {
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
+  },
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={customTheme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>,

@@ -1,29 +1,10 @@
 import React, { FC } from 'react'
 import { Tag } from '@chakra-ui/react'
 import { Language } from './Data'
+import { ColorScheme } from './ColorScheme'
 
 export const LanguageTag: FC<{ language: Language }> = ({ language }) => {
-  const getColorScheme: (
-    language: Language
-  ) =>
-    | 'whiteAlpha'
-    | 'blackAlpha'
-    | 'gray'
-    | 'red'
-    | 'orange'
-    | 'yellow'
-    | 'green'
-    | 'teal'
-    | 'blue'
-    | 'cyan'
-    | 'purple'
-    | 'pink'
-    | 'linkedin'
-    | 'facebook'
-    | 'messenger'
-    | 'whatsapp'
-    | 'twitter'
-    | 'telegram' = (language: Language) => {
+  const getColorScheme: (language: Language) => ColorScheme = (language: Language) => {
     switch (language) {
       case 'Scratch':
         return 'orange'
