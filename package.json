@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "yarn@3.1.1",
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.4",
     "@emotion/react": "11",
     "@emotion/styled": "11",
@@ -31,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +42,17 @@
       "react-app/jest",
       "prettier"
     ],
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -54,7 +67,20 @@
     ]
   },
   "devDependencies": {
+    "@chakra-ui/storybook-addon": "^1.0.0",
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-actions": "^6.4.16",
+    "@storybook/addon-docs": "^6.4.16",
+    "@storybook/addon-essentials": "^6.4.16",
+    "@storybook/addon-links": "^6.4.16",
+    "@storybook/addon-viewport": "^6.4.16",
+    "@storybook/builder-webpack5": "^6.4.16",
+    "@storybook/manager-webpack5": "^6.4.16",
+    "@storybook/node-logger": "^6.4.16",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/react": "^6.4.16",
     "eslint-config-prettier": "8.3.0",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "webpack": "^5.67.0"
   }
 }

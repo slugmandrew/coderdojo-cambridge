@@ -37,15 +37,13 @@ const App = () => (
       </VStack>
     </Flex>
     <Flex maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <VStack w={'full'} h={'full'}>
-        <SimpleGrid w={'full'} spacing={5} minChildWidth={350}>
-          {data.map((proj) => (
-            <GridItem key={proj.slug}>
-              <ProjectCard {...proj} />
-            </GridItem>
-          ))}
-        </SimpleGrid>
-      </VStack>
+      <SimpleGrid w={'full'} spacing={5} minChildWidth={350}>
+        {data.map((proj) => (
+          <GridItem key={proj.slug}>
+            <ProjectCard {...proj} />
+          </GridItem>
+        ))}
+      </SimpleGrid>
     </Flex>
     <Flex maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
       <Link color={'custom.orange'} href={'https://zen.coderdojo.com/'}>

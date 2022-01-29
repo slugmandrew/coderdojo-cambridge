@@ -7,27 +7,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 const ProjectCard: FC<Project> = ({ language, level, url, title, slug }) => (
-  <>
-    <Box key={title} border={'1px solid'} borderColor={'gray.500'} bgColor={'white'} borderRadius={5}>
-      <Box h={250} overflow={'hidden'} borderTopRadius={5}>
-        <Image w={'100%'} src={`./screenshot-${slug}.png`} />
+  <Box key={title} border={'1px solid'} borderColor={'gray.500'} bgColor={'white'} borderRadius={5}>
+    <Box h={[100, 200, 250]} overflow={'hidden'} borderTopRadius={5}>
+      <Image w={'100%'} src={`./screenshot-${slug}.png`} />
+    </Box>
+    <Box p={5}>
+      <Heading size={'md'} color={'custom.teal'}>
+        {title}
+      </Heading>
+      <Box my={2}>
+        <LanguageTag language={language} /> <LevelTag level={level} />
       </Box>
-      <Box p={5}>
-        <Heading size={'lg'} color={'custom.teal'}>
-          {title}
-        </Heading>
-        <Box my={2}>
-          <LanguageTag language={language} /> <LevelTag level={level} />
-        </Box>
-        <Box>
-          <FontAwesomeIcon icon={faLink} />{' '}
-          <Link href={url} target={'_blank'} color={'custom.orange'}>
-            Open
-          </Link>
-        </Box>
+      <Box>
+        <FontAwesomeIcon icon={faLink} />{' '}
+        <Link href={url} target={'_blank'} color={'custom.orange'}>
+          Open
+        </Link>
       </Box>
     </Box>
-  </>
+  </Box>
 )
 
 export default ProjectCard
