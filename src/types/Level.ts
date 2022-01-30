@@ -1,1 +1,5 @@
-export type Level = 'Beginner' | 'Intermediate' | 'Advanced'
+export enum Level {
+  beginner = 'Beginner',
+  intermediate = 'Intermediate',
+  advanced = 'Advanced',
+}

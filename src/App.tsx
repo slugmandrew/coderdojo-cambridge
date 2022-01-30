@@ -4,6 +4,8 @@ import { SiteLink } from 'components/SiteLink'
 import { SiteLogo } from 'components/SiteLogo'
 import data from 'data/Projects'
 import React from 'react'
+import { LanguageName } from 'types/LanguageName'
+import { Level } from 'types/Level'
 
 export const App = () => (
   <Container maxW={'full'} minW={'container.sm'} padding={0}>
@@ -14,10 +16,15 @@ export const App = () => (
       </VStack>
     </Flex>
     <VStack maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <Select placeholder="Select option">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+      <Select placeholder="Select Language">
+        {Object.values(LanguageName).map((key) => {
+          return <option value={key}>{key}</option>
+        })}
+      </Select>
+      <Select placeholder="Select Level">
+        {Object.values(Level).map((key) => {
+          return <option value={key}>{key}</option>
+        })}
       </Select>
       <ProjectGrid projects={data} />
     </VStack>

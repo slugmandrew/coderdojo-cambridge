@@ -1,1 +1,7 @@
-export type LanguageName = 'Scratch' | 'Python' | 'Unity' | 'Java' | 'HTML'
+export enum LanguageName {
+  scratch = 'Scratch',
+  python = 'Python',
+  unity = 'Unity',
+  java = 'Java',
+  html = 'HTML',
+}
