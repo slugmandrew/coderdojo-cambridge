@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Tag } from '@chakra-ui/react'
-import { LanguageName } from './Data'
-import { ColorScheme } from './ColorScheme'
+import { ColorScheme } from 'types/ColorScheme'
+import { LanguageName } from 'types/LanguageName'
 
 export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
   const getColorScheme: (language: LanguageName) => ColorScheme = (language: LanguageName) => {

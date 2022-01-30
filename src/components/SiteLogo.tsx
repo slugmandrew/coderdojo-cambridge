@@ -1,5 +1,5 @@
 import { Box, Heading, HStack, Image, VStack } from '@chakra-ui/react'
-import logo from './image/coderdojo-cambridge-logo.jpg'
+import logo from 'image/coderdojo-cambridge-logo.jpg'
 import React from 'react'
 
 export const SiteLogo = () => {

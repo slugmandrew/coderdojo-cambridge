@@ -1,22 +1,4 @@
-export type LanguageName = 'Scratch' | 'Python' | 'Unity' | 'Java' | 'HTML'
-
-export type Level = 'Beginner' | 'Intermediate' | 'Advanced'
-
-export type TrackName = 'Introduction To Scratch' | 'More Scratch' | 'Further Scratch' | 'Introduction to Python' | 'Introduction to Unity'
-
-export type TrackInfo = {
-  name: TrackName
-  position: number
-}
-
-export type Project = {
-  url: string
-  title: string
-  level: Level
-  language: LanguageName
-  slug: string
-  track?: TrackInfo
-}
+import { Project } from 'types/Project'
 
 const getProjects: () => Project[] = () => {
   const projects: Project[] = [

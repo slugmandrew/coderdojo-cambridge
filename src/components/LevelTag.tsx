@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Tag } from '@chakra-ui/react'
-import { Level } from './Data'
-import { ColorScheme } from './ColorScheme'
+import { ColorScheme } from 'types/ColorScheme'
+import { Level } from 'types/Level'
 
 export const LevelTag: FC<{ level: Level }> = ({ level }) => {
   const getColorScheme: (level: Level) => ColorScheme = (level: Level) => {

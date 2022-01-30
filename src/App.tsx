@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Flex, GridItem, Link, SimpleGrid, VStack } from '@chakra-ui/react'
-import data from './Data'
-import { ProjectCard } from './ProjectCard'
-import { SiteLogo } from './SiteLogo'
-import { SiteLink } from './SiteLink'
+import data from 'data/Projects'
+import { SiteLogo } from 'components/SiteLogo'
+import { SiteLink } from 'components/SiteLink'
+import { ProjectCard } from 'components/ProjectCard'
 
 export const App = () => (
   <Container maxW={'full'} minW={'container.sm'} padding={0}>

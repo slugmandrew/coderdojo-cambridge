@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { Project } from './Data'
 import { Box, Heading, Image, Link } from '@chakra-ui/react'
-import { LanguageTag } from './LanguageTag'
-import { LevelTag } from './LevelTag'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { LanguageTag } from 'components/LanguageTag'
+import { LevelTag } from 'components/LevelTag'
+import { Project } from 'types/Project'
 
 export const ProjectCard: FC<Project> = ({ language, level, url, title, slug }) => (
   <Box key={title} border={'1px solid'} borderColor={'gray.500'} bgColor={'white'} borderRadius={5}>
