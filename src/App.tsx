@@ -1,8 +1,7 @@
-import { Container, Flex, HStack, Link, Select, Text, VStack } from '@chakra-ui/react'
-import { ProjectGrid } from 'components/ProjectGrid'
+import { Container, Flex, HStack, Link, Text, VStack } from '@chakra-ui/react'
+import { GridFilters } from 'components/GridFilters'
 import { SiteLink } from 'components/SiteLink'
 import { SiteLogo } from 'components/SiteLogo'
-import data from 'data/Projects'
 import React from 'react'
 import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
@@ -16,17 +15,13 @@ export const App = () => (
       </VStack>
     </Flex>
     <VStack maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <Select placeholder="Select Language">
-        {Object.values(LanguageName).map((key) => {
-          return <option value={key}>{key}</option>
-        })}
-      </Select>
-      <Select placeholder="Select Level">
-        {Object.values(Level).map((key) => {
-          return <option value={key}>{key}</option>
-        })}
-      </Select>
-      <ProjectGrid projects={data} />
+      <GridFilters
+        filters={[
+          { label: 'Language', type: LanguageName },
+          { label: 'Level', type: Level },
+          // { label: 'Track', type: TrackName },
+        ]}
+      />
     </VStack>
     <HStack maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
       <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace-cambridge'}>
