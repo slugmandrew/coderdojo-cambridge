@@ -1,5 +1,5 @@
-import { customTheme } from '../src'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { customTheme } from '../src/customTheme'
 
 const theme = customTheme
 

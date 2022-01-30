@@ -61,11 +61,16 @@ export const GridFilters: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filte
 
   return (
     <>
-      <Text>Showing {filterList(data).length} Projects</Text>
+      <Text as="strong">Showing {filterList(data).length} Projects</Text>
       <>
         {filters.map((filter) => {
           return (
-            <Select key={filter.label} placeholder={`<-- Select ${filter.label} -->`} onChange={(event) => onChange(filter.label, event.target.value)}>
+            <Select
+              bgColor={'white'}
+              key={filter.label}
+              placeholder={`<-- Select ${filter.label} -->`}
+              onChange={(event) => onChange(filter.label, event.target.value)}
+            >
               {Object.values(filter.type).map((key) => {
                 return (
                   <option key={key} value={`${filter.label}-${key}`}>

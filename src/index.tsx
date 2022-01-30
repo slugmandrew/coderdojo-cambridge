@@ -1,29 +1,9 @@
+import { ChakraProvider } from '@chakra-ui/react'
+import { customTheme } from 'customTheme'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-
-export const customTheme = extendTheme({
-  colors: {
-    custom: {
-      orange: '#F07832',
-      teal: '#008080',
-      blue: '#3C5291',
-      lime: '#66F04A',
-    },
-  },
-  components: {
-    Link: {
-      fontWeight: 'medium',
-      variants: {
-        'no-wrap': {
-          whiteSpace: 'nowrap',
-        },
-      },
-    },
-  },
-})
 
 ReactDOM.render(
   <React.StrictMode>

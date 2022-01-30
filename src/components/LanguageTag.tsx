@@ -1,4 +1,4 @@
-import { Tag } from '@chakra-ui/react'
+import { Tag, useBreakpointValue } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { ColorScheme } from 'types/ColorScheme'
 import { LanguageName } from 'types/LanguageName'
@@ -18,9 +18,12 @@ export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
         return 'green'
     }
   }
+
+  const tagSize = useBreakpointValue({ base: 'lg', md: 'md' })
+
   return (
     <>
-      <Tag size={'md'} colorScheme={getColorScheme(language)}>
+      <Tag size={tagSize} colorScheme={getColorScheme(language)}>
         {language}
       </Tag>
     </>
