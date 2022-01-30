@@ -12,7 +12,7 @@ export const SiteLink = () => {
           coderdojo-cambridge.herokuapp.com
         </Link>
       </Heading>
-      <HStack p={3} bgColor={'white'} border={'1px solid black'}>
+      <HStack p={[2, null, 3]} bgColor={'white'} border={'1px solid black'} fontSize={[14, null, 18]} alignSelf={'flex-end'}>
         <FontAwesomeIcon icon={faMousePointer} />
         <Text>Go to this link to get here...</Text>
       </HStack>
