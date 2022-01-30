@@ -16,7 +16,7 @@ export const LevelTag: FC<{ level: Level }> = ({ level }) => {
   }
   return (
     <>
-      <Tag size={'lg'} colorScheme={getColorScheme(level)}>
+      <Tag size={'md'} colorScheme={getColorScheme(level)}>
         {level}
       </Tag>
     </>

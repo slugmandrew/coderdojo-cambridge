@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import { Box, Heading, Image, Link } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { LanguageTag } from 'components/LanguageTag'
 import { LevelTag } from 'components/LevelTag'
+import React, { FC } from 'react'
 import { Project } from 'types/Project'
 
 export const ProjectCard: FC<Project> = ({ language, level, url, title, slug }) => (
@@ -18,12 +18,11 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug }) 
       <Box my={2}>
         <LanguageTag language={language} /> <LevelTag level={level} />
       </Box>
-      <Box>
-        <FontAwesomeIcon icon={faLink} />{' '}
-        <Link href={url} target={'_blank'} color={'custom.orange'}>
-          Open
-        </Link>
-      </Box>
+      <Flex w={'full'} justifyContent={'end'}>
+        <Button colorScheme={'blue'} size={'md'} onClick={() => window.open(url, '_blank')} rightIcon={<FontAwesomeIcon icon={faArrowRight} />}>
+          View on raspberrypi.org
+        </Button>
+      </Flex>
     </Box>
   </Box>
 )

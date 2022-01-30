@@ -1,11 +1,11 @@
 import { Heading, HStack, Link, Text } from '@chakra-ui/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMousePointer } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 export const SiteLink = () => {
   return (
-    <HStack spacing={5} wrap={'wrap'}>
+    <HStack w={'full'} spacing={5} wrap={'wrap'} justifyContent={'center'}>
       <Heading size={'lg'} paddingY={3}>
         🖱{' '}
         <Link color={'custom.orange'} size={'lg'} href={'https://coderdojo-cambridge.herokuapp.com/'}>

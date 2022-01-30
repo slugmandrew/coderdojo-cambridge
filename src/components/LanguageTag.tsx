@@ -20,7 +20,7 @@ export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
   }
   return (
     <>
-      <Tag size={'lg'} colorScheme={getColorScheme(language)}>
+      <Tag size={'md'} colorScheme={getColorScheme(language)}>
         {language}
       </Tag>
     </>
