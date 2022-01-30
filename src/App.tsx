@@ -1,9 +1,9 @@
-import React from 'react'
-import { Container, Flex, GridItem, Link, SimpleGrid, VStack } from '@chakra-ui/react'
-import data from 'data/Projects'
-import { SiteLogo } from 'components/SiteLogo'
+import { Container, Flex, HStack, Link, Select, Text, VStack } from '@chakra-ui/react'
+import { ProjectGrid } from 'components/ProjectGrid'
 import { SiteLink } from 'components/SiteLink'
-import { ProjectCard } from 'components/ProjectCard'
+import { SiteLogo } from 'components/SiteLogo'
+import data from 'data/Projects'
+import React from 'react'
 
 export const App = () => (
   <Container maxW={'full'} minW={'container.sm'} padding={0}>
@@ -13,19 +13,30 @@ export const App = () => (
         <SiteLink />
       </VStack>
     </Flex>
-    <Flex maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <SimpleGrid w={'full'} spacing={5} minChildWidth={350}>
-        {data.map((proj) => (
-          <GridItem key={proj.slug}>
-            <ProjectCard {...proj} />
-          </GridItem>
-        ))}
-      </SimpleGrid>
-    </Flex>
-    <Flex maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
-      <Link color={'custom.orange'} href={'https://zen.coderdojo.com/'}>
+    <VStack maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
+      <Select placeholder="Select option">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </Select>
+      <ProjectGrid projects={data} />
+    </VStack>
+    <HStack maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
+      <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace-cambridge'}>
+        Cambridge @ Makespace Dojo
+      </Link>
+      <Text> | </Text>
+      <Link color={'gray.500'} href={'https://zen.coderdojo.com'}>
         zen.coderdojo.com
       </Link>
-    </Flex>
+      <Text> | </Text>
+      <Link color={'red'} href={'https://www.raspberrypi.org/'}>
+        raspberrypi.org
+      </Link>
+      <Text> | </Text>
+      <Link color={'purple'} href={'https://www.coolestprojects.org/'}>
+        coolestprojects.org
+      </Link>
+    </HStack>
   </Container>
 )
