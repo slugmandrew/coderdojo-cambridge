@@ -1,11 +1,11 @@
-import { Select, Text } from '@chakra-ui/react'
+import { Select, Text, VStack } from '@chakra-ui/react'
 import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/Projects'
 import React, { FC, useEffect, useState } from 'react'
 import { FilterTypeWithLabel } from 'types/Filterable'
 import { Project } from 'types/Project'
 
-export const FilteredGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filters }, children) => {
+export const FilterableGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filters }, children) => {
   const [currentLanguageFilter, setCurrentLanguageFilter] = useState<string>()
   const [currentLevelFilter, setCurrentLevelFilter] = useState<string>()
   const [currentTrackFilter, setCurrentTrackFilter] = useState<string>()
@@ -60,7 +60,7 @@ export const FilteredGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filt
   }
 
   return (
-    <>
+    <VStack maxW={'full'} h={'full'} padding={[2, null, 4, 8]} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
       <Text as="strong">Showing {filterList(data).length} Projects</Text>
       <>
         {filters.map((filter) => {
@@ -83,6 +83,6 @@ export const FilteredGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filt
         })}
       </>
       <ProjectGrid projects={filterList(data)} />
-    </>
+    </VStack>
   )
 }
