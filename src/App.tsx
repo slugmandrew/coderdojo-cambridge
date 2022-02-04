@@ -13,6 +13,7 @@ export const App = () => {
         <Link href={'about'}>About</Link>
         <Link href={'ninjas'}>Become A Ninja</Link>
         <Link href={'location'}>Find Us</Link>
+        <Link href={'projects'}>Projects</Link>
       </HStack>
 
       <Main />
