@@ -14,7 +14,7 @@ export const App = () => (
         <SiteLink />
       </VStack>
     </Flex>
-    <VStack maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
+    <VStack maxW={'full'} h={'full'} padding={[2, null, 4, 8]} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
       <FilteredGrid
         filters={[
           { label: 'Language', type: LanguageName },
