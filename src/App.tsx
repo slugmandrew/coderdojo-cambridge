@@ -1,5 +1,5 @@
 import { Container, Flex, HStack, Link, Text, VStack } from '@chakra-ui/react'
-import { GridFilters } from 'components/GridFilters'
+import { FilteredGrid } from 'components/FilteredGrid'
 import { SiteLink } from 'components/SiteLink'
 import { SiteLogo } from 'components/SiteLogo'
 import React from 'react'
@@ -7,15 +7,15 @@ import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
 
 export const App = () => (
-  <Container maxW={'full'} minW={'container.sm'} padding={0}>
-    <Flex w={'full'} h={'full'} padding={10} borderBottom={'2px solid'} borderBottomColor={'custom.navy'}>
-      <VStack spacing={10} w={'full'} h={'full'}>
+  <Container maxW={'full'} minW={'container.xs'} padding={0}>
+    <Flex w={'full'} h={'full'} padding={5} borderBottom={'2px solid'} borderBottomColor={'custom.navy'}>
+      <VStack spacing={5} w={'full'} h={'full'}>
         <SiteLogo />
         <SiteLink />
       </VStack>
     </Flex>
     <VStack maxW={'full'} h={'full'} padding={10} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <GridFilters
+      <FilteredGrid
         filters={[
           { label: 'Language', type: LanguageName },
           { label: 'Level', type: Level },

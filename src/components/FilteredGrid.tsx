@@ -5,7 +5,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { FilterTypeWithLabel } from 'types/Filterable'
 import { Project } from 'types/Project'
 
-export const GridFilters: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filters }, children) => {
+export const FilteredGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filters }, children) => {
   const [currentLanguageFilter, setCurrentLanguageFilter] = useState<string>()
   const [currentLevelFilter, setCurrentLevelFilter] = useState<string>()
   const [currentTrackFilter, setCurrentTrackFilter] = useState<string>()
@@ -68,7 +68,7 @@ export const GridFilters: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filte
             <Select
               bgColor={'white'}
               key={filter.label}
-              placeholder={`<-- Select ${filter.label} -->`}
+              placeholder={`Select ${filter.label}`}
               onChange={(event) => onChange(filter.label, event.target.value)}
             >
               {Object.values(filter.type).map((key) => {
