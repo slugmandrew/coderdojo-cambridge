@@ -1,0 +1,15 @@
+import { Flex, VStack } from '@chakra-ui/react'
+import { SiteLink } from 'components/SiteLink'
+import { SiteLogo } from 'components/SiteLogo'
+import React from 'react'
+
+export const Header = () => {
+  return (
+    <Flex w={'full'} h={'full'} padding={5} borderBottom={'2px solid'} borderBottomColor={'custom.navy'}>
+      <VStack spacing={5} w={'full'} h={'full'}>
+        <SiteLogo />
+        <SiteLink />
+      </VStack>
+    </Flex>
+  )
+}
