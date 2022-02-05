@@ -6,12 +6,12 @@ import { TrackName } from 'types/TrackName'
 const getProjects: () => Project[] = () => {
   const { advanced, beginner, intermediate } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
-  const { html, python, scratch } = LanguageName
+  const { html, python, scratch, unity } = LanguageName
 
   const projects: Project[] = [
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'Space talk',
       url: 'https://projects.raspberrypi.org/en/projects/space-talk',
       slug: 'space-talk',
@@ -19,7 +19,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'Catch the bus',
       url: 'https://projects.raspberrypi.org/en/projects/catch-the-bus',
       slug: 'catch-the-bus',
@@ -27,7 +27,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'Find the bug',
       url: 'https://projects.raspberrypi.org/en/projects/find-the-bug',
       slug: 'find-the-bug',
@@ -35,7 +35,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'Silly eyes',
       url: 'https://projects.raspberrypi.org/en/projects/silly-eyes',
       slug: 'silly-eyes',
@@ -43,7 +43,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'Surprise! animation',
       url: 'https://projects.raspberrypi.org/en/projects/surprise-animation',
       slug: 'surprise-animation',
@@ -51,7 +51,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: beginner,
+      level: [beginner],
       title: 'I made you a book',
       url: 'https://projects.raspberrypi.org/en/projects/i-made-you-a-book',
       slug: 'i-made-you-a-book',
@@ -59,7 +59,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: 'Broadcasting spells',
       url: 'https://projects.raspberrypi.org/en/projects/broadcasting-spells',
       slug: 'broadcasting-spells',
@@ -67,7 +67,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: 'Grow a dragonfly',
       url: 'https://projects.raspberrypi.org/en/projects/grow-a-dragonfly',
       slug: 'grow-a-dragonfly',
@@ -75,7 +75,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: 'Drum star',
       url: 'https://projects.raspberrypi.org/en/projects/drum-star',
       slug: 'drum-star',
@@ -83,7 +83,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: 'Next customer please',
       url: 'https://projects.raspberrypi.org/en/projects/next-customer-please',
       slug: 'next-customer-please',
@@ -91,7 +91,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: "Don't fall in!",
       url: 'https://projects.raspberrypi.org/en/projects/dont-fall-in',
       slug: 'dont-fall-in',
@@ -99,7 +99,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: intermediate,
+      level: [intermediate],
       title: 'This sprite needs you',
       url: 'https://projects.raspberrypi.org/en/projects/this-sprite-needs-you',
       slug: 'this-sprite-needs-you',
@@ -107,7 +107,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Nature rover',
       url: 'https://projects.raspberrypi.org/en/projects/nature-rover',
       slug: 'nature-rover',
@@ -115,7 +115,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Puzzle room',
       url: 'https://projects.raspberrypi.org/en/projects/puzzle-room',
       slug: 'puzzle-room',
@@ -123,7 +123,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Mandala',
       url: 'https://projects.raspberrypi.org/en/projects/mandala',
       slug: 'mandala',
@@ -131,7 +131,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Swarms, schools, and flocks',
       url: 'https://projects.raspberrypi.org/en/projects/swarms-schools-flocks',
       slug: 'swarms-schools-flocks',
@@ -139,7 +139,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Music maker',
       url: 'https://projects.raspberrypi.org/en/projects/music-maker',
       slug: 'music-maker',
@@ -147,7 +147,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: scratch,
-      level: advanced,
+      level: [advanced],
       title: 'Welcome to my world',
       url: 'https://projects.raspberrypi.org/en/projects/welcome-to-my-world',
       slug: 'welcome-to-my-world',
@@ -155,7 +155,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: 'Hello 🌍🌎🌏',
       url: 'https://projects.raspberrypi.org/en/projects/hello-world',
       slug: 'hello-world',
@@ -163,7 +163,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: 'Target practice',
       url: 'https://projects.raspberrypi.org/en/projects/target-practice',
       slug: 'target-practice',
@@ -171,7 +171,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: 'Rocket launch',
       url: 'https://projects.raspberrypi.org/en/projects/rocket-launch',
       slug: 'rocket-launch',
@@ -179,7 +179,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: 'Make a face',
       url: 'https://projects.raspberrypi.org/en/projects/make-a-face',
       slug: 'make-a-face',
@@ -187,7 +187,7 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: "Don't collide!",
       url: 'https://projects.raspberrypi.org/en/projects/dont-collide',
       slug: 'dont-collide',
@@ -195,29 +195,67 @@ const getProjects: () => Project[] = () => {
     },
     {
       language: python,
-      level: beginner,
+      level: [beginner],
       title: 'Powerful patterns',
       url: 'https://projects.raspberrypi.org/en/projects/powerful-patterns',
       slug: 'powerful-patterns',
       track: { name: introductionToPython, position: 6 },
     },
     {
+      language: python,
+      level: [beginner, intermediate],
+      title: 'Hour of Python - Turtles',
+      url: 'https://trinket.io/challenges/holiday-tree.html',
+      slug: 'hour-of-python-with-turtles',
+      domain: 'hourofpython.com',
+    },
+    {
+      language: python,
+      level: [beginner],
+      title: 'Hour of Python - Holiday Tree',
+      url: 'https://trinket.io/challenges/holiday-tree.html',
+      slug: 'hour-of-python-holiday-tree',
+      domain: 'hourofpython.com',
+    },
+    {
+      language: python,
+      level: [beginner],
+      title: 'Hour of Python - Bullseye',
+      url: 'https://trinket.io/challenges/bullseye.html',
+      slug: 'hour-of-python-bullseye',
+      domain: 'hourofpython.com',
+    },
+    {
+      language: python,
+      level: [beginner],
+      title: 'CodeCraft',
+      url: 'https://projects.raspberrypi.org/en/projects/codecraft',
+      slug: 'codecraft',
+    },
+    {
+      language: unity,
+      level: [advanced],
+      title: 'Explore a 3D world',
+      url: 'https://projects.raspberrypi.org/en/projects/explore-a-3d-world',
+      slug: 'explore-a-3d-world',
+    },
+    {
       language: html,
-      level: beginner,
+      level: [beginner],
       title: 'Guide to my country 1.0',
       url: 'https://projects.raspberrypi.org/en/projects/cd-beginner-html-css-sushi',
       slug: 'cd-beginner-html-css-sushi',
     },
     {
       language: html,
-      level: intermediate,
+      level: [beginner],
       title: 'Guide to my country 2.0',
       url: 'https://projects.raspberrypi.org/en/projects/cd-intermediate-html-css-sushi',
       slug: 'cd-intermediate-html-css-sushi',
     },
     {
       language: html,
-      level: advanced,
+      level: [beginner],
       title: 'Guide to my country 3.0',
       url: 'https://projects.raspberrypi.org/en/projects/cd-advanced-html-css-sushi',
       slug: 'cd-advanced-html-css-sushi',

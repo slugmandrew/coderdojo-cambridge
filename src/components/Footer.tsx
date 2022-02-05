@@ -19,6 +19,10 @@ export const Footer = () => {
       <Link color={'purple'} href={'https://www.coolestprojects.org/'}>
         coolestprojects.org
       </Link>
+      <Text> | </Text>
+      <Link target={'_blank'} color={'pink.400'} href={'https://astro-pi.org/mission-zero/'}>
+        ASTRO PI :: MISSION ZERO
+      </Link>
     </HStack>
   )
 }

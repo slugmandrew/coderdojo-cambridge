@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { ColorScheme } from 'types/ColorScheme'
 import { Level } from 'types/Level'
 
-export const LevelTag: FC<{ level: Level }> = ({ level }) => {
+export const LevelTag: FC<{ levels: Level[] }> = ({ levels }) => {
   const getColorScheme: (level: Level) => ColorScheme = (level: Level) => {
     switch (level) {
       case Level.beginner:
@@ -19,9 +19,11 @@ export const LevelTag: FC<{ level: Level }> = ({ level }) => {
 
   return (
     <>
-      <Tag size={tagSize} colorScheme={getColorScheme(level)}>
-        {level}
-      </Tag>
+      {levels.map((level) => (
+        <Tag size={tagSize} colorScheme={getColorScheme(level)}>
+          {level}
+        </Tag>
+      ))}
     </>
   )
 }

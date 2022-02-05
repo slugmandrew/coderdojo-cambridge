@@ -2,24 +2,32 @@ import { Select, Text, VStack } from '@chakra-ui/react'
 import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/Projects'
 import React, { FC, useEffect, useState } from 'react'
-import { FilterTypeWithLabel } from 'types/Filterable'
+import { LanguageName } from 'types/LanguageName'
+import { Level } from 'types/Level'
 import { Project } from 'types/Project'
 
-export const FilterableGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ filters }, children) => {
+const levelFilter = { label: 'Level', type: Level }
+const languageFilter = { label: 'Language', type: LanguageName }
+
+export const FilterableGrid: FC = () => {
   const [currentLanguageFilter, setCurrentLanguageFilter] = useState<string>()
   const [currentLevelFilter, setCurrentLevelFilter] = useState<string>()
   const [currentTrackFilter, setCurrentTrackFilter] = useState<string>()
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(data)
 
   const filterList: (projects: Array<Project>) => Array<Project> = (projects: Array<Project>) => {
     return projects
+      .slice()
       .filter((project) => (currentLanguageFilter ? project.language === currentLanguageFilter : true))
-      .filter((project) => (currentLevelFilter ? project.level === currentLevelFilter : true))
+      .filter((project) => (currentLevelFilter ? project.level.find((l) => l === currentLevelFilter) : true))
     // .filter((project) => (currentTrackFilter && project.track ? project.track.name === currentTrackFilter : false))
   }
 
-  useEffect(() => {}, [currentLanguageFilter])
+  useEffect(() => {
+    setFilteredProjects(filterList(data))
+  }, [currentLanguageFilter, currentLevelFilter])
 
-  const onChange = (label: 'Language' | 'Level' | 'Track', value: string) => {
+  const onChange = (label: string | 'Track', value: string) => {
     if (value) {
       console.info('Found value, Setting filter...', value)
       let newFilter = value.split('-')
@@ -63,26 +71,39 @@ export const FilterableGrid: FC<{ filters: Array<FilterTypeWithLabel> }> = ({ fi
     <VStack maxW={'full'} h={'full'} padding={[2, null, 4, 8]} bgColor={'gray.50'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
       <Text as="strong">Showing {filterList(data).length} Projects</Text>
       <>
-        {filters.map((filter) => {
-          return (
-            <Select
-              bgColor={'white'}
-              key={filter.label}
-              placeholder={`Select ${filter.label}`}
-              onChange={(event) => onChange(filter.label, event.target.value)}
-            >
-              {Object.values(filter.type).map((key) => {
-                return (
-                  <option key={key} value={`${filter.label}-${key}`}>
-                    {key}
-                  </option>
-                )
-              })}
-            </Select>
-          )
-        })}
+        <Select
+          bgColor={'white'}
+          key={languageFilter.label}
+          placeholder={`Select ${languageFilter.label}`}
+          onChange={(event) => onChange(levelFilter.label, event.target.value)}
+        >
+          {Object.values(languageFilter.type).map((key) => {
+            return (
+              <option key={key} value={`${languageFilter.label}-${key}`}>
+                {key}
+              </option>
+            )
+          })}
+        </Select>
+
+        {currentLanguageFilter && (
+          <Select
+            bgColor={'white'}
+            key={levelFilter.label}
+            placeholder={`Select ${levelFilter.label}`}
+            onChange={(event) => onChange(levelFilter.label, event.target.value)}
+          >
+            {Object.values(levelFilter.type).map((key) => {
+              return (
+                <option key={key} value={`${levelFilter.label}-${key}`}>
+                  {key}
+                </option>
+              )
+            })}
+          </Select>
+        )}
       </>
-      <ProjectGrid projects={filterList(data)} />
+      <ProjectGrid projects={filteredProjects} />
     </VStack>
   )
 }
