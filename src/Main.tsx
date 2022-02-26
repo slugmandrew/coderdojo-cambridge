@@ -1,21 +1,32 @@
+import { Container } from '@chakra-ui/react'
+import { About } from 'About'
+import { Home } from 'Home'
+import { Location } from 'Location'
+import { Ninjas } from 'Ninjas'
 import { ProjectList } from 'ProjectList'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { Scraper } from 'Scraper'
 
 export const Main = () => {
   return (
-    <Routes>
-      {/*<Route path="/" element={<Home />} />*/}
-      <Route path="/" element={<ProjectList />} />
+    <Container maxW={'full'} minH={800}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/*<Route path="/" element={<ProjectList />} />*/}
+        <Route path="/projects" element={<ProjectList />} />
 
-      {/* ABOUT */}
-      {/*<Route path="/about" element={<About />} />*/}
+        {/* ABOUT */}
+        <Route path="/about" element={<About />} />
 
-      {/* BECOME A NINJA */}
-      {/*<Route path="/ninjas" element={<Ninjas />} />*/}
+        {/* BECOME A NINJA */}
+        <Route path="/ninjas" element={<Ninjas />} />
 
-      {/* FIND US */}
-      {/*<Route path="/location" element={<Location />} />*/}
-    </Routes>
+        {/* FIND US */}
+        <Route path="/location" element={<Location />} />
+
+        <Route path="/scraper" element={<Scraper />} />
+      </Routes>
+    </Container>
   )
 }
