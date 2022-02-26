@@ -75,8 +75,7 @@ export const FilterableGrid: FC = () => {
           bgColor={'white'}
           key={languageFilter.label}
           placeholder={`Select ${languageFilter.label}`}
-          onChange={(event) => onChange(levelFilter.label, event.target.value)}
-        >
+          onChange={(event) => onChange(levelFilter.label, event.target.value)}>
           {Object.values(languageFilter.type).map((key) => {
             return (
               <option key={key} value={`${languageFilter.label}-${key}`}>
@@ -91,8 +90,7 @@ export const FilterableGrid: FC = () => {
             bgColor={'white'}
             key={levelFilter.label}
             placeholder={`Select ${levelFilter.label}`}
-            onChange={(event) => onChange(levelFilter.label, event.target.value)}
-          >
+            onChange={(event) => onChange(levelFilter.label, event.target.value)}>
             {Object.values(levelFilter.type).map((key) => {
               return (
                 <option key={key} value={`${levelFilter.label}-${key}`}>

@@ -28,8 +28,7 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
             size={buttonSize}
             onClick={() => window.open(url, '_blank')}
             leftIcon={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : faPython} />}
-            rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
-          >
+            rightIcon={<FontAwesomeIcon icon={faArrowRight} />}>
             View on {domain}
           </Button>
         </Flex>
