@@ -1,7 +1,7 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import { ProjectCard as Component } from './ProjectCard'
 import data from 'data/Projects'
+import React from 'react'
+import { ProjectCard as Component } from './ProjectCard'
 
 export default {
   title: 'Components/Project Card',
