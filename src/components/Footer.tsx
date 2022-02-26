@@ -4,7 +4,7 @@ import React from 'react'
 export const Footer = () => {
   return (
     <HStack maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
-      <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace-cambridge'}>
+      <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}>
         Cambridge @ Makespace Dojo
       </Link>
       <Text> | </Text>
