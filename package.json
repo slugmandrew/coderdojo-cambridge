@@ -1,6 +1,6 @@
 {
+  "name": "@coderdojo/root",
   "private": true,
-  "name": "coderdojo-monorepo",
   "version": "0.1.0",
   "workspaces": [
     "server",
