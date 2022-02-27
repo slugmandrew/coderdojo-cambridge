@@ -15,7 +15,7 @@ export const Scraper: FC = () => {
       .catch(console.error)
   }
 
-  // Tiny change
+  // Tiny change #2
   return (
     <Container maxW={'container.xl'}>
       <Heading color={'custom.teal'} size={'xl'} paddingY={5}>
