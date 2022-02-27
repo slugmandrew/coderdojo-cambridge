@@ -3,13 +3,13 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 export const Scraper = () => {
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState('https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started')
   const [title, setTitle] = useState('')
 
   function performScrape(url: string) {
     axios
-      .get('https://cors-anywhere.herokuapp.com/' + url)
-      .then((value) => setTitle(value.data))
+      .post('api/scrape', { url })
+      .then((value) => setTitle(value.data.message))
       .catch(console.error)
   }
 

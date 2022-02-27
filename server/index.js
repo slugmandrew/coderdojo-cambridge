@@ -47,7 +47,17 @@ let client
 // void dbSetup()
 
 app.get('/api', (req, res) => {
+  console.log('GET api')
   setTimeout(() => res.json({ message: 'Hello from server, buddy!' }), 500)
+})
+
+app.post('/api/scrape', (req, res) => {
+  console.log('POST scrape')
+
+  const { url } = req.body
+  console.log('URL', url)
+
+  return res.json({ message: url })
 })
 
 // app.post('/api/login', (req, res) => {
@@ -83,6 +93,7 @@ app.get('/api', (req, res) => {
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
+  console.log('GET *')
   res.sendFile(path.resolve(__dirname, '../ui/build', 'index.html'))
 })
 
