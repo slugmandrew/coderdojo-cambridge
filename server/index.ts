@@ -56,7 +56,7 @@ app.post('/api/scrape', (req, res) => {
   const slug = url.split('/').pop()
   console.log('slug', slug)
 
-  return new Pageres({ filename: slug })
+  return new Pageres({ filename: slug, launchOptions: { args: ['--no-sandbox'] } })
     .src(url, ['1024x768'])
     .dest(path.resolve(__dirname, '../ui/public/screenshot'))
     .run()
