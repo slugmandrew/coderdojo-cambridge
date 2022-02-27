@@ -7,15 +7,25 @@
     "ui"
   ],
   "scripts": {
-    "start": "node server/index.js",
-    "start-devserver": "nodemon server/index.js",
+    "start": "ts-node server/index.ts",
+    "start-devserver": "nodemon server/index.ts",
     "start-ui": "cd ui && npm run start",
     "start-both": "concurrently \"npm run start-devserver\" \"npm run start-ui\"",
     "build": "cd ui && npm install && npm run build"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "concurrently": "^7.0.0",
-    "prettier": "^2.5.1"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.5.0",
+    "ts-node-dev": "^1.1.8"
+  },
+  "eslintConfig": {
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false
+    }
   },
   "engines": {
     "node": "16.13.2"

@@ -1,15 +1,17 @@
-import { Button, Container, FormControl, FormLabel, Heading, Input, Stack } from '@chakra-ui/react'
+import { Button, Container, FormControl, FormLabel, Heading, Image, Input, Stack } from '@chakra-ui/react'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
-export const Scraper = () => {
+export const Scraper: FC = () => {
   const [url, setUrl] = useState('https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started')
-  const [title, setTitle] = useState('')
+  const [data, setData] = useState({ title: '', slug: '' })
 
   function performScrape(url: string) {
     axios
       .post('api/scrape', { url })
-      .then((value) => setTitle(value.data.message))
+      .then((value) => {
+        setData({ title: value.data.message, slug: value.data.slug })
+      })
       .catch(console.error)
   }
 
@@ -21,12 +23,13 @@ export const Scraper = () => {
       </Heading>
       <Stack maxW={'lg'} spacing={5}>
         <FormControl>
-          <FormLabel>{title}</FormLabel>
+          <FormLabel>{data.title}</FormLabel>
           <Input placeholder={'Enter URL to scrape...'} value={url} onChange={(event) => setUrl(event.target.value)} />
         </FormControl>
         <Button colorScheme="teal" size="md" onClick={(event) => performScrape(url)}>
           Button
         </Button>
+        {data.slug && <Image src={`./screenshot/${data.slug}.png`} />}
       </Stack>
     </Container>
   )

@@ -1,8 +1,8 @@
-const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
-const { Client } = require('pg')
-var multer = require('multer')
+import express from 'express'
+import multer from 'multer'
+import Pageres from 'pageres'
+import path from 'path'
+import { config } from 'dotenv'
 
 const PORT = process.env.PORT || 3001
 
@@ -12,17 +12,13 @@ var upload = multer()
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../ui/build')))
 
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-)
+app.use(express.json())
+app.use(express.urlencoded())
 
 // for parsing multipart/form-data
-app.use(upload.array())
+// app.use(upload.array());
 
-require('dotenv').config()
+config()
 console.log(process.env)
 
 let client
@@ -57,7 +53,15 @@ app.post('/api/scrape', (req, res) => {
   const { url } = req.body
   console.log('URL', url)
 
-  return res.json({ message: url })
+  const slug = url.split('/').pop()
+  console.log('slug', slug)
+
+  return new Pageres({ filename: slug })
+    .src(url, ['1024x768'])
+    .dest(path.resolve(__dirname, '../ui/public/screenshot'))
+    .run()
+    .then((result) => res.json({ message: url, slug: slug }))
+    .catch((reason) => res.status(400).send(reason.message))
 })
 
 // app.post('/api/login', (req, res) => {
