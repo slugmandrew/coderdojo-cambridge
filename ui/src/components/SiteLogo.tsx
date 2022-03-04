@@ -4,9 +4,9 @@ import React from 'react'
 
 export const SiteLogo = () => {
   // const logoSize = ['100px', null, '120px']
-  const logoSize = useBreakpointValue({ base: '80px', md: '120px' })
-  const headingSize = useBreakpointValue({ base: 'lg', md: 'xl' })
-  const taglineSize = useBreakpointValue({ base: 'xs', md: 'lg' })
+  const logoSize = useBreakpointValue({ base: '80px', md: '110px' })
+  const headingSize = useBreakpointValue({ base: 'xl', md: '2xl' })
+  const taglineSize = useBreakpointValue({ base: 'md', md: 'lg' })
 
   return (
     <HStack spacing={5}>
@@ -14,8 +14,10 @@ export const SiteLogo = () => {
         <Image src={logo} fit={'contain'} />
       </Box>
       <VStack>
-        <Heading size={headingSize}>CoderDojo Cambridge @ Makespace</Heading>
-        <Heading size={taglineSize} color={'custom.teal'} alignSelf={'flex-start'}>
+        <Heading size={headingSize} fontFamily={'Big Shoulders Display'} color={'gray.700'}>
+          CoderDojo Cambridge @ Makespace
+        </Heading>
+        <Heading size={taglineSize} color={'custom.teal'} fontFamily={'Ubuntu'} alignSelf={'flex-start'} fontWeight={'light'}>
           Projects, resources & other cool stuff
         </Heading>
       </VStack>

@@ -10,23 +10,25 @@ import { Scraper } from 'Scraper'
 
 export const Main = () => {
   return (
-    <Container maxW={'full'} minH={800}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/*<Route path="/" element={<ProjectList />} />*/}
-        <Route path="/projects" element={<ProjectList />} />
+    <Container maxW={'full'} minH={800} bgColor={'gray.50'}>
+      <Container maxW={'container.xl'} minH={800} p={5}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/*<Route path="/" element={<ProjectList />} />*/}
+          <Route path="/projects" element={<ProjectList />} />
 
-        {/* ABOUT */}
-        <Route path="/about" element={<About />} />
+          {/* ABOUT */}
+          <Route path="/about" element={<About />} />
 
-        {/* BECOME A NINJA */}
-        <Route path="/ninjas" element={<Ninjas />} />
+          {/* BECOME A NINJA */}
+          <Route path="/ninjas" element={<Ninjas />} />
 
-        {/* FIND US */}
-        <Route path="/location" element={<Location />} />
+          {/* FIND US */}
+          <Route path="/location" element={<Location />} />
 
-        <Route path="/scraper" element={<Scraper />} />
-      </Routes>
+          <Route path="/scraper" element={<Scraper />} />
+        </Routes>
+      </Container>
     </Container>
   )
 }

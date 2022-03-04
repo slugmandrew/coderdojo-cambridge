@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react'
 
 export const customTheme = extendTheme({
+  fonts: {
+    body: 'Quicksand',
+    heading: 'Ubuntu, sans-serif',
+  },
   colors: {
     custom: {
       orange: '#F07832',
@@ -10,8 +14,21 @@ export const customTheme = extendTheme({
     },
   },
   components: {
+    Heading: {
+      baseStyle: {
+        color: 'custom.teal',
+      },
+    },
+    Text: {
+      baseStyle: {
+        fontSize: 'md',
+      },
+    },
     Link: {
       fontWeight: 'medium',
+      baseStyle: {
+        fontSize: 'md',
+      },
       variants: {
         'no-wrap': {
           whiteSpace: 'nowrap',

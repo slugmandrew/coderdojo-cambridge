@@ -2539,6 +2539,9 @@ __metadata:
     "@chakra-ui/storybook-addon": ^1.0.0
     "@emotion/react": 11
     "@emotion/styled": 11
+    "@fontsource/big-shoulders-display": latest
+    "@fontsource/quicksand": latest
+    "@fontsource/ubuntu": latest
     "@fortawesome/fontawesome-svg-core": ^1.3.0
     "@fortawesome/free-brands-svg-icons": ^6.0.0
     "@fortawesome/free-regular-svg-icons": ^6.0.0
@@ -2558,6 +2561,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
+    "@types/google-map-react": ^2.1.5
     "@types/jest": ^27.0.1
     "@types/node": ^16.7.13
     "@types/react": ^17.0.20
@@ -2992,6 +2996,27 @@ __metadata:
     minimatch: ^3.0.4
     strip-json-comments: ^3.1.1
   checksum: a5e51dcf02627363567094456d7880b46b6a14a285d7a057f083ca903bdd862483bb6314cbc9fb6fa2d2c4537d50e0d28bd5e39650840241ae4796faaec65d2e
+  languageName: node
+  linkType: hard
+
+"@fontsource/big-shoulders-display@npm:latest":
+  version: 4.5.4
+  resolution: "@fontsource/big-shoulders-display@npm:4.5.4"
+  checksum: 0cd2b0678fd0a653e9742d6ec1d5158e74a5c5f3f2dbd70d9e2473728346f062c28757216effeb7d8011ac6b2bef5879a60a45ec7a5ee1535a7cecd849de7aeb
+  languageName: node
+  linkType: hard
+
+"@fontsource/quicksand@npm:latest":
+  version: 4.5.4
+  resolution: "@fontsource/quicksand@npm:4.5.4"
+  checksum: 284cd32f6fcdd9753fa4cb93e0968d0bbbc80ba58e9c6d00600aeb5cb73a4849d03b1694cf4fe313ff3fa01298a7dc06b9a0609fc7cb9e080ef39d3b7563048a
+  languageName: node
+  linkType: hard
+
+"@fontsource/ubuntu@npm:latest":
+  version: 4.5.3
+  resolution: "@fontsource/ubuntu@npm:4.5.3"
+  checksum: 74158dc22e7ddb88812768e75151649099be2f5623fe47618fa3f3a6b5fa0441d07f6a175b86df5b51af3ff9224596b3db8f3a59ad4058b1b41dead883ce7a2d
   languageName: node
   linkType: hard
 
@@ -5387,6 +5412,15 @@ __metadata:
     "@types/minimatch": "*"
     "@types/node": "*"
   checksum: 6ae717fedfdfdad25f3d5a568323926c64f52ef35897bcac8aca8e19bc50c0bd84630bbd063e5d52078b2137d8e7d3c26eabebd1a2f03ff350fff8a91e79fc19
+  languageName: node
+  linkType: hard
+
+"@types/google-map-react@npm:^2.1.5":
+  version: 2.1.5
+  resolution: "@types/google-map-react@npm:2.1.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: 92cfc8fca9154d2f4f6b877ed9c242dc6ce252048f98591465d3e293f54b178a7727013cd7beac6825d7330367be6ae5019bd08157e26908d6318b59ea6fb0ab
   languageName: node
   linkType: hard
 
