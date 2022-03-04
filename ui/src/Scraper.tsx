@@ -15,7 +15,7 @@ export const Scraper: FC = () => {
       .catch(console.error)
   }
 
-  // Tiny change #3 to reorder buildpacks
+  // Tiny change #4 to remove buildpack
   return (
     <Container maxW={'container.xl'}>
       <Heading color={'custom.teal'} size={'xl'} paddingY={5}>
