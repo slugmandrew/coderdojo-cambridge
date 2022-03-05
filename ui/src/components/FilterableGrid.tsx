@@ -13,7 +13,7 @@ export const FilterableGrid: FC = () => {
   const [currentLanguageFilter, setCurrentLanguageFilter] = useState<string>()
   const [currentLevelFilter, setCurrentLevelFilter] = useState<string>()
   const [currentTrackFilter, setCurrentTrackFilter] = useState<string>()
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>(data)
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(data.projects)
 
   const filterList: (projects: Array<Project>) => Array<Project> = (projects: Array<Project>) => {
     return projects
@@ -24,7 +24,7 @@ export const FilterableGrid: FC = () => {
   }
 
   useEffect(() => {
-    setFilteredProjects(filterList(data))
+    setFilteredProjects(filterList(data.projects))
   }, [currentLanguageFilter, currentLevelFilter])
 
   const onChange = (label: string | 'Track', value: string) => {
@@ -68,8 +68,8 @@ export const FilterableGrid: FC = () => {
   }
 
   return (
-    <VStack maxW={'full'} h={'full'} padding={[2, null, 4, 8]} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
-      <Text as="strong">Showing {filterList(data).length} Projects</Text>
+    <VStack maxW={'full'} h={'full'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
+      <Text as="strong">Showing {filterList(data.projects).length} Projects</Text>
       <>
         <Select
           bgColor={'white'}

@@ -8,16 +8,16 @@ export const Footer = () => {
         Cambridge @ Makespace Dojo
       </Link>
       <Text> | </Text>
-      <Link color={'gray.500'} href={'https://zen.coderdojo.com'}>
-        zen.coderdojo.com
+      <Link color={'gray.500'} href={'https://web.makespace.org'}>
+        Makespace
       </Link>
       <Text> | </Text>
       <Link color={'red'} href={'https://www.raspberrypi.org/'}>
-        raspberrypi.org
+        Raspberry Pi
       </Link>
       <Text> | </Text>
       <Link color={'purple'} href={'https://www.coolestprojects.org/'}>
-        coolestprojects.org
+        Coolest Projects
       </Link>
       <Text> | </Text>
       <Link target={'_blank'} color={'pink.400'} href={'https://astro-pi.org/mission-zero/'}>

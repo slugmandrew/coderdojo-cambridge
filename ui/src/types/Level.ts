@@ -1,5 +1,6 @@
 export enum Level {
-  beginner = 'Beginner',
-  intermediate = 'Intermediate',
-  advanced = 'Advanced',
+  intro = 'Intro',
+  one = 'Level 1',
+  two = 'Level 2',
+  three = 'Level 3',
 }

@@ -19,7 +19,7 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
         <Heading size={'md'} color={'custom.teal'}>
           {title}
         </Heading>
-        <HStack my={2}>
+        <HStack my={3}>
           <LanguageTag language={language} /> <LevelTag levels={level} />
         </HStack>
         <Flex w={'full'} justifyContent={'end'}>

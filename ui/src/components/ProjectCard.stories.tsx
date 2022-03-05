@@ -13,4 +13,4 @@ const Template: ComponentStory<typeof Component> = (args) => <Component {...args
 
 export const ProjectCard = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-ProjectCard.args = data[0]
+ProjectCard.args = data.projects[0]

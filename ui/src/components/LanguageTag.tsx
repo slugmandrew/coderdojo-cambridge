@@ -6,6 +6,8 @@ import { LanguageName } from 'types/LanguageName'
 export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
   const getColorScheme: (language: LanguageName) => ColorScheme = (language: LanguageName) => {
     switch (language) {
+      case LanguageName.hardware:
+        return 'gray'
       case LanguageName.scratch:
         return 'orange'
       case LanguageName.python:
