@@ -25,7 +25,7 @@ export const ProjectList = () => {
           <Text my={5}>
             Our current focus is on coding for <b>Raspberry Pi</b> and <b>SenseHAT</b>.
           </Text>
-          <Text>SenseHAT adds extra capabilities to the Raspberry Pi, such as:</Text>
+          <Text my={2}>SenseHAT adds extra capabilities to the Raspberry Pi, such as:</Text>
           <UnorderedList>
             <ListItem>
               <FontAwesomeIcon icon={faTabletScreenButton} /> 8x8 RGB Matrix Screen
@@ -49,7 +49,7 @@ export const ProjectList = () => {
         </Box>
 
         <Box rounded={5} overflow={'hidden'} bgColor={'white'}>
-          <Image height={['100', null, '300']} src={senseHatGif} />
+          <Image height={['150', null, '200', '300']} src={senseHatGif} />
           <Text m={3}>
             <strong>SenseHAT</strong> in action
           </Text>
