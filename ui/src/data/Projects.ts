@@ -33,7 +33,7 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[] }
     {
       language: python,
       level: [one],
-      title: 'Sense HAT random sparkles',
+      title: 'Random Sparkles',
       url: 'https://projects.raspberrypi.org/en/projects/sense-hat-random-sparkles',
       slug: 'sense-hat-random-sparkles',
     },
