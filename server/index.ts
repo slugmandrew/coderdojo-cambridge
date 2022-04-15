@@ -1,8 +1,11 @@
+import { config } from 'dotenv'
 import express from 'express'
 import multer from 'multer'
+import ogs from 'open-graph-scraper'
 import Pageres from 'pageres'
 import path from 'path'
-import { config } from 'dotenv'
+
+import getMetaData from 'metadata-scraper'
 
 const PORT = process.env.PORT || 3001
 
@@ -55,6 +58,10 @@ app.post('/api/scrape', (req, res) => {
 
   const slug = url.split('/').pop()
   console.log('slug', slug)
+
+  getMetaData(url).then((data) => {
+    console.log(data)
+  })
 
   return new Pageres({ filename: slug, launchOptions: { args: ['--no-sandbox'] } })
     .src(url, ['1024x768'])
