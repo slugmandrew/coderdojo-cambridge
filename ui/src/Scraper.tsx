@@ -18,7 +18,7 @@ export const Scraper: FC = () => {
   // Tiny change #4 to remove buildpack
   return (
     <Container maxW={'container.xl'}>
-      <Heading color={'custom.teal'} size={'xl'} paddingY={5}>
+      <Heading size={'2xl'} my={5}>
         Scraper
       </Heading>
       <Stack maxW={'lg'} spacing={5}>

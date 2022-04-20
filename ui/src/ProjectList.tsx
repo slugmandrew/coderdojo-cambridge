@@ -13,6 +13,9 @@ export const ProjectList = () => {
     <>
       <Flex justifyContent={'space-between'} flexWrap={'wrap'} my={5}>
         <Box>
+          <Heading size={'lg'} color={'custom.orange'} my={5}>
+            Current Season
+          </Heading>
           <Heading size={'xl'}>
             Springtime Pi{' '}
             <chakra.span color={'red.600'}>
