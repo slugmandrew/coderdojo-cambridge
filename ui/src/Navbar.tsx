@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 
 const NavButton: FC<{ label: string; to: string; mobile?: boolean }> = ({ label, to, mobile }) => (
-  <Button as={RouterLink} variant='ghost' colorScheme={'teal'} to={to} w={mobile ? 'full' : 'auto'}>
+  <Button as={RouterLink} variant='solid' colorScheme={'gray'} to={to} w={mobile ? 'full' : 'auto'}>
     {label}
   </Button>
 )
@@ -50,6 +50,7 @@ export const Navbar: FC = () => {
               </Button>
 
               <VStack
+                zIndex={10}
                 pos='absolute'
                 top={0}
                 left={0}
