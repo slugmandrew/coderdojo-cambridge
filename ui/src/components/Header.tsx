@@ -1,5 +1,4 @@
 import { Flex, VStack } from '@chakra-ui/react'
-import { SiteLink } from 'components/SiteLink'
 import { SiteLogo } from 'components/SiteLogo'
 import React from 'react'
 

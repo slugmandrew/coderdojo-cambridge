@@ -1,4 +1,4 @@
-import { Box, Button, chakra, CloseButton, Flex, HStack, IconButton, useColorModeValue, useDisclosure, VStack, Text, Heading } from '@chakra-ui/react'
+import { Box, Button, chakra, CloseButton, Flex, HStack, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react'

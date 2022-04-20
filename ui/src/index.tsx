@@ -1,13 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import '@fontsource/big-shoulders-display/400.css'
+import '@fontsource/quicksand/400.css'
+import '@fontsource/ubuntu/400.css'
 import { App } from 'App'
 import { customTheme } from 'customTheme'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
-import '@fontsource/quicksand/400.css'
-import '@fontsource/big-shoulders-display/400.css'
-import '@fontsource/ubuntu/400.css'
 
 ReactDOM.render(
   <React.StrictMode>

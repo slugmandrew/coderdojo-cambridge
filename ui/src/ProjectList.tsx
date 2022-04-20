@@ -1,12 +1,12 @@
 import { Box, chakra, Flex, Heading, Image, ListItem, Text, UnorderedList } from '@chakra-ui/react'
 import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
-import { faGamepad, faGauge, faMagnet, faTabletScreenButton, faTemperatureHalf, faThermometer } from '@fortawesome/free-solid-svg-icons'
+import { faGamepad, faGauge, faMagnet, faTabletScreenButton, faTemperatureHalf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FilterableGrid } from 'components/FilterableGrid'
 import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/Projects'
-import React from 'react'
 import senseHatGif from 'image/raspberry-pi-sense-hat.gif'
+import React from 'react'
 
 export const ProjectList = () => {
   return (
