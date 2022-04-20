@@ -1,8 +1,8 @@
-import { Box, Button, chakra, CloseButton, Flex, HStack, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react'
+import { Box, Button, chakra, CloseButton, Flex, HStack, LinkBox, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { FC } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import React, { FC, useEffect } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 const NavButton: FC<{ label: string; to: string; mobile?: boolean }> = ({ label, to, mobile }) => (
   <Button as={RouterLink} variant='solid' colorScheme={'gray'} to={to} w={mobile ? 'full' : 'auto'}>
@@ -27,6 +27,14 @@ const NavButtons: FC<{ mobile?: boolean }> = ({ mobile }) => (
 export const Navbar: FC = () => {
   const bg = useColorModeValue('gray.100', 'gray.800')
   const mobileNav = useDisclosure()
+  const location = useLocation()
+
+  useEffect(() => {
+    mobileNav.onClose()
+    // don't add mobileNav because it messes up the menu
+    // eslint-disable-next-line
+  }, [location])
+
   return (
     <>
       <chakra.header bg={bg} w='full' px={{ base: 2, sm: 4 }} py={3} shadow='md'>
@@ -67,6 +75,17 @@ export const Navbar: FC = () => {
                 <CloseButton aria-label='Close menu' onClick={mobileNav.onClose} />
                 <NavButtons mobile />
               </VStack>
+              <LinkBox
+                as={'div'}
+                display={mobileNav.isOpen ? 'flex' : 'none'}
+                pos={'absolute'}
+                top={0}
+                left={0}
+                right={0}
+                w={'100%'}
+                h={'100%'}
+                onClick={mobileNav.onClose}
+              />
             </Box>
           </HStack>
         </Flex>
