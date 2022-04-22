@@ -1,5 +1,6 @@
 import { Container } from '@chakra-ui/react'
 import { About } from 'About'
+import { Home } from 'Home'
 import { Location } from 'Location'
 import { Ninjas } from 'Ninjas'
 import { ProjectList } from 'ProjectList'
@@ -13,7 +14,7 @@ export const Main = () => {
     <Container maxW={'full'} minH={800} bgColor={'gray.50'}>
       <Container maxW={'container.xl'} minH={800} p={5}>
         <Routes>
-          <Route path='/' element={<ProjectList />} />
+          <Route path='/' element={<Home />} />
 
           <Route path='/projects' element={<ProjectList />} />
 

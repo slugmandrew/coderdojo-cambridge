@@ -1,5 +1,6 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/react'
+import { PageHeading } from 'components/PageHeading'
 import GoogleMapReact from 'google-map-react'
 import logo from 'image/coderdojo-cambridge-logo_trans_round.png'
 import React, { FC } from 'react'
@@ -21,9 +22,7 @@ export const Location = () => {
 
   return (
     <>
-      <Heading size={'2xl'} my={5}>
-        Location
-      </Heading>
+      <PageHeading>Location</PageHeading>
       <Flex rounded={6} bgColor={'white'} border={'1px solid'} borderColor={'gray.200'} h={500} overflow={'auto'}>
         <Box height={'full'} w={2 / 3}>
           <GoogleMapReact bootstrapURLKeys={{ key: 'AIzaSyAZnyic_SEgIQSTx_mjXSH3QLkaLQT7GM4' }} defaultCenter={location} defaultZoom={18}>
@@ -36,8 +35,8 @@ export const Location = () => {
           </Heading>
           <Text my={'5'}>
             We are located at{' '}
-            <Link href={'https://web.makespace.org/'} target="_blank" variant={'bold'} isExternal={true}>
-              Makespace <ExternalLinkIcon mx="2px" />
+            <Link href={'https://web.makespace.org/'} target='_blank' variant={'bold'} isExternal={true}>
+              Makespace <ExternalLinkIcon mx='2px' />
             </Link>
             in central Cambridge.
           </Text>

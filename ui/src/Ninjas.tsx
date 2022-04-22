@@ -1,10 +1,8 @@
-import { Heading } from '@chakra-ui/react'
+import { PageHeading } from 'components/PageHeading'
 import React from 'react'
 
 export const Ninjas = () => (
   <>
-    <Heading size={'2xl'} my={5}>
-      Ninjas
-    </Heading>
+    <PageHeading>Ninjas</PageHeading>
   </>
 )
