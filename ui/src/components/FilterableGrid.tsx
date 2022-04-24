@@ -1,6 +1,6 @@
 import { Select, Text, VStack } from '@chakra-ui/react'
 import { ProjectGrid } from 'components/ProjectGrid'
-import data from 'data/Projects'
+import data from 'data/ProjectData'
 import React, { FC, useEffect, useState } from 'react'
 import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'

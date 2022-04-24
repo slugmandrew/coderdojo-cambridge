@@ -13,9 +13,9 @@ const NavButton: FC<{ label: string; to: string; mobile?: boolean }> = ({ label,
 const NavButtons: FC<{ mobile?: boolean }> = ({ mobile }) => (
   <>
     <NavButton label={'Home'} to={'/'} mobile={mobile} />
-    <NavButton to={'about'} label={'About'} mobile={mobile} />
     <NavButton to={'projects'} label={'Projects'} mobile={mobile} />
     <NavButton to={'ninjas'} label={'Ninjas'} mobile={mobile} />
+    <NavButton to={'parents'} label={'Parents'} mobile={mobile} />
     <NavButton to={'seasons'} label={'Seasons'} mobile={mobile} />
     <NavButton to={'location'} label={'Location'} mobile={mobile} />
     <Button as={RouterLink} colorScheme={'teal'} size='sm' to={'somewhere'} w={mobile ? 'full' : 'auto'}>

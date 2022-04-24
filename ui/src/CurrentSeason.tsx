@@ -3,7 +3,7 @@ import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faGauge, faMagnet, faTabletScreenButton, faTemperatureHalf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProjectGrid } from 'components/ProjectGrid'
-import data from 'data/Projects'
+import data from 'data/ProjectData'
 import senseHatGif from 'image/raspberry-pi-sense-hat.gif'
 import React from 'react'
 

@@ -1,13 +1,13 @@
-import { Text } from '@chakra-ui/react'
 import { FilterableGrid } from 'components/FilterableGrid'
 import { PageHeading } from 'components/PageHeading'
+import { SubHeading } from 'components/SubHeading'
 import React from 'react'
 
-export const ProjectList = () => {
+export const Projects = () => {
   return (
     <>
       <PageHeading>Projects</PageHeading>
-      <Text my={5}>Recommended projects for Scratch, Python, & HTML</Text>
+      <SubHeading>Recommended projects for Scratch, Python, & HTML</SubHeading>
       <FilterableGrid />
     </>
   )

@@ -17,8 +17,8 @@ export const SiteLogo = () => {
         <Heading size={headingSize} fontFamily={'Big Shoulders Display'} color={'gray.700'}>
           CoderDojo Cambridge @ Makespace
         </Heading>
-        <Heading size={taglineSize} color={'custom.teal'} fontFamily={'Ubuntu'} alignSelf={'flex-start'} fontWeight={'light'}>
-          Projects, resources & other cool stuff
+        <Heading size={taglineSize} color={'custom.teal'} fontFamily={'Ubuntu'} alignSelf={'center'} fontWeight={'light'}>
+          Code club for 7-17 year olds
         </Heading>
       </VStack>
     </HStack>

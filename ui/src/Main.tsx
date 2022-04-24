@@ -1,9 +1,9 @@
 import { Container } from '@chakra-ui/react'
-import { About } from 'About'
+import { Parents } from 'About'
 import { Home } from 'Home'
 import { Location } from 'Location'
 import { Ninjas } from 'Ninjas'
-import { ProjectList } from 'ProjectList'
+import { Projects } from 'Projects'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Scraper } from 'Scraper'
@@ -16,10 +16,10 @@ export const Main = () => {
         <Routes>
           <Route path='/' element={<Home />} />
 
-          <Route path='/projects' element={<ProjectList />} />
+          <Route path='/projects' element={<Projects />} />
 
           {/* ABOUT */}
-          <Route path='/about' element={<About />} />
+          <Route path='/parents' element={<Parents />} />
 
           {/* SEASONS */}
           <Route path='/seasons' element={<Seasons />} />

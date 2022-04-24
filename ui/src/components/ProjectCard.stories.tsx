@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import data from 'data/Projects'
+import data from 'data/ProjectData'
 import React from 'react'
 import { ProjectCard as Component } from './ProjectCard'
 

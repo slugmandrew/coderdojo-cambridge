@@ -1,8 +1,10 @@
 import { PageHeading } from 'components/PageHeading'
+import { SubHeading } from 'components/SubHeading'
 import React from 'react'
 
-export const About = () => (
+export const Parents = () => (
   <>
-    <PageHeading>About</PageHeading>
+    <PageHeading>Parents</PageHeading>
+    <SubHeading>Information for parents</SubHeading>
   </>
 )

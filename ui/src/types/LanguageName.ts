@@ -3,6 +3,6 @@ export enum LanguageName {
   scratch = '🐱 Scratch',
   python = '🐍 Python',
   unity = 'Unity',
-  java = 'Java',
+  java = 'Java  (coming soon!)',
   html = 'HTML',
 }
