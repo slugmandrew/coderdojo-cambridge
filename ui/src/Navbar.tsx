@@ -1,4 +1,4 @@
-import { Box, Button, chakra, CloseButton, Flex, HStack, LinkBox, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react'
+import { Box, Button, chakra, CloseButton, Flex, HStack, Link, LinkBox, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC, useEffect } from 'react'
@@ -8,6 +8,12 @@ const NavButton: FC<{ label: string; to: string; mobile?: boolean }> = ({ label,
   <Button as={RouterLink} variant='solid' colorScheme={'gray'} to={to} w={mobile ? 'full' : 'auto'}>
     {label}
   </Button>
+)
+
+export const NavLink: FC<{ to: string; mobile?: boolean }> = ({ to, mobile, children }) => (
+  <Link as={RouterLink} color={'custom.orange'} to={to} w={mobile ? 'full' : 'auto'} variant={'bold'}>
+    {children}
+  </Link>
 )
 
 const NavButtons: FC<{ mobile?: boolean }> = ({ mobile }) => (

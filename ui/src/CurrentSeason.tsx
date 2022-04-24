@@ -2,8 +2,6 @@ import { Box, chakra, Flex, Heading, Image, ListItem, Text, UnorderedList } from
 import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faGauge, faMagnet, faTabletScreenButton, faTemperatureHalf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ProjectGrid } from 'components/ProjectGrid'
-import data from 'data/ProjectData'
 import senseHatGif from 'image/raspberry-pi-sense-hat.gif'
 import React from 'react'
 
@@ -44,18 +42,14 @@ export const CurrentSeason = () => (
             <FontAwesomeIcon icon={faMagnet} /> Magnetometer
           </ListItem>
         </UnorderedList>
-        <Text fontWeight={'bold'} my={5}>
-          Here are some of the projects we'll be working through:
-        </Text>
       </Box>
 
-      <Box rounded={5} overflow={'hidden'} bgColor={'white'}>
+      <Box rounded={5} overflow={'hidden'} bgColor={'white'} my={5}>
         <Image height={['150', null, '200', '300']} src={senseHatGif} />
         <Text m={3}>
           <strong>SenseHAT</strong> in action
         </Text>
       </Box>
     </Flex>
-    <ProjectGrid projects={data.raspberryPiProjects} />
   </>
 )

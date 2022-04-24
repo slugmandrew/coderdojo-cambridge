@@ -1,7 +1,9 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
+import { ProjectGrid } from 'components/ProjectGrid'
 import { CurrentSeason } from 'CurrentSeason'
+import data from 'data/ProjectData'
 import React from 'react'
 
 export const Seasons = () => (
@@ -19,5 +21,9 @@ export const Seasons = () => (
       </Paragraph>
     </Box>
     <CurrentSeason />
+    <Text fontWeight={'bold'} my={5}>
+      Here are some of the projects we'll be working through:
+    </Text>
+    <ProjectGrid projects={data.raspberryPiProjects} />
   </>
 )
