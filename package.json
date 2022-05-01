@@ -10,8 +10,7 @@
     "start": "ts-node server/index.ts",
     "start-devserver": "nodemon server/index.ts",
     "start-ui": "cd ui && npm run start",
-    "start-both-dev": "concurrently \"npm run start-devserver\" \"npm run start-ui\"",
-    "start-both": "concurrently \"npm run start\" \"npm run start-ui\"",
+    "start-both": "concurrently \"npm run start-devserver\" \"npm run start-ui\"",
     "build": "cd ui && npm install && npm run build"
   },
   "devDependencies": {
