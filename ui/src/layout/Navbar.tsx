@@ -5,7 +5,7 @@ import React, { FC, useEffect } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 const NavButton: FC<{ label: string; to: string; mobile?: boolean }> = ({ label, to, mobile }) => (
-  <Button size={'md'} as={RouterLink} variant={'ghost'} colorScheme={'whiteAlpha'} to={to} w={mobile ? 'full' : 'auto'}>
+  <Button size={mobile ? 'lg' : 'sm'} as={RouterLink} variant={'ghost'} colorScheme={'whiteAlpha'} to={to} w={mobile ? 'full' : 'auto'}>
     {label}
   </Button>
 )
@@ -25,7 +25,13 @@ const NavButtons: FC<{ mobile?: boolean }> = ({ mobile }) => (
     <NavButton to={'mentors'} label={'Mentors'} mobile={mobile} />
     <NavButton to={'seasons'} label={'Seasons'} mobile={mobile} />
     <NavButton to={'location'} label={'Location'} mobile={mobile} />
-    <Button as={RouterLink} variant={'primary'} size='sm' to={'somewhere'} w={mobile ? 'full' : 'auto'}>
+    <Button
+      as={Link}
+      variant={'primary'}
+      size={mobile ? 'lg' : 'sm'}
+      href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}
+      target={'_blank'}
+      w={mobile ? 'full' : 'auto'}>
       Sign Up
     </Button>
   </>
