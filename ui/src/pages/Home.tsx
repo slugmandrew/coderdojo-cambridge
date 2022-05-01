@@ -56,7 +56,7 @@ export const Home = () => (
           <ContentCard>
             <Box p={5} pb={10}>
               <SubHeading>
-                <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'green.500'}>
+                <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'yellow.500'}>
                   Seasons
                 </Link>{' '}
                 📆
@@ -115,7 +115,7 @@ export const Home = () => (
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
-                <Link as={RouterLink} to={'mentors'} variant={'subheading'} color={'yellow.500'}>
+                <Link as={RouterLink} to={'mentors'} variant={'subheading'} color={'green.500'}>
                   Mentors
                 </Link>{' '}
                 🙋‍♂️
