@@ -1,8 +1,8 @@
 import { Container } from '@chakra-ui/react'
-import { Footer } from 'components/Footer'
-import { Header } from 'components/Header'
-import { Main } from 'Main'
-import { Navbar } from 'Navbar'
+import { Footer } from 'layout/Footer'
+import { Header } from 'layout/Header'
+import { Main } from 'layout/Main'
+import { Navbar } from 'layout/Navbar'
 import React from 'react'
 
 export const App = () => {

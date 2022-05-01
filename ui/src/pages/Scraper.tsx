@@ -15,7 +15,6 @@ export const Scraper: FC = () => {
       .catch(console.error)
   }
 
-  // Tiny change #4 to remove buildpack
   return (
     <Container maxW={'container.xl'}>
       <Heading size={'2xl'} my={5}>
@@ -26,7 +25,7 @@ export const Scraper: FC = () => {
           <FormLabel>{data.title}</FormLabel>
           <Input placeholder={'Enter URL to scrape...'} value={url} onChange={(event) => setUrl(event.target.value)} />
         </FormControl>
-        <Button colorScheme="teal" size="md" onClick={(event) => performScrape(url)}>
+        <Button colorScheme='teal' size='md' onClick={(event) => performScrape(url)}>
           Button
         </Button>
         {data.slug && <Image src={`./screenshot/${data.slug}.png`} />}

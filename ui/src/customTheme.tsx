@@ -10,7 +10,7 @@ export const customTheme = extendTheme({
       orange: '#F07832',
       teal: '#008080',
       blue: '#3C5291',
-      lime: '#66F04A',
+      green: '#3c9829',
     },
   },
   components: {

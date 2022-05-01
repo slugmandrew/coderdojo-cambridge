@@ -1,13 +1,13 @@
 import { Container } from '@chakra-ui/react'
-import { Home } from 'Home'
-import { Location } from 'Location'
-import { Ninjas } from 'Ninjas'
-import { Parents } from 'Parents'
-import { Projects } from 'Projects'
+import { Home } from 'pages/Home'
+import { Location } from 'pages/Location'
+import { Ninjas } from 'pages/Ninjas'
+import { Parents } from 'pages/Parents'
+import { Projects } from 'pages/Projects'
+import { Scraper } from 'pages/Scraper'
+import { Seasons } from 'pages/Seasons'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Scraper } from 'Scraper'
-import { Seasons } from 'Seasons'
 
 export const Main = () => {
   return (

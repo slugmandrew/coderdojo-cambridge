@@ -2,11 +2,11 @@ import { Box, Flex, Image, Link, SimpleGrid, Stack, Text } from '@chakra-ui/reac
 import { ContentCard } from 'components/ContentCard'
 import { Paragraph } from 'components/Paragraph'
 import { SubHeading } from 'components/SubHeading'
-import { CurrentSeason } from 'CurrentSeason'
 import laptopHands from 'image/laptop_hands.png'
-import { NavLink } from 'Navbar'
+import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
+import { CurrentSeason } from 'seasons/CurrentSeason'
 
 export const Home = () => (
   <>
@@ -42,7 +42,7 @@ export const Home = () => (
           <ContentCard>
             <Box p={5} pb={10}>
               <SubHeading>
-                <Link as={RouterLink} to={'projects'} variant={'subheading'}>
+                <Link as={RouterLink} to={'projects'} variant={'subheading'} color={'teal.500'}>
                   Projects
                 </Link>{' '}
                 👩‍💻
@@ -56,7 +56,7 @@ export const Home = () => (
           <ContentCard>
             <Box p={5} pb={10}>
               <SubHeading>
-                <Link as={RouterLink} to={'seasons'} variant={'subheading'}>
+                <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'green.500'}>
                   Seasons
                 </Link>{' '}
                 📆
@@ -71,7 +71,7 @@ export const Home = () => (
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
-                <Link as={RouterLink} to={'location'} variant={'subheading'}>
+                <Link as={RouterLink} to={'location'} variant={'subheading'} color={'purple.500'}>
                   Location
                 </Link>{' '}
                 📌
@@ -86,7 +86,7 @@ export const Home = () => (
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
-                <Link as={RouterLink} to={'ninjas'} variant={'subheading'}>
+                <Link as={RouterLink} to={'ninjas'} variant={'subheading'} color={'blue.500'}>
                   Ninjas
                 </Link>{' '}
                 🐱‍👤
@@ -100,7 +100,7 @@ export const Home = () => (
           <ContentCard noMargin>
             <Box p={5} pb={10}>
               <SubHeading>
-                <Link as={RouterLink} to={'parents'} variant={'subheading'}>
+                <Link as={RouterLink} to={'parents'} variant={'subheading'} color={'red.500'}>
                   Parents
                 </Link>{' '}
                 👪
@@ -115,7 +115,7 @@ export const Home = () => (
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
-                <Link as={RouterLink} to={'mentors'} variant={'subheading'}>
+                <Link as={RouterLink} to={'mentors'} variant={'subheading'} color={'yellow.500'}>
                   Mentors
                 </Link>{' '}
                 🙋‍♂️

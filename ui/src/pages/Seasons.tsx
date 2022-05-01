@@ -4,10 +4,10 @@ import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
 import { ProjectGrid } from 'components/ProjectGrid'
 import { SubHeading } from 'components/SubHeading'
-import { CurrentSeason } from 'CurrentSeason'
 import data from 'data/ProjectData'
-import { NavLink } from 'Navbar'
+import { NavLink } from 'layout/Navbar'
 import React from 'react'
+import { CurrentSeason } from 'seasons/CurrentSeason'
 
 export const Seasons = () => (
   <>
