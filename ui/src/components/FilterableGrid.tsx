@@ -68,7 +68,7 @@ export const FilterableGrid: FC = () => {
   }
 
   return (
-    <VStack maxW={'full'} h={'full'} borderBottom={'1px solid'} borderBottomColor={'gray.500'}>
+    <VStack maxW={'full'}>
       <Text as='strong'>Showing {filterList(data.projects).length} Projects</Text>
       <>
         <Select

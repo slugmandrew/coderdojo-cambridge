@@ -1,9 +1,9 @@
-import { HStack, Link, Text } from '@chakra-ui/react'
+import { Link, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
 export const Footer = () => {
   return (
-    <HStack maxW={'full'} minH={200} padding={10} bgColor={'gray.100'}>
+    <Stack direction={['column', null, null, 'row']} maxW={'full'} minH={200} padding={10} bgColor={'gray.100'} borderTopWidth={1} borderTopColor={'gray.500'}>
       <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}>
         Cambridge @ Makespace Dojo
       </Link>
@@ -23,6 +23,6 @@ export const Footer = () => {
       <Link target={'_blank'} color={'pink.400'} href={'https://astro-pi.org/mission-zero/'}>
         ASTRO PI :: MISSION ZERO
       </Link>
-    </HStack>
+    </Stack>
   )
 }

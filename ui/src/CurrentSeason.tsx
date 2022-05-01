@@ -7,8 +7,8 @@ import React from 'react'
 
 export const CurrentSeason = () => (
   <>
-    <Flex justifyContent={'space-between'} flexWrap={'wrap'} my={5}>
-      <Box>
+    <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
+      <Box w={['full', null, null, 3 / 5]}>
         <Heading size={'lg'} color={'custom.orange'} my={5}>
           Current Season
         </Heading>
@@ -44,8 +44,8 @@ export const CurrentSeason = () => (
         </UnorderedList>
       </Box>
 
-      <Box rounded={5} overflow={'hidden'} bgColor={'white'} my={5}>
-        <Image height={['150', null, '200', '300']} src={senseHatGif} />
+      <Box w={['full', null, null, 2 / 5]} rounded={5} overflow={'hidden'} bgColor={'white'} my={5}>
+        <Image src={senseHatGif} />
         <Text m={3}>
           <strong>SenseHAT</strong> in action
         </Text>
