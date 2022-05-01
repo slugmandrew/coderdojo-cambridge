@@ -13,14 +13,16 @@
     "start-both": "concurrently \"npm run start-devserver\" \"npm run start-ui\"",
     "build": "cd ui && npm install && npm run build"
   },
+  "dependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "concurrently": "^7.0.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
-    "ts-node": "^10.5.0",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.5.5"
+    "ts-node-dev": "^1.1.8"
   },
   "eslintConfig": {
     "parser": "@babel/eslint-parser",
