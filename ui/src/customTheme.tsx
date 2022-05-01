@@ -14,6 +14,20 @@ export const customTheme = extendTheme({
     },
   },
   components: {
+    Button: {
+      variants: {
+        ghost: {
+          color: 'white',
+          _hover: {
+            bgColor: 'whiteAlpha.400',
+          },
+        },
+        primary: {
+          bgColor: 'custom.orange',
+          color: 'white',
+        },
+      },
+    },
     Heading: {
       baseStyle: {
         color: 'custom.teal',
@@ -35,6 +49,9 @@ export const customTheme = extendTheme({
         },
         bold: {
           fontWeight: 'bold',
+        },
+        subheading: {
+          fontSize: '3xl',
         },
       },
     },

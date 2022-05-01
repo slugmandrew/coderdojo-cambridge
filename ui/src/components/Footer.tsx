@@ -3,7 +3,15 @@ import React from 'react'
 
 export const Footer = () => {
   return (
-    <Stack direction={['column', null, null, 'row']} maxW={'full'} minH={200} padding={10} bgColor={'gray.100'} borderTopWidth={1} borderTopColor={'gray.500'}>
+    <Stack
+      direction={['column', null, null, 'row']}
+      maxW={'full'}
+      minH={200}
+      padding={10}
+      bgColor={'gray.100'}
+      borderTopWidth={1}
+      borderTopColor={'gray.500'}
+      pt={10}>
       <Link color={'custom.orange'} href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}>
         Cambridge @ Makespace Dojo
       </Link>

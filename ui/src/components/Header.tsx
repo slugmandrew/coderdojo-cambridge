@@ -4,7 +4,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <Flex w={'full'} h={'full'} padding={5} borderBottom={'2px solid'} borderBottomColor={'custom.navy'}>
+    <Flex w={'full'} h={'full'} padding={5}>
       <VStack spacing={5} w={'full'} h={'full'}>
         <SiteLogo />
         {/*<SiteLink />*/}
