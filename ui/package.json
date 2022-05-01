@@ -30,6 +30,7 @@
     "framer-motion": "5",
     "google-map-react": "^2.1.10",
     "http-proxy-middleware": "^2.0.3",
+    "postcss": "^8.4.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.3.0",
