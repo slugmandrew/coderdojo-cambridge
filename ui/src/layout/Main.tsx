@@ -11,8 +11,8 @@ import { Route, Routes } from 'react-router-dom'
 
 export const Main = () => {
   return (
-    <Container maxW={'full'} minH={800} bgColor={'gray.50'}>
-      <Container maxW={'container.xl'} minH={800} p={5} pb={20}>
+    <Container maxW={'full'} minH={800} bgColor={'gray.50'} p={[0, 0, 5]}>
+      <Container maxW={'container.xl'} minH={800} p={[3, null, 5]} pb={20}>
         <Routes>
           <Route path='/' element={<Home />} />
 

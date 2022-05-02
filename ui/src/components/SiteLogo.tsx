@@ -3,10 +3,9 @@ import logo from 'image/coderdojo-cambridge-logo.jpg'
 import React from 'react'
 
 export const SiteLogo = () => {
-  // const logoSize = ['100px', null, '120px']
-  const logoSize = useBreakpointValue({ base: '80px', md: '110px' })
-  const headingSize = useBreakpointValue({ base: 'xl', md: '2xl' })
-  const taglineSize = useBreakpointValue({ base: 'md', md: 'lg' })
+  const logoSize = useBreakpointValue({ base: '60px', md: '110px' })
+  const headingSize = useBreakpointValue({ base: 'lg', md: '2xl' })
+  const taglineSize = useBreakpointValue({ base: 'sm', md: 'lg' })
 
   return (
     <HStack spacing={5}>

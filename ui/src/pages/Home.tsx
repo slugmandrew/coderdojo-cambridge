@@ -38,7 +38,7 @@ export const Home = () => (
 
     <Box>
       <Box>
-        <SimpleGrid columns={[null, 1, 2, 3]} spacing={5}>
+        <SimpleGrid columns={[null, 1, 2, 3]} spacingX={5}>
           <ContentCard>
             <Box p={5} pb={10}>
               <SubHeading>
@@ -69,7 +69,6 @@ export const Home = () => (
           </ContentCard>
           <ContentCard>
             <Box p={5} pb={10}>
-              {' '}
               <SubHeading>
                 <Link as={RouterLink} to={'location'} variant={'subheading'} color={'purple.500'}>
                   Location
@@ -82,7 +81,7 @@ export const Home = () => (
               </Text>
             </Box>
           </ContentCard>
-          <ContentCard noMargin>
+          <ContentCard>
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
@@ -97,7 +96,7 @@ export const Home = () => (
               </Text>
             </Box>
           </ContentCard>
-          <ContentCard noMargin>
+          <ContentCard>
             <Box p={5} pb={10}>
               <SubHeading>
                 <Link as={RouterLink} to={'parents'} variant={'subheading'} color={'red.500'}>
@@ -111,7 +110,7 @@ export const Home = () => (
               </Text>
             </Box>
           </ContentCard>
-          <ContentCard noMargin>
+          <ContentCard>
             <Box p={5} pb={10}>
               {' '}
               <SubHeading>
