@@ -1,4 +1,6 @@
-import { Box, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
 import { Paragraph } from 'components/Paragraph'
 import { SubHeading } from 'components/SubHeading'
@@ -13,11 +15,11 @@ export const Home = () => (
     <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
       <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
         <ContentCard>
-          <Stack direction={['column', 'column', 'column', 'row']}>
-            <Flex w={['full', 'full', 'full', 2 / 5]} maxH={['200px', '250px', '300px', 'fit-content', 'fit-content']}>
+          <Stack direction={['column', 'column', 'column', 'column', 'row']}>
+            <Flex w={['full', 'full', 'full', 'full', 2 / 5]} maxH={['200px', '250px', '200px', '200px', 'fit-content']}>
               <Image src={laptopHands} objectFit={'cover'} />
             </Flex>
-            <Box w={['full', 'full', 'full', 3 / 5]} px={5}>
+            <Box w={['full', 'full', 'full', 'full', 3 / 5]} px={5}>
               <SubHeading>Welcome to our dojo!</SubHeading>
               <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
               <Paragraph>
@@ -68,6 +70,17 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> (Winter Season #1)
               </chakra.p>
             </VStack>
+            <Flex mt={10} alignContent={'center'} justifyContent={'center'}>
+              <Link
+                target={'_blank'}
+                as={Button}
+                onClick={() => window.open('https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace', '_blank')}
+                variant={'bold'}
+                size={'large'}
+                rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
+                Sign Up on the CoderDojo portal
+              </Link>
+            </Flex>
           </Box>
         </ContentCard>
       </Box>
@@ -166,7 +179,7 @@ export const Home = () => (
                 🙋‍♂️
               </SubHeading>
               <Text>
-                We are always looking for new mentors. If you are interested in helping out at one of our sessions, or just giving it a try, please get in
+                We are currently looking for new mentors. If you are interested in helping out at one of our sessions, or just giving it a try, please get in
                 touch. More information is on the <NavLink to={'mentors'}>Mentors</NavLink> page.
               </Text>
             </Box>
