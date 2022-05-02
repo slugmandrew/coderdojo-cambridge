@@ -1,9 +1,9 @@
 import { Heading } from '@chakra-ui/react'
 import React, { FC } from 'react'
 
-export const SubHeading: FC<{ text?: string; color?: string }> = ({ children, color = 'custom.orange' }) => {
+export const SubHeading: FC<{ text?: string; color?: string; center?: boolean }> = ({ children, color = 'custom.orange', center = false }) => {
   return (
-    <Heading size={'lg'} my={5} color={color}>
+    <Heading size={'lg'} my={5} color={color} textAlign={center ? 'center' : 'inherit'}>
       {children}
     </Heading>
   )

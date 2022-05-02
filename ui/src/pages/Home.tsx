@@ -1,4 +1,4 @@
-import { Box, chakra, Flex, Image, Link, ListItem, SimpleGrid, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { ContentCard } from 'components/ContentCard'
 import { Paragraph } from 'components/Paragraph'
 import { SubHeading } from 'components/SubHeading'
@@ -10,11 +10,11 @@ import { CurrentSeason } from 'seasons/CurrentSeason'
 
 export const Home = () => (
   <>
-    <Stack direction={['column', 'column', 'row']} spacing={[0, null, 5]}>
-      <Box w={['full', null, '50%', 3 / 5]}>
+    <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
+      <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
         <ContentCard>
           <Stack direction={['column', 'column', 'column', 'row']}>
-            <Flex w={['full', 'full', 'full', 2 / 5]} maxH={['250px', null, 'fit-content']}>
+            <Flex w={['full', 'full', 'full', 2 / 5]} maxH={['200px', '250px', '300px', 'fit-content', 'fit-content']}>
               <Image src={laptopHands} objectFit={'cover'} />
             </Flex>
             <Box w={['full', 'full', 'full', 3 / 5]} px={5}>
@@ -28,44 +28,46 @@ export const Home = () => (
             </Box>
           </Stack>
         </ContentCard>
-      </Box>
-      <Box w={['full', null, '50%', 2 / 5]}>
+      </Flex>
+      <Box w={['full', 'full', '50%', 2 / 5, 1 / 3]}>
         <ContentCard>
-          <Box px={5} pb={10}>
-            <SubHeading color={'custom.teal'}>2022 Calendar 📆</SubHeading>
-            <UnorderedList>
-              <ListItem>Saturday 5th February - We're Back! ✔</ListItem>
-              <ListItem color={'green.500'}>
+          <Box px={5} pb={10} w={'full'}>
+            <SubHeading color={'custom.teal'} center>
+              2022 Calendar 📆
+            </SubHeading>
+            <VStack>
+              <chakra.p>Saturday 5th February - We're Back! ✔</chakra.p>
+              <chakra.p color={'green.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> (Springtime Pi #1) ✔
-              </ListItem>
-              <ListItem color={'green.500'}>
+              </chakra.p>
+              <chakra.p color={'green.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> (Springtime Pi #2) ✔
-              </ListItem>
-              <ListItem color={'green.500'}>
+              </chakra.p>
+              <chakra.p color={'green.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> (Springtime Pi #3)
-              </ListItem>
-              <ListItem color={'blue.500'}>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> (Summer Season #1)
-              </ListItem>
-              <ListItem color={'blue.500'}>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> (Summer Season #2)
-              </ListItem>
-              <ListItem color={'blue.500'}>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> (Summer Season #3)
-              </ListItem>
-              <ListItem color={'yellow.500'}>
+              </chakra.p>
+              <chakra.p color={'yellow.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>3rd September</chakra.span> (Autumn Season #1)
-              </ListItem>
-              <ListItem color={'yellow.500'}>
+              </chakra.p>
+              <chakra.p color={'yellow.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> (Autumn Season #2)
-              </ListItem>
-              <ListItem color={'yellow.500'}>
+              </chakra.p>
+              <chakra.p color={'yellow.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> (Autumn Season #3)
-              </ListItem>
-              <ListItem color={'red.500'}>
+              </chakra.p>
+              <chakra.p color={'red.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> (Winter Season #1)
-              </ListItem>
-            </UnorderedList>
+              </chakra.p>
+            </VStack>
           </Box>
         </ContentCard>
       </Box>
