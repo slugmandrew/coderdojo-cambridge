@@ -1,5 +1,5 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Box, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Image, Link, Stack, Text } from '@chakra-ui/react'
 import { ContentCard } from 'components/ContentCard'
 import { PageHeading } from 'components/PageHeading'
 import { SubHeading } from 'components/SubHeading'
@@ -26,25 +26,27 @@ export const Location = () => {
     <>
       <PageHeading>Location</PageHeading>
       <ContentCard>
-        <Box height={'500px'} w={2 / 3}>
-          <GoogleMapReact bootstrapURLKeys={{ key: 'AIzaSyAZnyic_SEgIQSTx_mjXSH3QLkaLQT7GM4' }} defaultCenter={location} defaultZoom={18}>
-            <Marker lat={location.lat} lng={location.lng} text={location.address} />
-          </GoogleMapReact>
-        </Box>
-        <Box h={'full'} w={1 / 3} p={5}>
-          <SubHeading>How to find us</SubHeading>
-          <Text my={'5'}>
-            We are located at{' '}
-            <Link href={'https://web.makespace.org/'} target='_blank' variant={'bold'} isExternal={true}>
-              Makespace <ExternalLinkIcon mx='2px' />
-            </Link>
-            in central Cambridge.
-          </Text>
-          <Text my={'3'}>Our address is:</Text>
-          <Text>16 Mill Lane</Text>
-          <Text>Cambridge</Text>
-          <Text>CB2 1RX</Text>
-        </Box>
+        <Stack direction={['column', null, 'row']} w={'full'}>
+          <Box height={['300px', null, '500px']} w={['full', null, 3 / 5]}>
+            <GoogleMapReact bootstrapURLKeys={{ key: 'AIzaSyAZnyic_SEgIQSTx_mjXSH3QLkaLQT7GM4' }} defaultCenter={location} defaultZoom={18}>
+              <Marker lat={location.lat} lng={location.lng} text={location.address} />
+            </GoogleMapReact>
+          </Box>
+          <Box h={['300px', null, 'full']} w={['full', null, 2 / 5]} p={5}>
+            <SubHeading>How to find us</SubHeading>
+            <Text my={'5'}>
+              We are located at{' '}
+              <Link href={'https://web.makespace.org/'} target='_blank' variant={'bold'} isExternal={true}>
+                Makespace <ExternalLinkIcon mx='2px' />
+              </Link>
+              in central Cambridge.
+            </Text>
+            <Text my={'3'}>Our address is:</Text>
+            <Text>16 Mill Lane</Text>
+            <Text>Cambridge</Text>
+            <Text>CB2 1RX</Text>
+          </Box>
+        </Stack>
       </ContentCard>
     </>
   )
