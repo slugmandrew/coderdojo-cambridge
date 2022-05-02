@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Box, chakra, Flex, Image, Link, ListItem, SimpleGrid, Stack, Text, UnorderedList } from '@chakra-ui/react'
 import { ContentCard } from 'components/ContentCard'
 import { Paragraph } from 'components/Paragraph'
 import { SubHeading } from 'components/SubHeading'
@@ -10,22 +10,66 @@ import { CurrentSeason } from 'seasons/CurrentSeason'
 
 export const Home = () => (
   <>
-    <ContentCard>
-      <Stack direction={['column', null, 'row']}>
-        <Flex w={['full', null, 2 / 5]} maxH={['250px', null, 'fit-content']}>
-          <Image src={laptopHands} objectFit={'cover'} />
-        </Flex>
-        <Box w={['full', null, 3 / 5]} px={5}>
-          <SubHeading>Welcome to our dojo!</SubHeading>
-          <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
-          <Paragraph>
-            We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>first Saturday of the month</b>.
-          </Paragraph>
-          <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
-          <Paragraph>Here's what's happening at the club right now:</Paragraph>
-        </Box>
-      </Stack>
-    </ContentCard>
+    <Stack direction={['column', 'column', 'row']} spacing={[0, null, 5]}>
+      <Box w={['full', null, '50%', 3 / 5]}>
+        <ContentCard>
+          <Stack direction={['column', 'column', 'column', 'row']}>
+            <Flex w={['full', 'full', 'full', 2 / 5]} maxH={['250px', null, 'fit-content']}>
+              <Image src={laptopHands} objectFit={'cover'} />
+            </Flex>
+            <Box w={['full', 'full', 'full', 3 / 5]} px={5}>
+              <SubHeading>Welcome to our dojo!</SubHeading>
+              <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
+              <Paragraph>
+                We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>first Saturday of the month</b>.
+              </Paragraph>
+              <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
+              <Paragraph>Here's what's happening at the club right now:</Paragraph>
+            </Box>
+          </Stack>
+        </ContentCard>
+      </Box>
+      <Box w={['full', null, '50%', 2 / 5]}>
+        <ContentCard>
+          <Box px={5} pb={10}>
+            <SubHeading color={'custom.teal'}>2022 Calendar 📆</SubHeading>
+            <UnorderedList>
+              <ListItem>Saturday 5th February - We're Back! ✔</ListItem>
+              <ListItem color={'green.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> (Springtime Pi #1) ✔
+              </ListItem>
+              <ListItem color={'green.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> (Springtime Pi #2) ✔
+              </ListItem>
+              <ListItem color={'green.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> (Springtime Pi #3)
+              </ListItem>
+              <ListItem color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> (Summer Season #1)
+              </ListItem>
+              <ListItem color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> (Summer Season #2)
+              </ListItem>
+              <ListItem color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> (Summer Season #3)
+              </ListItem>
+              <ListItem color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd September</chakra.span> (Autumn Season #1)
+              </ListItem>
+              <ListItem color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> (Autumn Season #2)
+              </ListItem>
+              <ListItem color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> (Autumn Season #3)
+              </ListItem>
+              <ListItem color={'red.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> (Winter Season #1)
+              </ListItem>
+            </UnorderedList>
+          </Box>
+        </ContentCard>
+      </Box>
+    </Stack>
 
     <ContentCard>
       <Box p={5} pb={10}>
@@ -59,7 +103,7 @@ export const Home = () => (
                 <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'yellow.500'}>
                   Seasons
                 </Link>{' '}
-                📆
+                🌞
               </SubHeading>
               <Text>
                 Every few months we have an <b>opportunity to learn about something new</b>. Check out our current season on the{' '}

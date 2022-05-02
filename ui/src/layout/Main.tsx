@@ -1,6 +1,7 @@
 import { Container } from '@chakra-ui/react'
 import { Home } from 'pages/Home'
 import { Location } from 'pages/Location'
+import { Mentors } from 'pages/Mentors'
 import { Ninjas } from 'pages/Ninjas'
 import { Parents } from 'pages/Parents'
 import { Projects } from 'pages/Projects'
@@ -14,22 +15,28 @@ export const Main = () => {
     <Container maxW={'full'} minH={800} bgColor={'gray.50'} p={[0, 0, 5]}>
       <Container maxW={'container.xl'} minH={800} p={[3, null, 5]} pb={20}>
         <Routes>
+          {/* HOME */}
           <Route path='/' element={<Home />} />
 
+          {/* PROJECTS */}
           <Route path='/projects' element={<Projects />} />
 
-          {/* ABOUT */}
+          {/* NINJAS */}
+          <Route path='/ninjas' element={<Ninjas />} />
+
+          {/* PARENTS */}
           <Route path='/parents' element={<Parents />} />
+
+          {/* MENTORS */}
+          <Route path='/mentors' element={<Mentors />} />
 
           {/* SEASONS */}
           <Route path='/seasons' element={<Seasons />} />
 
-          {/* BECOME A NINJA */}
-          <Route path='/ninjas' element={<Ninjas />} />
-
-          {/* FIND US */}
+          {/* LOCATION */}
           <Route path='/location' element={<Location />} />
 
+          {/* HIDDEN */}
           <Route path='/scraper' element={<Scraper />} />
         </Routes>
       </Container>
