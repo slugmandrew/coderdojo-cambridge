@@ -19,7 +19,7 @@ export const CurrentSeason = () => (
           </chakra.span>
         </Heading>
         <Heading size={'sm'} color={'teal.400'} my={1}>
-          MARCH | APRIL | MAY :: 2022
+          MARCH | APRIL | MAY | JUNE :: 2022
         </Heading>
         <Text my={5}>
           Our current focus is on coding for <b>Raspberry Pi</b> and <b>SenseHAT</b>.

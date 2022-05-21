@@ -1878,7 +1878,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/icons@npm:^1.1.1, @chakra-ui/icons@npm:^1.1.7":
+"@chakra-ui/icons@npm:^1.1.7":
   version: 1.1.7
   resolution: "@chakra-ui/icons@npm:1.1.7"
   dependencies:
@@ -2536,7 +2536,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@coderdojo/ui@workspace:ui"
   dependencies:
-    "@chakra-ui/icons": ^1.1.1
     "@chakra-ui/react": ^1.7.4
     "@chakra-ui/storybook-addon": ^1.0.0
     "@emotion/react": 11

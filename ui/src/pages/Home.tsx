@@ -46,28 +46,29 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> (Springtime Pi #2) ✔
               </chakra.p>
               <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> (Springtime Pi #3)
+                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> (Springtime Pi #3) ✔
               </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> (Summer Season #1)
+              <chakra.p color={'green.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> (Springtime Pi #4)
               </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> (Summer Season #2)
+              <chakra.p color={'gray.500'}>Future dates (possibly subject to change):</chakra.p>
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span>
               </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> (Summer Season #3)
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span>
               </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>3rd September</chakra.span> (Autumn Season #1)
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd September</chakra.span>
               </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> (Autumn Season #2)
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span>
               </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> (Autumn Season #3)
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span>
               </chakra.p>
-              <chakra.p color={'red.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> (Winter Season #1)
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span>
               </chakra.p>
             </VStack>
             <Flex mt={10} alignContent={'center'} justifyContent={'center'}>
