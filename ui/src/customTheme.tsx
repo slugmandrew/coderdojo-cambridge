@@ -39,7 +39,6 @@ export const customTheme = extendTheme({
       },
     },
     Link: {
-      fontWeight: 'medium',
       baseStyle: {
         fontSize: 'md',
       },
@@ -52,6 +51,10 @@ export const customTheme = extendTheme({
         },
         subheading: {
           fontSize: '3xl',
+        },
+        inline: {
+          fontWeight: 'bold',
+          color: 'blue.500',
         },
       },
     },

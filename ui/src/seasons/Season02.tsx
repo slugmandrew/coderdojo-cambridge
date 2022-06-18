@@ -42,8 +42,9 @@ export const Season02 = () => (
             <code>for</code> loops, and useful functions like <code>str()</code> and <code>int()</code>
           </ListItem>
           <ListItem>
-            <strong>Level 3</strong> - Finally, we introduce more complex concepts such as lists, arrays and hashmaps. Here you have the opportunity to really
-            create something cool using the skills you have learned, and make a project or game that is unique to you!
+            <strong>Level 3</strong> - Finally, we introduce more complex concepts such as <code>lists</code>, <code>arrays</code> and <code>hashmaps</code>.
+            Here you have the opportunity to really <strong>create something really cool</strong> using the skills you have learned, and make a project or game
+            that is unique to you!
           </ListItem>
         </UnorderedList>
       </Box>

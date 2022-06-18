@@ -32,7 +32,7 @@ export const Seasons = () => (
     <ContentCard>
       <Box p={5}>
         <Season02 />
-        <Text fontWeight={'bold'} mb={5}>
+        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
           Project List:
         </Text>
         <ProjectGrid projects={data.pythonProjects} />

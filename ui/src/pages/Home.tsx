@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
 import { Paragraph } from 'components/Paragraph'
 import { SubHeading } from 'components/SubHeading'
+import { TextLink } from 'components/TextLink'
 import laptopHands from 'image/laptop_hands.png'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
@@ -26,7 +27,19 @@ export const Home = () => (
                 We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>first Saturday of the month</b>.
               </Paragraph>
               <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
-              <Paragraph>Here's what's happening at the club right now:</Paragraph>
+              <Paragraph>
+                Whether you are a l33t seasoned coder, or have never coded before (n00b), you are welcome at our dojo. Feel free to bring along any personal
+                project you would like help with, or we can help you find something to do.
+              </Paragraph>
+              <Paragraph>
+                We work on many different types of projects, from basic 'drag and drop' coding using visual interfaces such as{' '}
+                <TextLink href={'https://scratch.mit.edu/'}>Scratch</TextLink> and{' '}
+                <TextLink href={'https://makecode.microbit.org/#editor'}>Micro:Bit MakeCode</TextLink>, to physical computing with{' '}
+                <TextLink href={'https://www.raspberrypi.com/'}>Raspberry Pi</TextLink> and <TextLink href={'https://www.arduino.cc/'}>Arduino</TextLink>, using
+                tutorials from a wide range of sources.
+              </Paragraph>
+
+              <Paragraph>We also introduce something new every few months. Here's what's happening at the club right now:</Paragraph>
             </Box>
           </Stack>
         </ContentCard>
@@ -38,36 +51,38 @@ export const Home = () => (
               2022 Calendar 📆
             </SubHeading>
             <VStack>
-              <chakra.p>Saturday 5th February - We're Back! ✔</chakra.p>
-              <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> (Springtime Pi #1) ✔
+              <chakra.p>
+                Saturday 5th February <small>(We're Back!)</small> ✔
               </chakra.p>
               <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> (Springtime Pi #2) ✔
+                Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> <small>(Springtime Pi #1)</small> ✔
               </chakra.p>
               <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> (Springtime Pi #3) ✔
+                Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> <small>(Springtime Pi #2)</small> ✔
               </chakra.p>
               <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> (Springtime Pi #4)
+                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Springtime Pi #3)</small> ✔
               </chakra.p>
-              <chakra.p color={'gray.500'}>Future dates (possibly subject to change):</chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span>
+              <chakra.p color={'green.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> <small>(Springtime Pi #4)</small> ✔
               </chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span>
+              <chakra.p color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for n00bs #1)</small>
               </chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>3rd September</chakra.span>
+              <chakra.p color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for n00bs #2)</small>
               </chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span>
+              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
+              <chakra.p color={'gray.400'}>
+                Saturday <chakra.span fontWeight={'bold'}>27th August</chakra.span> <small>(Python for n00bs #3)</small>
               </chakra.p>
-              <chakra.p color={'gray.500'}>
+              <chakra.p color={'gray.400'}>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for n00bs #4)</small>
+              </chakra.p>
+              <chakra.p color={'gray.400'}>
                 Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span>
               </chakra.p>
-              <chakra.p color={'gray.500'}>
+              <chakra.p color={'gray.400'}>
                 Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span>
               </chakra.p>
             </VStack>
@@ -90,8 +105,8 @@ export const Home = () => (
     <ContentCard>
       <Box p={5} pb={10}>
         <Season02 />
-        <Text>
-          More information about seasons can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
+        <Text mt={5}>
+          More information about seasons and the full list of projects can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
         </Text>
       </Box>
     </ContentCard>
