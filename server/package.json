@@ -13,8 +13,5 @@
     "multer": "^1.4.4",
     "pageres": "^6.3.0",
     "pg": "^8.7.3"
-  },
-  "devDependencies": {
-    "metadata-scraper": "^0.2.53"
   }
 }
