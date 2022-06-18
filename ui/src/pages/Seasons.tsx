@@ -7,7 +7,8 @@ import { SubHeading } from 'components/SubHeading'
 import data from 'data/ProjectData'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
-import { CurrentSeason } from 'seasons/CurrentSeason'
+import { Season01 } from 'seasons/Season01'
+import { Season02 } from 'seasons/Season02'
 
 export const Seasons = () => (
   <>
@@ -17,7 +18,7 @@ export const Seasons = () => (
       <Box p={5} pb={5}>
         <SubHeading>Keeping it fresh</SubHeading>
         <Paragraph>
-          Every 3-4 months we introduce <b>a new theme</b> into the dojo, which runs alongside our usual activities.
+          Every few months we introduce <b>a new theme</b> into the dojo, which runs <b>alongside our usual activities</b>.
         </Paragraph>
         <Paragraph>
           It's a chance for everybody to <b>learn</b> a <i>new technology or language</i>, and have some fun with something new!
@@ -30,7 +31,16 @@ export const Seasons = () => (
 
     <ContentCard>
       <Box p={5}>
-        <CurrentSeason />
+        <Season02 />
+        <Text fontWeight={'bold'} mb={5}>
+          Project List:
+        </Text>
+        <ProjectGrid projects={data.pythonProjects} />
+      </Box>
+    </ContentCard>
+    <ContentCard>
+      <Box p={5}>
+        <Season01 />
         <Text>
           More information about seasons can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
         </Text>

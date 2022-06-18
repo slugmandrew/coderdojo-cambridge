@@ -12,7 +12,7 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
 
   return (
     <Box key={title} border={'1px solid'} borderColor={'gray.200'} bgColor={'gray.50'} borderRadius={5}>
-      <Box h={[160, null, 100]} overflow={'hidden'} borderTopRadius={5}>
+      <Box h={[160, 130, 120]} overflow={'hidden'} borderTopRadius={5}>
         <Image w={'100%'} src={`./screenshot/${slug}.png`} />
       </Box>
       <Box p={5}>

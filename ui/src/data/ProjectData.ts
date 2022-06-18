@@ -3,7 +3,7 @@ import { Level } from 'types/Level'
 import { Project } from 'types/Project'
 import { TrackName } from 'types/TrackName'
 
-const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[] } = () => {
+const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; pythonProjects: Project[] } = () => {
   const { intro, three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
   const { hardware, html, python, scratch, unity } = LanguageName
@@ -64,6 +64,72 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[] }
       title: 'Astro Pi: Mission Zero',
       url: 'https://projects.raspberrypi.org/en/projects/astro-pi-mission-zero',
       slug: 'astro-pi-mission-zero',
+    },
+  ]
+
+  const pythonProjects: Project[] = [
+    {
+      language: python,
+      level: [one],
+      title: 'Hello 🌍🌎🌏',
+      url: 'https://projects.raspberrypi.org/en/projects/hello-world',
+      slug: 'hello-world',
+    },
+    {
+      language: python,
+      level: [one],
+      title: 'About Me',
+      url: 'https://projects.raspberrypi.org/en/projects/about-me',
+      slug: 'about-me',
+    },
+    {
+      language: python,
+      level: [one],
+      title: 'Colourful Creations',
+      url: 'https://projects.raspberrypi.org/en/projects/colourful-creations',
+      slug: 'colourful-creations',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Guess The Number',
+      url: 'https://projects.raspberrypi.org/en/projects/cd-beginner-python-sushi',
+      slug: 'cd-beginner-python-sushi',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Turtle Race',
+      url: 'https://projects.raspberrypi.org/en/projects/turtle-race',
+      slug: 'turtle-race',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Story Time',
+      url: 'https://projects.raspberrypi.org/en/projects/storytime',
+      slug: 'storytime',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'RPG',
+      url: 'https://projects.raspberrypi.org/en/projects/rpg',
+      slug: 'rpg',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Turtley Amazing',
+      url: 'https://projects.raspberrypi.org/en/projects/turtley-amazing',
+      slug: 'turtley-amazing',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Secret Agent Chat',
+      url: 'https://projects.raspberrypi.org/en/projects/secret-agent-chat',
+      slug: 'secret-agent-chat',
     },
   ]
 
@@ -321,7 +387,7 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[] }
     },
   ]
 
-  return { projects, raspberryPiProjects }
+  return { projects, raspberryPiProjects, pythonProjects }
 }
 
 export default getProjects()

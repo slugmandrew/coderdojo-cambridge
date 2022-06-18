@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { FC, useState } from 'react'
 
 export const Scraper: FC = () => {
-  const [url, setUrl] = useState('https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started')
+  const [url, setUrl] = useState('https://projects.raspberrypi.org/en/projects/about-me')
   const [data, setData] = useState({ title: '', slug: '' })
 
   function performScrape(url: string) {
