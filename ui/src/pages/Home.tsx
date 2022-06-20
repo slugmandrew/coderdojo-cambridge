@@ -28,12 +28,12 @@ export const Home = () => (
               </Paragraph>
               <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
               <Paragraph>
-                Whether you are a l33t seasoned coder, or have never coded before (n00b), you are welcome at our dojo. Feel free to bring along any personal
-                project you would like help with, or we can help you find something to do.
+                Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Feel free to bring along any personal project you
+                would like help with, or we can help you find something to do.
               </Paragraph>
               <Paragraph>
-                We work on many different types of projects, from basic 'drag and drop' coding using visual interfaces such as{' '}
-                <TextLink href={'https://scratch.mit.edu/'}>Scratch</TextLink> and{' '}
+                We work on many different types of <NavLink to={'projects'}>projects</NavLink>, from basic 'drag and drop' coding using visual interfaces such
+                as <TextLink href={'https://scratch.mit.edu/'}>Scratch</TextLink> and{' '}
                 <TextLink href={'https://makecode.microbit.org/#editor'}>Micro:Bit MakeCode</TextLink>, to physical computing with{' '}
                 <TextLink href={'https://www.raspberrypi.com/'}>Raspberry Pi</TextLink> and <TextLink href={'https://www.arduino.cc/'}>Arduino</TextLink>, using
                 tutorials from a wide range of sources.
@@ -67,17 +67,17 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> <small>(Springtime Pi #4)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for n00bs #1)</small>
+                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for Beginners #1)</small>
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for n00bs #2)</small>
+                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small>
               </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>27th August</chakra.span> <small>(Python for n00bs #3)</small>
+                Saturday <chakra.span fontWeight={'bold'}>27th August</chakra.span> <small>(Python for Beginners #3)</small>
               </chakra.p>
               <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for n00bs #4)</small>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #4)</small>
               </chakra.p>
               <chakra.p color={'gray.400'}>
                 Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span>

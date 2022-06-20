@@ -13,7 +13,7 @@ export const Season02 = () => (
           Season 02
         </Heading>
         <Heading size={'xl'}>
-          Python For n00bs{' '}
+          Python For Beginners{' '}
           <chakra.span color={'yellow.400'}>
             <FontAwesomeIcon icon={faPython} />
           </chakra.span>
@@ -31,11 +31,13 @@ export const Season02 = () => (
           <strong>If you already know some Python</strong>, but want to learn more, you can jump straight to the later levels.
         </Text>
         <Text my={2}>
-          We have <strong>9 recommended projects</strong>, spread evenly over 3 levels which you can work through in order, or choose your own path:
+          We have <strong>9 recommended projects</strong>, spread evenly over <strong>3 levels</strong> which you can work through in order, or choose your own
+          path:
         </Text>
         <UnorderedList>
           <ListItem>
-            <strong>Level 1</strong> - Focus here is on learning the basic syntax and user input, but we also dabble in <i>randomness</i> and some basic maths.
+            <strong>Level 1</strong> - The focus here is on learning the basic syntax and user input, but we also dabble in <i>randomness</i> and some basic
+            maths.
           </ListItem>
           <ListItem>
             <strong>Level 2</strong> - Here we progress to using variables and control structures like <code>if-else</code>, <code>while</code> loops,{' '}
