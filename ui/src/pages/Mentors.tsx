@@ -1,14 +1,14 @@
 import { Heading } from '@chakra-ui/react'
 import { faPersonDigging } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
-import { SubHeading } from 'components/SubHeading'
 import React from 'react'
 
 export const Mentors = () => (
   <>
     <PageHeading>Mentors</PageHeading>
-    <SubHeading>People that volunteer at the dojo</SubHeading>
+    <Heading2>People that volunteer at the dojo</Heading2>
     <Heading size={'lg'} color={'red.600'}>
       {' '}
       <FontAwesomeIcon icon={faPersonDigging} />

@@ -1,9 +1,9 @@
 import { Box, Text } from '@chakra-ui/react'
 import { ContentCard } from 'components/ContentCard'
+import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
 import { ProjectGrid } from 'components/ProjectGrid'
-import { SubHeading } from 'components/SubHeading'
 import data from 'data/ProjectData'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
@@ -16,7 +16,7 @@ export const Seasons = () => (
 
     <ContentCard>
       <Box p={5} pb={5}>
-        <SubHeading>Keeping it fresh</SubHeading>
+        <Heading2>Keeping it fresh</Heading2>
         <Paragraph>
           Every few months we introduce <b>a new theme</b> into the dojo, which runs <b>alongside our usual activities</b>.
         </Paragraph>

@@ -1,8 +1,8 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Box, Image, Link, Stack, Text } from '@chakra-ui/react'
 import { ContentCard } from 'components/ContentCard'
+import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
-import { SubHeading } from 'components/SubHeading'
 import GoogleMapReact from 'google-map-react'
 import logo from 'image/coderdojo-cambridge-logo_trans_round.png'
 import React, { FC } from 'react'
@@ -33,7 +33,7 @@ export const Location = () => {
             </GoogleMapReact>
           </Box>
           <Box h={['300px', null, 'full']} w={['full', null, 2 / 5]} p={5}>
-            <SubHeading>How to find us</SubHeading>
+            <Heading2>How to find us</Heading2>
             <Text my={'5'}>
               We are located at{' '}
               <Link href={'https://web.makespace.org/'} target='_blank' variant={'bold'} isExternal={true}>

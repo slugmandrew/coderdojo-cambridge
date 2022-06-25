@@ -2,8 +2,8 @@ import { Box, Button, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
+import { Heading2 } from 'components/Heading2'
 import { Paragraph } from 'components/Paragraph'
-import { SubHeading } from 'components/SubHeading'
 import { TextLink } from 'components/TextLink'
 import laptopHands from 'image/laptop_hands.png'
 import { NavLink } from 'layout/Navbar'
@@ -21,7 +21,7 @@ export const Home = () => (
               <Image src={laptopHands} objectFit={'cover'} />
             </Flex>
             <Box w={['full', 'full', 'full', 'full', 3 / 5]} px={5}>
-              <SubHeading>Welcome to our dojo!</SubHeading>
+              <Heading2>Welcome to our dojo!</Heading2>
               <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
               <Paragraph>
                 We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>first Saturday of the month</b>.
@@ -47,9 +47,9 @@ export const Home = () => (
       <Box w={['full', 'full', '50%', 2 / 5, 1 / 3]}>
         <ContentCard>
           <Box px={5} pb={10} w={'full'}>
-            <SubHeading color={'custom.teal'} center>
+            <Heading2 color={'custom.teal'} center>
               2022 Calendar 📆
-            </SubHeading>
+            </Heading2>
             <VStack>
               <chakra.p>
                 Saturday 5th February <small>(We're Back!)</small> ✔
@@ -115,89 +115,104 @@ export const Home = () => (
       <Box>
         <SimpleGrid columns={[null, 1, 2, 3]} spacingX={5}>
           <ContentCard>
-            <Box p={5} pb={10}>
-              <SubHeading>
+            <Box p={5}>
+              <Heading2>
                 <Link as={RouterLink} to={'projects'} variant={'subheading'} color={'teal.500'}>
                   Projects
                 </Link>{' '}
                 👩‍💻
-              </SubHeading>
-              <Text>
+              </Heading2>
+              <Paragraph>
                 You can work on anything you like at the dojo, but if you are new to coding or stuck for ideas, we have a set of <b>recommended projects</b> for
-                you. Check them out on the <NavLink to={'projects'}>Projects</NavLink> page.
-              </Text>
+                you.
+              </Paragraph>
+              <Paragraph>
+                Check them out on the <NavLink to={'projects'}>Projects</NavLink> page.
+              </Paragraph>
             </Box>
           </ContentCard>
           <ContentCard>
-            <Box p={5} pb={10}>
-              <SubHeading>
+            <Box p={5}>
+              <Heading2>
                 <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'yellow.500'}>
                   Seasons
                 </Link>{' '}
                 🌞
-              </SubHeading>
-              <Text>
-                Every few months we have an <b>opportunity to learn about something new</b>. Check out our current season on the{' '}
-                <NavLink to={'seasons'}>Seasons</NavLink> page.
-              </Text>
+              </Heading2>
+              <Paragraph>
+                Every few months we have an <b>opportunity to learn about something new</b>.
+              </Paragraph>
+              <Paragraph>Sometimes this is a new language track, a focus on a particular skill, or something totally different.</Paragraph>
+              <Paragraph>
+                Learn more on the <NavLink to={'seasons'}>Seasons</NavLink> page.
+              </Paragraph>
             </Box>
           </ContentCard>
           <ContentCard>
-            <Box p={5} pb={10}>
-              <SubHeading>
+            <Box p={5}>
+              <Heading2>
                 <Link as={RouterLink} to={'location'} variant={'subheading'} color={'purple.500'}>
                   Location
                 </Link>{' '}
                 📌
-              </SubHeading>
-              <Text>
-                We are located at <b>Makespace</b> on Mill Lane in Central Cambridge. It's not far from the Fitzwilliam Museum. More information is on the{' '}
-                <NavLink to={'location'}>Location</NavLink> page.
-              </Text>
+              </Heading2>
+              <Paragraph>
+                We are located at <b>Makespace</b> on Mill Lane in Central Cambridge. It's not far from the Fitzwilliam Museum.
+              </Paragraph>
+              <Paragraph>
+                More information is on the <NavLink to={'location'}>Location</NavLink> page.
+              </Paragraph>
             </Box>
           </ContentCard>
           <ContentCard>
-            <Box p={5} pb={10}>
+            <Box p={5}>
               {' '}
-              <SubHeading>
+              <Heading2>
                 <Link as={RouterLink} to={'ninjas'} variant={'subheading'} color={'blue.500'}>
                   Ninjas
                 </Link>{' '}
                 🐱‍👤
-              </SubHeading>
-              <Text>
-                That's you, young people! At coderdojo, the coders are known as Ninjas 🐱‍👤. To be as a ninja you need to be focused, hardworking and
-                disciplined. Read more on the <NavLink to={'ninjas'}>Ninjas</NavLink> page.
-              </Text>
+              </Heading2>
+              <Paragraph>That's you, young people!</Paragraph>
+              <Paragraph>
+                At CoderDojo, the coders are known as Ninjas 🐱‍👤. To be a ninja, you need to be <strong>focused</strong>, <strong>hardworking</strong> and{' '}
+                <strong>disciplined</strong>.
+              </Paragraph>
+              <Paragraph>
+                Read more on the <NavLink to={'ninjas'}>Ninjas</NavLink> page.
+              </Paragraph>
             </Box>
           </ContentCard>
           <ContentCard>
-            <Box p={5} pb={10}>
-              <SubHeading>
+            <Box p={5}>
+              <Heading2>
                 <Link as={RouterLink} to={'parents'} variant={'subheading'} color={'red.500'}>
                   Parents
                 </Link>{' '}
                 👪
-              </SubHeading>
-              <Text>
+              </Heading2>
+              <Paragraph>
                 Parents are encouraged to get involved, and it's great to see the parents often having as much fun (and learning as much) as the ninjas!
+              </Paragraph>
+              <Paragraph>
                 Everything you need to know as a parent is on the <NavLink to={'parents'}>Parents</NavLink> page.
-              </Text>
+              </Paragraph>
             </Box>
           </ContentCard>
           <ContentCard>
-            <Box p={5} pb={10}>
+            <Box p={5}>
               {' '}
-              <SubHeading>
+              <Heading2>
                 <Link as={RouterLink} to={'mentors'} variant={'subheading'} color={'green.500'}>
                   Mentors
                 </Link>{' '}
                 🙋‍♂️
-              </SubHeading>
-              <Text>
-                We are currently looking for new mentors. If you are interested in helping out at one of our sessions, or just giving it a try, please get in
-                touch. More information is on the <NavLink to={'mentors'}>Mentors</NavLink> page.
-              </Text>
+              </Heading2>
+              <Paragraph>We are currently looking for new mentors.</Paragraph>
+              <Paragraph>If you are interested in helping out at one of our sessions, or just giving it a try, please get in touch.</Paragraph>
+              <Paragraph>
+                More information is on the <NavLink to={'mentors'}>Mentors</NavLink> page.
+              </Paragraph>
             </Box>
           </ContentCard>
         </SimpleGrid>
