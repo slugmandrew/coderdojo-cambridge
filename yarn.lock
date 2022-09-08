@@ -2395,7 +2395,6 @@ __metadata:
     react-scripts: 5.0.0
     typescript: ^4.4.2
     web-vitals: ^2.1.0
-    webpack: ^5.67.0
     yarn: ^1.22.17
   languageName: unknown
   linkType: soft
@@ -16001,7 +16000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.64.4, webpack@npm:^5.67.0":
+"webpack@npm:^5.64.4":
   version: 5.69.1
   resolution: "webpack@npm:5.69.1"
   dependencies:
