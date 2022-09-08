@@ -5,7 +5,8 @@
   "packageManager": "yarn@3.1.1",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
-    "@chakra-ui/react": "^1.7.4",
+    "@chakra-ui/react": "^1.8.8",
+    "@chakra-ui/system": "^1.12.1",
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@fontsource/big-shoulders-display": "latest",
@@ -27,7 +28,7 @@
     "add": "^2.0.6",
     "axios": "^0.26.0",
     "cheerio": "^1.0.0-rc.10",
-    "framer-motion": "5",
+    "framer-motion": "6",
     "http-proxy-middleware": "^2.0.3",
     "postcss": "^8.4.13",
     "react": "^17.0.2",
