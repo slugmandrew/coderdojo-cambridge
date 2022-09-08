@@ -5,6 +5,7 @@ import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { Paragraph } from 'components/Paragraph'
 import { TextLink } from 'components/TextLink'
+import group from 'image/characters/dojo_group.png'
 import laptopHands from 'image/laptop_hands.png'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
@@ -13,6 +14,7 @@ import { Season02 } from 'seasons/Season02'
 
 export const Home = () => (
   <>
+    <Stack mb={5}>{<Image src={group} fit={'contain'} borderBottom={'10px solid'} borderBottomColor={'gray.400'} />}</Stack>
     <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
       <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
         <ContentCard>
