@@ -3782,16 +3782,16 @@ __metadata:
     "@fortawesome/react-fontawesome": latest
     "@mdx-js/react": ^1.6.22
     "@react-google-maps/api": ^2.12.2
-    "@storybook/addon-actions": ^6.4.16
-    "@storybook/addon-docs": ^6.4.16
-    "@storybook/addon-essentials": ^6.4.16
-    "@storybook/addon-links": ^6.4.16
-    "@storybook/addon-viewport": ^6.4.16
-    "@storybook/builder-webpack5": ^6.4.16
-    "@storybook/manager-webpack5": ^6.4.16
-    "@storybook/node-logger": ^6.4.16
+    "@storybook/addon-actions": ^6.5.10
+    "@storybook/addon-docs": ^6.5.10
+    "@storybook/addon-essentials": ^6.5.10
+    "@storybook/addon-links": ^6.5.10
+    "@storybook/addon-viewport": ^6.5.10
+    "@storybook/builder-webpack5": ^6.5.10
+    "@storybook/manager-webpack5": ^6.5.10
+    "@storybook/node-logger": ^6.5.10
     "@storybook/preset-create-react-app": ^4.0.0
-    "@storybook/react": ^6.4.16
+    "@storybook/react": ^6.5.10
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
@@ -4926,7 +4926,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.5.10, @storybook/addon-actions@npm:^6.4.16":
+"@storybook/addon-actions@npm:6.5.10, @storybook/addon-actions@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/addon-actions@npm:6.5.10"
   dependencies:
@@ -5018,7 +5018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-docs@npm:6.5.10, @storybook/addon-docs@npm:^6.4.16":
+"@storybook/addon-docs@npm:6.5.10, @storybook/addon-docs@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/addon-docs@npm:6.5.10"
   dependencies:
@@ -5065,7 +5065,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^6.4.16":
+"@storybook/addon-essentials@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/addon-essentials@npm:6.5.10"
   dependencies:
@@ -5125,7 +5125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.4.16":
+"@storybook/addon-links@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/addon-links@npm:6.5.10"
   dependencies:
@@ -5226,7 +5226,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-viewport@npm:6.5.10, @storybook/addon-viewport@npm:^6.4.16":
+"@storybook/addon-viewport@npm:6.5.10, @storybook/addon-viewport@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/addon-viewport@npm:6.5.10"
   dependencies:
@@ -5364,7 +5364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-webpack5@npm:^6.4.16":
+"@storybook/builder-webpack5@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/builder-webpack5@npm:6.5.10"
   dependencies:
@@ -5807,7 +5807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-webpack5@npm:^6.4.16":
+"@storybook/manager-webpack5@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/manager-webpack5@npm:6.5.10"
   dependencies:
@@ -5872,7 +5872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:6.5.10, @storybook/node-logger@npm:^6.4.16":
+"@storybook/node-logger@npm:6.5.10, @storybook/node-logger@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/node-logger@npm:6.5.10"
   dependencies:
@@ -5958,7 +5958,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:^6.4.16":
+"@storybook/react@npm:^6.5.10":
   version: 6.5.10
   resolution: "@storybook/react@npm:6.5.10"
   dependencies:
