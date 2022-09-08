@@ -117,7 +117,7 @@ export const Parents = () => (
           <Heading3>How do I get there?</Heading3>
           <Paragraph>We're located in central Cambridge, near the river on Mill Lane.</Paragraph>
           <Paragraph>
-            For a map and address please see the <NavLink to={'location'}>Location</NavLink> page.
+            For a map and address please see the <NavLink to={'/location'}>Location</NavLink> page.
           </Paragraph>
         </Box>
       </ContentCard>
