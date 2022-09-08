@@ -16,16 +16,6 @@
     "@fortawesome/free-solid-svg-icons": "latest",
     "@fortawesome/react-fontawesome": "latest",
     "@react-google-maps/api": "^2.12.2",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-docs": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/addon-viewport": "^6.5.10",
-    "@storybook/builder-webpack5": "^6.5.10",
-    "@storybook/manager-webpack5": "^6.5.10",
-    "@storybook/node-logger": "^6.5.10",
-    "@storybook/preset-create-react-app": "^4.0.0",
-    "@storybook/react": "^6.5.10",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -87,8 +77,6 @@
     ]
   },
   "devDependencies": {
-    "@chakra-ui/storybook-addon": "^1.0.0",
-    "@mdx-js/react": "^1.6.22",
     "eslint-config-prettier": "8.3.0",
     "prettier": "2.5.1",
     "webpack": "^5.67.0"
