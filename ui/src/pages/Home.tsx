@@ -48,9 +48,10 @@ export const Home = () => (
         <ContentCard>
           <Box px={5} pb={10} w={'full'}>
             <Heading2 color={'custom.teal'} center>
-              2022 Calendar 📆
+              Dojo Calendar 📆
             </Heading2>
             <VStack>
+              <strong>2022</strong>
               <chakra.p>
                 Saturday 5th February <small>(We're Back!)</small> ✔
               </chakra.p>
@@ -72,18 +73,26 @@ export const Home = () => (
               <chakra.p color={'yellow.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small>
               </chakra.p>
+              <chakra.p color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small>
+              </chakra.p>
+              <chakra.p color={'yellow.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small>
+              </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>27th August</chakra.span> <small>(Python for Beginners #3)</small>
-              </chakra.p>
-              <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #4)</small>
-              </chakra.p>
-              <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span>
-              </chakra.p>
-              <chakra.p color={'gray.400'}>
                 Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span>
+              </chakra.p>
+              <strong>2023</strong>
+
+              <chakra.p color={'gray.400'}>
+                Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span>
+              </chakra.p>
+              <chakra.p color={'gray.400'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span>
+              </chakra.p>
+              <chakra.p color={'gray.400'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th March</chakra.span>
               </chakra.p>
             </VStack>
             <Flex mt={10} alignContent={'center'} justifyContent={'center'}>
