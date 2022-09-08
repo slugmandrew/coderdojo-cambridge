@@ -78,7 +78,6 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "8.3.0",
-    "prettier": "2.5.1",
-    "webpack": "^5.67.0"
+    "prettier": "2.5.1"
   }
 }
