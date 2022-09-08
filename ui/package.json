@@ -37,7 +37,7 @@
     "axios": "^0.26.0",
     "cheerio": "^1.0.0-rc.10",
     "framer-motion": "5",
-    "google-map-react": "^2.1.10",
+    "google-map-react": "^2.2.0",
     "http-proxy-middleware": "^2.0.3",
     "postcss": "^8.4.13",
     "react": "^17.0.2",

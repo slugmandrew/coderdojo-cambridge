@@ -114,6 +114,15 @@ export const Parents = () => (
       </ContentCard>
       <ContentCard>
         <Box p={5}>
+          <Heading3>How do I get there?</Heading3>
+          <Paragraph>We're located in central Cambridge, near the river on Mill Lane.</Paragraph>
+          <Paragraph>
+            For a map and address please see the <NavLink to={'location'}>Location</NavLink> page.
+          </Paragraph>
+        </Box>
+      </ContentCard>
+      <ContentCard>
+        <Box p={5}>
           <Heading3>Where can I find out more?</Heading3>
           <Paragraph>This website is solely dedicated to our local dojo.</Paragraph>
           <Paragraph>

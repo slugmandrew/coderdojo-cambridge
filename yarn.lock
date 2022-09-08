@@ -2572,7 +2572,7 @@ __metadata:
     cheerio: ^1.0.0-rc.10
     eslint-config-prettier: 8.3.0
     framer-motion: 5
-    google-map-react: ^2.1.10
+    google-map-react: ^2.2.0
     http-proxy-middleware: ^2.0.3
     postcss: ^8.4.13
     prettier: 2.5.1
@@ -12145,18 +12145,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-map-react@npm:^2.1.10":
-  version: 2.1.10
-  resolution: "google-map-react@npm:2.1.10"
+"google-map-react@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "google-map-react@npm:2.2.0"
   dependencies:
     "@googlemaps/js-api-loader": ^1.7.0
     "@mapbox/point-geometry": ^0.1.0
     eventemitter3: ^4.0.4
     prop-types: ^15.7.2
   peerDependencies:
-    react: ^16.0.0 || ^17.0.0
-    react-dom: ^16.0.0 || ^17.0.0
-  checksum: 0e0d0639e83eda3f14bd0bc946e0bfccd65f053aed790f6113d8625e7a70d428d10ad68f374feafb6787f5dfcf9d785c67ab4b9d2315d2860a6f9db02a230f97
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 4fe4155e2eebf0747f55bd9982fbab12a35b01afe69b8348834bc6eaf1e608d589c38f9cd5dff0f9bf7448d6e55c3fcfa7ecd0b62706606f1c497cd5211714f4
   languageName: node
   linkType: hard
 

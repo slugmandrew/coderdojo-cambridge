@@ -15,13 +15,13 @@ const Marker: FC<{ lng: number; text: string; lat: number }> = () => {
   )
 }
 
-export const Location = () => {
-  const location = {
-    address: '16 Mill Lane, Cambridge, CB2 1RX',
-    lat: 52.202,
-    lng: 0.1164,
-  }
+const location = {
+  address: '16 Mill Lane, Cambridge, CB2 1RX',
+  lat: 52.202,
+  lng: 0.1164,
+}
 
+export const Location = () => {
   return (
     <>
       <PageHeading>Location</PageHeading>
