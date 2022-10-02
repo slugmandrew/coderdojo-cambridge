@@ -70,13 +70,13 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> <small>(Springtime Pi #4)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for Beginners #1)</small>
+                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for Beginners #1)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small>
+                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small>
+                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small>
