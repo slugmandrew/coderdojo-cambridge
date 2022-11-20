@@ -19,7 +19,7 @@ export const Season02 = () => (
           </chakra.span>
         </Heading>
         <Heading size={'sm'} color={'teal.400'} my={1}>
-          JULY | AUGUST | SEPTEMBER | OCTOBER :: 2022
+          JULY - NOVEMBER :: 2022
         </Heading>
         <Text my={5}>
           Our focus this season is all about <b>learning Python</b>.

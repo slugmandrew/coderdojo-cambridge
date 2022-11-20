@@ -79,21 +79,20 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small> ✔
               </chakra.p>
               <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small>
+                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small> ✔
               </chakra.p>
-              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
-              <chakra.p color={'gray.400'}>
-                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span>
+              <chakra.p color={'red.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> <small>(Christmas Special)</small>
               </chakra.p>
               <strong>2023</strong>
-
-              <chakra.p color={'gray.400'}>
+              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span>
               </chakra.p>
-              <chakra.p color={'gray.400'}>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span>
               </chakra.p>
-              <chakra.p color={'gray.400'}>
+              <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>4th March</chakra.span>
               </chakra.p>
             </VStack>
