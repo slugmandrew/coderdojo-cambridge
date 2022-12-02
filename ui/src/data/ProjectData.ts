@@ -3,7 +3,7 @@ import { Level } from 'types/Level'
 import { Project } from 'types/Project'
 import { TrackName } from 'types/TrackName'
 
-const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; pythonProjects: Project[] } = () => {
+const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; pythonProjects: Project[]; christmasProjects: Project[] } = () => {
   const { intro, three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
   const { hardware, html, python, scratch, unity } = LanguageName
@@ -130,6 +130,44 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; 
       title: 'Secret Agent Chat',
       url: 'https://projects.raspberrypi.org/en/projects/secret-agent-chat',
       slug: 'secret-agent-chat',
+    },
+  ]
+
+  const christmasProjects: Project[] = [
+    {
+      language: python,
+      level: [one],
+      title: 'Scratch Cat goes skiing',
+      url: 'https://projects.raspberrypi.org/en/projects/scratch-cat-goes-skiing',
+      slug: 'scratch-cat-goes-skiing',
+    },
+    {
+      language: python,
+      level: [one],
+      title: 'Jazzy jumpers',
+      url: 'https://projects.raspberrypi.org/en/projects/jazzy-jumpers',
+      slug: 'jazzy-jumpers',
+    },
+    {
+      language: python,
+      level: [one],
+      title: 'Snowball fight',
+      url: 'https://projects.raspberrypi.org/en/projects/snowball-fight',
+      slug: 'snowball-fight',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Turtle snowflakes',
+      url: 'https://projects.raspberrypi.org/en/projects/turtle-snowflakes',
+      slug: 'turtle-snowflakes',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Code a carol',
+      url: 'https://projects.raspberrypi.org/en/projects/code-a-carol',
+      slug: 'code-a-carol',
     },
   ]
 
@@ -387,7 +425,7 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; 
     },
   ]
 
-  return { projects, raspberryPiProjects, pythonProjects }
+  return { projects, raspberryPiProjects, pythonProjects, christmasProjects }
 }
 
 export default getProjects()

@@ -7,6 +7,7 @@ import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/ProjectData'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
+import { Christmas } from 'seasons/Christmas'
 import { Season01 } from 'seasons/Season01'
 import { Season02 } from 'seasons/Season02'
 
@@ -29,6 +30,15 @@ export const Seasons = () => (
       </Box>
     </ContentCard>
 
+    <ContentCard>
+      <Box p={5}>
+        <Christmas />
+        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+          Project List:
+        </Text>
+        <ProjectGrid projects={data.christmasProjects} />
+      </Box>
+    </ContentCard>
     <ContentCard>
       <Box p={5}>
         <Season02 />
