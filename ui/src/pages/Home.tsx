@@ -53,47 +53,59 @@ export const Home = () => (
               Dojo Calendar 📆
             </Heading2>
             <VStack>
-              <strong>2022</strong>
-              <chakra.p>
-                Saturday 5th February <small>(We're Back!)</small> ✔
-              </chakra.p>
-              <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> <small>(Springtime Pi #1)</small> ✔
-              </chakra.p>
-              <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> <small>(Springtime Pi #2)</small> ✔
-              </chakra.p>
-              <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Springtime Pi #3)</small> ✔
-              </chakra.p>
-              <chakra.p color={'green.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> <small>(Springtime Pi #4)</small> ✔
-              </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for Beginners #1)</small> ✔
-              </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small> ✔
-              </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small> ✔
-              </chakra.p>
-              <chakra.p color={'yellow.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small> ✔
-              </chakra.p>
-              <chakra.p color={'red.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> <small>(Christmas Special)</small>
-              </chakra.p>
+              {/*<strong>2022</strong>*/}
+              {/*<chakra.p>*/}
+              {/*  Saturday 5th February <small>(We're Back!)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'green.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>5th March</chakra.span> <small>(Springtime Pi #1)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'green.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>2nd April</chakra.span> <small>(Springtime Pi #2)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'green.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Springtime Pi #3)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'green.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>4th June</chakra.span> <small>(Springtime Pi #4)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'yellow.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>2nd July</chakra.span> <small>(Python for Beginners #1)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'yellow.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>6th August</chakra.span> <small>(Python for Beginners #2)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'yellow.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>1st October</chakra.span> <small>(Python for Beginners #3)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'yellow.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>5th November</chakra.span> <small>(Python for Beginners #4)</small> ✔*/}
+              {/*</chakra.p>*/}
+              {/*<chakra.p color={'red.500'}>*/}
+              {/*  Saturday <chakra.span fontWeight={'bold'}>3rd December</chakra.span> <small>(Christmas Special)</small>*/}
+              {/*</chakra.p>*/}
               <strong>2023</strong>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span> <small>(A bit of micro:bit #1)</small>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span> <small>(A bit of micro:bit #2)</small>
+              </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>4th March</chakra.span> <small>(A bit of micro:bit #3)</small>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>1st April</chakra.span> <small>(A bit of micro:bit #4)</small>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th March</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>6th May</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>3rd June</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>1st July</chakra.span>
               </chakra.p>
             </VStack>
             <Flex mt={10} alignContent={'center'} justifyContent={'center'}>

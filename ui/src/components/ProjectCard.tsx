@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading, HStack, Image, useBreakpointValue } from '@chakra-ui/react'
 import { faPython, faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LanguageTag } from 'components/LanguageTag'
 import { LevelTag } from 'components/LevelTag'
@@ -27,7 +27,7 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
             colorScheme={'blue'}
             size={buttonSize}
             onClick={() => window.open(url, '_blank')}
-            leftIcon={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : faPython} />}
+            leftIcon={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : domain === 'microbit.org' ? faMicrochip : faPython} />}
             rightIcon={<FontAwesomeIcon icon={faArrowRight} />}>
             View on {domain}
           </Button>

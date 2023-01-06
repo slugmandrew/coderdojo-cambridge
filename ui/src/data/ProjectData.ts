@@ -205,6 +205,7 @@ const getProjects: () => {
       title: 'Reaction Game',
       url: 'https://microbit.org/projects/make-it-code-it/reaction-game',
       slug: 'reaction-game',
+      domain: 'microbit.org',
     },
     {
       language: python,
@@ -212,6 +213,7 @@ const getProjects: () => {
       title: 'Fireflies',
       url: 'https://microbit.org/projects/make-it-code-it/fireflies',
       slug: 'fireflies',
+      domain: 'microbit.org',
     },
     {
       language: python,
@@ -226,6 +228,7 @@ const getProjects: () => {
       title: 'Python data logger',
       url: 'https://microbit.org/projects/make-it-code-it/python-wireless-data-logger',
       slug: 'python-wireless-data-logger',
+      domain: 'microbit.org',
     },
   ]
 
