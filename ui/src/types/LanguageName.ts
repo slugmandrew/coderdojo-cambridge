@@ -5,4 +5,5 @@ export enum LanguageName {
   unity = 'Unity',
   java = 'Java  (coming soon!)',
   html = 'HTML',
+  makecode = 'MakeCode',
 }

@@ -3,10 +3,16 @@ import { Level } from 'types/Level'
 import { Project } from 'types/Project'
 import { TrackName } from 'types/TrackName'
 
-const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; pythonProjects: Project[]; christmasProjects: Project[] } = () => {
+const getProjects: () => {
+  projects: Project[]
+  raspberryPiProjects: Project[]
+  pythonProjects: Project[]
+  christmasProjects: Project[]
+  microBitProjects: Project[]
+} = () => {
   const { intro, three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
-  const { hardware, html, python, scratch, unity } = LanguageName
+  const { hardware, html, python, scratch, unity, makecode } = LanguageName
 
   const raspberryPiProjects: Project[] = [
     {
@@ -168,6 +174,58 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; 
       title: 'Code a carol',
       url: 'https://projects.raspberrypi.org/en/projects/code-a-carol',
       slug: 'code-a-carol',
+    },
+  ]
+
+  const microBitProjects: Project[] = [
+    {
+      language: makecode,
+      level: [one],
+      title: 'Interactive badge',
+      url: 'https://projects.raspberrypi.org/en/projects/interactive-badge',
+      slug: 'interactive-badge',
+    },
+    {
+      language: makecode,
+      level: [one],
+      title: 'Fortune Teller',
+      url: 'https://projects.raspberrypi.org/en/projects/fortune-teller',
+      slug: 'fortune-teller',
+    },
+    {
+      language: makecode,
+      level: [two],
+      title: 'Reaction',
+      url: 'https://projects.raspberrypi.org/en/projects/reaction',
+      slug: 'reaction',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Reaction Game',
+      url: 'https://microbit.org/projects/make-it-code-it/reaction-game',
+      slug: 'reaction-game',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Fireflies',
+      url: 'https://microbit.org/projects/make-it-code-it/fireflies',
+      slug: 'fireflies',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'micro:bit meteorologist',
+      url: 'https://projects.raspberrypi.org/en/projects/microbit-meteorologist',
+      slug: 'microbit-meteorologist',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Python data logger',
+      url: 'https://microbit.org/projects/make-it-code-it/python-wireless-data-logger',
+      slug: 'python-wireless-data-logger',
     },
   ]
 
@@ -425,7 +483,7 @@ const getProjects: () => { projects: Project[]; raspberryPiProjects: Project[]; 
     },
   ]
 
-  return { projects, raspberryPiProjects, pythonProjects, christmasProjects }
+  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects }
 }
 
 export default getProjects()

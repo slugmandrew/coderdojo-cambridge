@@ -18,6 +18,8 @@ export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
         return 'red'
       case LanguageName.html:
         return 'green'
+      case LanguageName.makecode:
+        return 'purple'
     }
   }
 

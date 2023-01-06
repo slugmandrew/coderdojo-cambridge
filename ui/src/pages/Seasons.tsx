@@ -10,6 +10,7 @@ import React from 'react'
 import { Christmas } from 'seasons/Christmas'
 import { Season01 } from 'seasons/Season01'
 import { Season02 } from 'seasons/Season02'
+import { Season03 } from 'seasons/Season03'
 
 export const Seasons = () => (
   <>
@@ -30,6 +31,15 @@ export const Seasons = () => (
       </Box>
     </ContentCard>
 
+    <ContentCard>
+      <Box p={5}>
+        <Season03 />
+        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+          Project List:
+        </Text>
+        <ProjectGrid projects={data.microBitProjects} />
+      </Box>
+    </ContentCard>
     <ContentCard>
       <Box p={5}>
         <Christmas />
