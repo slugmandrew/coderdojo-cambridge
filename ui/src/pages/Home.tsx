@@ -40,8 +40,7 @@ export const Home = () => (
                 <TextLink href={'https://www.raspberrypi.com/'}>Raspberry Pi</TextLink> and <TextLink href={'https://www.arduino.cc/'}>Arduino</TextLink>, using
                 tutorials from a wide range of sources.
               </Paragraph>
-
-              <Paragraph>We also introduce something new every few months. Here's what's happening at the club right now:</Paragraph>
+              <Paragraph>We also introduce something new every few months. See below for information on our current season!</Paragraph>
             </Box>
           </Stack>
         </ContentCard>
@@ -91,13 +90,13 @@ export const Home = () => (
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span> <small>(A bit of micro:bit #2)</small>
               </chakra.p>
-              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th March</chakra.span> <small>(A bit of micro:bit #3)</small>
+                Saturday <chakra.span fontWeight={'bold'}>11th March</chakra.span> <small>(A bit of micro:bit #3)</small>
               </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>1st April</chakra.span> <small>(A bit of micro:bit #4)</small>
               </chakra.p>
+              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>6th May</chakra.span>
               </chakra.p>
@@ -108,17 +107,21 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>1st July</chakra.span>
               </chakra.p>
             </VStack>
-            <Flex mt={10} alignContent={'center'} justifyContent={'center'}>
-              <Link
-                target={'_blank'}
-                as={Button}
-                onClick={() => window.open('https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace', '_blank')}
-                variant={'bold'}
-                size={'large'}
-                rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
-                Sign Up on the CoderDojo portal
-              </Link>
-            </Flex>
+            <VStack>
+              <Flex mt={10} justifyContent={'center'}>
+                <VStack>
+                  <Button
+                    as={Link}
+                    variant={'primary'}
+                    rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}
+                    size={'md'}
+                    href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}
+                    target={'_blank'}>
+                    Sign Up on the CoderDojo portal
+                  </Button>
+                </VStack>
+              </Flex>
+            </VStack>
           </Box>
         </ContentCard>
       </Box>
