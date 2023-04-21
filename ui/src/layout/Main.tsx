@@ -7,6 +7,7 @@ import { Parents } from 'pages/Parents'
 import { Projects } from 'pages/Projects'
 import { Scraper } from 'pages/Scraper'
 import { Seasons } from 'pages/Seasons'
+import { Workshops } from 'pages/Workshops'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
@@ -35,6 +36,9 @@ export const Main = () => {
 
           {/* LOCATION */}
           <Route path='/location' element={<Location />} />
+
+          {/* WORKSHOPS */}
+          <Route path='/workshops' element={<Workshops />} />
 
           {/* HIDDEN */}
           <Route path='/scraper' element={<Scraper />} />

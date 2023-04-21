@@ -25,6 +25,7 @@ const NavButtons: FC<{ mobile?: boolean }> = ({ mobile }) => (
     <NavButton to={'parents'} label={'Parents'} mobile={mobile} />
     <NavButton to={'mentors'} label={'Mentors'} mobile={mobile} />
     <NavButton to={'location'} label={'Location'} mobile={mobile} />
+    <NavButton to={'workshops'} label={'Workshops'} mobile={mobile} />
     <Button
       as={Link}
       variant={'primary'}
