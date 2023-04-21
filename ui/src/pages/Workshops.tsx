@@ -33,7 +33,7 @@ export const Workshops = () => {
           <Box>
             <Paragraph>Welcome to CamJam 2023!</Paragraph>
             <Paragraph>
-              <strong>Today we'll be teleporting animals from one Micro:Bit to another!</strong>
+              <strong>Today we'll be teleporting animals from one micro:bit to another!</strong>
             </Paragraph>
             <Paragraph>
               Micro:bits are small circuit boards with <strong>LEDs</strong>, <strong>buttons</strong>, an <strong>accelerometer</strong>,{' '}
@@ -65,7 +65,7 @@ export const Workshops = () => {
           <Paragraph>
             Follow the{' '}
             <TextLink href={'https://microbit.org/projects/make-it-code-it/teleporting-duck/'} target='_blank' isExternal={true}>
-              "Teleporting Duck" tutorial on the Micro:bit website <ExternalLinkIcon mx='2px' />
+              "Teleporting Duck" tutorial on the micro:bit website <ExternalLinkIcon mx='2px' />
             </TextLink>
           </Paragraph>
           <Paragraph>
