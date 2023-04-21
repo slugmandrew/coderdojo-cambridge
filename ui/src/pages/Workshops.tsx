@@ -21,12 +21,12 @@ const Thing = () => {
 
 export const Workshops = () => {
   return (
-    <Box minWidth={1000}>
+    <Box>
       <PageHeading>Workshops</PageHeading>
-      <HStack justifyContent={'space-between'}>
+      <Stack direction={['column', 'row']} justifyContent={'space-between'}>
         <Heading2>Teleporting Animals with Micro:Bit</Heading2>
         <Heading3 color={'teal'}>22nd April 23</Heading3>
-      </HStack>
+      </Stack>
 
       <ContentPanel>
         <Stack direction={['column', 'row']} p={5} pb={10} justifyContent={'space-between'}>
@@ -55,7 +55,7 @@ export const Workshops = () => {
               </ListItem>
             </UnorderedList>
           </Box>
-          <Image src={teleportingDuck} height={300} />
+          <Image src={teleportingDuck} />
         </Stack>
       </ContentPanel>
 
@@ -74,19 +74,19 @@ export const Workshops = () => {
           </Paragraph>
 
           <Center>
-            <HStack>
+            <Stack direction={['column', 'row']}>
               <Image src={icons} height={300} />
               <Text fontSize={'3xl'} fontWeight={'bold'} color={'blue.600'} p={50}>
                 - OR -
               </Text>
               <Image src={leds} />
-            </HStack>
+            </Stack>
           </Center>
         </Box>
       </ContentPanel>
 
       <ContentPanel>
-        <HStack justifyContent={'space-between'} p={5}>
+        <Stack direction={['column', 'row']} justifyContent={'space-between'} p={5}>
           <Box>
             <Heading3>Task 2 - Change the Gesture 👋</Heading3>
             <Paragraph>Now that you've got your two microbits sending messages, let's change how we trigger it.</Paragraph>
@@ -99,11 +99,11 @@ export const Workshops = () => {
           <Box>
             <Image src={gestures} />
           </Box>
-        </HStack>
+        </Stack>
       </ContentPanel>
       <ContentPanel>
         <Box>
-          <HStack justifyContent={'space-between'}>
+          <Stack justifyContent={'space-between'} direction={['column', 'row']}>
             <Box px={5}>
               <Heading3>Task 3 - Multiple Animals 🦙⬅🦙</Heading3>
               <Paragraph>You've changed your gesture... good job! 👍</Paragraph>
@@ -118,7 +118,7 @@ export const Workshops = () => {
             <Box p={5}>
               <Image src={multiple} />
             </Box>
-          </HStack>
+          </Stack>
         </Box>
       </ContentPanel>
       <ContentPanel>
