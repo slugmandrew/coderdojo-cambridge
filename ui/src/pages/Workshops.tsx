@@ -55,7 +55,9 @@ export const Workshops = () => {
               </ListItem>
             </UnorderedList>
           </Box>
-          <Image src={teleportingDuck} />
+          <Box>
+            <Image src={teleportingDuck} />
+          </Box>
         </Stack>
       </ContentPanel>
 

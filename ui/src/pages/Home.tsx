@@ -85,21 +85,29 @@ export const Home = () => (
               {/*</chakra.p>*/}
               <strong>2023</strong>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span> <small>(A bit of micro:bit #1)</small>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span> <small>(A bit of micro:bit #1)</small>
+                </del>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span> <small>(A bit of micro:bit #2)</small>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span> <small>(A bit of micro:bit #2)</small>
+                </del>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th March</chakra.span> <small>(A bit of micro:bit #3)</small>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>11th March</chakra.span> <small>(A bit of micro:bit #3)</small>
+                </del>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>1st April</chakra.span> <small>(A bit of micro:bit #4)</small>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>1st April</chakra.span> <small>(A bit of micro:bit #4)</small>
+                </del>
+              </chakra.p>
+              <chakra.p color={'red.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Code your own story #1)</small>
               </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>6th May</chakra.span>
-              </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>3rd June</chakra.span>
               </chakra.p>
