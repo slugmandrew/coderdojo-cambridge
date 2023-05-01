@@ -10,7 +10,7 @@ import laptopHands from 'image/laptop_hands.png'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { Season03 } from 'seasons/Season03'
+import { Season04 } from '../seasons/Season04'
 
 export const Home = () => (
   <>
@@ -137,7 +137,7 @@ export const Home = () => (
 
     <ContentCard>
       <Box p={5} pb={10}>
-        <Season03 />
+        <Season04 />
         <Text mt={5}>
           More information about seasons and the full list of projects can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
         </Text>

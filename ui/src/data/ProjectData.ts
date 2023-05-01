@@ -22,6 +22,7 @@ const getProjects: () => {
       title: 'Full of Stories',
       url: 'https://arcade.makecode.com/--skillmap#story',
       slug: 'full-of-stories',
+      domain: 'arcade.makecode.com',
     },
     {
       language: scratch,
@@ -43,6 +44,7 @@ const getProjects: () => {
       title: 'Code an Adventure',
       url: 'https://arcade.makecode.com/--skillmap#adventure',
       slug: 'code-an-adventure',
+      domain: 'arcade.makecode.com',
     },
     {
       language: python,

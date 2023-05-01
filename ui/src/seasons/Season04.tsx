@@ -3,8 +3,8 @@ import { faBook } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Heading3 } from 'components/Heading3'
 import { TextLink } from 'components/TextLink'
-import microBitHeadphones from 'image/microbit_headphones.png'
-import microBitInHands from 'image/microbit_in_hands.png'
+import bookReader from 'image/book-reader.png'
+import makecodeEditor from 'image/makecode-arcade.png'
 import React from 'react'
 
 export const Season04 = () => (
@@ -57,7 +57,7 @@ export const Season04 = () => (
         <Text my={5}>Feel free to search on any of the following sites for something else cool to work on:</Text>
         <UnorderedList>
           <ListItem>
-            <TextLink href={'https://arcade.makecode.org'}>arcade.makecode.org</TextLink>
+            <TextLink href={'https://arcade.makecode.com'}>arcade.makecode.com</TextLink>
           </ListItem>
           <ListItem>
             <TextLink href={'https://projects.raspberrypi.org/en/projects'}>projects.raspberrypi.org</TextLink>
@@ -70,16 +70,14 @@ export const Season04 = () => (
 
       <Stack pt={0} w={['full', null, null, 2 / 5]} overflow={'hidden'} bgColor={'white'} my={5} pl={5}>
         <Box>
-          <Image src={microBitInHands} rounded={5} />
+          <Image src={makecodeEditor} rounded={5} />
           <Text m={3}>
-            A student using the <strong>MakeCode editor</strong>
+            Creating a visual story in <strong>MakeCode Arcade</strong>
           </Text>
         </Box>
         <Box>
-          <Image src={microBitHeadphones} rounded={5} />
-          <Text m={3}>
-            You can do some really <strong>cool things</strong> with micro:bits!
-          </Text>
+          <Image src={bookReader} rounded={5} />
+          <Text m={3}>What idea for a story do you have?</Text>
         </Box>
       </Stack>
     </Flex>
