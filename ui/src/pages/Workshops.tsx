@@ -1,10 +1,9 @@
-import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
 import React from 'react'
 import { Heading3 } from '../components/Heading3'
-import { Text, Image, HStack, Box, Flex, VStack, Stack, Center, ListItem, UnorderedList, Link } from '@chakra-ui/react'
+import { Box, Center, Image, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
 import { TextLink } from '../components/TextLink'
 import teleportingDuck from 'image/microbit-teleporting-duck.png'
 import leds from 'image/microbit_show_leds.png'
@@ -13,11 +12,7 @@ import gestures from 'image/microbit-gestures.png'
 import multiple from 'image/microbit-multiple-received.png'
 import group from 'image/microbit-group-duck.png'
 import { ContentPanel } from '../components/ContentPanel'
-import { ExternalLinkIcon, DownloadIcon } from '@chakra-ui/icons'
-
-const Thing = () => {
-  return <div>Thing</div>
-}
+import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 
 export const Workshops = () => {
   return (

@@ -105,7 +105,7 @@ export const Home = () => (
                 </del>
               </chakra.p>
               <chakra.p color={'red.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Code your own story #1)</small>
+                <strong>SUNDAY</strong> <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Code your own story #1)</small>
               </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
               <chakra.p color={'blue.500'}>

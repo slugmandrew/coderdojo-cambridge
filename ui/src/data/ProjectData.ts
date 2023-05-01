@@ -9,10 +9,63 @@ const getProjects: () => {
   pythonProjects: Project[]
   christmasProjects: Project[]
   microBitProjects: Project[]
+  storyProjects: Project[]
 } = () => {
   const { intro, three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
   const { hardware, html, python, scratch, unity, makecode } = LanguageName
+
+  const storyProjects: Project[] = [
+    {
+      language: makecode,
+      level: [one],
+      title: 'Full of Stories',
+      url: 'https://arcade.makecode.com/--skillmap#story',
+      slug: 'full-of-stories',
+    },
+    {
+      language: scratch,
+      level: [one],
+      title: 'I made you a book',
+      url: 'https://projects.raspberrypi.org/en/projects/i-made-you-a-book',
+      slug: 'i-made-you-a-book',
+    },
+    {
+      language: html,
+      level: [one],
+      title: 'Tell a story',
+      url: 'https://projects.raspberrypi.org/en/projects/tell-a-story',
+      slug: 'tell-a-story',
+    },
+    {
+      language: makecode,
+      level: [two],
+      title: 'Code an Adventure',
+      url: 'https://arcade.makecode.com/--skillmap#adventure',
+      slug: 'code-an-adventure',
+    },
+    {
+      language: python,
+      level: [two],
+      title: 'Story Time',
+      url: 'https://projects.raspberrypi.org/en/projects/storytime',
+      slug: 'storytime',
+    },
+    {
+      language: scratch,
+      level: [three],
+      title: 'Make an interactive book',
+      url: 'https://projects.raspberrypi.org/en/projects/scratchpc-interactive-book/',
+      slug: 'scratchpc-interactive-book',
+    },
+    {
+      language: python,
+      level: [three],
+      title: 'Pride and Prejudice for zombies',
+      url: 'https://projects.raspberrypi.org/en/projects/pride-prejudice-zombies',
+      slug: 'pride-prejudice-zombies',
+    },
+  ]
 
   const raspberryPiProjects: Project[] = [
     {
@@ -486,7 +539,7 @@ const getProjects: () => {
     },
   ]
 
-  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects }
+  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects, storyProjects }
 }
 
 export default getProjects()

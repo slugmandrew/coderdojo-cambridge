@@ -11,6 +11,7 @@ import { Christmas } from 'seasons/Christmas'
 import { Season01 } from 'seasons/Season01'
 import { Season02 } from 'seasons/Season02'
 import { Season03 } from 'seasons/Season03'
+import { Season04 } from 'seasons/Season04'
 
 export const Seasons = () => (
   <>
@@ -31,6 +32,15 @@ export const Seasons = () => (
       </Box>
     </ContentCard>
 
+    <ContentCard>
+      <Box p={5}>
+        <Season04 />
+        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+          Project List:
+        </Text>
+        <ProjectGrid projects={data.storyProjects} />
+      </Box>
+    </ContentCard>
     <ContentCard>
       <Box p={5}>
         <Season03 />
