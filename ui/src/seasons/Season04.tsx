@@ -21,7 +21,7 @@ export const Season04 = () => (
           </chakra.span>
         </Heading>
         <Heading size={'sm'} color={'teal.400'} my={1}>
-          MAY - SEPTEMBER :: 2023
+          MAY - OCTOBER :: 2023
         </Heading>
         <Text my={5}>
           Our focus this season is all about <b>coding stories</b>.

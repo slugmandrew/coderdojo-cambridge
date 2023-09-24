@@ -88,13 +88,16 @@ export const Home = () => (
                   Saturday <chakra.span fontWeight={'bold'}>5th August</chakra.span> <small>(Code your own story #3)</small>
                 </del>
               </chakra.p>
+              <chakra.p color={'blue.500'}>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>2nd September</chakra.span> <small>(Code your own story #4)</small>
+                </del>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>7th October</chakra.span> <small>(Code your own story #5)</small>
+              </chakra.p>
               <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd September</chakra.span> <small>(Code your own story #4)</small>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th October</chakra.span>
-              </chakra.p>
+
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>4th November</chakra.span>
               </chakra.p>
