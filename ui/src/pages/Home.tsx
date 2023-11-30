@@ -94,15 +94,18 @@ export const Home = () => (
                 </del>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>7th October</chakra.span> <small>(Code your own story #5)</small>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>7th October</chakra.span> <small>(Code your own story #5)</small>
+                </del>
               </chakra.p>
-              <chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>
-
+              {/*<chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>*/}
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>4th November</chakra.span>
+                <del>
+                  Saturday <chakra.span fontWeight={'bold'}>11th November</chakra.span>
+                </del>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>2nd December</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>9th December</chakra.span>
               </chakra.p>
             </VStack>
             <VStack>
