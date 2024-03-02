@@ -6,7 +6,7 @@ import { Heading2 } from 'components/Heading2'
 import { Paragraph } from 'components/Paragraph'
 import { TextLink } from 'components/TextLink'
 import group from 'image/characters/dojo_group.png'
-import laptopHands from 'image/laptop_hands.png'
+import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
@@ -18,15 +18,15 @@ export const Home = () => (
     <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
       <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
         <ContentCard>
-          <Stack direction={['column', 'column', 'column', 'column', 'row']}>
-            <Flex w={['full', 'full', 'full', 'full', 2 / 5]} maxH={['200px', '250px', '200px', '200px', 'fit-content']}>
-              <Image src={laptopHands} objectFit={'cover'} />
+          <Stack direction={['column', 'column', 'column', 'column', 'column']}>
+            <Flex w={['full', 'full', 'full', 'full', 'full']} maxH={['200px', '250px', '200px', '200px', '300px']}>
+              <Image src={banner} objectFit={'cover'} />
             </Flex>
-            <Box w={['full', 'full', 'full', 'full', 3 / 5]} px={5}>
+            <Box w={['full', 'full', 'full', 'full', 'full']} px={5}>
               <Heading2>Welcome to our dojo!</Heading2>
               <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
               <Paragraph>
-                We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>first Saturday of the month</b>.
+                We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>second Saturday of the month</b>.
               </Paragraph>
               <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
               <Paragraph>
@@ -52,60 +52,42 @@ export const Home = () => (
               Dojo Calendar 📆
             </Heading2>
             <VStack>
-              <strong>2023</strong>
+              <strong>2024</strong>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>7th January</chakra.span> <small>(A bit of micro:bit #1)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>13th January</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>4th February</chakra.span> <small>(A bit of micro:bit #2)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>10th February</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>11th March</chakra.span> <small>(A bit of micro:bit #3)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>9th March</chakra.span> <sup>Booking Now!</sup>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>1st April</chakra.span> <small>(A bit of micro:bit #4)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  <strong>SUNDAY</strong> <chakra.span fontWeight={'bold'}>7th May</chakra.span> <small>(Code your own story #1)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>11th May</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>3rd June</chakra.span> <small>(Code your own story #2)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>5th August</chakra.span> <small>(Code your own story #3)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>13th July</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>2nd September</chakra.span> <small>(Code your own story #4)</small>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>10th August</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>7th October</chakra.span> <small>(Code your own story #5)</small>
-                </del>
-              </chakra.p>
-              {/*<chakra.p color={'gray.900'}>Planned dates (possibly subject to change):</chakra.p>*/}
-              <chakra.p color={'blue.500'}>
-                <del>
-                  Saturday <chakra.span fontWeight={'bold'}>11th November</chakra.span>
-                </del>
+                Saturday <chakra.span fontWeight={'bold'}>14th September</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th December</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>12th October</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>9th November</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>14th December</chakra.span>
               </chakra.p>
             </VStack>
             <VStack>
@@ -116,7 +98,7 @@ export const Home = () => (
                     variant={'primary'}
                     rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}
                     size={'md'}
-                    href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}
+                    href={'https://coderdojo.com/en/dojos/gb/cambridge/cambridge-makespace'}
                     target={'_blank'}>
                     Sign Up on the CoderDojo portal
                   </Button>
