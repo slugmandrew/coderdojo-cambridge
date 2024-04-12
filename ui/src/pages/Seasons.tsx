@@ -12,6 +12,7 @@ import { Season01 } from 'seasons/Season01'
 import { Season02 } from 'seasons/Season02'
 import { Season03 } from 'seasons/Season03'
 import { Season04 } from 'seasons/Season04'
+import { Season05 } from '../seasons/Season05'
 
 export const Seasons = () => (
   <>
@@ -32,6 +33,11 @@ export const Seasons = () => (
       </Box>
     </ContentCard>
 
+    <ContentCard>
+      <Box p={5}>
+        <Season05 />
+      </Box>
+    </ContentCard>
     <ContentCard>
       <Box p={5}>
         <Season04 />

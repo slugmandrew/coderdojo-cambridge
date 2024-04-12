@@ -10,7 +10,7 @@ import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { Season04 } from '../seasons/Season04'
+import { Season05 } from 'seasons/Season05'
 
 export const Home = () => (
   <>
@@ -60,10 +60,10 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>10th February</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th March</chakra.span> <sup>Booking Now!</sup>
+                Saturday <chakra.span fontWeight={'bold'}>9th March</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span> <sup>Booking Now!</sup>
               </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>11th May</chakra.span>
@@ -112,7 +112,7 @@ export const Home = () => (
 
     <ContentCard>
       <Box p={5} pb={10}>
-        <Season04 />
+        <Season05 />
         <Text mt={5}>
           More information about seasons and the full list of projects can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
         </Text>
