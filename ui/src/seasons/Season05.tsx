@@ -43,13 +43,13 @@ export const Season05 = () => (
 
         <Stack direction={'row'} mt={'10'}>
           <Button size={'lg'} color={'custom.orange'} variant={'outline'} as={'a'} href={'http://rpf.io/webdev-module-1'} target={'_blank'}>
-            Click here for Module 1
+            Open Module 1
           </Button>
           <Button size={'lg'} color={'custom.orange'} variant={'outline'} as={'a'} href={'http://rpf.io/webdev-module-2'} target={'_blank'}>
-            Click here for Module 2
+            Open Module 2
           </Button>
           <Button size={'lg'} color={'custom.orange'} variant={'outline'} as={'a'} href={'http://rpf.io/html-css-for-social-enterprise'} target={'_blank'}>
-            Click here for Module 3
+            Open Module 3
           </Button>
         </Stack>
       </Box>
