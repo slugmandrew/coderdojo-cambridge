@@ -41,7 +41,7 @@ export const Season05 = () => (
           </ListItem>
         </UnorderedList>
 
-        <Stack direction={'row'} mt={'10'}>
+        <Stack direction={['column', null, 'row']} mt={'10'}>
           <Button size={'lg'} color={'custom.orange'} variant={'outline'} as={'a'} href={'http://rpf.io/webdev-module-1'} target={'_blank'}>
             Open Module 1
           </Button>
