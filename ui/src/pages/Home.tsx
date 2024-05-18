@@ -63,13 +63,13 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>9th March</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span> <sup>Booking Now!</sup>
+                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th May</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>18th May</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span> <sup>Booking Now!</sup>
               </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>13th July</chakra.span>
