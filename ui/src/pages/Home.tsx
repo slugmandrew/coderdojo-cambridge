@@ -10,7 +10,6 @@ import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { Season05 } from 'seasons/Season05'
 
 export const Home = () => (
   <>
@@ -40,7 +39,6 @@ export const Home = () => (
                 <TextLink href={'https://www.raspberrypi.com/'}>Raspberry Pi</TextLink> and <TextLink href={'https://www.arduino.cc/'}>Arduino</TextLink>, using
                 tutorials from a wide range of sources.
               </Paragraph>
-              <Paragraph>We also introduce something new every few months. See below for information on our current season!</Paragraph>
             </Box>
           </Stack>
         </ContentCard>
@@ -51,17 +49,8 @@ export const Home = () => (
             <Heading2 color={'custom.teal'} center>
               Dojo Calendar 📆
             </Heading2>
-            <VStack>
+            <VStack mt={5}>
               <strong>2024</strong>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th January</chakra.span> ✔
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>10th February</chakra.span> ✔
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th March</chakra.span> ✔
-              </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span> ✔
               </chakra.p>
@@ -69,13 +58,10 @@ export const Home = () => (
                 Saturday <chakra.span fontWeight={'bold'}>18th May</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span> <sup>Booking Now!</sup>
+                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span> ✔
               </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th July</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>10th August</chakra.span>
+              <chakra.p color={'green.500'} fontWeight={'bold'}>
+                🌞 Summer Break 🌞
               </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>14th September</chakra.span>
@@ -89,10 +75,23 @@ export const Home = () => (
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>14th December</chakra.span>
               </chakra.p>
+              <strong>2025</strong>
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>11th January</chakra.span>
+              </chakra.p>
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>8th February</chakra.span>
+              </chakra.p>
+              <chakra.p color={'gray.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>8th March</chakra.span>
+              </chakra.p>
             </VStack>
             <VStack>
-              <Flex mt={10} justifyContent={'center'}>
-                <VStack>
+              <Flex mt={5} justifyContent={'center'}>
+                <VStack gap={5}>
+                  <Text align={'center'}>
+                    <strong>Note:</strong> Sessions usually run on the <u>second Saturday</u> of the month and you must have a ticket to attend.
+                  </Text>
                   <Button
                     as={Link}
                     variant={'primary'}
@@ -109,15 +108,6 @@ export const Home = () => (
         </ContentCard>
       </Box>
     </Stack>
-
-    <ContentCard>
-      <Box p={5} pb={10}>
-        <Season05 />
-        <Text mt={5}>
-          More information about seasons and the full list of projects can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
-        </Text>
-      </Box>
-    </ContentCard>
 
     <Box>
       <Box>
@@ -142,17 +132,17 @@ export const Home = () => (
           <ContentCard>
             <Box p={5}>
               <Heading2>
-                <Link as={RouterLink} to={'seasons'} variant={'subheading'} color={'yellow.500'}>
-                  Seasons
+                <Link as={RouterLink} to={'topics'} variant={'subheading'} color={'yellow.500'}>
+                  Topics
                 </Link>{' '}
-                🌞
+                📚
               </Heading2>
               <Paragraph>
-                Every few months we have an <b>opportunity to learn about something new</b>.
+                Coderdojo ninjas are of <strong>varied age and ability</strong>, so we cover a wide range of programming languages and technologies to keep
+                things interesting for all.
               </Paragraph>
-              <Paragraph>Sometimes this is a new language track, a focus on a particular skill, or something totally different.</Paragraph>
               <Paragraph>
-                Learn more on the <NavLink to={'seasons'}>Seasons</NavLink> page.
+                Learn more on the <NavLink to={'topics'}>Topics</NavLink> page.
               </Paragraph>
             </Box>
           </ContentCard>
@@ -216,11 +206,8 @@ export const Home = () => (
                 </Link>{' '}
                 🙋‍♂️
               </Heading2>
-              <Paragraph>We are currently looking for new mentors.</Paragraph>
+              <Paragraph>All of our mentors are professional technologists that give up their time for free.</Paragraph>
               <Paragraph>If you are interested in helping out at one of our sessions, or just giving it a try, please get in touch.</Paragraph>
-              <Paragraph>
-                More information is on the <NavLink to={'mentors'}>Mentors</NavLink> page.
-              </Paragraph>
             </Box>
           </ContentCard>
         </SimpleGrid>

@@ -10,17 +10,11 @@ export const Christmas = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Winter '22
-        </Heading>
         <Heading size={'xl'}>
-          Christmas Projects{' '}
+          Christmas{' '}
           <chakra.span color={'red.600'}>
             <FontAwesomeIcon icon={faGifts} />
           </chakra.span>
-        </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          DECEMBER :: 2022
         </Heading>
         <Text my={5}>
           <strong>It's cold and dark, but Santa is on the way,</strong> so let's get festive and do some Christmas coding!
@@ -28,7 +22,6 @@ export const Christmas = () => (
         <Text my={2}>
           We have <strong>FIVE</strong> awesome <strong>winter themed projects</strong>, using a variety of <strong>different languages:</strong>
         </Text>
-
         <Heading3>Scratch</Heading3>
         <UnorderedList>
           <ListItem>

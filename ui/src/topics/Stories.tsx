@@ -7,28 +7,18 @@ import bookReader from 'image/book-reader.png'
 import makecodeEditor from 'image/makecode-arcade.png'
 import React from 'react'
 
-export const Season04 = () => (
+export const Stories = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Season 04
-        </Heading>
         <Heading size={'xl'}>
           Code your own stories{' '}
           <chakra.span color={'blue.400'}>
             <FontAwesomeIcon icon={faBook} />
           </chakra.span>
         </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          MAY - OCTOBER :: 2023
-        </Heading>
         <Text my={5}>
-          Our focus this season is all about <b>coding stories</b>.
-        </Text>
-        <Text my={5}>
-          Instead of focusing on a particular language or piece of hardware like we have done previously, we decided to try a general theme - you can code a
-          story or adventure in any language you like!
+          A great way to learn any programming language is by <b>coding stories</b>.
         </Text>
         <Text my={5}>
           We have some <strong>suggested projects</strong> in a variety of different languages:

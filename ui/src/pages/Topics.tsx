@@ -7,25 +7,24 @@ import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/ProjectData'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
-import { Christmas } from 'seasons/Christmas'
-import { Season01 } from 'seasons/Season01'
-import { Season02 } from 'seasons/Season02'
-import { Season03 } from 'seasons/Season03'
-import { Season04 } from 'seasons/Season04'
-import { Season05 } from '../seasons/Season05'
+import { Christmas } from 'topics/Christmas'
+import { SenseHat } from 'topics/SenseHat'
+import { Python } from 'topics/Python'
+import { MicroBit } from 'topics/MicroBit'
+import { Stories } from 'topics/Stories'
+import { WebDesign } from '../topics/WebDesign'
 
-export const Seasons = () => (
+export const Topics = () => (
   <>
-    <PageHeading>Seasons</PageHeading>
+    <PageHeading>Topics</PageHeading>
 
     <ContentCard>
       <Box p={5} pb={5}>
         <Heading2>Keeping it fresh</Heading2>
+        <Paragraph>We like to work with many different languages and technologies, so we can keep things interesting and fun for everybody.</Paragraph>
         <Paragraph>
-          Every few months we introduce <b>a new theme</b> into the dojo, which runs <b>alongside our usual activities</b>.
-        </Paragraph>
-        <Paragraph>
-          It's a chance for everybody to <b>learn</b> a <i>new technology or language</i>, and have some fun with something new!
+          As ninjas are all of different ages and abilities, there is no set curriculum. We have projects that are suitable for beginners, and some that are
+          more advanced.
         </Paragraph>
         <Paragraph>
           <b>What new technology or subject would you like to see in the future?</b>
@@ -35,12 +34,12 @@ export const Seasons = () => (
 
     <ContentCard>
       <Box p={5}>
-        <Season05 />
+        <WebDesign />
       </Box>
     </ContentCard>
     <ContentCard>
       <Box p={5}>
-        <Season04 />
+        <Stories />
         <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
           Project List:
         </Text>
@@ -49,7 +48,7 @@ export const Seasons = () => (
     </ContentCard>
     <ContentCard>
       <Box p={5}>
-        <Season03 />
+        <MicroBit />
         <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
           Project List:
         </Text>
@@ -67,7 +66,7 @@ export const Seasons = () => (
     </ContentCard>
     <ContentCard>
       <Box p={5}>
-        <Season02 />
+        <Python />
         <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
           Project List:
         </Text>
@@ -76,12 +75,9 @@ export const Seasons = () => (
     </ContentCard>
     <ContentCard>
       <Box p={5}>
-        <Season01 />
-        <Text>
-          More information about seasons can be found on the <NavLink to={'seasons'}>Seasons</NavLink> page
-        </Text>
+        <SenseHat />
         <Text fontWeight={'bold'} my={5}>
-          Here are some of the projects we'll be working through:
+          Project List:
         </Text>
         <ProjectGrid projects={data.raspberryPiProjects} />
       </Box>

@@ -16,21 +16,21 @@ export const Parents = () => (
     <Stack gap={5}>
       <ContentCard noMargin>
         <Box p={5}>
-          <Heading3>What's all this then?</Heading3>
+          <Heading3>What is Coderdojo?</Heading3>
           <Paragraph>
             <TextLink href={'https://coderdojo.com/'}>CoderDojo</TextLink> is a volunteer-led international organisation dedicated to providing opportunities
             for all children to learn to code.
           </Paragraph>
           <Paragraph>
-            With the help of volunteers, we run monthly coding sessions on the first Saturday of every month from the classroom at{' '}
+            With the help of volunteers, we run monthly coding sessions on the second Saturday of every month from the classroom at{' '}
             <TextLink href={'https://web.makespace.org/'}>Makespace Cambridge</TextLink>, UK.
           </Paragraph>
           <Paragraph>
             The club is open to all abilities and we code in different languages and learn a range of different skills relating to coding and computer science.
           </Paragraph>
           <Paragraph>
-            We believe everyone should be able to <i>really</i> control a computer and understand how it works. Through this we can achieve great things, and
-            learning early is the best time to do it!
+            We believe everyone should be able to <i>really</i> control a computer and understand how it works. That knowledge enables us to have a bigger
+            impact on the world around us, and learning early is the best time to do it!
           </Paragraph>
         </Box>
       </ContentCard>

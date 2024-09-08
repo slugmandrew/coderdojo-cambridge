@@ -5,31 +5,21 @@ import pythonCode from 'image/python-code.jpg'
 import pythonPattern from 'image/python-pattern-1.jpg'
 import React from 'react'
 
-export const Season02 = () => (
+export const Python = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Season 02
-        </Heading>
         <Heading size={'xl'}>
-          Python For Beginners{' '}
+          Python{' '}
           <chakra.span color={'yellow.400'}>
             <FontAwesomeIcon icon={faPython} />
           </chakra.span>
         </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          JULY - NOVEMBER :: 2022
-        </Heading>
         <Text my={5}>
-          Our focus this season is all about <b>learning Python</b>.
+          Python is a great language to start with because it is easy to read and write, and is used in a wide range of applications from web development to
+          artificial intelligence.
         </Text>
-        <Text my={5}>
-          <strong>If you have never done any Python</strong> before (maybe because it scares you a little bit 😱), this is for you!
-        </Text>
-        <Text my={5}>
-          <strong>If you already know some Python</strong>, but want to learn more, you can jump straight to the later levels.
-        </Text>
+        <Text my={5}>Once you are familiar with block-based languages like Scratch, Python is a great next step.</Text>
         <Text my={2}>
           We have <strong>9 recommended projects</strong>, spread evenly over <strong>3 levels</strong> which you can work through in order, or choose your own
           path:

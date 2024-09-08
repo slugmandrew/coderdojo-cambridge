@@ -6,7 +6,7 @@ import { Ninjas } from 'pages/Ninjas'
 import { Parents } from 'pages/Parents'
 import { Projects } from 'pages/Projects'
 import { Scraper } from 'pages/Scraper'
-import { Seasons } from 'pages/Seasons'
+import { Topics } from 'pages/Topics'
 import { Workshops } from 'pages/Workshops'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -31,8 +31,8 @@ export const Main = () => {
           {/* MENTORS */}
           <Route path='/mentors' element={<Mentors />} />
 
-          {/* SEASONS */}
-          <Route path='/seasons' element={<Seasons />} />
+          {/* TOPICS */}
+          <Route path='/topics' element={<Topics />} />
 
           {/* LOCATION */}
           <Route path='/location' element={<Location />} />

@@ -5,27 +5,32 @@ import birthdayCard from 'image/birthday-card.png'
 import pixelArt from 'image/pixel-art.png'
 import React from 'react'
 
-export const Season05 = () => (
+export const WebDesign = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Season 05
-        </Heading>
         <Heading size={'xl'}>
-          Web Design - HTML & CSS{' '}
+          Web Design{' '}
           <chakra.span color={'red.400'}>
             <FontAwesomeIcon icon={faCode} />
           </chakra.span>
         </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          April - July :: 2024
-        </Heading>
         <Text my={5}>
-          Our focus this season is all about <b>making websites</b>.
+          Making websites is a very important skill to have. You can use it to create your own blog, portfolio, or even a website for your business. There are
+          usually three different technologies involved when create a website: <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
         </Text>
         <Text my={5}>
-          We have three <strong>HTML & CSS tracks</strong>, each at a different level:
+          <strong>HTML</strong> is the language that is used to create the structure of a website. It tells the browser <i>what</i> to display on the page.
+        </Text>
+        <Text my={5}>
+          <strong>CSS</strong> is the language that is used to style a website. It tells the browser <i>how</i> to display the elements on the page.
+        </Text>
+        <Text my={5}>
+          <strong>JavaScript</strong> is a programming language that is used to make a website interactive. It can be used to create animations, games, and even
+          entire applications that can be accessed through a web browser.
+        </Text>
+        <Text my={5}>
+          Check out the <strong>Web Design</strong> tracks below, each at a different level:
         </Text>
         <UnorderedList>
           <ListItem>

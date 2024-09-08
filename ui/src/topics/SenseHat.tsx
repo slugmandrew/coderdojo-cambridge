@@ -5,25 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import senseHatGif from 'image/raspberry-pi-sense-hat.gif'
 import React from 'react'
 
-export const Season01 = () => (
+export const SenseHat = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Season 01
-        </Heading>
         <Heading size={'xl'}>
-          Springtime Pi{' '}
+          SenseHAT{' '}
           <chakra.span color={'red.600'}>
             <FontAwesomeIcon icon={faRaspberryPi} />
           </chakra.span>
         </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          MARCH | APRIL | MAY | JUNE :: 2022
-        </Heading>
         <Text my={5}>
-          Our focus this season is on coding for <b>Raspberry Pi</b> and <b>SenseHAT</b>.
+          The <b>SenseHAT</b> is an add-on board for the Raspberry Pi that provides a range of sensors and inputs that superchage its capabilities.
         </Text>
+        <Text my={5}>It's a great way to learn about the world of electronics and programming, and can be used to create some really cool projects!</Text>
         <Text my={2}>SenseHAT adds extra capabilities to the Raspberry Pi, such as:</Text>
         <UnorderedList>
           <ListItem>

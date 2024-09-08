@@ -7,25 +7,16 @@ import microBitHeadphones from 'image/microbit_headphones.png'
 import microBitInHands from 'image/microbit_in_hands.png'
 import React from 'react'
 
-export const Season03 = () => (
+export const MicroBit = () => (
   <>
     <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
       <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'lg'} color={'custom.orange'} my={5}>
-          Season 03
-        </Heading>
         <Heading size={'xl'}>
           A bit of micro:bit{' '}
           <chakra.span color={'gray.600'}>
             <FontAwesomeIcon icon={faMicrochip} />
           </chakra.span>
         </Heading>
-        <Heading size={'sm'} color={'teal.400'} my={1}>
-          JANUARY - APRIL :: 2023
-        </Heading>
-        <Text my={5}>
-          Our focus this season is all about <b>learning to use micro:bits</b>.
-        </Text>
         <Text my={5}>
           Micro:bits are small circuit boards with <strong>LEDs</strong>, <strong>buttons</strong>, an <strong>accelerometer</strong>, <strong>compass</strong>,
           and <strong>light</strong> and <strong>temperature</strong> sensors all included!
@@ -34,7 +25,6 @@ export const Season03 = () => (
           There are two ways to code on a micro:bit: Using the visual MakeCode editor (a bit like Scratch) or using regular python code (more advanced).
         </Text>
         <Text my={5}>As always, we have projects across three different levels:</Text>
-
         <UnorderedList>
           <ListItem>
             <strong>Level 1</strong> - Here we focus on the basics of micro:bit and what it can do. The projects mainly focus on interaction using the built-in
