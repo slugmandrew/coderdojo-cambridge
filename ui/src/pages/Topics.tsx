@@ -13,6 +13,7 @@ import { Python } from 'topics/Python'
 import { MicroBit } from 'topics/MicroBit'
 import { Stories } from 'topics/Stories'
 import { WebDesign } from '../topics/WebDesign'
+import { Printing } from '../topics/Printing'
 
 export const Topics = () => (
   <>
@@ -34,9 +35,20 @@ export const Topics = () => (
 
     <ContentCard>
       <Box p={5}>
+        <Printing />
+        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+          Project List:
+        </Text>
+        <ProjectGrid projects={data.printingProjects} />
+      </Box>
+    </ContentCard>
+
+    <ContentCard>
+      <Box p={5}>
         <WebDesign />
       </Box>
     </ContentCard>
+
     <ContentCard>
       <Box p={5}>
         <Stories />
@@ -46,6 +58,7 @@ export const Topics = () => (
         <ProjectGrid projects={data.storyProjects} />
       </Box>
     </ContentCard>
+
     <ContentCard>
       <Box p={5}>
         <MicroBit />

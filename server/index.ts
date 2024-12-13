@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 import express from 'express'
 import multer from 'multer'
 import path from 'path'
+import Pageres from 'pageres'
 
 const PORT = process.env.PORT || 3001
 
@@ -46,42 +47,42 @@ app.get('/api', (req, res) => {
   setTimeout(() => res.json({ message: 'Hello from server, buddy!' }), 500)
 })
 
-// app.post('/api/scrape', (req, res) => {
-//   console.log('POST scrape')
-//
-//   const { url } = req.body
-//   console.log('URL', url)
-//
-//   const slug = url.split('/').pop()
-//   console.log('slug', slug)
-//
-//   getMetaData(url).then((data) => {
-//     console.log(data)
-//   })
-//
-//   return new Pageres({
-//     filename: slug,
-//     launchOptions: { args: ['--no-sandbox'] },
-//     cookies: [
-//       {
-//         domain: 'projects.raspberrypi.org',
-//         name: 'CookieConsent',
-//         value:
-//           '{stamp:%27PLNUquZuahjJMTgLlcAwWIVqRTJLYviRbJV2qEKXPYrRWxlTN0cwDg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:1%2Cutc:1655543841539%2Cregion:%27gb%27}',
-//       },
-//       {
-//         domain: 'projects.raspberrypi.org',
-//         name: 'surveyBannerHide',
-//         value: 'true',
-//       },
-//     ],
-//   })
-//     .src(url, ['1024x768'])
-//     .dest(path.resolve(__dirname, '../ui/public/screenshot'))
-//     .run()
-//     .then((result) => res.json({ message: url, slug: slug }))
-//     .catch((reason) => res.status(400).send(reason))
-// })
+app.post('/api/scrape', (req, res) => {
+  console.log('POST scrape')
+
+  const { url } = req.body
+  console.log('URL', url)
+
+  const slug = url.split('/').pop()
+  console.log('slug', slug)
+
+  // getMetaData(url).then((data) => {
+  //   console.log(data)
+  // })
+
+  return new Pageres({
+    filename: slug,
+    launchOptions: { args: ['--no-sandbox'] },
+    cookies: [
+      {
+        domain: 'projects.raspberrypi.org',
+        name: 'CookieConsent',
+        value:
+          '{stamp:%27PLNUquZuahjJMTgLlcAwWIVqRTJLYviRbJV2qEKXPYrRWxlTN0cwDg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:1%2Cutc:1655543841539%2Cregion:%27gb%27}',
+      },
+      {
+        domain: 'projects.raspberrypi.org',
+        name: 'surveyBannerHide',
+        value: 'true',
+      },
+    ],
+  })
+    .src(url, ['1024x768'])
+    .dest(path.resolve(__dirname, '../ui/public/screenshot'))
+    .run()
+    .then((result) => res.json({ message: url, slug: slug }))
+    .catch((reason) => res.status(400).send(reason))
+})
 
 // app.post('/api/login', (req, res) => {
 //   const { username, password } = req.body

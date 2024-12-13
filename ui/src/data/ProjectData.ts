@@ -10,10 +10,35 @@ const getProjects: () => {
   christmasProjects: Project[]
   microBitProjects: Project[]
   storyProjects: Project[]
+  printingProjects: Project[]
 } = () => {
   const { intro, three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
   const { hardware, html, python, scratch, unity, makecode } = LanguageName
+
+  const printingProjects: Project[] = [
+    {
+      language: hardware,
+      level: [one],
+      title: '3D Key Ring',
+      url: 'https://projects.raspberrypi.org/en/projects/blockscad-coder-keyring',
+      slug: 'blockscad-coder-keyring',
+    },
+    {
+      language: hardware,
+      level: [two],
+      title: '3D Bug ',
+      url: 'https://projects.raspberrypi.org/en/projects/blockscad-bug',
+      slug: 'blockscad-bug',
+    },
+    {
+      language: hardware,
+      level: [three],
+      title: '3d Pendant',
+      url: 'https://projects.raspberrypi.org/en/projects/blockscad-pendant',
+      slug: 'blockscad-pendant',
+    },
+  ]
 
   const storyProjects: Project[] = [
     {
@@ -541,7 +566,7 @@ const getProjects: () => {
     },
   ]
 
-  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects, storyProjects }
+  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects, storyProjects, printingProjects }
 }
 
 export default getProjects()

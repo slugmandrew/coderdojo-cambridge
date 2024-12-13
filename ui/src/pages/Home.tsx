@@ -64,13 +64,13 @@ export const Home = () => (
                 🌞 Summer Break 🌞
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th September</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>14th September</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>12th October</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>12th October</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th November</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>9th November</chakra.span> ✔
               </chakra.p>
               <chakra.p color={'blue.500'}>
                 Saturday <chakra.span fontWeight={'bold'}>14th December</chakra.span>
