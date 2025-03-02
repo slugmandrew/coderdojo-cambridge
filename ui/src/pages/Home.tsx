@@ -5,7 +5,7 @@ import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { Paragraph } from 'components/Paragraph'
 import { TextLink } from 'components/TextLink'
-import group from 'image/characters/dojo_group.png'
+import mainPhoto from 'image/we-made-this.png'
 import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
@@ -13,14 +13,14 @@ import { Link as RouterLink } from 'react-router-dom'
 
 export const Home = () => (
   <>
-    <Stack mb={5}>{<Image src={group} fit={'contain'} borderBottom={'10px solid'} borderBottomColor={'gray.400'} />}</Stack>
+    <Stack>
+      <Image src={mainPhoto} fit={'cover'} borderRadius={5} h={[250, 500, 700]} />
+    </Stack>
+
     <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
       <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
         <ContentCard>
           <Stack direction={['column', 'column', 'column', 'column', 'column']}>
-            <Flex w={['full', 'full', 'full', 'full', 'full']} maxH={['200px', '250px', '200px', '200px', '300px']}>
-              <Image src={banner} objectFit={'cover'} />
-            </Flex>
             <Box w={['full', 'full', 'full', 'full', 'full']} px={5}>
               <Heading2>Welcome to our dojo!</Heading2>
               <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
@@ -40,6 +40,9 @@ export const Home = () => (
                 tutorials from a wide range of sources.
               </Paragraph>
             </Box>
+            <Flex w={['full', 'full', 'full', 'full', 'full']} maxH={['200px', '250px', '200px', '200px', '300px']}>
+              <Image src={banner} objectFit={'cover'} />
+            </Flex>
           </Stack>
         </ContentCard>
       </Flex>
@@ -50,40 +53,40 @@ export const Home = () => (
               Dojo Calendar 📆
             </Heading2>
             <VStack mt={5}>
-              <strong>2024</strong>
+              <strong>2025</strong>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th April</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>11th January</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>18th May</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>8th February</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th June</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>8th March</chakra.span>
               </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>12th April</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>10th May</chakra.span>
+              </chakra.p>
+              <chakra.p color={'blue.500'}>
+                Saturday <chakra.span fontWeight={'bold'}>14th June</chakra.span>
+              </chakra.p>
+
               <chakra.p color={'green.500'} fontWeight={'bold'}>
                 🌞 Summer Break 🌞
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th September</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>13th September</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>12th October</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>11th October</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th November</chakra.span> ✔
+                Saturday <chakra.span fontWeight={'bold'}>8th November</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th December</chakra.span>
-              </chakra.p>
-              <strong>2025</strong>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th January</chakra.span>
-              </chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th February</chakra.span>
-              </chakra.p>
-              <chakra.p color={'gray.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th March</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>13th December</chakra.span>
               </chakra.p>
             </VStack>
             <VStack>
