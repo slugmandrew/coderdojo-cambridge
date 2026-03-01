@@ -2388,13 +2388,13 @@ __metadata:
     "@chakra-ui/system": ^1.12.1
     "@emotion/react": 11
     "@emotion/styled": 11
-    "@fontsource/big-shoulders-display": latest
-    "@fontsource/quicksand": latest
-    "@fontsource/ubuntu": latest
-    "@fortawesome/fontawesome-svg-core": latest
-    "@fortawesome/free-brands-svg-icons": latest
-    "@fortawesome/free-regular-svg-icons": latest
-    "@fortawesome/free-solid-svg-icons": latest
+    "@fontsource/big-shoulders-display": 4.5.4
+    "@fontsource/quicksand": 4.5.4
+    "@fontsource/ubuntu": 4.5.3
+    "@fortawesome/fontawesome-svg-core": 6.1.1
+    "@fortawesome/free-brands-svg-icons": 6.1.1
+    "@fortawesome/free-regular-svg-icons": 6.1.1
+    "@fortawesome/free-solid-svg-icons": 6.1.1
     "@fortawesome/react-fontawesome": 0.1.18
     "@react-google-maps/api": ^2.12.2
     "@testing-library/jest-dom": ^5.14.1
@@ -2729,21 +2729,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/big-shoulders-display@npm:latest":
+"@fontsource/big-shoulders-display@npm:4.5.4":
   version: 4.5.4
   resolution: "@fontsource/big-shoulders-display@npm:4.5.4"
   checksum: 0cd2b0678fd0a653e9742d6ec1d5158e74a5c5f3f2dbd70d9e2473728346f062c28757216effeb7d8011ac6b2bef5879a60a45ec7a5ee1535a7cecd849de7aeb
   languageName: node
   linkType: hard
 
-"@fontsource/quicksand@npm:latest":
+"@fontsource/quicksand@npm:4.5.4":
   version: 4.5.4
   resolution: "@fontsource/quicksand@npm:4.5.4"
   checksum: 284cd32f6fcdd9753fa4cb93e0968d0bbbc80ba58e9c6d00600aeb5cb73a4849d03b1694cf4fe313ff3fa01298a7dc06b9a0609fc7cb9e080ef39d3b7563048a
   languageName: node
   linkType: hard
 
-"@fontsource/ubuntu@npm:latest":
+"@fontsource/ubuntu@npm:4.5.3":
   version: 4.5.3
   resolution: "@fontsource/ubuntu@npm:4.5.3"
   checksum: 74158dc22e7ddb88812768e75151649099be2f5623fe47618fa3f3a6b5fa0441d07f6a175b86df5b51af3ff9224596b3db8f3a59ad4058b1b41dead883ce7a2d
@@ -2757,7 +2757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:latest":
+"@fortawesome/fontawesome-svg-core@npm:6.1.1":
   version: 6.1.1
   resolution: "@fortawesome/fontawesome-svg-core@npm:6.1.1"
   dependencies:
@@ -2766,7 +2766,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:latest":
+"@fortawesome/free-brands-svg-icons@npm:6.1.1":
   version: 6.1.1
   resolution: "@fortawesome/free-brands-svg-icons@npm:6.1.1"
   dependencies:
@@ -2775,7 +2775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-regular-svg-icons@npm:latest":
+"@fortawesome/free-regular-svg-icons@npm:6.1.1":
   version: 6.1.1
   resolution: "@fortawesome/free-regular-svg-icons@npm:6.1.1"
   dependencies:
@@ -2784,7 +2784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:latest":
+"@fortawesome/free-solid-svg-icons@npm:6.1.1":
   version: 6.1.1
   resolution: "@fortawesome/free-solid-svg-icons@npm:6.1.1"
   dependencies:
