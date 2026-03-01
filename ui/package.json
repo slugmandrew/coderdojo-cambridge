@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "@coderdojo/ui",
   "version": "0.1.0",
   "private": true,
@@ -83,4 +83,3 @@
     "prettier": "2.5.1"
   }
 }
-
