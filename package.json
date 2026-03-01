@@ -11,7 +11,7 @@
     "start-devserver": "nodemon server/index.ts",
     "start-ui": "cd ui && npm run start",
     "start-both": "concurrently \"npm run start-devserver\" \"npm run start-ui\"",
-    "build": "cd ui && npm install && npm run build"
+    "build": "cd ui && npm run build"
   },
   "dependencies": {
     "ts-node": "^10.5.0",
