@@ -1,4 +1,4 @@
-import { Box, Button, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
+﻿import { Box, Button, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
@@ -53,40 +53,40 @@ export const Home = () => (
               Dojo Calendar 📆
             </Heading2>
             <VStack mt={5}>
-              <strong>2025</strong>
+              <strong>2026</strong>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th January</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>10th January</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th February</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>14th February</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th March</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>14th March</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>12th April</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>11th April</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>10th May</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>9th May</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th June</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>13th June</chakra.span>
               </chakra.p>
 
               <chakra.p color={'green.500'} fontWeight={'bold'}>
                 🌞 Summer Break 🌞
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th September</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>12th September</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th October</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>10th October</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>8th November</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>14th November</chakra.span>
               </chakra.p>
               <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th December</chakra.span>
+                Saturday <chakra.span fontWeight={'bold'}>12th December</chakra.span>
               </chakra.p>
             </VStack>
             <VStack>
