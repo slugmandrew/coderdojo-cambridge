@@ -1,4 +1,4 @@
-import { Box, chakra, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, chakra, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList } from 'legacy-ui'
 import { faBook, faPrint } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Heading3 } from 'components/Heading3'
@@ -61,3 +61,5 @@ export const Printing = () => (
     </Flex>
   </>
 )
+
+

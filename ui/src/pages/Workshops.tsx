@@ -3,7 +3,7 @@ import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
 import React from 'react'
 import { Heading3 } from '../components/Heading3'
-import { Box, Center, Image, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, Center, Image, ListItem, Stack, Text, UnorderedList } from 'legacy-ui'
 import { TextLink } from '../components/TextLink'
 import teleportingDuck from 'image/microbit-teleporting-duck.png'
 import leds from 'image/microbit_show_leds.png'
@@ -12,7 +12,7 @@ import gestures from 'image/microbit-gestures.png'
 import multiple from 'image/microbit-multiple-received.png'
 import group from 'image/microbit-group-duck.png'
 import { ContentPanel } from '../components/ContentPanel'
-import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons'
+import { DownloadIcon, ExternalLinkIcon } from 'chakra-icons'
 
 export const Workshops = () => {
   return (
@@ -145,3 +145,5 @@ export const Workshops = () => {
     </Box>
   )
 }
+
+

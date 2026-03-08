@@ -1,14 +1,9 @@
-import { Flex, VStack } from '@chakra-ui/react'
+import { Center } from '@mantine/core'
 import { SiteLogo } from 'components/SiteLogo'
 import React from 'react'
 
-export const Header = () => {
-  return (
-    <Flex w={'full'} h={'full'} padding={5}>
-      <VStack spacing={5} w={'full'} h={'full'}>
-        <SiteLogo />
-        {/*<SiteLink />*/}
-      </VStack>
-    </Flex>
-  )
-}
+export const Header = () => (
+  <Center py='md' bg='white'>
+    <SiteLogo />
+  </Center>
+)

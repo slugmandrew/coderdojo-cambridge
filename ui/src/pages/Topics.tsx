@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text } from 'legacy-ui'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
@@ -97,3 +97,5 @@ export const Topics = () => (
     </ContentCard>
   </>
 )
+
+

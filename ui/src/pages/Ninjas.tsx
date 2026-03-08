@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack } from 'legacy-ui'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { Heading3 } from 'components/Heading3'
@@ -16,7 +16,7 @@ export const Ninjas = () => (
 
     <HStack>{<Image src={group} fit={'contain'} />}</HStack>
 
-    <Stack gap={5}>
+    <Stack spacing={5}>
       <ContentCard noMargin>
         <Box p={5}>
           <Heading3>What is a Ninja?</Heading3>
@@ -73,3 +73,6 @@ export const Ninjas = () => (
     {/* PARENTS */}
   </Box>
 )
+
+
+

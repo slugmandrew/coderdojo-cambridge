@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react'
+import { Heading } from 'legacy-ui'
 import { faPersonDigging } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Heading2 } from 'components/Heading2'
@@ -16,3 +16,5 @@ export const Mentors = () => (
     </Heading>
   </>
 )
+
+

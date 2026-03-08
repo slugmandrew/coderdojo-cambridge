@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, HStack, Image, useBreakpointValue } from '@chakra-ui/react'
+import { Button, Card, Group, Image, Stack, Title } from '@mantine/core'
 import { faPython, faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faArrowRight, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,31 +8,30 @@ import React, { FC } from 'react'
 import { Project } from 'types/Project'
 
 export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, domain = 'raspberrypi.org' }) => {
-  const buttonSize = useBreakpointValue({ base: 'lg', md: 'md' })
+  const icon = domain === 'raspberrypi.org' ? faRaspberryPi : domain === 'microbit.org' ? faMicrochip : faPython
 
   return (
-    <Box key={title} border={'1px solid'} borderColor={'gray.200'} bgColor={'gray.50'} borderRadius={5}>
-      <Box h={[160, 130, 120]} overflow={'hidden'} borderTopRadius={5}>
-        <Image w={'100%'} src={`./screenshot/${slug}.png`} />
-      </Box>
-      <Box p={5}>
-        <Heading size={'md'} color={'custom.teal'}>
-          {title}
-        </Heading>
-        <HStack my={3}>
-          <LanguageTag language={language} /> <LevelTag levels={level} />
-        </HStack>
-        <Flex w={'full'} justifyContent={'end'}>
-          <Button
-            colorScheme={'blue'}
-            size={buttonSize}
-            onClick={() => window.open(url, '_blank')}
-            leftIcon={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : domain === 'microbit.org' ? faMicrochip : faPython} />}
-            rightIcon={<FontAwesomeIcon icon={faArrowRight} />}>
-            View on {domain}
-          </Button>
-        </Flex>
-      </Box>
-    </Box>
+    <Card withBorder radius='md' h='100%'>
+      <Card.Section>
+        <Image src={`./screenshot/${slug}.png`} h={150} fit='cover' />
+      </Card.Section>
+      <Stack spacing='sm' mt='sm'>
+        <Title order={4} c='teal.7'>{title}</Title>
+        <Group spacing='xs'>
+          <LanguageTag language={language} />
+          <LevelTag levels={level} />
+        </Group>
+        <Button
+          mt='auto'
+          onClick={() => window.open(url, '_blank')}
+          leftIcon={<FontAwesomeIcon icon={icon} />}
+          rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
+          variant='light'
+        >
+          View on {domain}
+        </Button>
+      </Stack>
+    </Card>
   )
 }
+

@@ -1,4 +1,4 @@
-import { Box, Button, chakra, Flex, Heading, Image, Link, ListItem, Spacer, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, Button, chakra, Flex, Heading, Image, Link, ListItem, Spacer, Stack, Text, UnorderedList } from 'legacy-ui'
 import { fa1, fa2, fa3, faCode } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import birthdayCard from 'image/birthday-card.png'
@@ -76,3 +76,5 @@ export const WebDesign = () => (
     </Flex>
   </>
 )
+
+

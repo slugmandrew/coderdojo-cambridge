@@ -1,10 +1,8 @@
-import { Flex } from '@chakra-ui/react'
+import { Paper } from '@mantine/core'
 import { FC } from 'react'
 
-export const ContentCard: FC<{ noMargin?: boolean }> = ({ noMargin = false, children }) => {
-  return (
-    <Flex rounded={6} bgColor={'white'} border={'1px solid'} borderColor={'gray.200'} overflow={'auto'} mt={noMargin ? 0 : 5}>
-      {children}
-    </Flex>
-  )
-}
+export const ContentCard: FC<{ noMargin?: boolean }> = ({ noMargin = false, children }) => (
+  <Paper withBorder radius='md' p='md' mt={noMargin ? 0 : 'md'} bg='white'>
+    {children}
+  </Paper>
+)

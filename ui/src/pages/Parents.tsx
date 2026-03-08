@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack } from 'legacy-ui'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { Heading3 } from 'components/Heading3'
@@ -13,7 +13,7 @@ export const Parents = () => (
     <PageHeading>Parents</PageHeading>
     <Heading2>Information For Parents</Heading2>
 
-    <Stack gap={5}>
+    <Stack spacing={5}>
       <ContentCard noMargin>
         <Box p={5}>
           <Heading3>What is Coderdojo?</Heading3>
@@ -138,3 +138,6 @@ export const Parents = () => (
     </Stack>
   </>
 )
+
+
+

@@ -1,4 +1,4 @@
-import { Box, chakra, Flex, Heading, Image, ListItem, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, chakra, Flex, Heading, Image, ListItem, Text, UnorderedList } from 'legacy-ui'
 import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faGauge, faMagnet, faTabletScreenButton, faTemperatureHalf } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,3 +48,5 @@ export const SenseHat = () => (
     </Flex>
   </>
 )
+
+

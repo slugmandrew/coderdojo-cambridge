@@ -1,5 +1,5 @@
-import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Box, Link, Stack, Text } from '@chakra-ui/react'
+import { ExternalLinkIcon } from 'chakra-icons'
+import { Box, Link, Stack, Text } from 'legacy-ui'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
@@ -72,3 +72,5 @@ export const Location = () => {
     </>
   )
 }
+
+

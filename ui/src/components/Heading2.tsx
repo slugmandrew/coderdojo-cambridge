@@ -1,10 +1,8 @@
-import { Heading } from '@chakra-ui/react'
+import { Title } from '@mantine/core'
 import React, { FC } from 'react'
 
-export const Heading2: FC<{ text?: string; color?: string; center?: boolean }> = ({ children, color = 'custom.orange', center = false }) => {
-  return (
-    <Heading size={'lg'} my={5} color={color} textAlign={center ? 'center' : 'inherit'}>
-      {children}
-    </Heading>
-  )
-}
+export const Heading2: FC<{ color?: string; center?: boolean }> = ({ children, color = '#f07832', center = false }) => (
+  <Title order={2} c={color} ta={center ? 'center' : 'left'} my='md'>
+    {children}
+  </Title>
+)

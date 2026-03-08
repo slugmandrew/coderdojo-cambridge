@@ -1,4 +1,4 @@
-import { Button, Container, FormControl, FormLabel, Heading, Image, Input, Stack } from '@chakra-ui/react'
+import { Button, Container, FormControl, FormLabel, Heading, Image, Input, Stack } from 'legacy-ui'
 import axios from 'axios'
 import React, { FC, useState } from 'react'
 
@@ -33,3 +33,5 @@ export const Scraper: FC = () => {
     </Container>
   )
 }
+
+

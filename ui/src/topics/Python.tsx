@@ -1,4 +1,4 @@
-import { Box, chakra, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, chakra, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList } from 'legacy-ui'
 import { faPython } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import pythonCode from 'image/python-code.jpg'
@@ -58,3 +58,5 @@ export const Python = () => (
     </Flex>
   </>
 )
+
+

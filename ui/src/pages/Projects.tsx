@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box } from 'legacy-ui'
 import { ContentCard } from 'components/ContentCard'
 import { FilterableGrid } from 'components/FilterableGrid'
 import { Heading2 } from 'components/Heading2'
@@ -18,3 +18,5 @@ export const Projects = () => {
     </>
   )
 }
+
+
