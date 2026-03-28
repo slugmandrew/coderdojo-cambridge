@@ -1,10 +1,10 @@
-import { Heading } from '@chakra-ui/react'
+import { Title } from '@mantine/core'
 import React, { FC } from 'react'
 
 export const PageHeading: FC = ({ children }) => {
   return (
-    <Heading size={'2xl'} my={5}>
+    <Title order={1} mb="lg">
       {children}
-    </Heading>
+    </Title>
   )
 }

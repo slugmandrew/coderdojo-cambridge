@@ -1,11 +1,10 @@
-import { Tag, useBreakpointValue } from '@chakra-ui/react'
+import { Badge } from '@mantine/core'
 import React, { FC } from 'react'
-import { ColorScheme } from 'types/ColorScheme'
 import { LanguageName } from 'types/LanguageName'
 
 export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
-  const getColorScheme: (language: LanguageName) => ColorScheme = (language: LanguageName) => {
-    switch (language) {
+  const getColorScheme = (value: LanguageName) => {
+    switch (value) {
       case LanguageName.hardware:
         return 'gray'
       case LanguageName.scratch:
@@ -13,23 +12,19 @@ export const LanguageTag: FC<{ language: LanguageName }> = ({ language }) => {
       case LanguageName.python:
         return 'blue'
       case LanguageName.unity:
-        return 'blackAlpha'
+        return 'dark'
       case LanguageName.java:
         return 'red'
       case LanguageName.html:
         return 'green'
       case LanguageName.makecode:
-        return 'red'
+        return 'pink'
     }
   }
 
-  const tagSize = useBreakpointValue({ base: 'lg', md: 'md' })
-
   return (
-    <>
-      <Tag size={tagSize} colorScheme={getColorScheme(language)}>
-        {language}
-      </Tag>
-    </>
+    <Badge size='lg' color={getColorScheme(language)} variant='light'>
+      {language}
+    </Badge>
   )
 }

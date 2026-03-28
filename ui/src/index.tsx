@@ -1,21 +1,21 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { MantineProvider } from '@mantine/core'
 import '@fontsource/big-shoulders-display/400.css'
 import '@fontsource/quicksand/400.css'
 import '@fontsource/ubuntu/400.css'
 import { App } from 'App'
-import { customTheme } from 'customTheme'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import { theme } from 'theme'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={customTheme}>
+    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </ChakraProvider>
+    </MantineProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
@@ -24,5 +24,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
-
-// comment to redeploy

@@ -1,31 +1,28 @@
-import { Tag, useBreakpointValue } from '@chakra-ui/react'
+import { Badge, Group } from '@mantine/core'
 import React, { FC } from 'react'
-import { ColorScheme } from 'types/ColorScheme'
 import { Level } from 'types/Level'
 
 export const LevelTag: FC<{ levels: Level[] }> = ({ levels }) => {
-  const getColorScheme: (level: Level) => ColorScheme = (level: Level) => {
+  const getColorScheme = (level: Level) => {
     switch (level) {
       case Level.intro:
         return 'green'
       case Level.one:
-        return 'cyan'
+        return 'teal'
       case Level.two:
-        return 'purple'
+        return 'violet'
       case Level.three:
         return 'pink'
     }
   }
 
-  const tagSize = useBreakpointValue({ base: 'lg', md: 'md' })
-
   return (
-    <>
+    <Group spacing='xs'>
       {levels.map((level) => (
-        <Tag size={tagSize} colorScheme={getColorScheme(level)}>
+        <Badge key={level} size='lg' color={getColorScheme(level)} variant='light'>
           {level}
-        </Tag>
+        </Badge>
       ))}
-    </>
+    </Group>
   )
 }
