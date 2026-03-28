@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react'
+import { Container } from '@mantine/core'
 import { Home } from 'pages/Home'
 import { Location } from 'pages/Location'
 import { Mentors } from 'pages/Mentors'
@@ -13,8 +13,8 @@ import { Route, Routes } from 'react-router-dom'
 
 export const Main = () => {
   return (
-    <Container maxW={'full'} minH={800} bgColor={'gray.50'} p={[0, 0, 5]}>
-      <Container maxW={'container.xl'} minH={800} p={[3, null, 5]} pb={20}>
+    <Container fluid px={0} py="xl" sx={(theme) => ({ backgroundColor: theme.colors.gray[0], minHeight: 800 })}>
+      <Container px="md" pb={80} sx={{ minHeight: 800 }}>
         <Routes>
           {/* HOME */}
           <Route path='/' element={<Home />} />

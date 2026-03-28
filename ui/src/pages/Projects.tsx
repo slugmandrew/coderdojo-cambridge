@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box } from '@mantine/core'
 import { ContentCard } from 'components/ContentCard'
 import { FilterableGrid } from 'components/FilterableGrid'
 import { Heading2 } from 'components/Heading2'
@@ -10,7 +10,7 @@ export const Projects = () => {
     <>
       <PageHeading>Projects</PageHeading>
       <ContentCard>
-        <Box p={5}>
+        <Box p='md'>
           <Heading2>Recommended projects for Scratch, Python, & HTML</Heading2>
           <FilterableGrid />
         </Box>

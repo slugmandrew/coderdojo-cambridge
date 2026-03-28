@@ -1,6 +1,6 @@
-import { Text } from '@chakra-ui/react'
+import { Text } from '@mantine/core'
 import React, { FC } from 'react'
 
 export const Paragraph: FC = ({ children }) => {
-  return <Text my={5}>{children}</Text>
+  return <Text my="md">{children}</Text>
 }
