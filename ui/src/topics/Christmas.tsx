@@ -16,21 +16,36 @@ export const Christmas = () => (
     }
     body={
       <>
-        <Text mb='md'><strong>It's cold and dark, but Santa is on the way,</strong> so let's get festive and do some Christmas coding.</Text>
-        <Text mb='md'>We have <strong>FIVE</strong> awesome <strong>winter themed projects</strong>, using a variety of <strong>different languages</strong>:</Text>
+        <Text mb='md'>
+          <strong>It's cold and dark, but Santa is on the way,</strong> so let's get festive and do some Christmas coding.
+        </Text>
+        <Text mb='md'>
+          We have <strong>FIVE</strong> awesome <strong>winter themed projects</strong>, using a variety of <strong>different languages</strong>:
+        </Text>
         <Heading3>Scratch</Heading3>
         <List spacing='xs' mb='md'>
-          <List.Item><strong>Scratch Cat goes skiing</strong> - Create a downhill skiing game where the goal is to dodge trees and other obstacles to score as many points as possible.</List.Item>
-          <List.Item><strong>Jazzy jumpers</strong> - Create a memory game based on funky Christmas jumper designs.</List.Item>
-          <List.Item><strong>Snowball fight</strong> - Create a game where the aim is to hit a target by throwing snowballs of varying strengths.</List.Item>
+          <List.Item>
+            <strong>Scratch Cat goes skiing</strong> - Create a downhill skiing game where the goal is to dodge trees and other obstacles to score as many
+            points as possible.
+          </List.Item>
+          <List.Item>
+            <strong>Jazzy jumpers</strong> - Create a memory game based on funky Christmas jumper designs.
+          </List.Item>
+          <List.Item>
+            <strong>Snowball fight</strong> - Create a game where the aim is to hit a target by throwing snowballs of varying strengths.
+          </List.Item>
         </List>
         <Heading3>Python</Heading3>
         <List spacing='xs' mb='md'>
-          <List.Item><strong>Turtle snowflakes</strong> - Create some awesome snowflake patterns. Great for beginner to intermediate Python coders.</List.Item>
+          <List.Item>
+            <strong>Turtle snowflakes</strong> - Create some awesome snowflake patterns. Great for beginner to intermediate Python coders.
+          </List.Item>
         </List>
         <Heading3>Sonic Pi</Heading3>
         <List spacing='xs'>
-          <List.Item><strong>Code a Christmas carol</strong> - Learn how to use Sonic Pi to create music through code. Here we make the 12 Days of Christmas song.</List.Item>
+          <List.Item>
+            <strong>Code a Christmas carol</strong> - Learn how to use Sonic Pi to create music through code. Here we make the 12 Days of Christmas song.
+          </List.Item>
         </List>
       </>
     }

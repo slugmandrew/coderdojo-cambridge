@@ -39,6 +39,7 @@ export const FilterableGrid: FC = () => {
     <Stack w='100%'>
       <Text fw={700}>Showing {filteredProjects.length} Projects</Text>
       <Select
+        label={languageFilter.label}
         data={Object.values(languageFilter.type).map((key) => ({ label: key, value: `${languageFilter.label}-${key}` }))}
         placeholder={`Select ${languageFilter.label}`}
         searchable
@@ -49,6 +50,7 @@ export const FilterableGrid: FC = () => {
 
       {currentLanguageFilter && (
         <Select
+          label={levelFilter.label}
           data={Object.values(levelFilter.type).map((key) => ({ label: key, value: `${levelFilter.label}-${key}` }))}
           placeholder={`Select ${levelFilter.label}`}
           clearable

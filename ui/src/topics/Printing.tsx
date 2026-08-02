@@ -15,16 +15,30 @@ export const Printing = () => (
     }
     body={
       <>
-        <Text mb='md'>Did you know you can make almost anything in a <b>3D Printer</b>?</Text>
-        <Text mb='md'>We have three <strong>cool projects</strong> to get you started here:</Text>
+        <Text mb='md'>
+          Did you know you can make almost anything in a <b>3D Printer</b>?
+        </Text>
+        <Text mb='md'>
+          We have three <strong>cool projects</strong> to get you started here:
+        </Text>
         <Heading3>Want to get creative?</Heading3>
         <Text mb='md'>You aren't limited to the projects we list here.</Text>
-        <Text mb='md'>Feel free to come up with your own ideas for things to print! It can be anything your imagination can think of. Here's some ideas to get you started:</Text>
+        <Text mb='md'>
+          Feel free to come up with your own ideas for things to print! It can be anything your imagination can think of. Here's some ideas to get you started:
+        </Text>
         <List spacing='xs'>
-          <List.Item><strong>Minecraft characters</strong></List.Item>
-          <List.Item><strong>A sign for your bedroom door</strong></List.Item>
-          <List.Item><strong>A model of one of your pets</strong></List.Item>
-          <List.Item><strong>A model of one of your parents (be nice!)</strong></List.Item>
+          <List.Item>
+            <strong>Minecraft characters</strong>
+          </List.Item>
+          <List.Item>
+            <strong>A sign for your bedroom door</strong>
+          </List.Item>
+          <List.Item>
+            <strong>A model of one of your pets</strong>
+          </List.Item>
+          <List.Item>
+            <strong>A model of one of your parents (be nice!)</strong>
+          </List.Item>
         </List>
       </>
     }

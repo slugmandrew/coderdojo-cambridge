@@ -17,7 +17,7 @@ export const LevelTag: FC<{ levels: Level[] }> = ({ levels }) => {
   }
 
   return (
-    <Group spacing='xs'>
+    <Group gap='xs'>
       {levels.map((level) => (
         <Badge key={level} size='lg' color={getColorScheme(level)} variant='light'>
           {level}

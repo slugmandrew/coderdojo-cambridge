@@ -21,7 +21,12 @@ export const Scraper: FC = () => {
         Scraper
       </Title>
       <Stack>
-        <TextInput label={data.title || 'URL to scrape'} placeholder='Enter URL to scrape...' value={url} onChange={(event) => setUrl(event.currentTarget.value)} />
+        <TextInput
+          label={data.title || 'URL to scrape'}
+          placeholder='Enter URL to scrape...'
+          value={url}
+          onChange={(event) => setUrl(event.currentTarget.value)}
+        />
         <Button color='dojoTeal' onClick={() => performScrape(url)}>
           Scrape
         </Button>

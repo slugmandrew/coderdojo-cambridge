@@ -1,9 +1,9 @@
 import { Anchor } from '@mantine/core'
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 
-export const TextLink: FC<{ href?: string; target?: string }> = ({ href, children, ...rest }) => {
+export const TextLink: FC<{ href?: string; target?: string; children?: ReactNode }> = ({ href, children, target = '_blank' }) => {
   return (
-    <Anchor href={href} target={'_blank'} fw={700} c="blue.6" {...rest}>
+    <Anchor href={href} target={target} fw={700} c='blue.6'>
       {children}
     </Anchor>
   )

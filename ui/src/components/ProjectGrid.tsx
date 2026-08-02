@@ -5,7 +5,7 @@ import { Project } from 'types/Project'
 
 export const ProjectGrid: FC<{ projects: Array<Project> }> = ({ projects }) => {
   return (
-    <SimpleGrid cols={3} spacing='md' breakpoints={[{ maxWidth: 'md', cols: 2 }, { maxWidth: 'sm', cols: 1 }]}>
+    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing='md'>
       {projects.map((proj) => (
         <ProjectCard key={proj.slug} {...proj} />
       ))}

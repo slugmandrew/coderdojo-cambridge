@@ -1,9 +1,13 @@
 import { Box, Image, SimpleGrid, Text, Title } from '@mantine/core'
 import React, { FC, ReactNode } from 'react'
 
-export const TopicLayout: FC<{ title: ReactNode; body: ReactNode; images?: Array<{ src: string; alt: string; caption: ReactNode }> }> = ({ title, body, images = [] }) => {
+export const TopicLayout: FC<{ title: ReactNode; body: ReactNode; images?: Array<{ src: string; alt: string; caption: ReactNode }> }> = ({
+  title,
+  body,
+  images = [],
+}) => {
   return (
-    <SimpleGrid cols={2} spacing='xl' breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='xl'>
       <Box>
         <Title order={2} mb='md'>
           {title}

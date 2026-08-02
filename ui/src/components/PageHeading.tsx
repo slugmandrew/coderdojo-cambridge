@@ -1,9 +1,9 @@
 import { Title } from '@mantine/core'
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 
-export const PageHeading: FC = ({ children }) => {
+export const PageHeading: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <Title order={1} mb="lg">
+    <Title order={1} mb='lg'>
       {children}
     </Title>
   )

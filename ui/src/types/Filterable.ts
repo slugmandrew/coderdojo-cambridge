@@ -16,7 +16,7 @@ export type FilterTypeWithLabel = {
   type: FilterableType
 }
 
-export type FilterValue<Filterable> = {
+export type FilterValue = {
   filterTypeWithLabel: FilterTypeWithLabel
   value: FilterValueWithLabel
 }

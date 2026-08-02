@@ -1,27 +1,19 @@
 import { config } from 'dotenv'
 import express from 'express'
-import multer from 'multer'
 import path from 'path'
-import Pageres from 'pageres'
+import puppeteer from 'puppeteer'
+
+config()
 
 const PORT = process.env.PORT || 3001
 
 const app = express()
-var upload = multer()
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../ui/build')))
 
 app.use(express.json())
-app.use(express.urlencoded())
-
-// for parsing multipart/form-data
-// app.use(upload.array());
-
-config()
-console.log(process.env)
-
-let client
+app.use(express.urlencoded({ extended: true }))
 
 // const dbSetup = async () => {
 //   client =
@@ -47,41 +39,38 @@ app.get('/api', (req, res) => {
   setTimeout(() => res.json({ message: 'Hello from server, buddy!' }), 500)
 })
 
-app.post('/api/scrape', (req, res) => {
+app.post('/api/scrape', async (req, res) => {
   console.log('POST scrape')
 
   const { url } = req.body
-  console.log('URL', url)
+  if (typeof url !== 'string') return res.status(400).send('A URL is required')
 
-  const slug = url.split('/').pop()
-  console.log('slug', slug)
+  try {
+    const parsedUrl = new URL(url)
+    const slug = (path.basename(parsedUrl.pathname) || 'screenshot').replace(/[^a-z0-9-_]/gi, '-')
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
 
-  // getMetaData(url).then((data) => {
-  //   console.log(data)
-  // })
-
-  return new Pageres({
-    filename: slug,
-    launchOptions: { args: ['--no-sandbox'] },
-    cookies: [
-      {
-        domain: 'projects.raspberrypi.org',
-        name: 'CookieConsent',
-        value:
-          '{stamp:%27PLNUquZuahjJMTgLlcAwWIVqRTJLYviRbJV2qEKXPYrRWxlTN0cwDg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:1%2Cutc:1655543841539%2Cregion:%27gb%27}',
-      },
-      {
-        domain: 'projects.raspberrypi.org',
-        name: 'surveyBannerHide',
-        value: 'true',
-      },
-    ],
-  })
-    .src(url, ['1024x768'])
-    .dest(path.resolve(__dirname, '../ui/public/screenshot'))
-    .run()
-    .then((result) => res.json({ message: url, slug: slug }))
-    .catch((reason) => res.status(400).send(reason))
+    try {
+      await browser.setCookie(
+        {
+          domain: 'projects.raspberrypi.org',
+          name: 'CookieConsent',
+          value:
+            '{stamp:%27PLNUquZuahjJMTgLlcAwWIVqRTJLYviRbJV2qEKXPYrRWxlTN0cwDg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:true%2Cmarketing:true%2Cver:1%2Cutc:1655543841539%2Cregion:%27gb%27}',
+        },
+        { domain: 'projects.raspberrypi.org', name: 'surveyBannerHide', value: 'true' },
+      )
+      const page = await browser.newPage()
+      await page.setViewport({ width: 1024, height: 768 })
+      await page.goto(parsedUrl.href, { waitUntil: 'networkidle2' })
+      await page.screenshot({ path: path.resolve(__dirname, `../ui/public/screenshot/${slug}.png`) })
+      return res.json({ message: parsedUrl.href, slug })
+    } finally {
+      await browser.close()
+    }
+  } catch (reason: unknown) {
+    return res.status(400).send(reason instanceof Error ? reason.message : 'Screenshot failed')
+  }
 })
 
 // app.post('/api/login', (req, res) => {
@@ -116,7 +105,7 @@ app.post('/api/scrape', (req, res) => {
 // })
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   console.log('GET *')
   res.sendFile(path.resolve(__dirname, '../ui/build', 'index.html'))
 })

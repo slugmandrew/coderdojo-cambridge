@@ -5,14 +5,14 @@ import React from 'react'
 
 export const SiteLink = () => {
   return (
-    <Group spacing='md' align='center'>
+    <Group gap='md' align='center'>
       <Title order={3} py='sm'>
-        <Anchor c='dojoOrange.6' href='https://coderdojo-cambridge.herokuapp.com/' sx={{ fontFamily: 'Courier New, monospace' }}>
+        <Anchor c='dojoOrange.6' href='https://coderdojo-cambridge.herokuapp.com/' style={{ fontFamily: 'Courier New, monospace' }}>
           coderdojo-cambridge.herokuapp.com
         </Anchor>
       </Title>
       <Paper withBorder p='sm'>
-        <Group spacing='xs'>
+        <Group gap='xs'>
           <FontAwesomeIcon icon={faMousePointer} />
           <Text>Go to this link to get here...</Text>
         </Group>

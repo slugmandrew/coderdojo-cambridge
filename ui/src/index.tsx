@@ -1,26 +1,24 @@
 import { MantineProvider } from '@mantine/core'
-import '@fontsource/big-shoulders-display/400.css'
-import '@fontsource/quicksand/400.css'
-import '@fontsource/ubuntu/400.css'
+import '@mantine/core/styles.css'
+import '@fontsource/big-shoulders-display/400'
+import '@fontsource/quicksand/400'
+import '@fontsource/ubuntu/400'
 import { App } from 'App'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router'
 import { theme } from 'theme'
-import reportWebVitals from './reportWebVitals'
 
-ReactDOM.render(
+const root = document.getElementById('root')
+
+if (!root) throw new Error('Root element was not found')
+
+createRoot(root).render(
   <React.StrictMode>
-    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+    <MantineProvider theme={theme}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </MantineProvider>
   </React.StrictMode>,
-  document.getElementById('root')
 )
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()

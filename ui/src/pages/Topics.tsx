@@ -22,7 +22,10 @@ export const Topics = () => (
       <Box p='md'>
         <Heading2>Keeping it fresh</Heading2>
         <Paragraph>We like to work with many different languages and technologies, so we can keep things interesting and fun for everybody.</Paragraph>
-        <Paragraph>As ninjas are all of different ages and abilities, there is no set curriculum. We have projects that are suitable for beginners, and some that are more advanced.</Paragraph>
+        <Paragraph>
+          As ninjas are all of different ages and abilities, there is no set curriculum. We have projects that are suitable for beginners, and some that are
+          more advanced.
+        </Paragraph>
         <Paragraph>
           <b>What new technology or subject would you like to see in the future?</b>
         </Paragraph>

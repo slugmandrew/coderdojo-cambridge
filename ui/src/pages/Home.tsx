@@ -1,5 +1,6 @@
 import { Anchor, Box, Button, Card, Divider, Group, Image, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core'
 import { faCalendarDays, faCode, faExternalLinkAlt, faLocationDot, faPeopleGroup, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
@@ -9,7 +10,7 @@ import mainPhoto from 'image/we-made-this.png'
 import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router'
 
 const dojoDates = [
   { month: 'January', day: '10th' },
@@ -24,14 +25,14 @@ const dojoDates = [
   { month: 'December', day: '12th' },
 ]
 
-const HomeLinkCard = ({ icon, title, to, color, children }: { icon: any; title: string; to: string; color: string; children: React.ReactNode }) => (
+const HomeLinkCard = ({ icon, title, to, color, children }: { icon: IconDefinition; title: string; to: string; color: string; children: React.ReactNode }) => (
   <ContentCard noMargin>
     <Box p='lg'>
-      <Group spacing='sm' mb='sm'>
+      <Group gap='sm' mb='sm'>
         <ThemeIcon size='lg' radius='xl' color={color} variant='light'>
           <FontAwesomeIcon icon={icon} />
         </ThemeIcon>
-        <Anchor component={RouterLink} to={to} underline={false} fw={700} color={color}>
+        <Anchor component={RouterLink} to={to} underline='never' fw={700} color={color}>
           {title}
         </Anchor>
       </Group>
@@ -59,21 +60,21 @@ const HomeImagePanel = ({ image, alt, title, description }: { image: string; alt
 )
 
 export const Home = () => (
-  <Stack spacing='xl'>
-    <SimpleGrid cols={2} spacing='lg' breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
+  <Stack gap='xl'>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
       <Paper
         radius='md'
         p='xl'
-        sx={(theme) => ({
+        style={(theme) => ({
           background: `linear-gradient(135deg, ${theme.colors.gray[0]} 0%, ${theme.white} 100%)`,
           border: `1px solid ${theme.colors.gray[2]}`,
         })}>
-        <Stack spacing='lg'>
+        <Stack gap='lg'>
           <Box>
             <Text c='dojoOrange.6' fw={700} tt='uppercase' size='sm' mb='xs'>
               Community Coding Club
             </Text>
-            <Title order={1} sx={{ lineHeight: 1.05 }}>
+            <Title order={1} style={{ lineHeight: 1.05 }}>
               Coding, creativity, and hands-on projects for young people in Cambridge
             </Title>
           </Box>
@@ -94,7 +95,7 @@ export const Home = () => (
               href='https://coderdojo.com/en/dojos/gb/cambridge/cambridge-makespace'
               target='_blank'
               color='dojoOrange'
-              rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
+              rightSection={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
               Sign Up
             </Button>
             <Button component={RouterLink} to='/projects' variant='light' color='dojoTeal'>
@@ -111,7 +112,7 @@ export const Home = () => (
         </Stack>
       </Paper>
 
-      <Stack spacing='md'>
+      <Stack gap='md'>
         <HomeImagePanel
           image={mainPhoto}
           alt='CoderDojo projects'
@@ -127,17 +128,17 @@ export const Home = () => (
       </Stack>
     </SimpleGrid>
 
-    <SimpleGrid cols={2} spacing='lg' breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
       <ContentCard noMargin>
         <Box p='lg'>
-          <Group spacing='sm' mb='md'>
+          <Group gap='sm' mb='md'>
             <ThemeIcon size='lg' radius='xl' color='blue' variant='light'>
               <FontAwesomeIcon icon={faCalendarDays} />
             </ThemeIcon>
             <Heading2 color='dojoTeal.7'>Dojo Calendar</Heading2>
           </Group>
 
-          <Stack spacing='xs'>
+          <Stack gap='xs'>
             <Text fw={700}>2026</Text>
             {dojoDates.slice(0, 6).map((date) => (
               <Text key={date.month} c='blue.6'>
@@ -172,14 +173,14 @@ export const Home = () => (
 
       <ContentCard noMargin>
         <Box p='lg'>
-          <Group spacing='sm' mb='md'>
+          <Group gap='sm' mb='md'>
             <ThemeIcon size='lg' radius='xl' color='dojoOrange' variant='light'>
               <FontAwesomeIcon icon={faLocationDot} />
             </ThemeIcon>
             <Heading2 color='dojoOrange.6'>What To Expect</Heading2>
           </Group>
 
-          <Stack spacing='md'>
+          <Stack gap='md'>
             <Text>
               Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Bring a project you already care about, or we can help
               you find a great starting point.
@@ -201,13 +202,7 @@ export const Home = () => (
       </ContentCard>
     </SimpleGrid>
 
-    <SimpleGrid
-      cols={3}
-      spacing='lg'
-      breakpoints={[
-        { maxWidth: 'md', cols: 2 },
-        { maxWidth: 'sm', cols: 1 },
-      ]}>
+    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing='lg'>
       <HomeLinkCard icon={faCode} title='Projects' to='/projects' color='teal'>
         Guided project ideas for different ages, interests, and skill levels.
       </HomeLinkCard>

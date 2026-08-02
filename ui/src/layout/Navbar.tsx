@@ -1,6 +1,6 @@
-import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Group, MediaQuery, Stack } from '@mantine/core'
-import React, { FC, Fragment, useEffect, useState } from 'react'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Group, Stack } from '@mantine/core'
+import React, { FC, Fragment, ReactNode, useState } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router'
 
 type NavItem = {
   label: string
@@ -17,30 +17,36 @@ const navItems: NavItem[] = [
   { label: 'Workshops', to: '/workshops' },
 ]
 
-const NavButton: FC<NavItem & { mobile?: boolean }> = ({ label, to, mobile = false }) => (
-  <Button
-    component={RouterLink}
-    to={to}
-    variant={mobile ? 'light' : 'subtle'}
-    color={mobile ? 'dojoTeal' : 'gray'}
-    size={mobile ? 'md' : 'sm'}
-    fullWidth={mobile}
-    styles={(theme) => ({
-      root: mobile
-        ? undefined
-        : {
-            color: theme.white,
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.14)',
-            },
-          },
-    })}>
-    {label}
-  </Button>
-)
+const NavButton: FC<NavItem & { mobile?: boolean; onNavigate?: () => void }> = ({ label, to, mobile = false, onNavigate }) => {
+  const location = useLocation()
 
-export const NavLink: FC<{ to: string; mobile?: boolean }> = ({ to, mobile, children }) => (
-  <Anchor component={RouterLink} to={to} fw={700} c={mobile ? 'dojoTeal.7' : 'dojoOrange.6'} sx={{ width: mobile ? '100%' : 'auto' }}>
+  return (
+    <Button
+      component={RouterLink}
+      to={to}
+      aria-current={location.pathname === to ? 'page' : undefined}
+      onClick={onNavigate}
+      variant={mobile ? 'light' : 'subtle'}
+      color={mobile ? 'dojoTeal' : 'gray'}
+      size={mobile ? 'md' : 'sm'}
+      fullWidth={mobile}
+      styles={(theme) => ({
+        root: mobile
+          ? undefined
+          : {
+              color: theme.white,
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.14)',
+              },
+            },
+      })}>
+      {label}
+    </Button>
+  )
+}
+
+export const NavLink: FC<{ to: string; mobile?: boolean; children?: ReactNode }> = ({ to, mobile, children }) => (
+  <Anchor component={RouterLink} to={to} fw={700} c={mobile ? 'dojoTeal.7' : 'dojoOrange.6'} style={{ width: mobile ? '100%' : 'auto' }}>
     {children}
   </Anchor>
 )
@@ -59,7 +65,7 @@ const SignUpButton: FC<{ mobile?: boolean }> = ({ mobile = false }) => (
 )
 
 const DesktopNav: FC = () => (
-  <Group spacing='xs' position='center' noWrap>
+  <Group gap='xs' justify='center' wrap='nowrap'>
     {navItems.map((item) => (
       <NavButton key={item.to} {...item} />
     ))}
@@ -68,10 +74,10 @@ const DesktopNav: FC = () => (
 )
 
 const MobileNav: FC<{ onNavigate: () => void }> = ({ onNavigate }) => (
-  <Stack spacing='sm'>
+  <Stack gap='sm'>
     {navItems.map((item, index) => (
       <Fragment key={item.to}>
-        <NavButton {...item} mobile />
+        <NavButton {...item} mobile onNavigate={onNavigate} />
         {index < navItems.length - 1 && <Divider />}
       </Fragment>
     ))}
@@ -85,26 +91,17 @@ const MobileNav: FC<{ onNavigate: () => void }> = ({ onNavigate }) => (
 
 export const Navbar: FC = () => {
   const [opened, setOpened] = useState(false)
-  const location = useLocation()
-
-  useEffect(() => {
-    setOpened(false)
-  }, [location.pathname])
 
   return (
-    <Box component='nav' sx={(theme) => ({ backgroundColor: theme.colors.dojoTeal[7], boxShadow: theme.shadows.sm })}>
+    <Box component='nav' style={(theme) => ({ backgroundColor: theme.colors.dojoTeal[7], boxShadow: theme.shadows.sm })}>
       <Container fluid px='md' py='sm'>
-        <MediaQuery smallerThan='md' styles={{ display: 'none' }}>
-          <Box>
-            <DesktopNav />
-          </Box>
-        </MediaQuery>
+        <Box visibleFrom='md'>
+          <DesktopNav />
+        </Box>
 
-        <MediaQuery largerThan='md' styles={{ display: 'none' }}>
-          <Group position='right'>
-            <Burger opened={opened} onClick={() => setOpened((current) => !current)} color='white' aria-label='Toggle menu' />
-          </Group>
-        </MediaQuery>
+        <Group hiddenFrom='md' justify='flex-end'>
+          <Burger opened={opened} onClick={() => setOpened((current) => !current)} color='white' aria-label='Toggle menu' />
+        </Group>
       </Container>
 
       <Drawer opened={opened} onClose={() => setOpened(false)} padding='md' size='100%' title='Menu'>

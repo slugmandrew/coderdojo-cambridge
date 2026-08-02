@@ -25,9 +25,9 @@ export const Location = () => {
     googleMapsApiKey: 'AIzaSyAZnyic_SEgIQSTx_mjXSH3QLkaLQT7GM4',
   })
 
-  const [, setMap] = useState(null)
+  const [, setMap] = useState<google.maps.Map | null>(null)
 
-  const onLoad = useCallback((map) => {
+  const onLoad = useCallback((map: google.maps.Map) => {
     const bounds = new window.google.maps.LatLngBounds(center)
     map.fitBounds(bounds)
     setMap(map)
@@ -39,7 +39,7 @@ export const Location = () => {
     <>
       <PageHeading>Location</PageHeading>
       <ContentCard>
-        <SimpleGrid cols={2} spacing={0} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
+        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
           <Box h={500}>
             {isLoaded ? (
               <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={18} onLoad={onLoad} onUnmount={onUnmount}>
@@ -62,7 +62,9 @@ export const Location = () => {
             <Text>CB2 1RX</Text>
 
             <Heading2>Get here by bus</Heading2>
-            <Paragraph>Numbers 1, 2, 3, 4, 5, 6, 7 and 8 all stop at Drummer Street nearby, as well as the guided busway. From there it's just a 5 minute walk.</Paragraph>
+            <Paragraph>
+              Numbers 1, 2, 3, 4, 5, 6, 7 and 8 all stop at Drummer Street nearby, as well as the guided busway. From there it's just a 5 minute walk.
+            </Paragraph>
           </Box>
         </SimpleGrid>
       </ContentCard>
