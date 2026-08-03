@@ -69,3 +69,11 @@ test.each([
 
   expect(await screen.findByRole('heading', { level: 1, name: title })).toBeInTheDocument()
 })
+
+test('shows the location using a keyless OpenStreetMap embed', async () => {
+  renderApp('/location')
+
+  const map = await screen.findByTitle('Map showing CoderDojo Cambridge at 16 Mill Lane')
+  expect(map).toHaveAttribute('src', expect.stringContaining('openstreetmap.org/export/embed.html'))
+  expect(screen.getByRole('link', { name: /view a larger map/i })).toHaveAttribute('href', expect.stringContaining('openstreetmap.org'))
+})

@@ -14,7 +14,6 @@
     "@fortawesome/react-fontawesome": "3.5.0",
     "@mantine/core": "9.5.1",
     "@mantine/hooks": "9.5.1",
-    "@react-google-maps/api": "2.20.8",
     "axios": "1.19.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",

@@ -1,51 +1,32 @@
 import { Anchor, Box, SimpleGrid, Text } from '@mantine/core'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
-import logo from 'image/coderdojo-cambridge-logo_trans_round_40px.png'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
-const containerStyle = {
-  width: '100%',
-  height: '100%',
-}
-
-const center = {
-  lat: 52.202,
-  lng: 0.1164,
-}
+const mapUrl = 'https://www.openstreetmap.org/export/embed.html?bbox=0.1114%2C52.199%2C0.1214%2C52.205&layer=mapnik&marker=52.202%2C0.1164'
+const largerMapUrl = 'https://www.openstreetmap.org/?mlat=52.202&mlon=0.1164#map=18/52.202/0.1164'
 
 export const Location = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyAZnyic_SEgIQSTx_mjXSH3QLkaLQT7GM4',
-  })
-
-  const [, setMap] = useState<google.maps.Map | null>(null)
-
-  const onLoad = useCallback((map: google.maps.Map) => {
-    const bounds = new window.google.maps.LatLngBounds(center)
-    map.fitBounds(bounds)
-    setMap(map)
-  }, [])
-
-  const onUnmount = useCallback(() => setMap(null), [])
-
   return (
     <>
       <PageHeading>Location</PageHeading>
       <ContentCard>
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing={0}>
           <Box h={500}>
-            {isLoaded ? (
-              <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={18} onLoad={onLoad} onUnmount={onUnmount}>
-                <Marker position={center} title='CoderDojo, 16 Mill Lane, Cambridge, CB2 1RX' icon={logo} />
-              </GoogleMap>
-            ) : null}
+            <Box
+              component='iframe'
+              title='Map showing CoderDojo Cambridge at 16 Mill Lane'
+              src={mapUrl}
+              loading='lazy'
+              referrerPolicy='no-referrer'
+              w='100%'
+              h='100%'
+              style={{ border: 0 }}
+            />
           </Box>
           <Box p='md'>
             <Heading2>How to find us</Heading2>
@@ -60,6 +41,9 @@ export const Location = () => {
             <Text>16 Mill Lane</Text>
             <Text>Cambridge</Text>
             <Text>CB2 1RX</Text>
+            <Anchor href={largerMapUrl} target='_blank' rel='noreferrer' fw={700}>
+              View a larger map <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </Anchor>
 
             <Heading2>Get here by bus</Heading2>
             <Paragraph>
