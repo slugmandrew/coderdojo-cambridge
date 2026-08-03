@@ -1,63 +1,57 @@
-import { Box, chakra, Flex, Heading, Image, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react'
-import { faBook, faPrint } from '@fortawesome/free-solid-svg-icons'
+import { List, Text } from '@mantine/core'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Heading3 } from 'components/Heading3'
-import { TextLink } from 'components/TextLink'
-import printer from 'image/printer.png'
+import { TopicLayout } from 'components/TopicLayout'
 import schematic from 'image/printing-schematic.png'
 import React from 'react'
 
 export const Printing = () => (
-  <>
-    <Flex justifyContent={'space-between'} flexWrap={'wrap'}>
-      <Box w={['full', null, null, 3 / 5]}>
-        <Heading size={'xl'}>
-          3D Printing{' '}
-          <chakra.span color={'gray.600'}>
-            <FontAwesomeIcon icon={faPrint} />
-          </chakra.span>
-        </Heading>
-        <Text my={5}>
-          Did you know you can make almost anything in a <b>3D Printer</b>?.
+  <TopicLayout
+    title={
+      <>
+        3D Printing <FontAwesomeIcon icon={faPrint} color='#6c757d' />
+      </>
+    }
+    body={
+      <>
+        <Text mb='md'>
+          Did you know you can make almost anything in a <b>3D Printer</b>?
         </Text>
-        <Text my={5}>
+        <Text mb='md'>
           We have three <strong>cool projects</strong> to get you started here:
         </Text>
         <Heading3>Want to get creative?</Heading3>
-        <Text my={5}></Text>
-        You aren't limited to the projects we list here!
-        <Text my={5}>
+        <Text mb='md'>You aren't limited to the projects we list here.</Text>
+        <Text mb='md'>
           Feel free to come up with your own ideas for things to print! It can be anything your imagination can think of. Here's some ideas to get you started:
         </Text>
-        <UnorderedList>
-          <ListItem>
+        <List spacing='xs'>
+          <List.Item>
             <strong>Minecraft characters</strong>
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             <strong>A sign for your bedroom door</strong>
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             <strong>A model of one of your pets</strong>
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             <strong>A model of one of your parents (be nice!)</strong>
-          </ListItem>
-        </UnorderedList>
-      </Box>
-
-      <Stack pt={0} w={['full', null, null, 2 / 5]} overflow={'hidden'} bgColor={'white'} my={5} pl={5}>
-        <Box>
-          <Text m={3}>
-            3D Printers work by adding <strong>layers of filament one after the other</strong>
-          </Text>
-        </Box>
-        <Box>
-          <Image src={schematic} rounded={5} ml={100} w={250} />
-          <Text m={3} fontWeight={700}>
-            What do you want to make today?
-          </Text>
-        </Box>
-      </Stack>
-    </Flex>
-  </>
+          </List.Item>
+        </List>
+      </>
+    }
+    images={[
+      {
+        src: schematic,
+        alt: '3D printing schematic',
+        caption: (
+          <>
+            3D Printers work by adding <strong>layers of filament one after the other</strong>. What do you want to make today?
+          </>
+        ),
+      },
+    ]}
+  />
 )

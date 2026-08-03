@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, HStack, Image, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Button, Group, Image, Paper, Stack, Title } from '@mantine/core'
 import { faPython, faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faArrowRight, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,31 +8,30 @@ import React, { FC } from 'react'
 import { Project } from 'types/Project'
 
 export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, domain = 'raspberrypi.org' }) => {
-  const buttonSize = useBreakpointValue({ base: 'lg', md: 'md' })
-
   return (
-    <Box key={title} border={'1px solid'} borderColor={'gray.200'} bgColor={'gray.50'} borderRadius={5}>
-      <Box h={[160, 130, 120]} overflow={'hidden'} borderTopRadius={5}>
-        <Image w={'100%'} src={`./screenshot/${slug}.png`} />
+    <Paper withBorder shadow='xs' radius='md' style={(theme) => ({ height: '100%', backgroundColor: theme.white })}>
+      <Box style={{ overflow: 'hidden' }}>
+        <Image src={`./screenshot/${slug}.png`} alt={title} height={180} fit='cover' />
       </Box>
-      <Box p={5}>
-        <Heading size={'md'} color={'custom.teal'}>
+      <Stack p='md' gap='md'>
+        <Title order={3} c='dojoTeal.7'>
           {title}
-        </Heading>
-        <HStack my={3}>
-          <LanguageTag language={language} /> <LevelTag levels={level} />
-        </HStack>
-        <Flex w={'full'} justifyContent={'end'}>
+        </Title>
+        <Group gap='xs' align='flex-start'>
+          <LanguageTag language={language} />
+          <LevelTag levels={level} />
+        </Group>
+        <Group justify='flex-end'>
           <Button
-            colorScheme={'blue'}
-            size={buttonSize}
+            color='blue'
+            size='md'
             onClick={() => window.open(url, '_blank')}
-            leftIcon={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : domain === 'microbit.org' ? faMicrochip : faPython} />}
-            rightIcon={<FontAwesomeIcon icon={faArrowRight} />}>
+            leftSection={<FontAwesomeIcon icon={domain === 'raspberrypi.org' ? faRaspberryPi : domain === 'microbit.org' ? faMicrochip : faPython} />}
+            rightSection={<FontAwesomeIcon icon={faArrowRight} />}>
             View on {domain}
           </Button>
-        </Flex>
-      </Box>
-    </Box>
+        </Group>
+      </Stack>
+    </Paper>
   )
 }

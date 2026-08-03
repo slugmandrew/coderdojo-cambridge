@@ -1,10 +1,10 @@
-import { Link, LinkProps } from '@chakra-ui/react'
-import React, { FC } from 'react'
+import { Anchor } from '@mantine/core'
+import React, { FC, ReactNode } from 'react'
 
-export const TextLink: FC<LinkProps> = ({ href, children, ...rest }) => {
+export const TextLink: FC<{ href?: string; target?: string; children?: ReactNode }> = ({ href, children, target = '_blank' }) => {
   return (
-    <Link href={href} target={'_blank'} variant={'inline'} {...rest}>
+    <Anchor href={href} target={target} fw={700} c='blue.6'>
       {children}
-    </Link>
+    </Anchor>
   )
 }

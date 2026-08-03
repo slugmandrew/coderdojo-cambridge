@@ -1,11 +1,10 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text } from '@mantine/core'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { PageHeading } from 'components/PageHeading'
 import { Paragraph } from 'components/Paragraph'
 import { ProjectGrid } from 'components/ProjectGrid'
 import data from 'data/ProjectData'
-import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Christmas } from 'topics/Christmas'
 import { SenseHat } from 'topics/SenseHat'
@@ -20,7 +19,7 @@ export const Topics = () => (
     <PageHeading>Topics</PageHeading>
 
     <ContentCard>
-      <Box p={5} pb={5}>
+      <Box p='md'>
         <Heading2>Keeping it fresh</Heading2>
         <Paragraph>We like to work with many different languages and technologies, so we can keep things interesting and fun for everybody.</Paragraph>
         <Paragraph>
@@ -34,9 +33,9 @@ export const Topics = () => (
     </ContentCard>
 
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <Printing />
-        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+        <Text fw={700} my='md' c='dojoOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.printingProjects} />
@@ -44,15 +43,15 @@ export const Topics = () => (
     </ContentCard>
 
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <WebDesign />
       </Box>
     </ContentCard>
 
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <Stories />
-        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+        <Text fw={700} my='md' c='dojoOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.storyProjects} />
@@ -60,36 +59,36 @@ export const Topics = () => (
     </ContentCard>
 
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <MicroBit />
-        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+        <Text fw={700} my='md' c='dojoOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.microBitProjects} />
       </Box>
     </ContentCard>
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <Christmas />
-        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+        <Text fw={700} my='md' c='dojoOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.christmasProjects} />
       </Box>
     </ContentCard>
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <Python />
-        <Text fontWeight={'bold'} my={5} color={'custom.orange'}>
+        <Text fw={700} my='md' c='dojoOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.pythonProjects} />
       </Box>
     </ContentCard>
     <ContentCard>
-      <Box p={5}>
+      <Box p='md'>
         <SenseHat />
-        <Text fontWeight={'bold'} my={5}>
+        <Text fw={700} my='md'>
           Project List:
         </Text>
         <ProjectGrid projects={data.raspberryPiProjects} />

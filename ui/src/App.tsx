@@ -1,17 +1,21 @@
-import { Container } from '@chakra-ui/react'
-import { Footer } from 'layout/Footer'
-import { Header } from 'layout/Header'
+import { AppShell } from '@mantine/core'
+import { Footer as SiteFooter } from 'layout/Footer'
+import { Header as SiteHeader } from 'layout/Header'
 import { Main } from 'layout/Main'
 import { Navbar } from 'layout/Navbar'
 import React from 'react'
 
 export const App = () => {
   return (
-    <Container maxW={'full'} minW={'container.xs'} padding={0}>
-      <Header />
-      <Navbar />
-      <Main />
-      <Footer />
-    </Container>
+    <AppShell padding={0} header={{ height: { base: 168, md: 188 } }}>
+      <AppShell.Header p={0}>
+        <SiteHeader />
+        <Navbar />
+      </AppShell.Header>
+      <AppShell.Main>
+        <Main />
+        <SiteFooter />
+      </AppShell.Main>
+    </AppShell>
   )
 }

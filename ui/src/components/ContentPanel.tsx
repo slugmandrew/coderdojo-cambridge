@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react'
-import { FC } from 'react'
+import { Paper } from '@mantine/core'
+import { FC, ReactNode } from 'react'
 
-export const ContentPanel: FC<{ noMargin?: boolean }> = ({ noMargin = false, children }) => {
+export const ContentPanel: FC<{ noMargin?: boolean; children?: ReactNode }> = ({ noMargin = false, children }) => {
   return (
-    <Box rounded={6} bgColor={'white'} border={'1px solid'} borderColor={'gray.200'} overflow={'auto'} mt={noMargin ? 0 : 5}>
+    <Paper mt={noMargin ? 0 : 'md'} p={0} style={{ overflow: 'hidden' }}>
       {children}
-    </Box>
+    </Paper>
   )
 }

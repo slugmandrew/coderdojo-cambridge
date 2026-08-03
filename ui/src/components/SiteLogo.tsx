@@ -1,25 +1,21 @@
-import { Box, Heading, HStack, Image, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { Box, Group, Image, Stack, Text, Title } from '@mantine/core'
 import logo from 'image/coderdojo-cambridge-logo.jpg'
 import React from 'react'
 
 export const SiteLogo = () => {
-  const logoSize = useBreakpointValue({ base: '60px', md: '110px' })
-  const headingSize = useBreakpointValue({ base: 'lg', md: '2xl' })
-  const taglineSize = useBreakpointValue({ base: 'sm', md: 'lg' })
-
   return (
-    <HStack spacing={5}>
-      <Box height={logoSize} w={logoSize}>
-        <Image src={logo} fit={'contain'} />
+    <Group gap='md' wrap='nowrap' align='center'>
+      <Box h={{ base: 80, md: 110 }} w={{ base: 80, md: 110 }}>
+        <Image src={logo} fit='contain' alt='CoderDojo Cambridge logo' />
       </Box>
-      <VStack>
-        <Heading size={headingSize} fontFamily={'Big Shoulders Display'} color={'gray.700'}>
+      <Stack gap={0}>
+        <Title order={1} style={{ fontFamily: 'Big Shoulders Display, sans-serif', color: '#495057', lineHeight: 1 }}>
           CoderDojo Cambridge @ Makespace
-        </Heading>
-        <Heading size={taglineSize} color={'custom.teal'} fontFamily={'Ubuntu'} alignSelf={'center'} fontWeight={'light'}>
+        </Title>
+        <Text size='lg' c='dojoTeal.7'>
           Code club for 7-17 year olds
-        </Heading>
-      </VStack>
-    </HStack>
+        </Text>
+      </Stack>
+    </Group>
   )
 }

@@ -1,5 +1,6 @@
-﻿import { Box, Button, chakra, Flex, Image, Link, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { Anchor, Box, Button, Card, Divider, Group, Image, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core'
+import { faCalendarDays, faCode, faExternalLinkAlt, faLocationDot, faPeopleGroup, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
@@ -9,212 +10,217 @@ import mainPhoto from 'image/we-made-this.png'
 import banner from 'image/coding_banner.jpg'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router'
+
+const dojoDates = [
+  { month: 'January', day: '10th' },
+  { month: 'February', day: '14th' },
+  { month: 'March', day: '14th' },
+  { month: 'April', day: '11th' },
+  { month: 'May', day: '9th' },
+  { month: 'June', day: '13th' },
+  { month: 'September', day: '12th' },
+  { month: 'October', day: '10th' },
+  { month: 'November', day: '14th' },
+  { month: 'December', day: '12th' },
+]
+
+const HomeLinkCard = ({ icon, title, to, color, children }: { icon: IconDefinition; title: string; to: string; color: string; children: React.ReactNode }) => (
+  <ContentCard noMargin>
+    <Box p='lg'>
+      <Group gap='sm' mb='sm'>
+        <ThemeIcon size='lg' radius='xl' color={color} variant='light'>
+          <FontAwesomeIcon icon={icon} />
+        </ThemeIcon>
+        <Anchor component={RouterLink} to={to} underline='never' fw={700} color={color}>
+          {title}
+        </Anchor>
+      </Group>
+      <Text>{children}</Text>
+    </Box>
+  </ContentCard>
+)
+
+const HomeImagePanel = ({ image, alt, title, description }: { image: string; alt: string; title: string; description: string }) => (
+  <Card shadow='sm' padding='lg' radius='md' withBorder>
+    <Card.Section>
+      <Image src={image} alt={alt} />
+    </Card.Section>
+    <Group mt={'md'}>
+      <Text fw={700} mb={4}>
+        {title}
+      </Text>
+    </Group>
+    <Group>
+      <Text size='sm' c='dimmed'>
+        {description}
+      </Text>
+    </Group>
+  </Card>
+)
 
 export const Home = () => (
-  <>
-    <Stack>
-      <Image src={mainPhoto} fit={'cover'} borderRadius={5} h={[250, 500, 700]} />
-    </Stack>
-
-    <Stack direction={['column', 'column', 'row', 'row']} spacing={[0, 0, 5, 5]}>
-      <Flex w={['full', 'full', '50%', 3 / 5, 2 / 3]}>
-        <ContentCard>
-          <Stack direction={['column', 'column', 'column', 'column', 'column']}>
-            <Box w={['full', 'full', 'full', 'full', 'full']} px={5}>
-              <Heading2>Welcome to our dojo!</Heading2>
-              <Paragraph>We are a free, community-run coding club for young people aged 7-17. </Paragraph>
-              <Paragraph>
-                We are located in <b>Central Cambridge</b> and sessions run every month, on the <b>second Saturday of the month</b>.
-              </Paragraph>
-              <Paragraph>We learn to code in Scratch, Python, HTML, Java, Unity (C#) and more!</Paragraph>
-              <Paragraph>
-                Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Feel free to bring along any personal project you
-                would like help with, or we can help you find something to do.
-              </Paragraph>
-              <Paragraph>
-                We work on many different types of <NavLink to={'projects'}>projects</NavLink>, from basic 'drag and drop' coding using visual interfaces such
-                as <TextLink href={'https://scratch.mit.edu/'}>Scratch</TextLink> and{' '}
-                <TextLink href={'https://makecode.microbit.org/#editor'}>Micro:Bit MakeCode</TextLink>, to physical computing with{' '}
-                <TextLink href={'https://www.raspberrypi.com/'}>Raspberry Pi</TextLink> and <TextLink href={'https://www.arduino.cc/'}>Arduino</TextLink>, using
-                tutorials from a wide range of sources.
-              </Paragraph>
-            </Box>
-            <Flex w={['full', 'full', 'full', 'full', 'full']} maxH={['200px', '250px', '200px', '200px', '300px']}>
-              <Image src={banner} objectFit={'cover'} />
-            </Flex>
-          </Stack>
-        </ContentCard>
-      </Flex>
-      <Box w={['full', 'full', '50%', 2 / 5, 1 / 3]}>
-        <ContentCard>
-          <Box px={5} pb={10} w={'full'}>
-            <Heading2 color={'custom.teal'} center>
-              Dojo Calendar 📆
-            </Heading2>
-            <VStack mt={5}>
-              <strong>2026</strong>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>10th January</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th February</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th March</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>11th April</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>9th May</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>13th June</chakra.span>
-              </chakra.p>
-
-              <chakra.p color={'green.500'} fontWeight={'bold'}>
-                🌞 Summer Break 🌞
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>12th September</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>10th October</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>14th November</chakra.span>
-              </chakra.p>
-              <chakra.p color={'blue.500'}>
-                Saturday <chakra.span fontWeight={'bold'}>12th December</chakra.span>
-              </chakra.p>
-            </VStack>
-            <VStack>
-              <Flex mt={5} justifyContent={'center'}>
-                <VStack gap={5}>
-                  <Text align={'center'}>
-                    <strong>Note:</strong> Sessions usually run on the <u>second Saturday</u> of the month and you must have a ticket to attend.
-                  </Text>
-                  <Button
-                    as={Link}
-                    variant={'primary'}
-                    rightIcon={<FontAwesomeIcon icon={faExternalLinkAlt} />}
-                    size={'md'}
-                    href={'https://coderdojo.com/en/dojos/gb/cambridge/cambridge-makespace'}
-                    target={'_blank'}>
-                    Sign Up on the CoderDojo portal
-                  </Button>
-                </VStack>
-              </Flex>
-            </VStack>
+  <Stack gap='xl'>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
+      <Paper
+        radius='md'
+        p='xl'
+        style={(theme) => ({
+          background: `linear-gradient(135deg, ${theme.colors.gray[0]} 0%, ${theme.white} 100%)`,
+          border: `1px solid ${theme.colors.gray[2]}`,
+        })}>
+        <Stack gap='lg'>
+          <Box>
+            <Text c='dojoOrange.6' fw={700} tt='uppercase' size='sm' mb='xs'>
+              Community Coding Club
+            </Text>
+            <Title order={1} style={{ lineHeight: 1.05 }}>
+              Coding, creativity, and hands-on projects for young people in Cambridge
+            </Title>
           </Box>
-        </ContentCard>
-      </Box>
-    </Stack>
 
-    <Box>
-      <Box>
-        <SimpleGrid columns={[null, 1, 2, 3]} spacingX={5}>
-          <ContentCard>
-            <Box p={5}>
-              <Heading2>
-                <Link as={RouterLink} to={'projects'} variant={'subheading'} color={'teal.500'}>
-                  Projects
-                </Link>{' '}
-                👩‍💻
-              </Heading2>
-              <Paragraph>
-                You can work on anything you like at the dojo, but if you are new to coding or stuck for ideas, we have a set of <b>recommended projects</b> for
-                you.
-              </Paragraph>
-              <Paragraph>
-                Check them out on the <NavLink to={'projects'}>Projects</NavLink> page.
-              </Paragraph>
-            </Box>
-          </ContentCard>
-          <ContentCard>
-            <Box p={5}>
-              <Heading2>
-                <Link as={RouterLink} to={'topics'} variant={'subheading'} color={'yellow.500'}>
-                  Topics
-                </Link>{' '}
-                📚
-              </Heading2>
-              <Paragraph>
-                Coderdojo ninjas are of <strong>varied age and ability</strong>, so we cover a wide range of programming languages and technologies to keep
-                things interesting for all.
-              </Paragraph>
-              <Paragraph>
-                Learn more on the <NavLink to={'topics'}>Topics</NavLink> page.
-              </Paragraph>
-            </Box>
-          </ContentCard>
-          <ContentCard>
-            <Box p={5}>
-              <Heading2>
-                <Link as={RouterLink} to={'location'} variant={'subheading'} color={'purple.500'}>
-                  Location
-                </Link>{' '}
-                📌
-              </Heading2>
-              <Paragraph>
-                We are located at <b>Makespace</b> on Mill Lane in Central Cambridge. It's not far from the Fitzwilliam Museum.
-              </Paragraph>
-              <Paragraph>
-                More information is on the <NavLink to={'location'}>Location</NavLink> page.
-              </Paragraph>
-            </Box>
-          </ContentCard>
-          <ContentCard>
-            <Box p={5}>
-              {' '}
-              <Heading2>
-                <Link as={RouterLink} to={'ninjas'} variant={'subheading'} color={'blue.500'}>
-                  Ninjas
-                </Link>{' '}
-                🐱‍👤
-              </Heading2>
-              <Paragraph>That's you, young people!</Paragraph>
-              <Paragraph>
-                At CoderDojo, the coders are known as Ninjas 🐱‍👤. To be a ninja, you need to be <strong>focused</strong>, <strong>hardworking</strong> and{' '}
-                <strong>disciplined</strong>.
-              </Paragraph>
-              <Paragraph>
-                Read more on the <NavLink to={'ninjas'}>Ninjas</NavLink> page.
-              </Paragraph>
-            </Box>
-          </ContentCard>
-          <ContentCard>
-            <Box p={5}>
-              <Heading2>
-                <Link as={RouterLink} to={'parents'} variant={'subheading'} color={'red.500'}>
-                  Parents
-                </Link>{' '}
-                👪
-              </Heading2>
-              <Paragraph>
-                Parents are encouraged to get involved, and it's great to see the parents often having as much fun (and learning as much) as the ninjas!
-              </Paragraph>
-              <Paragraph>
-                Everything you need to know as a parent is on the <NavLink to={'parents'}>Parents</NavLink> page.
-              </Paragraph>
-            </Box>
-          </ContentCard>
-          <ContentCard>
-            <Box p={5}>
-              {' '}
-              <Heading2>
-                <Link as={RouterLink} to={'mentors'} variant={'subheading'} color={'green.500'}>
-                  Mentors
-                </Link>{' '}
-                🙋‍♂️
-              </Heading2>
-              <Paragraph>All of our mentors are professional technologists that give up their time for free.</Paragraph>
-              <Paragraph>If you are interested in helping out at one of our sessions, or just giving it a try, please get in touch.</Paragraph>
-            </Box>
-          </ContentCard>
-        </SimpleGrid>
-      </Box>
-    </Box>
-  </>
+          <Paragraph>We are a free, community-run coding club for young people aged 7-17.</Paragraph>
+          <Paragraph>
+            Sessions run monthly in <strong>Central Cambridge</strong>, usually on the <strong>second Saturday of the month</strong>, with projects for complete
+            beginners and experienced coders alike.
+          </Paragraph>
+          <Paragraph>
+            We explore Scratch, Python, HTML, Java, Unity (C#), physical computing and more, with support from mentors who love helping young people build
+            things.
+          </Paragraph>
+
+          <Group>
+            <Button
+              component='a'
+              href='https://coderdojo.com/en/dojos/gb/cambridge/cambridge-makespace'
+              target='_blank'
+              color='dojoOrange'
+              rightSection={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
+              Sign Up
+            </Button>
+            <Button component={RouterLink} to='/projects' variant='light' color='dojoTeal'>
+              Browse Projects
+            </Button>
+          </Group>
+
+          <Text size='sm' c='dimmed'>
+            We work on many different types of <NavLink to='/projects'>projects</NavLink>, from visual coding in{' '}
+            <TextLink href='https://scratch.mit.edu/'>Scratch</TextLink> and{' '}
+            <TextLink href='https://makecode.microbit.org/#editor'>Micro:Bit MakeCode</TextLink> to physical computing with{' '}
+            <TextLink href='https://www.raspberrypi.com/'>Raspberry Pi</TextLink> and <TextLink href='https://www.arduino.cc/'>Arduino</TextLink>.
+          </Text>
+        </Stack>
+      </Paper>
+
+      <Stack gap='md'>
+        <HomeImagePanel
+          image={mainPhoto}
+          alt='CoderDojo projects'
+          title='Projects Built Together'
+          description='A snapshot of the kinds of practical, creative work ninjas make at the dojo.'
+        />
+        <HomeImagePanel
+          image={banner}
+          alt='Coding banner'
+          title='Hands-On Sessions'
+          description='Each session mixes guided support, personal projects, and time to experiment.'
+        />
+      </Stack>
+    </SimpleGrid>
+
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
+      <ContentCard noMargin>
+        <Box p='lg'>
+          <Group gap='sm' mb='md'>
+            <ThemeIcon size='lg' radius='xl' color='blue' variant='light'>
+              <FontAwesomeIcon icon={faCalendarDays} />
+            </ThemeIcon>
+            <Heading2 color='dojoTeal.7'>Dojo Calendar</Heading2>
+          </Group>
+
+          <Stack gap='xs'>
+            <Text fw={700}>2026</Text>
+            {dojoDates.slice(0, 6).map((date) => (
+              <Text key={date.month} c='blue.6'>
+                Saturday{' '}
+                <Text span fw={700}>
+                  {date.day} {date.month}
+                </Text>
+              </Text>
+            ))}
+            <Divider my='xs' />
+            <Text fw={700} c='green.6'>
+              Summer Break
+            </Text>
+            <Divider my='xs' />
+            {dojoDates.slice(6).map((date) => (
+              <Text key={date.month} c='blue.6'>
+                Saturday{' '}
+                <Text span fw={700}>
+                  {date.day} {date.month}
+                </Text>
+              </Text>
+            ))}
+          </Stack>
+
+          <Paper mt='xl' p='md' radius='md' bg='gray.0'>
+            <Text>
+              <strong>Note:</strong> Sessions usually run on the <u>second Saturday</u> of the month and you must have a ticket to attend.
+            </Text>
+          </Paper>
+        </Box>
+      </ContentCard>
+
+      <ContentCard noMargin>
+        <Box p='lg'>
+          <Group gap='sm' mb='md'>
+            <ThemeIcon size='lg' radius='xl' color='dojoOrange' variant='light'>
+              <FontAwesomeIcon icon={faLocationDot} />
+            </ThemeIcon>
+            <Heading2 color='dojoOrange.6'>What To Expect</Heading2>
+          </Group>
+
+          <Stack gap='md'>
+            <Text>
+              Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Bring a project you already care about, or we can help
+              you find a great starting point.
+            </Text>
+            <Text>
+              Parents are encouraged to get involved, and younger ninjas can attend with support from an adult. We aim to make the club friendly, practical, and
+              easy to join.
+            </Text>
+            <Group>
+              <Button component={RouterLink} to='/location' variant='light' color='blue'>
+                Find Us
+              </Button>
+              <Button component={RouterLink} to='/parents' variant='light' color='red'>
+                Parent Info
+              </Button>
+            </Group>
+          </Stack>
+        </Box>
+      </ContentCard>
+    </SimpleGrid>
+
+    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing='lg'>
+      <HomeLinkCard icon={faCode} title='Projects' to='/projects' color='teal'>
+        Guided project ideas for different ages, interests, and skill levels.
+      </HomeLinkCard>
+      <HomeLinkCard icon={faUserGroup} title='Topics' to='/topics' color='yellow'>
+        Explore the languages, tools, and technologies we like to teach.
+      </HomeLinkCard>
+      <HomeLinkCard icon={faLocationDot} title='Location' to='/location' color='violet'>
+        Find the venue, address details, and map directions.
+      </HomeLinkCard>
+      <HomeLinkCard icon={faPeopleGroup} title='Ninjas' to='/ninjas' color='blue'>
+        Everything young people need to know before coming along.
+      </HomeLinkCard>
+      <HomeLinkCard icon={faPeopleGroup} title='Parents' to='/parents' color='red'>
+        Practical information for families, guardians, and first visits.
+      </HomeLinkCard>
+      <HomeLinkCard icon={faUserGroup} title='Mentors' to='/mentors' color='green'>
+        Learn more about the volunteers who support the dojo.
+      </HomeLinkCard>
+    </SimpleGrid>
+  </Stack>
 )

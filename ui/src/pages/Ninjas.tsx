@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack } from '@chakra-ui/react'
+import { Box, Image, Stack } from '@mantine/core'
 import { ContentCard } from 'components/ContentCard'
 import { Heading2 } from 'components/Heading2'
 import { Heading3 } from 'components/Heading3'
@@ -14,11 +14,11 @@ export const Ninjas = () => (
 
     <Heading2>Information For Ninjas</Heading2>
 
-    <HStack>{<Image src={group} fit={'contain'} />}</HStack>
+    <Image src={group} fit='contain' alt='Ninja group' mb='md' />
 
-    <Stack gap={5}>
+    <Stack gap='md'>
       <ContentCard noMargin>
-        <Box p={5}>
+        <Box p='md'>
           <Heading3>What is a Ninja?</Heading3>
           <Paragraph>
             Ninjas are the <strong>young people that attend the dojo</strong>. If you're <strong>aged between 7 and 17</strong>, then that's you!
@@ -26,15 +26,15 @@ export const Ninjas = () => (
         </Box>
       </ContentCard>
       <ContentCard>
-        <Box p={5}>
+        <Box p='md'>
           <Heading3>How to become a Ninja</Heading3>
           <Paragraph>
             The first thing to do is register on the{' '}
-            <TextLink href={'https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'}>CoderDojo Portal HERE</TextLink>.
+            <TextLink href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'>CoderDojo Portal HERE</TextLink>.
           </Paragraph>
           <Paragraph>
             Once you have done that you can register for the individual sessions as they are announced. Keep an eye on your email inbox and on{' '}
-            <TextLink href={'https://twitter.com/CoderDojoCamUK'}>Twitter</TextLink> for announcements.
+            <TextLink href='https://twitter.com/CoderDojoCamUK'>Twitter</TextLink> for announcements.
           </Paragraph>
           <Paragraph>
             <strong>
@@ -44,7 +44,7 @@ export const Ninjas = () => (
         </Box>
       </ContentCard>
       <ContentCard>
-        <Box p={5}>
+        <Box p='md'>
           <Heading3>What do Ninjas do?</Heading3>
           <Paragraph>Ninjas come to dojo sessions to train their coding skills.</Paragraph>
           <Paragraph>
@@ -56,7 +56,7 @@ export const Ninjas = () => (
         </Box>
       </ContentCard>
       <ContentCard>
-        <Box p={5}>
+        <Box p='md'>
           <Heading3>Why are they called Ninjas?</Heading3>
           <Paragraph>Because it's CoderDojo, of course!</Paragraph>
           <Paragraph>
@@ -69,7 +69,5 @@ export const Ninjas = () => (
         </Box>
       </ContentCard>
     </Stack>
-
-    {/* PARENTS */}
   </Box>
 )
