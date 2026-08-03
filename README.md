@@ -40,4 +40,28 @@ yarn start
 
 The Vite build is written to `ui/build`, which the Express server serves along with its API routes.
 
+## Deployment
+
+The production mirror runs in Docker on the `code-club-host` exe.dev VM. A successful `Validate` workflow for a push to `master` triggers `.github/workflows/deploy-exe-dev.yml`, which uploads that exact commit and waits for the container health check before verifying the public endpoint.
+
+The GitHub `production` environment requires an `EXE_DEV_DEPLOY_KEY` secret. Register its public key in exe.dev with the `codeclub-deploy` tag, and give the production VM the same tag so the key cannot access unrelated VMs:
+
+```sh
+ssh exe.dev ssh-key add --tag=codeclub-deploy 'ssh-ed25519 AAAA... github-actions-codeclub-deploy'
+ssh exe.dev tag code-club-host codeclub-deploy
+```
+
+The VM must be public and proxy port 8000:
+
+```sh
+ssh exe.dev share port code-club-host 8000
+ssh exe.dev share set-public code-club-host
+```
+
+For a manual deployment from an uploaded checkout:
+
+```sh
+DEPLOY_SHA="$(git rev-parse HEAD)" ./ops/deploy.sh
+```
+
 <!-- deploy-smoke-test: github-to-heroku pipeline check (2026-03-01) -->
