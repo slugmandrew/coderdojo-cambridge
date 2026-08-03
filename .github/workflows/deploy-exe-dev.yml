@@ -1,0 +1,52 @@
+name: Deploy to exe.dev
+
+on:
+  workflow_run:
+    workflows: [Validate]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codeclub-cambridge-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Configure scoped deploy key
+        env:
+          EXE_DEV_DEPLOY_KEY: ${{ secrets.EXE_DEV_DEPLOY_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          install -m 600 /dev/null ~/.ssh/exe_dev_deploy
+          printf '%s\n' "$EXE_DEV_DEPLOY_KEY" > ~/.ssh/exe_dev_deploy
+          cp .github/exe.dev.known_hosts ~/.ssh/known_hosts
+
+      - name: Upload release
+        env:
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
+            'mkdir -p /home/exedev/apps/codeclub-cambridge'
+          rsync --archive --compress --delete \
+            --exclude=.git \
+            -e 'ssh -i ~/.ssh/exe_dev_deploy' \
+            ./ vm+code-club-host@exe.dev:/home/exedev/apps/codeclub-cambridge/
+          ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
+            "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA ./ops/deploy.sh"
+
+      - name: Verify public mirror
+        run: curl --fail --show-error --silent --retry 6 --retry-all-errors https://code-club-host.exe.xyz/healthz

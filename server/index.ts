@@ -15,6 +15,10 @@ app.use(express.static(path.resolve(__dirname, '../ui/build')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.get('/healthz', (_req, res) => {
+  res.status(200).json({ status: 'ok' })
+})
+
 // const dbSetup = async () => {
 //   client =
 //     process.env.NODE_ENV === 'production'
@@ -47,6 +51,10 @@ app.post('/api/scrape', async (req, res) => {
 
   try {
     const parsedUrl = new URL(url)
+    if (parsedUrl.protocol !== 'https:' || parsedUrl.hostname !== 'projects.raspberrypi.org') {
+      return res.status(400).send('Only Raspberry Pi project URLs are supported')
+    }
+
     const slug = (path.basename(parsedUrl.pathname) || 'screenshot').replace(/[^a-z0-9-_]/gi, '-')
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
 

@@ -4,11 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 export const SiteLink = () => {
+  const siteUrl = window.location.origin
+
   return (
     <Group gap='md' align='center'>
       <Title order={3} py='sm'>
-        <Anchor c='dojoOrange.6' href='https://coderdojo-cambridge.herokuapp.com/' style={{ fontFamily: 'Courier New, monospace' }}>
-          coderdojo-cambridge.herokuapp.com
+        <Anchor c='dojoOrange.6' href={siteUrl} style={{ fontFamily: 'Courier New, monospace' }}>
+          {window.location.host}
         </Anchor>
       </Title>
       <Paper withBorder p='sm'>

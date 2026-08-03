@@ -1,0 +1,21 @@
+name: codeclub-cambridge
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        DEPLOY_SHA: ${DEPLOY_SHA:-local}
+    image: codeclub-cambridge:current
+    container_name: codeclub-cambridge
+    restart: unless-stopped
+    init: true
+    ports:
+      - '127.0.0.1:8000:8000'
+    environment:
+      NODE_ENV: production
+      PORT: 8000
+      DEPLOY_SHA: ${DEPLOY_SHA:-local}
+    security_opt:
+      - no-new-privileges:true
+    shm_size: 1gb
