@@ -40,6 +40,24 @@ yarn start
 
 The Vite build is written to `ui/build`, which the Express server serves along with its API routes.
 
+## Schedule editor
+
+The public calendar is managed at `/manage/schedule`. Set `SCHEDULE_ADMIN_KEY_HASH` before using the editor. Calendar changes are written to `data/schedule.json` locally, or to the persistent `schedule-data` Docker volume in production, so updating a date does not require a commit or deployment.
+
+Generate a one-way hash for a private editor key (replace the example key before running this):
+
+```sh
+node -e "const { randomBytes, scryptSync } = require('crypto'); const salt = randomBytes(16).toString('hex'); console.log(salt + ':' + scryptSync('your-private-editor-key', salt, 32).toString('hex'))"
+```
+
+For local development:
+
+```sh
+SCHEDULE_ADMIN_KEY_HASH='salt:hash-from-the-command-above' yarn dev
+```
+
+For production, add the hash as the `SCHEDULE_ADMIN_KEY_HASH` secret in the GitHub `production` environment; the deployment workflow passes it to Docker Compose. The plain editor key is never stored on the server: it is sent only when publishing and is kept in the browser's session storage, which is cleared when the tab is closed.
+
 ## Deployment
 
 The production mirror runs in Docker on the `code-club-host` exe.dev VM. A successful `Validate` workflow for a push to `master` triggers `.github/workflows/deploy-exe-dev.yml`, which uploads that exact commit and waits for the container health check before verifying the public endpoint.

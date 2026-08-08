@@ -11,6 +11,8 @@ export const theme: MantineThemeOverride = {
     dojoTeal: ['#ecf9f7', '#d5f0ec', '#addfd7', '#82cec0', '#5bbdab', '#2ea98f', '#148573', '#006b5d', '#005349', '#003b35'],
   },
   defaultRadius: 'md',
+  fontSmoothing: true,
+  focusRing: 'auto',
   components: {
     Container: {
       defaultProps: {
@@ -24,9 +26,9 @@ export const theme: MantineThemeOverride = {
     },
     Paper: {
       defaultProps: {
-        radius: 'md',
+        radius: 'lg',
         withBorder: true,
-        shadow: 'xs',
+        shadow: 'sm',
       },
     },
   },
