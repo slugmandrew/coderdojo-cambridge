@@ -16,7 +16,7 @@ services:
       NODE_ENV: production
       PORT: 8000
       DEPLOY_SHA: ${DEPLOY_SHA:-local}
-      PUBLIC_URL: ${PUBLIC_URL:-https://club-host.exe.xyz}
+      PUBLIC_URL: ${PUBLIC_URL:-https://code-club-host.exe.xyz}
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
       AUTH_ALLOWED_EMAILS: ${AUTH_ALLOWED_EMAILS:-}

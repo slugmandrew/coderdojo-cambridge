@@ -47,7 +47,7 @@ Approved mentors sign in with Google at `/manage/schedule` to publish calendar c
 Create a Google OAuth client with the **Web application** type and register these redirect URIs:
 
 - `http://localhost:5173/auth/google/callback` for local development
-- `https://club-host.exe.xyz/auth/google/callback` for production
+- `https://code-club-host.exe.xyz/auth/google/callback` for production
 
 The application requests only the OpenID, email, and profile scopes. Configure it with:
 

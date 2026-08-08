@@ -38,7 +38,7 @@ jobs:
       - name: Upload release
         env:
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
-          PUBLIC_URL: https://club-host.exe.xyz
+          PUBLIC_URL: https://code-club-host.exe.xyz
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           AUTH_ALLOWED_EMAILS: ${{ secrets.AUTH_ALLOWED_EMAILS }}
