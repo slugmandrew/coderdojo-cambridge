@@ -18,7 +18,7 @@ const renderApp = (path = '/') =>
 
 test('renders title', () => {
   renderApp()
-  const title = screen.getByText(/CoderDojo Cambridge/i)
+  const title = screen.getByText(/Code Club Cambridge/i)
   expect(title).toBeInTheDocument()
 })
 

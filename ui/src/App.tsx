@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <>
       <ScrollToTop />
-      <AppShell padding={0} header={{ height: 76 }}>
+      <AppShell padding={0} header={{ height: 84 }}>
         <AppShell.Header p={0}>
           <SiteHeader />
         </AppShell.Header>

@@ -7,12 +7,12 @@ export const SiteLogo = () => {
   return (
     <Anchor component={RouterLink} to='/' className='site-logo' underline='never'>
       <Group gap='sm' wrap='nowrap' align='center'>
-        <Image src={logo} fit='contain' alt='' h={52} w={52} />
+        <Image src={logo} fit='contain' alt='' h={58} w={58} />
         <Stack gap={0}>
-          <Text className='site-logo-name' size='lg' fw={900} c='gray.9' lh={1}>
-            CoderDojo Cambridge
+          <Text className='site-logo-name' fw={900} c='gray.9' lh={1}>
+            Code Club Cambridge
           </Text>
-          <Text size='xs' c='dojoTeal.7' fw={800} tt='uppercase' lts={0.6}>
+          <Text className='site-logo-tagline' c='dojoTeal.7' fw={800} tt='uppercase' lts={0.6}>
             At Makespace · Ages 7–17
           </Text>
         </Stack>
