@@ -4,7 +4,7 @@ set -euo pipefail
 
 auth_is_configured() {
   local response
-  IFS= read -r response
+  IFS= read -r response || [[ -n "$response" ]]
   [[ "$response" =~ \"configured\"[[:space:]]*:[[:space:]]*true([,}]) ]]
 }
 
