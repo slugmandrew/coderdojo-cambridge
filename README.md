@@ -1,6 +1,6 @@
-# CoderDojo Cambridge
+# Code Club Cambridge
 
-Project resources for CoderDojo Cambridge, built as a React application with a small Express server.
+Project resources for Code Club Cambridge, built as a React application with a small Express server.
 
 ## Toolchain
 

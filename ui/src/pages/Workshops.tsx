@@ -21,7 +21,7 @@ export const Workshops = () => {
       <PageHeading>Workshops</PageHeading>
       <Group justify='space-between' align='flex-end' mb='md'>
         <Heading2>Teleporting Animals with Micro:Bit</Heading2>
-        <Heading3 color='dojoTeal.7'>22nd April 23</Heading3>
+        <Heading3 color='clubTeal.7'>22nd April 23</Heading3>
       </Group>
 
       <ContentPanel>

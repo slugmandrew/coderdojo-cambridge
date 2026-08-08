@@ -3,7 +3,7 @@
 FROM ghcr.io/puppeteer/puppeteer:24.43.1
 
 ARG DEPLOY_SHA=local
-LABEL org.coderdojo.cambridge.service="web" \
+LABEL org.codeclub.cambridge.service="web" \
   org.opencontainers.image.revision="$DEPLOY_SHA"
 
 USER root

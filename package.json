@@ -1,5 +1,5 @@
 {
-  "name": "@coderdojo/root",
+  "name": "@codeclub/root",
   "private": true,
   "version": "0.1.0",
   "workspaces": [
@@ -11,9 +11,9 @@
     "start": "tsx server/index.ts",
     "dev": "concurrently -k -n server,ui \"yarn dev:server\" \"yarn dev:ui\"",
     "dev:server": "tsx watch server/index.ts",
-    "dev:ui": "yarn workspace @coderdojo/ui dev",
-    "build": "yarn workspace @coderdojo/ui build",
-    "test": "yarn workspace @coderdojo/ui test --run",
+    "dev:ui": "yarn workspace @codeclub/ui dev",
+    "build": "yarn workspace @codeclub/ui build",
+    "test": "yarn workspace @codeclub/ui test --run",
     "typecheck": "tsc -p server/tsconfig.json && tsc -p ui/tsconfig.json",
     "lint": "eslint .",
     "format:check": "prettier --check .",

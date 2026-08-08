@@ -14,7 +14,7 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
         <Image src={`./screenshot/${slug}.png`} alt={title} height={180} fit='cover' />
       </Box>
       <Stack p='md' gap='md'>
-        <Title order={3} c='dojoTeal.7'>
+        <Title order={3} c='clubTeal.7'>
           {title}
         </Title>
         <Group gap='xs' align='flex-start'>

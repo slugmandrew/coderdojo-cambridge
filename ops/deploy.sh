@@ -19,4 +19,4 @@ docker compose up --detach --wait --remove-orphans web
 
 curl --fail --silent --show-error http://127.0.0.1:8000/healthz >/dev/null
 docker compose ps
-docker image prune --force --filter label=org.coderdojo.cambridge.service=web >/dev/null
+docker image prune --force --filter label=org.codeclub.cambridge.service=web >/dev/null

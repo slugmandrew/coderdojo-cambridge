@@ -27,7 +27,7 @@ export const Scraper: FC = () => {
           value={url}
           onChange={(event) => setUrl(event.currentTarget.value)}
         />
-        <Button color='dojoTeal' onClick={() => performScrape(url)}>
+        <Button color='clubTeal' onClick={() => performScrape(url)}>
           Scrape
         </Button>
         {data.slug && <Image src={`./screenshot/${data.slug}.png`} alt={data.title} />}

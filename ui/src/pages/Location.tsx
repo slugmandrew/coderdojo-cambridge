@@ -19,7 +19,7 @@ export const Location = () => {
           <Box h={500}>
             <Box
               component='iframe'
-              title='Map showing CoderDojo Cambridge at 16 Mill Lane'
+              title='Map showing Code Club Cambridge at 16 Mill Lane'
               src={mapUrl}
               loading='lazy'
               referrerPolicy='no-referrer'

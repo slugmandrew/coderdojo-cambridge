@@ -1,10 +1,10 @@
 import { Alert, Box, Button, Checkbox, Group, LoadingOverlay, Paper, PasswordInput, SimpleGrid, Stack, Text, TextInput, Title } from '@mantine/core'
 import { faCalendarPlus, faFloppyDisk, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { defaultSchedule, DojoSession, Schedule } from 'data/Schedule'
+import { defaultSchedule, ClubSession, Schedule } from 'data/Schedule'
 import React, { useEffect, useState } from 'react'
 
-const blankSession = (): DojoSession => ({ id: `session-${Date.now()}`, date: '', title: 'CoderDojo session', time: '10:00–13:00' })
+const blankSession = (): ClubSession => ({ id: `session-${Date.now()}`, date: '', title: 'Code Club session', time: '10:00–13:00' })
 
 export const ManageSchedule = () => {
   const [schedule, setSchedule] = useState<Schedule>(defaultSchedule)
@@ -21,7 +21,7 @@ export const ManageSchedule = () => {
       .finally(() => setLoading(false))
   }, [])
 
-  const update = (index: number, patch: Partial<DojoSession>) =>
+  const update = (index: number, patch: Partial<ClubSession>) =>
     setSchedule((current) => ({
       ...current,
       sessions: current.sessions.map((session, sessionIndex) => (sessionIndex === index ? { ...session, ...patch } : session)),
@@ -53,7 +53,7 @@ export const ManageSchedule = () => {
       <Box>
         <Text className='eyebrow'>Mini CMS</Text>
         <Title order={1} mt='xs'>
-          Manage the dojo calendar
+          Manage the Code Club calendar
         </Title>
         <Text c='dimmed' mt='sm' maw={660}>
           Add, change or cancel a session here. Saving publishes the calendar immediately—there is no code change or deployment.
@@ -109,7 +109,7 @@ export const ManageSchedule = () => {
 
           <Button
             variant='light'
-            color='dojoTeal'
+            color='clubTeal'
             leftSection={<FontAwesomeIcon icon={faCalendarPlus} />}
             onClick={() => setSchedule((current) => ({ ...current, sessions: [...current.sessions, blankSession()] }))}>
             Add a session
@@ -117,7 +117,7 @@ export const ManageSchedule = () => {
         </Stack>
       </Paper>
 
-      <Paper p={{ base: 'md', sm: 'xl' }} radius='xl' bg='dojoTeal.0'>
+      <Paper p={{ base: 'md', sm: 'xl' }} radius='xl' bg='clubTeal.0'>
         <Title order={2} size='h3' mb='sm'>
           Publish changes
         </Title>
@@ -132,7 +132,7 @@ export const ManageSchedule = () => {
             onChange={(event) => setToken(event.currentTarget.value)}
             style={{ flex: 1 }}
           />
-          <Button color='dojoOrange' loading={saving} disabled={!token} leftSection={<FontAwesomeIcon icon={faFloppyDisk} />} onClick={() => void save()}>
+          <Button color='clubOrange' loading={saving} disabled={!token} leftSection={<FontAwesomeIcon icon={faFloppyDisk} />} onClick={() => void save()}>
             Save and publish
           </Button>
         </Group>

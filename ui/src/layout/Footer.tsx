@@ -8,7 +8,7 @@ export const Footer = () => (
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing='xl'>
         <Box>
           <Title order={2} size='h3' c='white'>
-            Cambridge’s volunteer dojo
+            Cambridge’s volunteer Code Club
           </Title>
           <Text c='gray.4' mt='sm' maw={340}>
             A free, volunteer-led coding club for young people aged 7–17 at Makespace Cambridge.
@@ -31,8 +31,8 @@ export const Footer = () => (
         </Stack>
         <Stack gap='xs'>
           <Text fw={800}>Our community</Text>
-          <Anchor href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace' c='gray.4'>
-            Cambridge @ Makespace Dojo
+          <Anchor href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace' c='gray.4'>
+            Code Club Cambridge @ Makespace
           </Anchor>
           <Anchor href='https://web.makespace.org' c='gray.4'>
             Makespace

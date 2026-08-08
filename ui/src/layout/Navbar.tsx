@@ -5,14 +5,14 @@ import { Link as RouterLink, useLocation } from 'react-router'
 const navItems = [
   { label: 'Projects', to: '/projects' },
   { label: 'Topics', to: '/topics' },
-  { label: 'Ninjas', to: '/ninjas' },
+  { label: 'Coders', to: '/coders' },
   { label: 'Parents', to: '/parents' },
   { label: 'Visit us', to: '/location' },
   { label: 'Workshops', to: '/workshops' },
 ]
 
 export const NavLink: FC<{ to: string; mobile?: boolean; children?: ReactNode }> = ({ to, children }) => (
-  <Anchor component={RouterLink} to={to} fw={800} c='dojoTeal.7'>
+  <Anchor component={RouterLink} to={to} fw={800} c='clubTeal.7'>
     {children}
   </Anchor>
 )
@@ -39,7 +39,7 @@ export const Navbar = () => {
     <>
       <Group gap={4} visibleFrom='lg' wrap='nowrap'>
         {links}
-        <Button component='a' href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace' target='_blank' ml='sm' color='dojoOrange'>
+        <Button component='a' href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace' target='_blank' ml='sm' color='clubOrange'>
           Get tickets
         </Button>
       </Group>
@@ -52,7 +52,7 @@ export const Navbar = () => {
           </Anchor>
           {links}
           <Divider my='lg' />
-          <Button component='a' href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace' target='_blank' size='lg' color='dojoOrange'>
+          <Button component='a' href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace' target='_blank' size='lg' color='clubOrange'>
             Get tickets
           </Button>
         </Stack>

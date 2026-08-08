@@ -8,7 +8,7 @@ import React from 'react'
 export const Mentors = () => (
   <>
     <PageHeading>Mentors</PageHeading>
-    <Heading2>People that volunteer at the dojo</Heading2>
+    <Heading2>People who volunteer at Code Club</Heading2>
     <Text size='xl' fw={700} c='red.7'>
       <ThemeIcon color='red' variant='light' mr='sm'>
         <FontAwesomeIcon icon={faPersonDigging} />

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title description">
+  <title id="title">Code Club Cambridge</title>
+  <desc id="description">A Cambridge college framed by coding braces</desc>
+  <path d="M18 12h-2c-4 0-6 2-6 6v8c0 4-2 6-6 6 4 0 6 2 6 6v8c0 4 2 6 6 6h2M46 12h2c4 0 6 2 6 6v8c0 4 2 6 6 6-4 0-6 2-6 6v8c0 4-2 6-6 6h-2" fill="none" stroke="#df6724" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <path d="M23 45V24h2v-5l3-7 3 7v4h2v-4l3-7 3 7v5h2v21H23Z" fill="#005349"/>
+  <path d="M27 28h3v11h-3zm7 0h3v11h-3z" fill="#fffdfa"/>
+  <path d="M21 44h22v4H21z" fill="#005349"/>
+</svg>

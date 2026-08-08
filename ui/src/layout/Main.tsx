@@ -6,7 +6,7 @@ const Home = lazy(() => import('pages/Home').then(({ Home }) => ({ default: Home
 const Location = lazy(() => import('pages/Location').then(({ Location }) => ({ default: Location })))
 const ManageSchedule = lazy(() => import('pages/ManageSchedule').then(({ ManageSchedule }) => ({ default: ManageSchedule })))
 const Mentors = lazy(() => import('pages/Mentors').then(({ Mentors }) => ({ default: Mentors })))
-const Ninjas = lazy(() => import('pages/Ninjas').then(({ Ninjas }) => ({ default: Ninjas })))
+const Coders = lazy(() => import('pages/Coders').then(({ Coders }) => ({ default: Coders })))
 const Parents = lazy(() => import('pages/Parents').then(({ Parents }) => ({ default: Parents })))
 const Projects = lazy(() => import('pages/Projects').then(({ Projects }) => ({ default: Projects })))
 const Scraper = lazy(() => import('pages/Scraper').then(({ Scraper }) => ({ default: Scraper })))
@@ -30,8 +30,8 @@ export const Main = () => {
             {/* PROJECTS */}
             <Route path='/projects' element={<Projects />} />
 
-            {/* NINJAS */}
-            <Route path='/ninjas' element={<Ninjas />} />
+            {/* CODERS */}
+            <Route path='/coders' element={<Coders />} />
 
             {/* PARENTS */}
             <Route path='/parents' element={<Parents />} />

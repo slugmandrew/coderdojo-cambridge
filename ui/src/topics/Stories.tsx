@@ -26,18 +26,18 @@ export const Stories = () => (
         <List spacing='xs'>
           <List.Item>
             <strong>MakeCode</strong> - MakeCode Arcade is a Scratch-like editor that lets you create <em>games and stories</em> using drag and drop blocks.
-            Recommended for younger ninjas.
+            Recommended for younger coders.
           </List.Item>
           <List.Item>
             <strong>Scratch</strong> - Scratch is the original block-based programming language that lets you create <em>games and stories</em> using drag and
-            drop. Great for younger ninjas, but also used by older ninjas too.
+            drop. Great for younger coders, but also used by older coders too.
           </List.Item>
           <List.Item>
             <strong>HTML + CSS</strong> - HTML and CSS are the building blocks of the web. Learn how to create your own <em>web pages</em> to tell a story, and
             even throw in some interactivity using JavaScript.
           </List.Item>
           <List.Item>
-            <strong>Python</strong> - We have some python projects for levels 2 and 3. More advanced ninjas who are ready to learn a text-based programming
+            <strong>Python</strong> - We have some python projects for levels 2 and 3. More advanced coders who are ready to learn a text-based programming
             language should give it a try.
           </List.Item>
         </List>
