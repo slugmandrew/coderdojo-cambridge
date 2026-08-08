@@ -38,6 +38,7 @@ jobs:
       - name: Upload release
         env:
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
+          SCHEDULE_ADMIN_KEY_HASH: ${{ secrets.SCHEDULE_ADMIN_KEY_HASH }}
         run: |
           ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
             'mkdir -p /home/exedev/apps/codeclub-cambridge'
@@ -46,7 +47,7 @@ jobs:
             -e 'ssh -i ~/.ssh/exe_dev_deploy' \
             ./ vm+code-club-host@exe.dev:/home/exedev/apps/codeclub-cambridge/
           ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
-            "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA ./ops/deploy.sh"
+            "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA SCHEDULE_ADMIN_KEY_HASH='$SCHEDULE_ADMIN_KEY_HASH' ./ops/deploy.sh"
 
       - name: Verify public mirror
         run: curl --fail --show-error --silent --retry 6 --retry-all-errors https://code-club-host.exe.xyz/healthz

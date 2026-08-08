@@ -1,112 +1,62 @@
-import { Anchor, Box, Burger, Button, Container, Divider, Drawer, Group, Stack } from '@mantine/core'
-import React, { FC, Fragment, ReactNode, useState } from 'react'
+import { Anchor, Burger, Button, Divider, Drawer, Group, Stack } from '@mantine/core'
+import React, { FC, ReactNode, useState } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router'
 
-type NavItem = {
-  label: string
-  to: string
-}
-
-const navItems: NavItem[] = [
-  { label: 'Home', to: '/' },
+const navItems = [
   { label: 'Projects', to: '/projects' },
   { label: 'Topics', to: '/topics' },
   { label: 'Ninjas', to: '/ninjas' },
   { label: 'Parents', to: '/parents' },
-  { label: 'Location', to: '/location' },
+  { label: 'Visit us', to: '/location' },
   { label: 'Workshops', to: '/workshops' },
 ]
 
-const NavButton: FC<NavItem & { mobile?: boolean; onNavigate?: () => void }> = ({ label, to, mobile = false, onNavigate }) => {
-  const location = useLocation()
-
-  return (
-    <Button
-      component={RouterLink}
-      to={to}
-      aria-current={location.pathname === to ? 'page' : undefined}
-      onClick={onNavigate}
-      variant={mobile ? 'light' : 'subtle'}
-      color={mobile ? 'dojoTeal' : 'gray'}
-      size={mobile ? 'md' : 'sm'}
-      fullWidth={mobile}
-      styles={(theme) => ({
-        root: mobile
-          ? undefined
-          : {
-              color: theme.white,
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.14)',
-              },
-            },
-      })}>
-      {label}
-    </Button>
-  )
-}
-
-export const NavLink: FC<{ to: string; mobile?: boolean; children?: ReactNode }> = ({ to, mobile, children }) => (
-  <Anchor component={RouterLink} to={to} fw={700} c={mobile ? 'dojoTeal.7' : 'dojoOrange.6'} style={{ width: mobile ? '100%' : 'auto' }}>
+export const NavLink: FC<{ to: string; mobile?: boolean; children?: ReactNode }> = ({ to, children }) => (
+  <Anchor component={RouterLink} to={to} fw={800} c='dojoTeal.7'>
     {children}
   </Anchor>
 )
 
-const SignUpButton: FC<{ mobile?: boolean }> = ({ mobile = false }) => (
-  <Button
-    component='a'
-    href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'
-    target='_blank'
-    color='dojoOrange'
-    variant='filled'
-    size={mobile ? 'md' : 'sm'}
-    fullWidth={mobile}>
-    Sign Up
-  </Button>
-)
-
-const DesktopNav: FC = () => (
-  <Group gap='xs' justify='center' wrap='nowrap'>
-    {navItems.map((item) => (
-      <NavButton key={item.to} {...item} />
-    ))}
-    <SignUpButton />
-  </Group>
-)
-
-const MobileNav: FC<{ onNavigate: () => void }> = ({ onNavigate }) => (
-  <Stack gap='sm'>
-    {navItems.map((item, index) => (
-      <Fragment key={item.to}>
-        <NavButton {...item} mobile onNavigate={onNavigate} />
-        {index < navItems.length - 1 && <Divider />}
-      </Fragment>
-    ))}
-    <Divider />
-    <SignUpButton mobile />
-    <Button variant='default' onClick={onNavigate} fullWidth>
-      Close menu
-    </Button>
-  </Stack>
-)
-
-export const Navbar: FC = () => {
+export const Navbar = () => {
   const [opened, setOpened] = useState(false)
+  const location = useLocation()
+
+  const links = navItems.map((item) => (
+    <Anchor
+      key={item.to}
+      component={RouterLink}
+      to={item.to}
+      aria-current={location.pathname === item.to ? 'page' : undefined}
+      onClick={() => setOpened(false)}
+      className='nav-link'
+      data-active={location.pathname === item.to || undefined}
+      underline='never'>
+      {item.label}
+    </Anchor>
+  ))
 
   return (
-    <Box component='nav' style={(theme) => ({ backgroundColor: theme.colors.dojoTeal[7], boxShadow: theme.shadows.sm })}>
-      <Container fluid px='md' py='sm'>
-        <Box visibleFrom='md'>
-          <DesktopNav />
-        </Box>
+    <>
+      <Group gap={4} visibleFrom='lg' wrap='nowrap'>
+        {links}
+        <Button component='a' href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace' target='_blank' ml='sm' color='dojoOrange'>
+          Get tickets
+        </Button>
+      </Group>
 
-        <Group hiddenFrom='md' justify='flex-end'>
-          <Burger opened={opened} onClick={() => setOpened((current) => !current)} color='white' aria-label='Toggle menu' />
-        </Group>
-      </Container>
-
-      <Drawer opened={opened} onClose={() => setOpened(false)} padding='md' size='100%' title='Menu'>
-        <MobileNav onNavigate={() => setOpened(false)} />
+      <Burger opened={opened} onClick={() => setOpened((current) => !current)} hiddenFrom='lg' aria-label='Toggle menu' />
+      <Drawer opened={opened} onClose={() => setOpened(false)} padding='lg' size='min(100%, 380px)' position='right' title='Menu'>
+        <Stack gap={0} className='mobile-navigation'>
+          <Anchor component={RouterLink} to='/' onClick={() => setOpened(false)} className='mobile-nav-link'>
+            Home
+          </Anchor>
+          {links}
+          <Divider my='lg' />
+          <Button component='a' href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace' target='_blank' size='lg' color='dojoOrange'>
+            Get tickets
+          </Button>
+        </Stack>
       </Drawer>
-    </Box>
+    </>
   )
 }

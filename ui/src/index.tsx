@@ -1,5 +1,6 @@
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
+import './app.css'
 import '@fontsource/big-shoulders-display/400'
 import '@fontsource/quicksand/400'
 import '@fontsource/ubuntu/400'

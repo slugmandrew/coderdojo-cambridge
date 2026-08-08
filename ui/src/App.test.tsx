@@ -64,6 +64,7 @@ test.each([
   ['/mentors', 'Mentors'],
   ['/location', 'Location'],
   ['/workshops', 'Workshops'],
+  ['/manage/schedule', 'Manage the dojo calendar'],
 ])('renders the %s route', async (path, title) => {
   renderApp(path)
 

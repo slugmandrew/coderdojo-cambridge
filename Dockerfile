@@ -9,7 +9,8 @@ LABEL org.coderdojo.cambridge.service="web" \
 USER root
 RUN corepack enable \
   && mkdir -p /app \
-  && chown pptruser:pptruser /app
+  && mkdir -p /app/data \
+  && chown -R pptruser:pptruser /app
 
 USER pptruser
 WORKDIR /app

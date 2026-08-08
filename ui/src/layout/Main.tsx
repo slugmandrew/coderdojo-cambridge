@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router'
 
 const Home = lazy(() => import('pages/Home').then(({ Home }) => ({ default: Home })))
 const Location = lazy(() => import('pages/Location').then(({ Location }) => ({ default: Location })))
+const ManageSchedule = lazy(() => import('pages/ManageSchedule').then(({ ManageSchedule }) => ({ default: ManageSchedule })))
 const Mentors = lazy(() => import('pages/Mentors').then(({ Mentors }) => ({ default: Mentors })))
 const Ninjas = lazy(() => import('pages/Ninjas').then(({ Ninjas }) => ({ default: Ninjas })))
 const Parents = lazy(() => import('pages/Parents').then(({ Parents }) => ({ default: Parents })))
@@ -14,8 +15,8 @@ const Workshops = lazy(() => import('pages/Workshops').then(({ Workshops }) => (
 
 export const Main = () => {
   return (
-    <Container fluid px={0} py='xl' style={(theme) => ({ backgroundColor: theme.colors.gray[0], minHeight: 800 })}>
-      <Container px='md' pb={80} style={{ minHeight: 800 }}>
+    <Container fluid px={0} py={{ base: 40, md: 64 }} style={{ minHeight: 800 }}>
+      <Container px={{ base: 'md', sm: 'xl' }} pb={80} style={{ minHeight: 800 }}>
         <Suspense
           fallback={
             <Center role='status' aria-label='Loading page' py='xl'>
@@ -46,6 +47,9 @@ export const Main = () => {
 
             {/* WORKSHOPS */}
             <Route path='/workshops' element={<Workshops />} />
+
+            {/* CONTENT MANAGEMENT */}
+            <Route path='/manage/schedule' element={<ManageSchedule />} />
 
             {/* HIDDEN */}
             <Route path='/scraper' element={<Scraper />} />

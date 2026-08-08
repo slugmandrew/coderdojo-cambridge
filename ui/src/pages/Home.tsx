@@ -1,226 +1,163 @@
-import { Anchor, Box, Button, Card, Divider, Group, Image, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core'
-import { faCalendarDays, faCode, faExternalLinkAlt, faLocationDot, faPeopleGroup, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { Anchor, Box, Button, Card, Group, Image, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core'
+import { faArrowRight, faCode, faLocationDot, faPeopleGroup, faTicket, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ContentCard } from 'components/ContentCard'
-import { Heading2 } from 'components/Heading2'
-import { Paragraph } from 'components/Paragraph'
+import { ScheduleCalendar } from 'components/ScheduleCalendar'
 import { TextLink } from 'components/TextLink'
-import mainPhoto from 'image/we-made-this.png'
 import banner from 'image/coding_banner.jpg'
+import mainPhoto from 'image/we-made-this.png'
 import { NavLink } from 'layout/Navbar'
 import React from 'react'
 import { Link as RouterLink } from 'react-router'
 
-const dojoDates = [
-  { month: 'January', day: '10th' },
-  { month: 'February', day: '14th' },
-  { month: 'March', day: '14th' },
-  { month: 'April', day: '11th' },
-  { month: 'May', day: '9th' },
-  { month: 'June', day: '13th' },
-  { month: 'September', day: '12th' },
-  { month: 'October', day: '10th' },
-  { month: 'November', day: '14th' },
-  { month: 'December', day: '12th' },
-]
-
-const HomeLinkCard = ({ icon, title, to, color, children }: { icon: IconDefinition; title: string; to: string; color: string; children: React.ReactNode }) => (
-  <ContentCard noMargin>
-    <Box p='lg'>
-      <Group gap='sm' mb='sm'>
-        <ThemeIcon size='lg' radius='xl' color={color} variant='light'>
-          <FontAwesomeIcon icon={icon} />
-        </ThemeIcon>
-        <Anchor component={RouterLink} to={to} underline='never' fw={700} color={color}>
-          {title}
-        </Anchor>
-      </Group>
-      <Text>{children}</Text>
-    </Box>
-  </ContentCard>
-)
-
-const HomeImagePanel = ({ image, alt, title, description }: { image: string; alt: string; title: string; description: string }) => (
-  <Card shadow='sm' padding='lg' radius='md' withBorder>
-    <Card.Section>
-      <Image src={image} alt={alt} />
-    </Card.Section>
-    <Group mt={'md'}>
-      <Text fw={700} mb={4}>
-        {title}
-      </Text>
+const QuickLink = ({ icon, title, to, children }: { icon: IconDefinition; title: string; to: string; children: React.ReactNode }) => (
+  <Card component={RouterLink} to={to} padding='lg' radius='xl' className='quick-link' withBorder>
+    <Group justify='space-between' wrap='nowrap'>
+      <ThemeIcon size={44} radius='xl' color='dojoTeal' variant='light'>
+        <FontAwesomeIcon icon={icon} />
+      </ThemeIcon>
+      <FontAwesomeIcon icon={faArrowRight} />
     </Group>
-    <Group>
-      <Text size='sm' c='dimmed'>
-        {description}
-      </Text>
-    </Group>
+    <Title order={3} mt='lg' mb={6}>
+      {title}
+    </Title>
+    <Text c='dimmed' size='sm'>
+      {children}
+    </Text>
   </Card>
 )
 
 export const Home = () => (
-  <Stack gap='xl'>
-    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
-      <Paper
-        radius='md'
-        p='xl'
-        style={(theme) => ({
-          background: `linear-gradient(135deg, ${theme.colors.gray[0]} 0%, ${theme.white} 100%)`,
-          border: `1px solid ${theme.colors.gray[2]}`,
-        })}>
-        <Stack gap='lg'>
-          <Box>
-            <Text c='dojoOrange.6' fw={700} tt='uppercase' size='sm' mb='xs'>
-              Community Coding Club
-            </Text>
-            <Title order={1} style={{ lineHeight: 1.05 }}>
-              Coding, creativity, and hands-on projects for young people in Cambridge
-            </Title>
-          </Box>
-
-          <Paragraph>We are a free, community-run coding club for young people aged 7-17.</Paragraph>
-          <Paragraph>
-            Sessions run monthly in <strong>Central Cambridge</strong>, usually on the <strong>second Saturday of the month</strong>, with projects for complete
-            beginners and experienced coders alike.
-          </Paragraph>
-          <Paragraph>
-            We explore Scratch, Python, HTML, Java, Unity (C#), physical computing and more, with support from mentors who love helping young people build
-            things.
-          </Paragraph>
-
-          <Group>
-            <Button
-              component='a'
-              href='https://coderdojo.com/en/dojos/gb/cambridge/cambridge-makespace'
-              target='_blank'
-              color='dojoOrange'
-              rightSection={<FontAwesomeIcon icon={faExternalLinkAlt} />}>
-              Sign Up
-            </Button>
-            <Button component={RouterLink} to='/projects' variant='light' color='dojoTeal'>
-              Browse Projects
-            </Button>
-          </Group>
-
-          <Text size='sm' c='dimmed'>
-            We work on many different types of <NavLink to='/projects'>projects</NavLink>, from visual coding in{' '}
-            <TextLink href='https://scratch.mit.edu/'>Scratch</TextLink> and{' '}
-            <TextLink href='https://makecode.microbit.org/#editor'>Micro:Bit MakeCode</TextLink> to physical computing with{' '}
-            <TextLink href='https://www.raspberrypi.com/'>Raspberry Pi</TextLink> and <TextLink href='https://www.arduino.cc/'>Arduino</TextLink>.
+  <Stack gap={64}>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing={{ base: 'xl', md: 56 }} verticalSpacing='xl'>
+      <Stack justify='center' gap='lg' py={{ md: 48 }}>
+        <Text className='eyebrow'>Free community coding club · Ages 7–17</Text>
+        <Title order={1} className='hero-title'>
+          Make something{' '}
+          <Text span c='dojoOrange.6' inherit>
+            brilliant.
           </Text>
-        </Stack>
-      </Paper>
-
-      <Stack gap='md'>
-        <HomeImagePanel
-          image={mainPhoto}
-          alt='CoderDojo projects'
-          title='Projects Built Together'
-          description='A snapshot of the kinds of practical, creative work ninjas make at the dojo.'
-        />
-        <HomeImagePanel
-          image={banner}
-          alt='Coding banner'
-          title='Hands-On Sessions'
-          description='Each session mixes guided support, personal projects, and time to experiment.'
-        />
+        </Title>
+        <Text size='xl' c='gray.7' maw={620} lh={1.6}>
+          We are a free, community-run coding club for young people aged 7-17. Sessions run monthly in <strong>Central Cambridge</strong>, usually on the{' '}
+          <strong>second Saturday of the month</strong>, with projects for complete beginners and experienced coders alike.
+        </Text>
+        <Group>
+          <Button
+            component='a'
+            href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'
+            target='_blank'
+            size='lg'
+            color='dojoOrange'
+            leftSection={<FontAwesomeIcon icon={faTicket} />}>
+            Book a session
+          </Button>
+          <Button component='a' href='#calendar' size='lg' variant='subtle' color='dojoTeal'>
+            See dates
+          </Button>
+        </Group>
+        <Group gap='xl' mt='sm'>
+          <Box>
+            <Text fw={900} size='xl'>
+              Free
+            </Text>
+            <Text size='sm' c='dimmed'>
+              Always
+            </Text>
+          </Box>
+          <Box>
+            <Text fw={900} size='xl'>
+              7–17
+            </Text>
+            <Text size='sm' c='dimmed'>
+              All abilities
+            </Text>
+          </Box>
+          <Box>
+            <Text fw={900} size='xl'>
+              Monthly
+            </Text>
+            <Text size='sm' c='dimmed'>
+              At Makespace
+            </Text>
+          </Box>
+        </Group>
       </Stack>
+
+      <Box className='hero-gallery' aria-label='Pictures from CoderDojo Cambridge'>
+        <Image src={mainPhoto} alt='Young people showing projects built at CoderDojo' className='hero-gallery-main' />
+        <Image src={banner} alt='A young coder working on a laptop' className='hero-gallery-secondary' />
+        <Paper className='hero-gallery-note' p='md' radius='lg'>
+          <Text fw={900}>Ideas become real here.</Text>
+          <Text size='sm' c='dimmed'>
+            Build, experiment and share.
+          </Text>
+        </Paper>
+      </Box>
     </SimpleGrid>
 
-    <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
-      <ContentCard noMargin>
-        <Box p='lg'>
-          <Group gap='sm' mb='md'>
-            <ThemeIcon size='lg' radius='xl' color='blue' variant='light'>
-              <FontAwesomeIcon icon={faCalendarDays} />
-            </ThemeIcon>
-            <Heading2 color='dojoTeal.7'>Dojo Calendar</Heading2>
-          </Group>
+    <ScheduleCalendar />
 
-          <Stack gap='xs'>
-            <Text fw={700}>2026</Text>
-            {dojoDates.slice(0, 6).map((date) => (
-              <Text key={date.month} c='blue.6'>
-                Saturday{' '}
-                <Text span fw={700}>
-                  {date.day} {date.month}
-                </Text>
-              </Text>
-            ))}
-            <Divider my='xs' />
-            <Text fw={700} c='green.6'>
-              Summer Break
-            </Text>
-            <Divider my='xs' />
-            {dojoDates.slice(6).map((date) => (
-              <Text key={date.month} c='blue.6'>
-                Saturday{' '}
-                <Text span fw={700}>
-                  {date.day} {date.month}
-                </Text>
-              </Text>
-            ))}
-          </Stack>
+    <SimpleGrid cols={{ base: 1, md: 2 }} spacing={{ base: 'xl', md: 64 }}>
+      <Box>
+        <Text className='eyebrow'>What happens at a dojo?</Text>
+        <Title order={2} mt='sm' mb='lg'>
+          Learn by making, with a mentor nearby.
+        </Title>
+        <Text size='lg' lh={1.7} mb='md'>
+          We explore Scratch, Python, HTML, Java, Unity (C#), physical computing and more, with support from mentors who love helping young people build things.
+        </Text>
+        <Text size='lg' lh={1.7} mb='md'>
+          Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Bring a project you already care about, or we can help you
+          find a great starting point.
+        </Text>
+        <Text size='lg' lh={1.7}>
+          Parents are encouraged to get involved, and younger ninjas can attend with support from an adult. We aim to make the club friendly, practical, and
+          easy to join.
+        </Text>
+      </Box>
+      <Paper p={{ base: 'lg', sm: 'xl' }} radius='xl' bg='dojoOrange.0' shadow='none'>
+        <Text fw={900} size='lg' mb='md'>
+          There is no set curriculum—and that is the point.
+        </Text>
+        <Text lh={1.7} mb='lg'>
+          We work on many different types of <NavLink to='/projects'>projects</NavLink>, from visual coding in{' '}
+          <TextLink href='https://scratch.mit.edu/'>Scratch</TextLink> and <TextLink href='https://makecode.microbit.org/#editor'>Micro:Bit MakeCode</TextLink>{' '}
+          to physical computing with <TextLink href='https://www.raspberrypi.com/'>Raspberry Pi</TextLink> and{' '}
+          <TextLink href='https://www.arduino.cc/'>Arduino</TextLink>.
+        </Text>
+        <Button component={RouterLink} to='/projects' variant='filled' color='dojoTeal'>
+          Browse project ideas
+        </Button>
+      </Paper>
+    </SimpleGrid>
 
-          <Paper mt='xl' p='md' radius='md' bg='gray.0'>
-            <Text>
-              <strong>Note:</strong> Sessions usually run on the <u>second Saturday</u> of the month and you must have a ticket to attend.
-            </Text>
-          </Paper>
+    <Box>
+      <Group justify='space-between' align='flex-end' mb='lg'>
+        <Box>
+          <Text className='eyebrow'>Start here</Text>
+          <Title order={2} mt='xs'>
+            Everything you need for your first visit
+          </Title>
         </Box>
-      </ContentCard>
-
-      <ContentCard noMargin>
-        <Box p='lg'>
-          <Group gap='sm' mb='md'>
-            <ThemeIcon size='lg' radius='xl' color='dojoOrange' variant='light'>
-              <FontAwesomeIcon icon={faLocationDot} />
-            </ThemeIcon>
-            <Heading2 color='dojoOrange.6'>What To Expect</Heading2>
-          </Group>
-
-          <Stack gap='md'>
-            <Text>
-              Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Bring a project you already care about, or we can help
-              you find a great starting point.
-            </Text>
-            <Text>
-              Parents are encouraged to get involved, and younger ninjas can attend with support from an adult. We aim to make the club friendly, practical, and
-              easy to join.
-            </Text>
-            <Group>
-              <Button component={RouterLink} to='/location' variant='light' color='blue'>
-                Find Us
-              </Button>
-              <Button component={RouterLink} to='/parents' variant='light' color='red'>
-                Parent Info
-              </Button>
-            </Group>
-          </Stack>
-        </Box>
-      </ContentCard>
-    </SimpleGrid>
-
-    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing='lg'>
-      <HomeLinkCard icon={faCode} title='Projects' to='/projects' color='teal'>
-        Guided project ideas for different ages, interests, and skill levels.
-      </HomeLinkCard>
-      <HomeLinkCard icon={faUserGroup} title='Topics' to='/topics' color='yellow'>
-        Explore the languages, tools, and technologies we like to teach.
-      </HomeLinkCard>
-      <HomeLinkCard icon={faLocationDot} title='Location' to='/location' color='violet'>
-        Find the venue, address details, and map directions.
-      </HomeLinkCard>
-      <HomeLinkCard icon={faPeopleGroup} title='Ninjas' to='/ninjas' color='blue'>
-        Everything young people need to know before coming along.
-      </HomeLinkCard>
-      <HomeLinkCard icon={faPeopleGroup} title='Parents' to='/parents' color='red'>
-        Practical information for families, guardians, and first visits.
-      </HomeLinkCard>
-      <HomeLinkCard icon={faUserGroup} title='Mentors' to='/mentors' color='green'>
-        Learn more about the volunteers who support the dojo.
-      </HomeLinkCard>
-    </SimpleGrid>
+        <Anchor component={RouterLink} to='/location' visibleFrom='sm' fw={800} c='dojoTeal.7'>
+          Find us in Cambridge <FontAwesomeIcon icon={faArrowRight} />
+        </Anchor>
+      </Group>
+      <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing='md'>
+        <QuickLink icon={faCode} title='Projects' to='/projects'>
+          Guided ideas for different ages, interests and skill levels.
+        </QuickLink>
+        <QuickLink icon={faPeopleGroup} title='For ninjas' to='/ninjas'>
+          What young people need to know before coming along.
+        </QuickLink>
+        <QuickLink icon={faUserGroup} title='For parents' to='/parents'>
+          Tickets, supervision and practical information for families.
+        </QuickLink>
+        <QuickLink icon={faLocationDot} title='Location' to='/location'>
+          Address, travel details and a map to Makespace.
+        </QuickLink>
+      </SimpleGrid>
+    </Box>
   </Stack>
 )

@@ -16,6 +16,13 @@ services:
       NODE_ENV: production
       PORT: 8000
       DEPLOY_SHA: ${DEPLOY_SHA:-local}
+      SCHEDULE_ADMIN_KEY_HASH: ${SCHEDULE_ADMIN_KEY_HASH:-}
+      SCHEDULE_DATA_FILE: /app/data/schedule.json
+    volumes:
+      - schedule-data:/app/data
     security_opt:
       - no-new-privileges:true
     shm_size: 1gb
+
+volumes:
+  schedule-data:
