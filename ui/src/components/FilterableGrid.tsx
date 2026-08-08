@@ -1,6 +1,6 @@
-import { Select, Stack, Text } from '@mantine/core'
+import { Loader, Select, Stack, Text } from '@mantine/core'
 import { ProjectGrid } from 'components/ProjectGrid'
-import data from 'data/ProjectData'
+import { useProjectCatalog } from 'data/ProjectCatalog'
 import React, { FC, useState } from 'react'
 import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
@@ -10,6 +10,7 @@ const levelFilter = { label: 'Level', type: Level }
 const languageFilter = { label: 'Language', type: LanguageName }
 
 export const FilterableGrid: FC = () => {
+  const { catalog, loading } = useProjectCatalog()
   const [currentLanguageFilter, setCurrentLanguageFilter] = useState<string>()
   const [currentLevelFilter, setCurrentLevelFilter] = useState<string>()
 
@@ -18,7 +19,7 @@ export const FilterableGrid: FC = () => {
       .slice()
       .filter((project) => (currentLanguageFilter ? project.language === currentLanguageFilter : true))
       .filter((project) => (currentLevelFilter ? project.level.find((level) => level === currentLevelFilter) : true))
-  const filteredProjects = filterList(data.projects)
+  const filteredProjects = filterList(catalog.projects)
 
   const onChange = (label: string, value: string | null) => {
     const selectedValue = value ? value.split('-')[1] : undefined
@@ -37,6 +38,7 @@ export const FilterableGrid: FC = () => {
 
   return (
     <Stack w='100%'>
+      {loading && <Loader aria-label='Loading projects' size='sm' />}
       <Text fw={700}>Showing {filteredProjects.length} Projects</Text>
       <Select
         label={languageFilter.label}

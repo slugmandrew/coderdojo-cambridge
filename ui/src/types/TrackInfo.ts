@@ -1,4 +1,4 @@
-import { TrackName } from 'types/TrackName'
+import { TrackName } from './TrackName.js'
 
 export type TrackInfo = {
   name: TrackName

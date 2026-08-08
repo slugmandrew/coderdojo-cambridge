@@ -1,6 +1,6 @@
-import { LanguageName } from 'types/LanguageName'
-import { Level } from 'types/Level'
-import { TrackInfo } from 'types/TrackInfo'
+import { LanguageName } from './LanguageName.js'
+import { Level } from './Level.js'
+import { TrackInfo } from './TrackInfo.js'
 
 export type Project = {
   url: string
@@ -10,4 +10,5 @@ export type Project = {
   slug: string
   track?: TrackInfo
   domain?: string // for non-raspberry pi
+  imageUrl?: string
 }

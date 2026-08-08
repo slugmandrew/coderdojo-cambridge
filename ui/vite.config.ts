@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       App: src('App.tsx'),
+      auth: src('auth'),
       components: src('components'),
       data: src('data'),
       image: src('image'),

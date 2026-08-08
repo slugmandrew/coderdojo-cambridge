@@ -13,7 +13,7 @@
     "dev:server": "tsx watch server/index.ts",
     "dev:ui": "yarn workspace @codeclub/ui dev",
     "build": "yarn workspace @codeclub/ui build",
-    "test": "yarn workspace @codeclub/ui test --run",
+    "test": "yarn workspace @codeclub/server test && yarn workspace @codeclub/ui test --run",
     "typecheck": "tsc -p server/tsconfig.json && tsc -p ui/tsconfig.json",
     "lint": "eslint .",
     "format:check": "prettier --check .",
