@@ -2,8 +2,9 @@ import { MantineProvider } from '@mantine/core'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import seedCatalog from 'data/ProjectData'
 import { MemoryRouter } from 'react-router'
-import { expect, test, vi } from 'vitest'
+import { beforeEach, expect, test, vi } from 'vitest'
 import { App } from './App'
 import { theme } from './theme'
 
@@ -15,6 +16,23 @@ const renderApp = (path = '/') =>
       </MemoryRouter>
     </MantineProvider>,
   )
+
+const mockFetch = (auth = { configured: true, authenticated: false, mentor: undefined as undefined | { subject: string; email: string; name?: string } }) => {
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input)
+      if (url.endsWith('/api/projects')) return new Response(JSON.stringify(seedCatalog), { status: 200 })
+      if (url.endsWith('/api/auth/me')) return new Response(JSON.stringify(auth), { status: 200 })
+      if (url.endsWith('/api/schedule')) return new Response(JSON.stringify({ sessions: [], updatedAt: null }), { status: 200 })
+      return new Response(null, { status: 204 })
+    }),
+  )
+}
+
+beforeEach(() => {
+  mockFetch()
+})
 
 test('renders title', () => {
   renderApp()
@@ -78,6 +96,7 @@ test.each([
   ['/location', 'Location'],
   ['/workshops', 'Workshops'],
   ['/manage/schedule', 'Manage the Code Club calendar'],
+  ['/manage/projects', 'Add a project'],
 ])('renders the %s route', async (path, title) => {
   renderApp(path)
 
@@ -90,4 +109,19 @@ test('shows the location using a keyless OpenStreetMap embed', async () => {
   const map = await screen.findByTitle('Map showing Code Club Cambridge at 16 Mill Lane')
   expect(map).toHaveAttribute('src', expect.stringContaining('openstreetmap.org/export/embed.html'))
   expect(screen.getByRole('link', { name: /view a larger map/i })).toHaveAttribute('href', expect.stringContaining('openstreetmap.org'))
+})
+
+test('asks an anonymous mentor to sign in before showing calendar controls', async () => {
+  renderApp('/manage/schedule')
+
+  expect(await screen.findByRole('link', { name: 'Sign in with Google' })).toHaveAttribute('href', '/auth/google?returnTo=/manage/schedule')
+  expect(screen.queryByRole('button', { name: 'Save and publish' })).not.toBeInTheDocument()
+})
+
+test('shows project publishing controls to an authenticated mentor', async () => {
+  mockFetch({ configured: true, authenticated: true, mentor: { subject: 'google-123', email: 'mentor@example.com', name: 'Test Mentor' } })
+  renderApp('/manage/projects')
+
+  expect(await screen.findByRole('textbox', { name: 'Project title' })).toBeInTheDocument()
+  expect(screen.getByText('Signed in as Test Mentor')).toBeInTheDocument()
 })

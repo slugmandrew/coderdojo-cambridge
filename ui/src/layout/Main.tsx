@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router'
 const Home = lazy(() => import('pages/Home').then(({ Home }) => ({ default: Home })))
 const Location = lazy(() => import('pages/Location').then(({ Location }) => ({ default: Location })))
 const ManageSchedule = lazy(() => import('pages/ManageSchedule').then(({ ManageSchedule }) => ({ default: ManageSchedule })))
+const ManageProjects = lazy(() => import('pages/ManageProjects').then(({ ManageProjects }) => ({ default: ManageProjects })))
 const Mentors = lazy(() => import('pages/Mentors').then(({ Mentors }) => ({ default: Mentors })))
 const Coders = lazy(() => import('pages/Coders').then(({ Coders }) => ({ default: Coders })))
 const Parents = lazy(() => import('pages/Parents').then(({ Parents }) => ({ default: Parents })))
@@ -50,6 +51,7 @@ export const Main = () => {
 
             {/* CONTENT MANAGEMENT */}
             <Route path='/manage/schedule' element={<ManageSchedule />} />
+            <Route path='/manage/projects' element={<ManageProjects />} />
 
             {/* HIDDEN */}
             <Route path='/scraper' element={<Scraper />} />

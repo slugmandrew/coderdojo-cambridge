@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title">
+  <title id="title">Code Club project</title>
+  <rect width="800" height="450" fill="#e8f5f2"/>
+  <path d="M270 225 190 305l80 80M530 225l80 80-80 80" fill="none" stroke="#006b5b" stroke-linecap="round" stroke-linejoin="round" stroke-width="34"/>
+  <path d="m445 155-90 300" fill="none" stroke="#ef7d32" stroke-linecap="round" stroke-width="34"/>
+</svg>

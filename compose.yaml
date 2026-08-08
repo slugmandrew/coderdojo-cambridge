@@ -16,7 +16,12 @@ services:
       NODE_ENV: production
       PORT: 8000
       DEPLOY_SHA: ${DEPLOY_SHA:-local}
-      SCHEDULE_ADMIN_KEY_HASH: ${SCHEDULE_ADMIN_KEY_HASH:-}
+      PUBLIC_URL: ${PUBLIC_URL:-https://club-host.exe.xyz}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      AUTH_ALLOWED_EMAILS: ${AUTH_ALLOWED_EMAILS:-}
+      SESSION_SECRET: ${SESSION_SECRET:-}
+      CONTENT_DATABASE_FILE: /app/data/codeclub.sqlite
       SCHEDULE_DATA_FILE: /app/data/schedule.json
     volumes:
       - schedule-data:/app/data

@@ -40,23 +40,31 @@ yarn start
 
 The Vite build is written to `ui/build`, which the Express server serves along with its API routes.
 
-## Schedule editor
+## Mentor tools
 
-The public calendar is managed at `/manage/schedule`. Set `SCHEDULE_ADMIN_KEY_HASH` before using the editor. Calendar changes are written to `data/schedule.json` locally, or to the persistent `schedule-data` Docker volume in production, so updating a date does not require a commit or deployment.
+Approved mentors sign in with Google at `/manage/schedule` to publish calendar changes, or at `/manage/projects` to add a learning project. Access is checked against a case-insensitive email allowlist on every write.
 
-Generate a one-way hash for a private editor key (replace the example key before running this):
+Create a Google OAuth client with the **Web application** type and register these redirect URIs:
+
+- `http://localhost:5173/auth/google/callback` for local development
+- `https://club-host.exe.xyz/auth/google/callback` for production
+
+The application requests only the OpenID, email, and profile scopes. Configure it with:
 
 ```sh
-node -e "const { randomBytes, scryptSync } = require('crypto'); const salt = randomBytes(16).toString('hex'); console.log(salt + ':' + scryptSync('your-private-editor-key', salt, 32).toString('hex'))"
+PUBLIC_URL='http://localhost:5173' \
+GOOGLE_CLIENT_ID='your-client-id' \
+GOOGLE_CLIENT_SECRET='your-client-secret' \
+AUTH_ALLOWED_EMAILS='mentor-one@example.com,mentor-two@example.com' \
+SESSION_SECRET='at-least-32-random-characters' \
+yarn dev
 ```
 
-For local development:
+Generate a strong session secret with `node -e "process.stdout.write(require('crypto').randomBytes(32).toString('hex'))"`. In production, add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `AUTH_ALLOWED_EMAILS`, and `SESSION_SECRET` as secrets in the GitHub `production` environment. The deployment fails rather than publishing an editor with incomplete authentication.
 
-```sh
-SCHEDULE_ADMIN_KEY_HASH='salt:hash-from-the-command-above' yarn dev
-```
+## Content database
 
-For production, add the hash as the `SCHEDULE_ADMIN_KEY_HASH` secret in the GitHub `production` environment; the deployment workflow passes it to Docker Compose. The plain editor key is never stored on the server: it is sent only when publishing and is kept in the browser's session storage, which is cleared when the tab is closed.
+Schedules and projects are stored in `data/codeclub.sqlite` locally and in the existing `schedule-data` Docker volume in production. On first startup, the database imports the existing project catalogue and any previously published `data/schedule.json`, so enabling OAuth does not discard calendar changes. New mentor projects are published to the main project catalogue immediately.
 
 ## Deployment
 

@@ -1,7 +1,7 @@
-import { LanguageName } from 'types/LanguageName'
-import { Level } from 'types/Level'
-import { Project } from 'types/Project'
-import { TrackName } from 'types/TrackName'
+import { LanguageName } from '../types/LanguageName.js'
+import { Level } from '../types/Level.js'
+import { Project } from '../types/Project.js'
+import { TrackName } from '../types/TrackName.js'
 
 const getProjects: () => {
   projects: Project[]

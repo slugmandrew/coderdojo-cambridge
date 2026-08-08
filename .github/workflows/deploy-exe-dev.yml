@@ -38,8 +38,21 @@ jobs:
       - name: Upload release
         env:
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
-          SCHEDULE_ADMIN_KEY_HASH: ${{ secrets.SCHEDULE_ADMIN_KEY_HASH }}
+          PUBLIC_URL: https://club-host.exe.xyz
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          AUTH_ALLOWED_EMAILS: ${{ secrets.AUTH_ALLOWED_EMAILS }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         run: |
+          : "${GOOGLE_CLIENT_ID:?GOOGLE_CLIENT_ID is required in the production environment}"
+          : "${GOOGLE_CLIENT_SECRET:?GOOGLE_CLIENT_SECRET is required in the production environment}"
+          : "${AUTH_ALLOWED_EMAILS:?AUTH_ALLOWED_EMAILS is required in the production environment}"
+          : "${SESSION_SECRET:?SESSION_SECRET is required in the production environment}"
+          printf -v public_url_escaped '%q' "$PUBLIC_URL"
+          printf -v google_client_id_escaped '%q' "$GOOGLE_CLIENT_ID"
+          printf -v google_client_secret_escaped '%q' "$GOOGLE_CLIENT_SECRET"
+          printf -v allowed_emails_escaped '%q' "$AUTH_ALLOWED_EMAILS"
+          printf -v session_secret_escaped '%q' "$SESSION_SECRET"
           ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
             'mkdir -p /home/exedev/apps/codeclub-cambridge'
           rsync --archive --compress --delete \
@@ -47,7 +60,7 @@ jobs:
             -e 'ssh -i ~/.ssh/exe_dev_deploy' \
             ./ vm+code-club-host@exe.dev:/home/exedev/apps/codeclub-cambridge/
           ssh -i ~/.ssh/exe_dev_deploy vm+code-club-host@exe.dev \
-            "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA SCHEDULE_ADMIN_KEY_HASH='$SCHEDULE_ADMIN_KEY_HASH' ./ops/deploy.sh"
+            "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA PUBLIC_URL=$public_url_escaped GOOGLE_CLIENT_ID=$google_client_id_escaped GOOGLE_CLIENT_SECRET=$google_client_secret_escaped AUTH_ALLOWED_EMAILS=$allowed_emails_escaped SESSION_SECRET=$session_secret_escaped ./ops/deploy.sh"
 
       - name: Verify public mirror
         run: curl --fail --show-error --silent --retry 6 --retry-all-errors https://code-club-host.exe.xyz/healthz
