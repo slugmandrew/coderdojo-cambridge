@@ -3,7 +3,7 @@ import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { MemoryRouter } from 'react-router'
-import { expect, test } from 'vitest'
+import { expect, test, vi } from 'vitest'
 import { App } from './App'
 import { theme } from './theme'
 
@@ -55,6 +55,19 @@ test('navigates from the mobile menu and closes it', async () => {
 
   expect(await screen.findByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument()
   await waitFor(() => expect(screen.queryByRole('dialog', { name: 'Menu' })).not.toBeInTheDocument())
+})
+
+test('scrolls to the top after navigating to another page', async () => {
+  const user = userEvent.setup()
+  const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined)
+  renderApp()
+  scrollTo.mockClear()
+
+  await user.click(await screen.findByRole('link', { name: 'Browse project ideas' }))
+  expect(await screen.findByRole('heading', { level: 1, name: 'Projects' })).toBeInTheDocument()
+  expect(scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'instant' })
+
+  scrollTo.mockRestore()
 })
 
 test.each([
