@@ -26,9 +26,6 @@ export const Footer = () => {
         <Anchor target={'_blank'} href={'https://astro-pi.org/mission-zero/'} c='pink.6'>
           ASTRO PI :: MISSION ZERO
         </Anchor>
-        <Anchor target={'_blank'} href={'https://twitter.com/CoderDojoCamUK/'} c='blue.6'>
-          Twitter
-        </Anchor>
       </Stack>
     </Container>
   )
