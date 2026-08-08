@@ -16,10 +16,10 @@ export const Parents = () => (
     <Stack gap='md'>
       <ContentCard noMargin>
         <Box p='md'>
-          <Heading3>What is Coderdojo?</Heading3>
+          <Heading3>What is Code Club?</Heading3>
           <Paragraph>
-            <TextLink href='https://coderdojo.com/'>CoderDojo</TextLink> is a volunteer-led international organisation dedicated to providing opportunities for
-            all children to learn to code.
+            <TextLink href='https://codeclub.org/'>Code Club</TextLink> is a global network of free coding clubs dedicated to giving all children opportunities
+            to learn to code.
           </Paragraph>
           <Paragraph>
             With the help of volunteers, we run monthly coding sessions on the second Saturday of every month from the classroom at{' '}
@@ -77,10 +77,7 @@ export const Parents = () => (
             <strong>For teens aged 13 and up</strong>, you must come with them on their first visit, but can leave them to it after that. It is also recommended
             that you aren't too far away, so that we can contact you in case of emergency.
           </Paragraph>
-          <Paragraph>
-            Official guidance on the CoderDojo portal is{' '}
-            <TextLink href='https://help.coderdojo.com/cdkb/s/article/Do-parents-need-to-stay-for-the-duration-of-a-Dojo'>here</TextLink>.
-          </Paragraph>
+          <Paragraph>Please speak to a volunteer if you have any questions about supervision before your first visit.</Paragraph>
         </Box>
       </ContentCard>
       <ContentCard>
@@ -90,12 +87,12 @@ export const Parents = () => (
             <strong>No.</strong> We have seating for parents if you just want to sit and read.
           </Paragraph>
           <Paragraph>
-            Some parents find that their ninjas respond well when they work together on a project. Some parents find the opposite, and prefer to leave them to
-            it.
+            Some parents find that their young coders respond well when they work together on a project. Some parents find the opposite, and prefer to leave
+            them to it.
           </Paragraph>
           <Paragraph>
             It's completely up to you, though we would probably say the parents that get involved are often learning and having as much fun (or more!) as the
-            ninjas do.
+            young coders do.
           </Paragraph>
         </Box>
       </ContentCard>
@@ -103,11 +100,11 @@ export const Parents = () => (
         <Box p='md'>
           <Heading3>Do I need a ticket?</Heading3>
           <Paragraph>
-            <strong>No.</strong> Only ninjas need tickets.
+            <strong>No.</strong> Only young coders need tickets.
           </Paragraph>
           <Paragraph>
             Please ensure your children all have tickets by booking on{' '}
-            <TextLink href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'>our page the Zen Portal</TextLink>
+            <TextLink href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace'>our Code Club page</TextLink>.
           </Paragraph>
         </Box>
       </ContentCard>
@@ -123,14 +120,10 @@ export const Parents = () => (
       <ContentCard>
         <Box p='md'>
           <Heading3>Where can I find out more?</Heading3>
-          <Paragraph>This website is solely dedicated to our local dojo.</Paragraph>
+          <Paragraph>This website is solely dedicated to our local Code Club.</Paragraph>
           <Paragraph>
-            More general information can be found on the CoderDojo portal:{' '}
-            <TextLink href='https://help.coderdojo.com/cdkb/s/topic/0TO8d000000PD5fGAG/attending-a-dojo'>Attending a Dojo</TextLink>
-          </Paragraph>
-          <Paragraph>
-            You can also download the in-depth PDF guide here:{' '}
-            <TextLink href='./pdf/CoderDojo_Parents_Handbook_DIGITAL.pdf'>Parents' guide to CoderDojo</TextLink>
+            More general information, learning resources, and ways to get involved can be found on the{' '}
+            <TextLink href='https://codeclub.org/'>Code Club website</TextLink>.
           </Paragraph>
         </Box>
       </ContentCard>

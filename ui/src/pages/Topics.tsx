@@ -23,8 +23,8 @@ export const Topics = () => (
         <Heading2>Keeping it fresh</Heading2>
         <Paragraph>We like to work with many different languages and technologies, so we can keep things interesting and fun for everybody.</Paragraph>
         <Paragraph>
-          As ninjas are all of different ages and abilities, there is no set curriculum. We have projects that are suitable for beginners, and some that are
-          more advanced.
+          As young coders are all of different ages and abilities, there is no set curriculum. We have projects that are suitable for beginners, and some that
+          are more advanced.
         </Paragraph>
         <Paragraph>
           <b>What new technology or subject would you like to see in the future?</b>
@@ -35,7 +35,7 @@ export const Topics = () => (
     <ContentCard>
       <Box p='md'>
         <Printing />
-        <Text fw={700} my='md' c='dojoOrange.6'>
+        <Text fw={700} my='md' c='clubOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.printingProjects} />
@@ -51,7 +51,7 @@ export const Topics = () => (
     <ContentCard>
       <Box p='md'>
         <Stories />
-        <Text fw={700} my='md' c='dojoOrange.6'>
+        <Text fw={700} my='md' c='clubOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.storyProjects} />
@@ -61,7 +61,7 @@ export const Topics = () => (
     <ContentCard>
       <Box p='md'>
         <MicroBit />
-        <Text fw={700} my='md' c='dojoOrange.6'>
+        <Text fw={700} my='md' c='clubOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.microBitProjects} />
@@ -70,7 +70,7 @@ export const Topics = () => (
     <ContentCard>
       <Box p='md'>
         <Christmas />
-        <Text fw={700} my='md' c='dojoOrange.6'>
+        <Text fw={700} my='md' c='clubOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.christmasProjects} />
@@ -79,7 +79,7 @@ export const Topics = () => (
     <ContentCard>
       <Box p='md'>
         <Python />
-        <Text fw={700} my='md' c='dojoOrange.6'>
+        <Text fw={700} my='md' c='clubOrange.6'>
           Project List:
         </Text>
         <ProjectGrid projects={data.pythonProjects} />

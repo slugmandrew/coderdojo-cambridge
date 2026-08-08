@@ -13,7 +13,7 @@ import { Link as RouterLink } from 'react-router'
 const QuickLink = ({ icon, title, to, children }: { icon: IconDefinition; title: string; to: string; children: React.ReactNode }) => (
   <Card component={RouterLink} to={to} padding='lg' radius='xl' className='quick-link' withBorder>
     <Group justify='space-between' wrap='nowrap'>
-      <ThemeIcon size={44} radius='xl' color='dojoTeal' variant='light'>
+      <ThemeIcon size={44} radius='xl' color='clubTeal' variant='light'>
         <FontAwesomeIcon icon={icon} />
       </ThemeIcon>
       <FontAwesomeIcon icon={faArrowRight} />
@@ -34,7 +34,7 @@ export const Home = () => (
         <Text className='eyebrow'>Free community coding club · Ages 7–17</Text>
         <Title order={1} className='hero-title'>
           Make something{' '}
-          <Text span c='dojoOrange.6' inherit>
+          <Text span c='clubOrange.6' inherit>
             brilliant.
           </Text>
         </Title>
@@ -45,14 +45,14 @@ export const Home = () => (
         <Group>
           <Button
             component='a'
-            href='https://zen.coderdojo.com/dojos/gb/cambridge/cambridge-makespace'
+            href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace'
             target='_blank'
             size='lg'
-            color='dojoOrange'
+            color='clubOrange'
             leftSection={<FontAwesomeIcon icon={faTicket} />}>
             Book a session
           </Button>
-          <Button component='a' href='#calendar' size='lg' variant='subtle' color='dojoTeal'>
+          <Button component='a' href='#calendar' size='lg' variant='subtle' color='clubTeal'>
             See dates
           </Button>
         </Group>
@@ -84,8 +84,8 @@ export const Home = () => (
         </Group>
       </Stack>
 
-      <Box className='hero-gallery' aria-label='Pictures from CoderDojo Cambridge'>
-        <Image src={mainPhoto} alt='Young people showing projects built at CoderDojo' className='hero-gallery-main' />
+      <Box className='hero-gallery' aria-label='Pictures from Code Club Cambridge'>
+        <Image src={mainPhoto} alt='Young people showing projects built at Code Club' className='hero-gallery-main' />
         <Image src={banner} alt='A young coder working on a laptop' className='hero-gallery-secondary' />
         <Paper className='hero-gallery-note' p='md' radius='lg'>
           <Text fw={900}>Ideas become real here.</Text>
@@ -100,7 +100,7 @@ export const Home = () => (
 
     <SimpleGrid cols={{ base: 1, md: 2 }} spacing={{ base: 'xl', md: 64 }}>
       <Box>
-        <Text className='eyebrow'>What happens at a dojo?</Text>
+        <Text className='eyebrow'>What happens at Code Club?</Text>
         <Title order={2} mt='sm' mb='lg'>
           Learn by making, with a mentor nearby.
         </Title>
@@ -108,15 +108,15 @@ export const Home = () => (
           We explore Scratch, Python, HTML, Java, Unity (C#), physical computing and more, with support from mentors who love helping young people build things.
         </Text>
         <Text size='lg' lh={1.7} mb='md'>
-          Whether you are a seasoned coder or have never coded before, you are welcome at our dojo. Bring a project you already care about, or we can help you
+          Whether you are a seasoned coder or have never coded before, you are welcome at our club. Bring a project you already care about, or we can help you
           find a great starting point.
         </Text>
         <Text size='lg' lh={1.7}>
-          Parents are encouraged to get involved, and younger ninjas can attend with support from an adult. We aim to make the club friendly, practical, and
+          Parents are encouraged to get involved, and younger coders can attend with support from an adult. We aim to make the club friendly, practical, and
           easy to join.
         </Text>
       </Box>
-      <Paper p={{ base: 'lg', sm: 'xl' }} radius='xl' bg='dojoOrange.0' shadow='none'>
+      <Paper p={{ base: 'lg', sm: 'xl' }} radius='xl' bg='clubOrange.0' shadow='none'>
         <Text fw={900} size='lg' mb='md'>
           There is no set curriculum—and that is the point.
         </Text>
@@ -126,7 +126,7 @@ export const Home = () => (
           to physical computing with <TextLink href='https://www.raspberrypi.com/'>Raspberry Pi</TextLink> and{' '}
           <TextLink href='https://www.arduino.cc/'>Arduino</TextLink>.
         </Text>
-        <Button component={RouterLink} to='/projects' variant='filled' color='dojoTeal'>
+        <Button component={RouterLink} to='/projects' variant='filled' color='clubTeal'>
           Browse project ideas
         </Button>
       </Paper>
@@ -140,7 +140,7 @@ export const Home = () => (
             Everything you need for your first visit
           </Title>
         </Box>
-        <Anchor component={RouterLink} to='/location' visibleFrom='sm' fw={800} c='dojoTeal.7'>
+        <Anchor component={RouterLink} to='/location' visibleFrom='sm' fw={800} c='clubTeal.7'>
           Find us in Cambridge <FontAwesomeIcon icon={faArrowRight} />
         </Anchor>
       </Group>
@@ -148,7 +148,7 @@ export const Home = () => (
         <QuickLink icon={faCode} title='Projects' to='/projects'>
           Guided ideas for different ages, interests and skill levels.
         </QuickLink>
-        <QuickLink icon={faPeopleGroup} title='For ninjas' to='/ninjas'>
+        <QuickLink icon={faPeopleGroup} title='For coders' to='/coders'>
           What young people need to know before coming along.
         </QuickLink>
         <QuickLink icon={faUserGroup} title='For parents' to='/parents'>

@@ -46,13 +46,13 @@ export const WebDesign = () => (
           </List.Item>
         </List>
         <Group>
-          <Button component='a' href='http://rpf.io/webdev-module-1' target='_blank' variant='outline' color='dojoOrange'>
+          <Button component='a' href='http://rpf.io/webdev-module-1' target='_blank' variant='outline' color='clubOrange'>
             Open Module 1
           </Button>
-          <Button component='a' href='http://rpf.io/webdev-module-2' target='_blank' variant='outline' color='dojoOrange'>
+          <Button component='a' href='http://rpf.io/webdev-module-2' target='_blank' variant='outline' color='clubOrange'>
             Open Module 2
           </Button>
-          <Button component='a' href='http://rpf.io/html-css-for-social-enterprise' target='_blank' variant='outline' color='dojoOrange'>
+          <Button component='a' href='http://rpf.io/html-css-for-social-enterprise' target='_blank' variant='outline' color='clubOrange'>
             Open Module 3
           </Button>
         </Group>

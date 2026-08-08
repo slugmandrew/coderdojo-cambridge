@@ -18,7 +18,7 @@ const renderApp = (path = '/') =>
 
 test('renders title', () => {
   renderApp()
-  const title = screen.getByText(/Code Club Cambridge/i)
+  const title = screen.getByText('Code Club Cambridge', { exact: true })
   expect(title).toBeInTheDocument()
 })
 
@@ -72,12 +72,12 @@ test('scrolls to the top after navigating to another page', async () => {
 
 test.each([
   ['/topics', 'Topics'],
-  ['/ninjas', 'Ninjas'],
+  ['/coders', 'Coders'],
   ['/parents', 'Parents'],
   ['/mentors', 'Mentors'],
   ['/location', 'Location'],
   ['/workshops', 'Workshops'],
-  ['/manage/schedule', 'Manage the dojo calendar'],
+  ['/manage/schedule', 'Manage the Code Club calendar'],
 ])('renders the %s route', async (path, title) => {
   renderApp(path)
 
@@ -87,7 +87,7 @@ test.each([
 test('shows the location using a keyless OpenStreetMap embed', async () => {
   renderApp('/location')
 
-  const map = await screen.findByTitle('Map showing CoderDojo Cambridge at 16 Mill Lane')
+  const map = await screen.findByTitle('Map showing Code Club Cambridge at 16 Mill Lane')
   expect(map).toHaveAttribute('src', expect.stringContaining('openstreetmap.org/export/embed.html'))
   expect(screen.getByRole('link', { name: /view a larger map/i })).toHaveAttribute('href', expect.stringContaining('openstreetmap.org'))
 })

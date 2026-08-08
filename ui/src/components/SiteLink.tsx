@@ -9,7 +9,7 @@ export const SiteLink = () => {
   return (
     <Group gap='md' align='center'>
       <Title order={3} py='sm'>
-        <Anchor c='dojoOrange.6' href={siteUrl} style={{ fontFamily: 'Courier New, monospace' }}>
+        <Anchor c='clubOrange.6' href={siteUrl} style={{ fontFamily: 'Courier New, monospace' }}>
           {window.location.host}
         </Anchor>
       </Title>
