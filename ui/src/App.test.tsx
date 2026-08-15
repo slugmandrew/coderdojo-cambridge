@@ -46,21 +46,22 @@ test('marks the current route in site navigation', () => {
   expect(screen.getAllByRole('link', { name: 'Projects' }).some((link) => link.getAttribute('aria-current') === 'page')).toBe(true)
 })
 
-test('exposes the project language filter by name', async () => {
+test('shows large project filter buttons', async () => {
   renderApp('/projects')
 
-  expect(await screen.findByRole('combobox', { name: 'Language' })).toBeInTheDocument()
+  expect(await screen.findByRole('button', { name: /python.*write real code/i })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: /level 1.*a gentle challenge/i })).toBeInTheDocument()
 })
 
 test('filters projects by language', async () => {
   const user = userEvent.setup()
   renderApp('/projects')
 
-  await user.click(await screen.findByRole('combobox', { name: 'Language' }))
-  await user.click(within(screen.getByRole('listbox', { hidden: true })).getByText('🐍 Python'))
+  const python = await screen.findByRole('button', { name: /python.*write real code/i })
+  await user.click(python)
 
-  expect(screen.getByText('Showing 10 Projects')).toBeInTheDocument()
-  expect(screen.getByRole('combobox', { name: 'Level' })).toBeInTheDocument()
+  expect(screen.getByText('10 projects to explore')).toBeInTheDocument()
+  expect(python).toHaveAttribute('aria-pressed', 'true')
 })
 
 test('navigates from the mobile menu and closes it', async () => {
