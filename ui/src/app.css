@@ -160,8 +160,10 @@ body {
 
 .picker-language-choice .mantine-Button-label {
   width: 100%;
+  overflow: visible;
   line-height: 1.2;
   text-align: left;
+  white-space: normal;
 }
 
 @keyframes picker-step-in {
