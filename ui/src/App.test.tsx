@@ -56,6 +56,13 @@ test('marks the current route in site navigation', () => {
   expect(screen.getAllByRole('link', { name: 'Projects' }).some((link) => link.getAttribute('aria-current') === 'page')).toBe(true)
 })
 
+test('links to broad site management from the footer', () => {
+  renderApp()
+
+  expect(screen.getByRole('link', { name: 'Manage site' })).toHaveAttribute('href', '/manage/schedule')
+  expect(screen.queryByRole('link', { name: 'Manage calendar' })).not.toBeInTheDocument()
+})
+
 test('shows a ticket icon on every Get tickets link', async () => {
   const user = userEvent.setup()
   renderApp()

@@ -51,7 +51,7 @@ export const Footer = () => (
           Made by volunteers in Cambridge.
         </Text>
         <Anchor component={RouterLink} to='/manage/schedule' size='xs' c='gray.6'>
-          Manage calendar
+          Manage site
         </Anchor>
       </Group>
     </Container>
