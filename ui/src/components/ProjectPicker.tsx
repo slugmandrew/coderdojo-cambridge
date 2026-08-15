@@ -3,7 +3,7 @@ import { faCode, faCompass, faFilterCircleXmark, faLightbulb } from '@fortawesom
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProjectGrid } from 'components/ProjectGrid'
 import { TopicGuideCard } from 'components/TopicGuideCard'
-import { BrowseMode, createProjectDiscovery, isBrowseMode, isLanguageName, isLevel, isTopicSlug, topicDefinitions } from 'data/ProjectDiscovery'
+import { BrowseMode, createProjectDiscovery, isBrowseMode, isLanguageName, isLevel, isTopicSlug } from 'data/ProjectDiscovery'
 import { useProjectCatalog } from 'data/ProjectCatalog'
 import React from 'react'
 import { useSearchParams } from 'react-router'
@@ -21,7 +21,7 @@ export const ProjectPicker = () => {
   const topic = isTopicSlug(topicParam) ? topicParam : undefined
   const language = isLanguageName(languageParam) ? languageParam : undefined
   const level = isLevel(levelParam) ? levelParam : undefined
-  const selectedTopic = topicDefinitions.find((candidate) => candidate.slug === topic)
+  const selectedTopic = discovery.topics.find((candidate) => candidate.slug === topic)
   const hasPrimaryChoice = Boolean(topic || language)
   const filteredProjects = discovery.find({ topic, language, level })
 
@@ -93,6 +93,7 @@ export const ProjectPicker = () => {
                     variant={topic === option.slug ? 'filled' : 'light'}
                     color='clubOrange'
                     aria-pressed={topic === option.slug}
+                    leftSection={<FontAwesomeIcon icon={option.icon} />}
                     onClick={() => updateSearch({ topic: option.slug, language: undefined, level: undefined })}>
                     <Stack gap={4} w='100%'>
                       <Text component='span' fw={900}>
@@ -126,9 +127,12 @@ export const ProjectPicker = () => {
                     onClick={() => updateSearch({ language: option.value, topic: undefined, level: undefined })}>
                     <Stack gap={4} w='100%'>
                       <Group justify='space-between' gap='xs'>
-                        <Text component='span' fw={900}>
-                          {option.value}
-                        </Text>
+                        <Group component='span' gap={7} wrap='nowrap'>
+                          {option.icon && <FontAwesomeIcon icon={option.icon} size='lg' />}
+                          <Text component='span' fw={900}>
+                            {option.value}
+                          </Text>
+                        </Group>
                         <Badge color='clubTeal' variant={language === option.value ? 'white' : 'light'}>
                           {option.ages}
                         </Badge>
@@ -136,6 +140,11 @@ export const ProjectPicker = () => {
                       <Text component='span' size='sm' fw={600}>
                         {option.description}
                       </Text>
+                      {option.note && (
+                        <Text component='span' size='xs' fw={800} c={language === option.value ? 'white' : 'clubOrange.9'}>
+                          {option.note}
+                        </Text>
+                      )}
                     </Stack>
                   </Button>
                 ))}

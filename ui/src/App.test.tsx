@@ -56,6 +56,26 @@ test('marks the current route in site navigation', () => {
   expect(screen.getAllByRole('link', { name: 'Projects' }).some((link) => link.getAttribute('aria-current') === 'page')).toBe(true)
 })
 
+test('links to broad site management from the footer', () => {
+  renderApp()
+
+  expect(screen.getByRole('link', { name: 'Manage site' })).toHaveAttribute('href', '/manage/schedule')
+  expect(screen.queryByRole('link', { name: 'Manage calendar' })).not.toBeInTheDocument()
+})
+
+test('shows a ticket icon on every Get tickets link', async () => {
+  const user = userEvent.setup()
+  renderApp()
+
+  for (const link of screen.getAllByRole('link', { name: 'Get tickets' })) {
+    expect(link.querySelector('[data-icon="ticket"]')).toBeInTheDocument()
+  }
+
+  await user.click(screen.getByRole('button', { name: 'Toggle menu' }))
+  const dialog = await screen.findByRole('dialog', { name: 'Menu' })
+  expect(within(dialog).getByRole('link', { name: 'Get tickets' }).querySelector('[data-icon="ticket"]')).toBeInTheDocument()
+})
+
 test('offers two ways to find a project', async () => {
   renderApp('/projects')
 
@@ -70,6 +90,19 @@ test.each(['Ages 7+', 'Ages 9+', 'Ages 11+', 'Ages 14+'])('shows the %s project 
 
   await user.click(await screen.findByRole('button', { name: /what do you want to code with/i }))
   expect(await screen.findByText(ages)).toBeInTheDocument()
+})
+
+test('shows HTML and Unity icons and explains the Unity setup requirement', async () => {
+  const user = userEvent.setup()
+  renderApp('/projects')
+
+  await user.click(await screen.findByRole('button', { name: /what do you want to code with/i }))
+  const html = await screen.findByRole('button', { name: /html.*build web pages/i })
+  const unity = screen.getByRole('button', { name: /unity.*build in 3d.*own laptop needed/i })
+
+  expect(html.querySelector('[data-icon="html5"]')).toBeInTheDocument()
+  expect(unity.querySelector('[data-icon="unity"]')).toBeInTheDocument()
+  expect(unity).toHaveTextContent('Own laptop needed · Install Unity before the session')
 })
 
 test('guides coders through coding tool and optional challenge filters', async () => {

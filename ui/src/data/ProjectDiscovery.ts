@@ -1,3 +1,6 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faHtml5, faRaspberryPi, faUnity } from '@fortawesome/free-brands-svg-icons'
+import { faBookOpen, faCube, faGamepad, faGift, faGlobe, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { ComponentType } from 'react'
 import christmasJumper from 'image/christmas_jumper.png'
 import birthdayCard from 'image/birthday-card.png'
@@ -29,6 +32,7 @@ export type TopicDefinition = {
   ages: string
   equipment: string
   image: string
+  icon: IconDefinition
   Guide: ComponentType
 }
 
@@ -42,6 +46,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: makecodeEditor,
+    icon: faGamepad,
     Guide: Games,
   },
   {
@@ -53,6 +58,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: bookReader,
+    icon: faBookOpen,
     Guide: Stories,
   },
   {
@@ -64,6 +70,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 9+',
     equipment: 'No special equipment',
     image: birthdayCard,
+    icon: faGlobe,
     Guide: WebDesign,
   },
   {
@@ -75,6 +82,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 9+',
     equipment: '3D printer session',
     image: schematic,
+    icon: faCube,
     Guide: Printing,
   },
   {
@@ -86,6 +94,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'micro:bit available at the club',
     image: microBitInHands,
+    icon: faMicrochip,
     Guide: MicroBit,
   },
   {
@@ -97,6 +106,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: christmasJumper,
+    icon: faGift,
     Guide: Christmas,
   },
   {
@@ -108,15 +118,30 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 11+',
     equipment: 'Raspberry Pi and Sense HAT',
     image: senseHatGif,
+    icon: faRaspberryPi,
     Guide: SenseHat,
   },
 ]
 
-export const languageOptions = [
+type LanguageOption = {
+  value: LanguageName
+  description: string
+  ages: string
+  icon?: IconDefinition
+  note?: string
+}
+
+export const languageOptions: LanguageOption[] = [
   { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7+' },
-  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+' },
+  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+', icon: faHtml5 },
   { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11+' },
-  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14+' },
+  {
+    value: LanguageName.unity,
+    description: 'Build in 3D',
+    ages: 'Ages 14+',
+    icon: faUnity,
+    note: 'Own laptop needed · Install Unity before the session',
+  },
 ]
 
 export type DiscoveryCriteria = {
@@ -125,15 +150,18 @@ export type DiscoveryCriteria = {
   level?: Level
 }
 
-export const createProjectDiscovery = (projects: Project[]) => {
+export const createProjectDiscovery = (projects: Project[], today = new Date()) => {
   const uniqueProjects = [...new Map(projects.map((project) => [project.slug, project])).values()]
+  const christmasIsVisible = today.getMonth() === 11
+  const visibleProjects = christmasIsVisible ? uniqueProjects : uniqueProjects.filter((project) => !project.collections?.includes('christmasProjects'))
+  const visibleTopics = topicDefinitions.filter((topic) => christmasIsVisible || topic.slug !== 'christmas')
 
   return {
-    topics: topicDefinitions.filter((topic) => uniqueProjects.some((project) => project.collections?.includes(topic.collection))),
-    languages: languageOptions.filter((language) => uniqueProjects.some((project) => project.language === language.value)),
+    topics: visibleTopics.filter((topic) => visibleProjects.some((project) => project.collections?.includes(topic.collection))),
+    languages: languageOptions.filter((language) => visibleProjects.some((project) => project.language === language.value)),
     find(criteria: DiscoveryCriteria) {
       const topic = criteria.topic ? topicDefinitions.find((candidate) => candidate.slug === criteria.topic) : undefined
-      return uniqueProjects.filter(
+      return visibleProjects.filter(
         (project) =>
           (!topic || project.collections?.includes(topic.collection)) &&
           (!criteria.language || project.language === criteria.language) &&

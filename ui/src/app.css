@@ -180,6 +180,12 @@ body {
   white-space: normal;
 }
 
+.topic-choice .mantine-Button-section {
+  align-self: flex-start;
+  margin-top: 3px;
+  font-size: 1.35rem;
+}
+
 .topic-guide-card {
   overflow: hidden;
   border: 2px solid #d5f0ec;
