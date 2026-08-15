@@ -136,15 +136,18 @@ export type DiscoveryCriteria = {
   level?: Level
 }
 
-export const createProjectDiscovery = (projects: Project[]) => {
+export const createProjectDiscovery = (projects: Project[], today = new Date()) => {
   const uniqueProjects = [...new Map(projects.map((project) => [project.slug, project])).values()]
+  const christmasIsVisible = today.getMonth() === 11
+  const visibleProjects = christmasIsVisible ? uniqueProjects : uniqueProjects.filter((project) => !project.collections?.includes('christmasProjects'))
+  const visibleTopics = topicDefinitions.filter((topic) => christmasIsVisible || topic.slug !== 'christmas')
 
   return {
-    topics: topicDefinitions.filter((topic) => uniqueProjects.some((project) => project.collections?.includes(topic.collection))),
-    languages: languageOptions.filter((language) => uniqueProjects.some((project) => project.language === language.value)),
+    topics: visibleTopics.filter((topic) => visibleProjects.some((project) => project.collections?.includes(topic.collection))),
+    languages: languageOptions.filter((language) => visibleProjects.some((project) => project.language === language.value)),
     find(criteria: DiscoveryCriteria) {
       const topic = criteria.topic ? topicDefinitions.find((candidate) => candidate.slug === criteria.topic) : undefined
-      return uniqueProjects.filter(
+      return visibleProjects.filter(
         (project) =>
           (!topic || project.collections?.includes(topic.collection)) &&
           (!criteria.language || project.language === criteria.language) &&

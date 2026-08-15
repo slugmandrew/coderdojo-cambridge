@@ -3,7 +3,7 @@ import { faCode, faCompass, faFilterCircleXmark, faLightbulb } from '@fortawesom
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProjectGrid } from 'components/ProjectGrid'
 import { TopicGuideCard } from 'components/TopicGuideCard'
-import { BrowseMode, createProjectDiscovery, isBrowseMode, isLanguageName, isLevel, isTopicSlug, topicDefinitions } from 'data/ProjectDiscovery'
+import { BrowseMode, createProjectDiscovery, isBrowseMode, isLanguageName, isLevel, isTopicSlug } from 'data/ProjectDiscovery'
 import { useProjectCatalog } from 'data/ProjectCatalog'
 import React from 'react'
 import { useSearchParams } from 'react-router'
@@ -21,7 +21,7 @@ export const ProjectPicker = () => {
   const topic = isTopicSlug(topicParam) ? topicParam : undefined
   const language = isLanguageName(languageParam) ? languageParam : undefined
   const level = isLevel(levelParam) ? levelParam : undefined
-  const selectedTopic = topicDefinitions.find((candidate) => candidate.slug === topic)
+  const selectedTopic = discovery.topics.find((candidate) => candidate.slug === topic)
   const hasPrimaryChoice = Boolean(topic || language)
   const filteredProjects = discovery.find({ topic, language, level })
 
