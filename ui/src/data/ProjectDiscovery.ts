@@ -1,5 +1,5 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
+import { faHtml5, faRaspberryPi, faUnity } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen, faCube, faGamepad, faGift, faGlobe, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { ComponentType } from 'react'
 import christmasJumper from 'image/christmas_jumper.png'
@@ -123,11 +123,25 @@ export const topicDefinitions: TopicDefinition[] = [
   },
 ]
 
-export const languageOptions = [
+type LanguageOption = {
+  value: LanguageName
+  description: string
+  ages: string
+  icon?: IconDefinition
+  note?: string
+}
+
+export const languageOptions: LanguageOption[] = [
   { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7+' },
-  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+' },
+  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+', icon: faHtml5 },
   { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11+' },
-  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14+' },
+  {
+    value: LanguageName.unity,
+    description: 'Build in 3D',
+    ages: 'Ages 14+',
+    icon: faUnity,
+    note: 'Own laptop needed · Install Unity before the session',
+  },
 ]
 
 export type DiscoveryCriteria = {

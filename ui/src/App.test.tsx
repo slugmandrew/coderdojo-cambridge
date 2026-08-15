@@ -92,6 +92,19 @@ test.each(['Ages 7+', 'Ages 9+', 'Ages 11+', 'Ages 14+'])('shows the %s project 
   expect(await screen.findByText(ages)).toBeInTheDocument()
 })
 
+test('shows HTML and Unity icons and explains the Unity setup requirement', async () => {
+  const user = userEvent.setup()
+  renderApp('/projects')
+
+  await user.click(await screen.findByRole('button', { name: /what do you want to code with/i }))
+  const html = await screen.findByRole('button', { name: /html.*build web pages/i })
+  const unity = screen.getByRole('button', { name: /unity.*build in 3d.*own laptop needed/i })
+
+  expect(html.querySelector('[data-icon="html5"]')).toBeInTheDocument()
+  expect(unity.querySelector('[data-icon="unity"]')).toBeInTheDocument()
+  expect(unity).toHaveTextContent('Own laptop needed · Install Unity before the session')
+})
+
 test('guides coders through coding tool and optional challenge filters', async () => {
   const user = userEvent.setup()
   renderApp('/projects')

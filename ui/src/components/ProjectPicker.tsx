@@ -127,9 +127,12 @@ export const ProjectPicker = () => {
                     onClick={() => updateSearch({ language: option.value, topic: undefined, level: undefined })}>
                     <Stack gap={4} w='100%'>
                       <Group justify='space-between' gap='xs'>
-                        <Text component='span' fw={900}>
-                          {option.value}
-                        </Text>
+                        <Group component='span' gap={7} wrap='nowrap'>
+                          {option.icon && <FontAwesomeIcon icon={option.icon} size='lg' />}
+                          <Text component='span' fw={900}>
+                            {option.value}
+                          </Text>
+                        </Group>
                         <Badge color='clubTeal' variant={language === option.value ? 'white' : 'light'}>
                           {option.ages}
                         </Badge>
@@ -137,6 +140,11 @@ export const ProjectPicker = () => {
                       <Text component='span' size='sm' fw={600}>
                         {option.description}
                       </Text>
+                      {option.note && (
+                        <Text component='span' size='xs' fw={800} c={language === option.value ? 'white' : 'clubOrange.9'}>
+                          {option.note}
+                        </Text>
+                      )}
                     </Stack>
                   </Button>
                 ))}
