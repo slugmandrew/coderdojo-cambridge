@@ -7,22 +7,19 @@ import React, { useState } from 'react'
 import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
 
-const languageDescriptions: Record<LanguageName, string> = {
-  [LanguageName.scratch]: 'Make games and animations',
-  [LanguageName.python]: 'Write real code',
-  [LanguageName.html]: 'Build web pages',
-  [LanguageName.makecode]: 'Make arcade games',
-  [LanguageName.hardware]: 'Build real gadgets',
-  [LanguageName.unity]: 'Build in 3D',
-  [LanguageName.java]: 'Create apps',
-}
+const languageOptions = [
+  { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7–10' },
+  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9–13' },
+  { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11–15' },
+  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14–17' },
+]
 
 export const ProjectPicker = () => {
   const { catalog, loading } = useProjectCatalog()
   const [language, setLanguage] = useState<LanguageName>()
   const [level, setLevel] = useState<Level>()
 
-  const languages = Object.values(LanguageName).filter((option) => catalog.projects.some((project) => project.language === option))
+  const languages = languageOptions.filter((option) => catalog.projects.some((project) => project.language === option.value))
   const filteredProjects = catalog.projects.filter((project) => (!language || project.language === language) && (!level || project.level.includes(level)))
   const ready = Boolean(language && level)
 
@@ -67,15 +64,27 @@ export const ProjectPicker = () => {
                 <SimpleGrid cols={{ base: 1, sm: 2 }} spacing='sm'>
                   {languages.map((option) => (
                     <Button
-                      key={option}
+                      key={option.value}
                       className='picker-language-choice'
                       justify='flex-start'
                       size='lg'
-                      variant={language === option ? 'filled' : 'light'}
+                      variant={language === option.value ? 'filled' : 'light'}
                       color='clubTeal'
-                      aria-pressed={language === option}
-                      onClick={() => setLanguage(option)}>
-                      {option} — {languageDescriptions[option]}
+                      aria-pressed={language === option.value}
+                      onClick={() => setLanguage(option.value)}>
+                      <Stack gap={4} w='100%'>
+                        <Group justify='space-between' gap='xs'>
+                          <Text component='span' fw={900}>
+                            {option.value}
+                          </Text>
+                          <Badge color='clubTeal' variant={language === option.value ? 'white' : 'light'}>
+                            {option.ages}
+                          </Badge>
+                        </Group>
+                        <Text component='span' size='sm' fw={600}>
+                          {option.description}
+                        </Text>
+                      </Stack>
                     </Button>
                   ))}
                 </SimpleGrid>
