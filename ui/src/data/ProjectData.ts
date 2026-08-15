@@ -11,8 +11,10 @@ const getProjects: () => {
   microBitProjects: Project[]
   storyProjects: Project[]
   printingProjects: Project[]
+  gameProjects: Project[]
+  webDesignProjects: Project[]
 } = () => {
-  const { intro, three, one, two } = Level
+  const { three, one, two } = Level
   const { introductionToScratch, introductionToPython, moreScratch, furtherScratch } = TrackName
   const { hardware, html, python, scratch, unity, makecode } = LanguageName
 
@@ -97,14 +99,14 @@ const getProjects: () => {
   const raspberryPiProjects: Project[] = [
     {
       language: hardware,
-      level: [intro],
+      level: [one],
       title: 'Getting started with Raspberry Pi',
       url: 'https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started',
       slug: 'raspberry-pi-getting-started',
     },
     {
       language: python,
-      level: [intro],
+      level: [one],
       title: 'Getting started with the Sense HAT',
       url: 'https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat',
       slug: 'getting-started-with-the-sense-hat',
@@ -566,7 +568,57 @@ const getProjects: () => {
     },
   ]
 
-  return { projects, raspberryPiProjects, pythonProjects, christmasProjects, microBitProjects, storyProjects, printingProjects }
+  const allProjects = [...projects, ...raspberryPiProjects, ...pythonProjects, ...christmasProjects, ...microBitProjects, ...storyProjects, ...printingProjects]
+  const projectsBySlug = new Map(allProjects.map((project) => [project.slug, project]))
+  const selectProjects = (slugs: string[]) => slugs.map((slug) => projectsBySlug.get(slug)).filter((project): project is Project => Boolean(project))
+
+  const gameProjects = selectProjects([
+    'space-talk',
+    'catch-the-bus',
+    'snowball-fight',
+    'code-an-adventure',
+    'flappy-astronaut',
+    'rpg',
+    'reaction-game',
+    'explore-a-3d-world',
+  ])
+
+  const webDesignProjects: Project[] = [
+    {
+      language: html,
+      level: [one],
+      title: 'Web Design Module 1',
+      url: 'https://rpf.io/webdev-module-1',
+      slug: 'web-design-module-1',
+    },
+    {
+      language: html,
+      level: [two],
+      title: 'Web Design Module 2',
+      url: 'https://rpf.io/webdev-module-2',
+      slug: 'web-design-module-2',
+    },
+    {
+      language: html,
+      level: [three],
+      title: 'Web Design Module 3',
+      url: 'https://rpf.io/html-css-for-social-enterprise',
+      slug: 'web-design-module-3',
+    },
+    ...selectProjects(['cd-beginner-html-css-sushi', 'cd-intermediate-html-css-sushi', 'cd-advanced-html-css-sushi']),
+  ]
+
+  return {
+    projects,
+    raspberryPiProjects,
+    pythonProjects,
+    christmasProjects,
+    microBitProjects,
+    storyProjects,
+    printingProjects,
+    gameProjects,
+    webDesignProjects,
+  }
 }
 
 export default getProjects()

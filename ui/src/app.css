@@ -146,6 +146,51 @@ body {
   background: radial-gradient(circle at 4% 10%, rgba(255, 255, 255, 0.7) 0 5%, transparent 5.5%), linear-gradient(135deg, #ffd2b2, #fff4eb 55%, #d5f0ec);
 }
 
+.discovery-route {
+  min-height: 112px;
+  padding: 18px;
+  border: 2px solid rgba(0, 107, 93, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.76);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.discovery-route:hover,
+.discovery-route[data-active] {
+  transform: translateY(-2px);
+  border-color: #2ea98f;
+  box-shadow: 0 12px 28px rgba(18, 58, 52, 0.1);
+}
+
+.topic-choice {
+  height: auto;
+  min-height: 92px;
+  padding: 14px;
+  white-space: normal;
+}
+
+.topic-choice .mantine-Button-label {
+  width: 100%;
+  overflow: visible;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+}
+
+.topic-guide-card {
+  overflow: hidden;
+  border: 2px solid #d5f0ec;
+  background: linear-gradient(135deg, #fff 45%, #ecf9f7);
+  box-shadow: 0 16px 36px rgba(18, 58, 52, 0.08);
+}
+
+.topic-guide-details {
+  padding: 4px;
+}
+
 .picker-step-two {
   animation: picker-step-in 220ms ease-out;
 }

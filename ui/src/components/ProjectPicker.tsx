@@ -1,134 +1,248 @@
-import { Badge, Box, Button, Divider, Grid, Group, Loader, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core'
-import { faCompass, faFilterCircleXmark, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons'
+import { Badge, Box, Button, Group, Loader, Paper, SimpleGrid, Stack, Text, ThemeIcon, Title, UnstyledButton } from '@mantine/core'
+import { faCode, faCompass, faFilterCircleXmark, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProjectGrid } from 'components/ProjectGrid'
+import { TopicGuideCard } from 'components/TopicGuideCard'
+import { BrowseMode, createProjectDiscovery, isBrowseMode, isLanguageName, isLevel, isTopicSlug, topicDefinitions } from 'data/ProjectDiscovery'
 import { useProjectCatalog } from 'data/ProjectCatalog'
-import React, { useState } from 'react'
-import { LanguageName } from 'types/LanguageName'
+import React from 'react'
+import { useSearchParams } from 'react-router'
 import { Level } from 'types/Level'
-
-const languageOptions = [
-  { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7+' },
-  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+' },
-  { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11+' },
-  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14+' },
-]
 
 export const ProjectPicker = () => {
   const { catalog, loading } = useProjectCatalog()
-  const [language, setLanguage] = useState<LanguageName>()
-  const [level, setLevel] = useState<Level>()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const discovery = createProjectDiscovery(catalog.projects)
+  const browseParam = searchParams.get('browse')
+  const topicParam = searchParams.get('topic')
+  const languageParam = searchParams.get('language')
+  const levelParam = searchParams.get('level')
+  const mode = isBrowseMode(browseParam) ? browseParam : undefined
+  const topic = isTopicSlug(topicParam) ? topicParam : undefined
+  const language = isLanguageName(languageParam) ? languageParam : undefined
+  const level = isLevel(levelParam) ? levelParam : undefined
+  const selectedTopic = topicDefinitions.find((candidate) => candidate.slug === topic)
+  const hasPrimaryChoice = Boolean(topic || language)
+  const filteredProjects = discovery.find({ topic, language, level })
 
-  const languages = languageOptions.filter((option) => catalog.projects.some((project) => project.language === option.value))
-  const filteredProjects = catalog.projects.filter((project) => (!language || project.language === language) && (!level || project.level.includes(level)))
-  const ready = Boolean(language && level)
-
-  const clear = () => {
-    setLanguage(undefined)
-    setLevel(undefined)
+  const updateSearch = (updates: Record<string, string | undefined>) => {
+    const next = new URLSearchParams(searchParams)
+    for (const [key, value] of Object.entries(updates)) {
+      if (value) next.set(key, value)
+      else next.delete(key)
+    }
+    setSearchParams(next, { replace: true })
   }
+
+  const chooseMode = (nextMode: BrowseMode) => updateSearch({ browse: nextMode, topic: undefined, language: undefined, level: undefined })
+  const clear = () => setSearchParams({}, { replace: true })
 
   if (loading) return <Loader aria-label='Loading projects' size='lg' />
 
   return (
     <Stack gap='xl'>
       <Paper className='project-picker' p={{ base: 'lg', md: 40 }} radius='xl'>
-        <Grid gap={{ base: 'xl', md: 48 }} align='center'>
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Stack gap='md'>
-              <ThemeIcon size={64} radius='xl' color='clubOrange' variant='filled'>
-                <FontAwesomeIcon icon={faWandMagicSparkles} size='xl' />
-              </ThemeIcon>
-              <Text className='eyebrow'>Project picker</Text>
-              <Title order={2}>Let’s find your next project</Title>
-              <Text size='lg'>Answer two quick questions and we’ll show you where to start.</Text>
-              {(language || level) && (
-                <Button variant='subtle' color='gray' leftSection={<FontAwesomeIcon icon={faFilterCircleXmark} />} onClick={clear}>
-                  Start again
-                </Button>
-              )}
-            </Stack>
-          </Grid.Col>
+        <Stack gap='xl'>
+          <Box maw={720}>
+            <Text className='eyebrow'>Project picker</Text>
+            <Title order={2}>What would you like to explore?</Title>
+            <Text size='lg' mt='sm'>
+              Start with an idea or a coding tool. You can mix and match your choices afterwards.
+            </Text>
+          </Box>
 
-          <Grid.Col span={{ base: 12, md: 8 }}>
-            <Paper p={{ base: 'md', sm: 'xl' }} radius='xl' bg='white'>
-              <Stack gap='lg'>
+          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing='md'>
+            <UnstyledButton className='discovery-route' data-active={mode === 'topics' || undefined} onClick={() => chooseMode('topics')}>
+              <Group wrap='nowrap' align='flex-start'>
+                <ThemeIcon size={52} radius='xl' color='clubOrange' variant={mode === 'topics' ? 'filled' : 'light'}>
+                  <FontAwesomeIcon icon={faLightbulb} size='lg' />
+                </ThemeIcon>
                 <Box>
-                  <Badge size='lg' circle color='clubTeal' mr='xs'>
-                    1
-                  </Badge>
-                  <Text component='span' fw={900} size='lg'>
-                    What sounds fun?
+                  <Text fw={900} size='lg'>
+                    What do you want to make?
                   </Text>
+                  <Text size='sm'>Choose a game, story, website, gadget, or something completely different.</Text>
                 </Box>
-                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing='sm'>
-                  {languages.map((option) => (
-                    <Button
-                      key={option.value}
-                      className='picker-language-choice'
-                      justify='flex-start'
-                      size='lg'
-                      variant={language === option.value ? 'filled' : 'light'}
-                      color='clubTeal'
-                      aria-pressed={language === option.value}
-                      onClick={() => setLanguage(option.value)}>
-                      <Stack gap={4} w='100%'>
-                        <Group justify='space-between' gap='xs'>
-                          <Text component='span' fw={900}>
-                            {option.value}
-                          </Text>
-                          <Badge color='clubTeal' variant={language === option.value ? 'white' : 'light'}>
-                            {option.ages}
-                          </Badge>
-                        </Group>
-                        <Text component='span' size='sm' fw={600}>
-                          {option.description}
-                        </Text>
-                      </Stack>
-                    </Button>
-                  ))}
-                </SimpleGrid>
+              </Group>
+            </UnstyledButton>
+            <UnstyledButton className='discovery-route' data-active={mode === 'languages' || undefined} onClick={() => chooseMode('languages')}>
+              <Group wrap='nowrap' align='flex-start'>
+                <ThemeIcon size={52} radius='xl' color='clubTeal' variant={mode === 'languages' ? 'filled' : 'light'}>
+                  <FontAwesomeIcon icon={faCode} size='lg' />
+                </ThemeIcon>
+                <Box>
+                  <Text fw={900} size='lg'>
+                    What do you want to code with?
+                  </Text>
+                  <Text size='sm'>Pick Scratch, HTML, Python, or Unity and find something made for it.</Text>
+                </Box>
+              </Group>
+            </UnstyledButton>
+          </SimpleGrid>
 
-                {language && (
-                  <Box className='picker-step-two'>
-                    <Divider my='lg' />
-                    <Box mb='md'>
-                      <Badge size='lg' circle color='clubOrange' mr='xs'>
-                        2
-                      </Badge>
-                      <Text component='span' fw={900} size='lg'>
-                        How tricky should it be?
+          {mode === 'topics' && (
+            <Box className='picker-step-two'>
+              <Title order={3} mb='md'>
+                Pick something that sounds fun
+              </Title>
+              <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing='sm'>
+                {discovery.topics.map((option) => (
+                  <Button
+                    key={option.slug}
+                    className='topic-choice'
+                    variant={topic === option.slug ? 'filled' : 'light'}
+                    color='clubOrange'
+                    aria-pressed={topic === option.slug}
+                    onClick={() => updateSearch({ topic: option.slug, language: undefined, level: undefined })}>
+                    <Stack gap={4} w='100%'>
+                      <Text component='span' fw={900}>
+                        {option.prompt}
                       </Text>
-                    </Box>
-                    <Group gap='sm'>
-                      {Object.values(Level).map((option) => (
-                        <Button
-                          key={option}
-                          variant={level === option ? 'filled' : 'outline'}
-                          color='clubOrange'
-                          aria-pressed={level === option}
-                          onClick={() => setLevel(option)}>
-                          {option}
-                        </Button>
-                      ))}
-                    </Group>
-                  </Box>
-                )}
-              </Stack>
-            </Paper>
-          </Grid.Col>
-        </Grid>
+                      <Text component='span' size='xs' fw={600}>
+                        {option.summary}
+                      </Text>
+                    </Stack>
+                  </Button>
+                ))}
+              </SimpleGrid>
+            </Box>
+          )}
+
+          {mode === 'languages' && (
+            <Box className='picker-step-two'>
+              <Title order={3} mb='md'>
+                Pick a coding tool
+              </Title>
+              <SimpleGrid cols={{ base: 1, sm: 2 }} spacing='sm'>
+                {discovery.languages.map((option) => (
+                  <Button
+                    key={option.value}
+                    className='picker-language-choice'
+                    justify='flex-start'
+                    size='lg'
+                    variant={language === option.value ? 'filled' : 'light'}
+                    color='clubTeal'
+                    aria-pressed={language === option.value}
+                    onClick={() => updateSearch({ language: option.value, topic: undefined, level: undefined })}>
+                    <Stack gap={4} w='100%'>
+                      <Group justify='space-between' gap='xs'>
+                        <Text component='span' fw={900}>
+                          {option.value}
+                        </Text>
+                        <Badge color='clubTeal' variant={language === option.value ? 'white' : 'light'}>
+                          {option.ages}
+                        </Badge>
+                      </Group>
+                      <Text component='span' size='sm' fw={600}>
+                        {option.description}
+                      </Text>
+                    </Stack>
+                  </Button>
+                ))}
+              </SimpleGrid>
+            </Box>
+          )}
+
+          {(mode || hasPrimaryChoice) && (
+            <Group justify='flex-end'>
+              <Button variant='subtle' color='gray' leftSection={<FontAwesomeIcon icon={faFilterCircleXmark} />} onClick={clear}>
+                Start again
+              </Button>
+            </Group>
+          )}
+        </Stack>
       </Paper>
 
-      {ready ? (
+      {selectedTopic && <TopicGuideCard topic={selectedTopic} />}
+
+      {hasPrimaryChoice && (
+        <Paper p={{ base: 'md', sm: 'xl' }} radius='xl'>
+          <Stack gap='lg'>
+            <Box>
+              <Text className='eyebrow'>Optional filters</Text>
+              <Title order={3} mt={4}>
+                Narrow it down
+              </Title>
+            </Box>
+
+            <Box>
+              <Text fw={800} mb='xs'>
+                Challenge
+              </Text>
+              <Group gap='xs'>
+                {Object.values(Level).map((option) => (
+                  <Button
+                    key={option}
+                    variant={level === option ? 'filled' : 'outline'}
+                    color='clubOrange'
+                    aria-pressed={level === option}
+                    onClick={() => updateSearch({ level: level === option ? undefined : option })}>
+                    {option}
+                  </Button>
+                ))}
+              </Group>
+            </Box>
+
+            {mode === 'topics' && (
+              <Box>
+                <Text fw={800} mb='xs'>
+                  Coding tool
+                </Text>
+                <Group gap='xs'>
+                  {[...new Set(discovery.find({ topic }).map((project) => project.language))].map((option) => (
+                    <Button
+                      key={option}
+                      variant={language === option ? 'filled' : 'outline'}
+                      color='clubTeal'
+                      aria-pressed={language === option}
+                      onClick={() => updateSearch({ language: language === option ? undefined : option })}>
+                      {option}
+                    </Button>
+                  ))}
+                </Group>
+              </Box>
+            )}
+
+            {mode === 'languages' && (
+              <Box>
+                <Text fw={800} mb='xs'>
+                  What do you want to make?
+                </Text>
+                <Group gap='xs'>
+                  {discovery.topics
+                    .filter((option) => discovery.find({ topic: option.slug, language }).length > 0)
+                    .map((option) => (
+                      <Button
+                        key={option.slug}
+                        variant={topic === option.slug ? 'filled' : 'outline'}
+                        color='clubOrange'
+                        aria-pressed={topic === option.slug}
+                        onClick={() => updateSearch({ topic: topic === option.slug ? undefined : option.slug })}>
+                        {option.title}
+                      </Button>
+                    ))}
+                </Group>
+              </Box>
+            )}
+          </Stack>
+        </Paper>
+      )}
+
+      {hasPrimaryChoice ? (
         <Stack gap='md'>
-          <Group justify='space-between'>
+          <Group justify='space-between' align='flex-end'>
             <Title order={2}>These could be perfect!</Title>
             <Text fw={800} c='clubTeal.8' aria-live='polite'>
               {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'} to explore
             </Text>
           </Group>
-          <ProjectGrid projects={filteredProjects} />
+          {filteredProjects.length > 0 ? (
+            <ProjectGrid projects={filteredProjects} />
+          ) : (
+            <Paper p='xl' radius='xl' ta='center' bg='clubOrange.0'>
+              <Text fw={800}>No projects match every choice yet. Try removing one of the optional filters.</Text>
+            </Paper>
+          )}
         </Stack>
       ) : (
         <Paper p='xl' radius='xl' ta='center' bg='clubTeal.0'>

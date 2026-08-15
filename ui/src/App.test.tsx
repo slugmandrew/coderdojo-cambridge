@@ -8,6 +8,16 @@ import { beforeEach, expect, test, vi } from 'vitest'
 import { App } from './App'
 import { theme } from './theme'
 
+const seedProjects = new Map<string, (typeof seedCatalog.projects)[number] & { collections: string[] }>()
+for (const [collection, projects] of Object.entries(seedCatalog)) {
+  for (const project of projects) {
+    const existing = seedProjects.get(project.slug)
+    if (existing) existing.collections.push(collection)
+    else seedProjects.set(project.slug, { ...project, collections: [collection] })
+  }
+}
+const discoveryCatalog = { projects: [...seedProjects.values()] }
+
 const renderApp = (path = '/') =>
   render(
     <MantineProvider theme={theme}>
@@ -22,7 +32,7 @@ const mockFetch = (auth = { configured: true, authenticated: false, mentor: unde
     'fetch',
     vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input)
-      if (url.endsWith('/api/projects')) return new Response(JSON.stringify(seedCatalog), { status: 200 })
+      if (url.endsWith('/api/projects')) return new Response(JSON.stringify(discoveryCatalog), { status: 200 })
       if (url.endsWith('/api/auth/me')) return new Response(JSON.stringify(auth), { status: 200 })
       if (url.endsWith('/api/schedule')) return new Response(JSON.stringify({ sessions: [], updatedAt: null }), { status: 200 })
       return new Response(null, { status: 204 })
@@ -46,23 +56,27 @@ test('marks the current route in site navigation', () => {
   expect(screen.getAllByRole('link', { name: 'Projects' }).some((link) => link.getAttribute('aria-current') === 'page')).toBe(true)
 })
 
-test('starts the guided project picker with coding choices', async () => {
+test('offers two ways to find a project', async () => {
   renderApp('/projects')
 
-  expect(await screen.findByRole('button', { name: /python.*write real code/i })).toBeInTheDocument()
-  expect(screen.queryByRole('button', { name: 'Level 1' })).not.toBeInTheDocument()
+  expect(await screen.findByRole('button', { name: /what do you want to make/i })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: /what do you want to code with/i })).toBeInTheDocument()
+  expect(screen.queryByRole('button', { name: /python.*write real code/i })).not.toBeInTheDocument()
 })
 
 test.each(['Ages 7+', 'Ages 9+', 'Ages 11+', 'Ages 14+'])('shows the %s project recommendation', async (ages) => {
-  renderApp('/projects')
-
-  expect(await screen.findByText(ages)).toBeInTheDocument()
-})
-
-test('guides coders through language and challenge filters', async () => {
   const user = userEvent.setup()
   renderApp('/projects')
 
+  await user.click(await screen.findByRole('button', { name: /what do you want to code with/i }))
+  expect(await screen.findByText(ages)).toBeInTheDocument()
+})
+
+test('guides coders through coding tool and optional challenge filters', async () => {
+  const user = userEvent.setup()
+  renderApp('/projects')
+
+  await user.click(await screen.findByRole('button', { name: /what do you want to code with/i }))
   const python = await screen.findByRole('button', { name: /python.*write real code/i })
   await user.click(python)
   const levelOne = screen.getByRole('button', { name: 'Level 1' })
@@ -71,6 +85,23 @@ test('guides coders through language and challenge filters', async () => {
   expect(screen.getByText(/projects to explore/)).toBeInTheDocument()
   expect(python).toHaveAttribute('aria-pressed', 'true')
   expect(levelOne).toHaveAttribute('aria-pressed', 'true')
+})
+
+test('shows a topic guide and matching projects after choosing an interest', async () => {
+  const user = userEvent.setup()
+  renderApp('/projects?browse=topics')
+
+  await user.click(await screen.findByRole('button', { name: /i want to write a story/i }))
+
+  expect(screen.getByRole('heading', { level: 2, name: 'Code your own stories' })).toBeInTheDocument()
+  expect(screen.getByText(/projects to explore/)).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 3, name: 'Full of Stories' })).toBeInTheDocument()
+})
+
+test('redirects the old topics page into topic discovery', async () => {
+  renderApp('/topics')
+
+  expect(await screen.findByRole('heading', { level: 3, name: 'Pick something that sounds fun' })).toBeInTheDocument()
 })
 
 test('navigates from the mobile menu and closes it', async () => {
@@ -99,7 +130,6 @@ test('scrolls to the top after navigating to another page', async () => {
 })
 
 test.each([
-  ['/topics', 'Topics'],
   ['/coders', 'Coders'],
   ['/parents', 'Parents'],
   ['/mentors', 'Mentors'],
@@ -134,4 +164,5 @@ test('shows project publishing controls to an authenticated mentor', async () =>
 
   expect(await screen.findByRole('textbox', { name: 'Project title' })).toBeInTheDocument()
   expect(screen.getByText('Signed in as Test Mentor')).toBeInTheDocument()
+  expect(screen.getByRole('combobox', { name: 'Topics (optional)' })).toBeInTheDocument()
 })

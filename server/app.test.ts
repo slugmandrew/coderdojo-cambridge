@@ -84,13 +84,19 @@ describe('mentor content management', () => {
     const projectResponse = await fetch(`${baseUrl}/api/projects`, {
       method: 'POST',
       headers: { Cookie: sessionCookie, Origin: 'https://club.example', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'Mentor project', url: 'https://example.com/project', language: '🐍 Python', level: ['Level 1'] }),
+      body: JSON.stringify({
+        title: 'Mentor project',
+        url: 'https://example.com/project',
+        language: '🐍 Python',
+        level: ['Level 1'],
+        collections: ['storyProjects'],
+      }),
     })
     expect(projectResponse.status).toBe(201)
     await expect(projectResponse.json()).resolves.toMatchObject({ slug: 'mentor-project', title: 'Mentor project' })
 
-    const catalog = (await (await fetch(`${baseUrl}/api/projects`)).json()) as { projects: Array<{ slug: string }> }
-    expect(catalog.projects.some(({ slug }) => slug === 'mentor-project')).toBe(true)
+    const catalog = (await (await fetch(`${baseUrl}/api/projects`)).json()) as { projects: Array<{ slug: string; collections: string[] }> }
+    expect(catalog.projects.find(({ slug }) => slug === 'mentor-project')?.collections).toEqual(expect.arrayContaining(['projects', 'storyProjects']))
   })
 
   test('rejects a verified account that is not on the mentor allowlist', async () => {

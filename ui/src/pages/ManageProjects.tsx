@@ -4,6 +4,7 @@ import { faArrowLeft, faFolderPlus, faRightFromBracket } from '@fortawesome/free
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMentor } from 'auth/MentorContext'
 import { useProjectCatalog } from 'data/ProjectCatalog'
+import { topicDefinitions } from 'data/ProjectDiscovery'
 import React, { FormEvent, useState } from 'react'
 import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
@@ -16,6 +17,7 @@ export const ManageProjects = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [language, setLanguage] = useState<string | null>(null)
   const [levels, setLevels] = useState<string[]>([])
+  const [collections, setCollections] = useState<string[]>([])
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<{ color: string; text: string } | null>(null)
 
@@ -27,7 +29,7 @@ export const ManageProjects = () => {
       const response = await fetch('/api/projects', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, url, language, level: levels, ...(imageUrl ? { imageUrl } : {}) }),
+        body: JSON.stringify({ title, url, language, level: levels, collections, ...(imageUrl ? { imageUrl } : {}) }),
       })
       const body = (await response.json()) as { title?: string; message?: string }
       if (!response.ok) throw new Error(body.message || 'The project could not be published.')
@@ -37,6 +39,7 @@ export const ManageProjects = () => {
       setImageUrl('')
       setLanguage(null)
       setLevels([])
+      setCollections([])
       await refresh()
     } catch (error: unknown) {
       setMessage({ color: 'red', text: error instanceof Error ? error.message : 'The project could not be published.' })
@@ -106,6 +109,13 @@ export const ManageProjects = () => {
                 onChange={setLanguage}
               />
               <MultiSelect label='Levels' required data={Object.values(Level)} value={levels} onChange={setLevels} />
+              <MultiSelect
+                label='Topics (optional)'
+                description='Choose every special topic where this project should appear.'
+                data={topicDefinitions.map((topic) => ({ value: topic.collection, label: topic.title }))}
+                value={collections}
+                onChange={setCollections}
+              />
               <Group justify='space-between' mt='sm'>
                 <Button component='a' href='/manage/schedule' variant='subtle' leftSection={<FontAwesomeIcon icon={faArrowLeft} />}>
                   Calendar
