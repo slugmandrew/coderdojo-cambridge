@@ -24,19 +24,14 @@ export type Project = {
   track?: { name: string; position: number }
   domain?: string
   imageUrl?: string
+  collections: string[]
 }
 
 export type ProjectCatalog = {
   projects: Project[]
-  raspberryPiProjects: Project[]
-  pythonProjects: Project[]
-  christmasProjects: Project[]
-  microBitProjects: Project[]
-  storyProjects: Project[]
-  printingProjects: Project[]
 }
 
-export type NewProject = Pick<Project, 'title' | 'url' | 'language' | 'level'> & { imageUrl?: string }
+export type NewProject = Pick<Project, 'title' | 'url' | 'language' | 'level'> & { imageUrl?: string; collections?: string[] }
 
 const defaultSchedule: Schedule = {
   updatedAt: null,
@@ -54,9 +49,10 @@ const defaultSchedule: Schedule = {
   ],
 }
 
-const collectionNames = Object.keys(seedCatalog) as Array<keyof ProjectCatalog>
+const collectionNames = Object.keys(seedCatalog) as Array<keyof typeof seedCatalog>
+const topicCollectionNames: string[] = collectionNames.filter((name) => !['projects', 'pythonProjects'].includes(name))
 const allowedLanguages = new Set(['💻 Hardware', '🐱 Scratch', '🐍 Python', 'Unity', 'HTML', 'MakeCode'])
-const allowedLevels = new Set(['Intro', 'Level 1', 'Level 2', 'Level 3'])
+const allowedLevels = new Set(['Level 1', 'Level 2', 'Level 3'])
 
 export class ContentValidationError extends Error {}
 
@@ -115,6 +111,9 @@ const validateProject = (value: NewProject) => {
   if (!allowedLanguages.has(value.language)) throw new ContentValidationError('Choose a supported project language.')
   if (!Array.isArray(value.level) || value.level.length === 0 || !value.level.every((level) => allowedLevels.has(level))) {
     throw new ContentValidationError('Choose at least one supported project level.')
+  }
+  if (value.collections && (!Array.isArray(value.collections) || !value.collections.every((collection) => topicCollectionNames.includes(collection)))) {
+    throw new ContentValidationError('Choose supported project topics.')
   }
   if (value.imageUrl) {
     try {
@@ -198,38 +197,41 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
   )
   const insertLevel = database.prepare('INSERT OR IGNORE INTO project_levels (project_slug, level) VALUES (?, ?)')
   const insertCollection = database.prepare('INSERT OR IGNORE INTO project_collections (project_slug, collection, position) VALUES (?, ?, ?)')
-  const projectsInitialized = database.prepare("SELECT 1 FROM metadata WHERE key = 'projects_initialized'").get()
-  if (!projectsInitialized) {
-    const seededAt = new Date(0).toISOString()
-    for (const collection of collectionNames) {
-      seedCatalog[collection].forEach((project, position) => {
-        insertProject.run(
-          project.slug,
-          project.url,
-          project.title,
-          project.language,
-          project.domain ?? null,
-          null,
-          project.track?.name ?? null,
-          project.track?.position ?? null,
-          null,
-          seededAt,
-        )
-        for (const level of project.level) insertLevel.run(project.slug, level)
-        insertCollection.run(project.slug, collection, position)
-      })
-    }
-    database.prepare('INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)').run('projects_initialized', '1')
+  const seededAt = new Date(0).toISOString()
+  for (const collection of collectionNames) {
+    seedCatalog[collection].forEach((project, position) => {
+      insertProject.run(
+        project.slug,
+        project.url,
+        project.title,
+        project.language,
+        project.domain ?? null,
+        null,
+        project.track?.name ?? null,
+        project.track?.position ?? null,
+        null,
+        seededAt,
+      )
+      for (const level of project.level) insertLevel.run(project.slug, level)
+      insertCollection.run(project.slug, collection, position)
+    })
   }
+  database.prepare("INSERT OR IGNORE INTO project_levels (project_slug, level) SELECT project_slug, 'Level 1' FROM project_levels WHERE level = 'Intro'").run()
+  database.prepare("DELETE FROM project_levels WHERE level = 'Intro'").run()
+  database.prepare('INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)').run('projects_initialized', '1')
 
   const projectFromRow = (row: ProjectRow): Project => {
     const levelRows = database.prepare('SELECT level FROM project_levels WHERE project_slug = ? ORDER BY level').all(row.slug) as Array<{ level: string }>
+    const collectionRows = database.prepare('SELECT collection FROM project_collections WHERE project_slug = ? ORDER BY collection').all(row.slug) as Array<{
+      collection: string
+    }>
     return {
       slug: row.slug,
       url: row.url,
       title: row.title,
       language: row.language,
       level: levelRows.map(({ level }) => level),
+      collections: collectionRows.map(({ collection }) => collection),
       ...(row.domain ? { domain: row.domain } : {}),
       ...(row.image_url ? { imageUrl: row.image_url } : {}),
       ...(row.track_name && row.track_position ? { track: { name: row.track_name, position: row.track_position } } : {}),
@@ -287,16 +289,14 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
     },
 
     listProjects(): ProjectCatalog {
-      const catalog = Object.fromEntries(collectionNames.map((name) => [name, []])) as unknown as ProjectCatalog
       const rows = database
         .prepare(
-          `SELECT p.slug, p.url, p.title, p.language, p.domain, p.image_url, p.track_name, p.track_position, c.collection
-           FROM project_collections c JOIN projects p ON p.slug = c.project_slug
-           ORDER BY c.collection, c.position, p.title`,
+          `SELECT p.slug, p.url, p.title, p.language, p.domain, p.image_url, p.track_name, p.track_position
+           FROM projects p
+           ORDER BY p.created_at, p.title`,
         )
-        .all() as Array<ProjectRow & { collection: keyof ProjectCatalog }>
-      for (const row of rows) catalog[row.collection].push(projectFromRow(row))
-      return catalog
+        .all() as ProjectRow[]
+      return { projects: rows.map(projectFromRow) }
     },
 
     addProject(input: NewProject, mentorSubject: string): Project {
@@ -314,6 +314,7 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
         url: input.url,
         language: input.language,
         level: [...new Set(input.level)],
+        collections: ['projects', ...new Set(input.collections ?? [])],
         domain,
         ...(input.imageUrl ? { imageUrl: input.imageUrl } : {}),
       }
@@ -338,6 +339,14 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
           }
         ).position
         insertCollection.run(slug, 'projects', position)
+        for (const collection of new Set(input.collections ?? [])) {
+          const topicPosition = (
+            database.prepare('SELECT COALESCE(MAX(position), -1) + 1 AS position FROM project_collections WHERE collection = ?').get(collection) as {
+              position: number
+            }
+          ).position
+          insertCollection.run(slug, collection, topicPosition)
+        }
         database.exec('COMMIT')
       } catch (error) {
         database.exec('ROLLBACK')

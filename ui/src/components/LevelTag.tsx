@@ -5,8 +5,6 @@ import { Level } from 'types/Level'
 export const LevelTag: FC<{ levels: Level[] }> = ({ levels }) => {
   const getColorScheme = (level: Level) => {
     switch (level) {
-      case Level.intro:
-        return 'green'
       case Level.one:
         return 'teal'
       case Level.two:

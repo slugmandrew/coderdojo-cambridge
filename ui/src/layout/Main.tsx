@@ -1,6 +1,6 @@
 import { Center, Container, Loader } from '@mantine/core'
 import React, { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 
 const Home = lazy(() => import('pages/Home').then(({ Home }) => ({ default: Home })))
 const Location = lazy(() => import('pages/Location').then(({ Location }) => ({ default: Location })))
@@ -11,7 +11,6 @@ const Coders = lazy(() => import('pages/Coders').then(({ Coders }) => ({ default
 const Parents = lazy(() => import('pages/Parents').then(({ Parents }) => ({ default: Parents })))
 const Projects = lazy(() => import('pages/Projects').then(({ Projects }) => ({ default: Projects })))
 const Scraper = lazy(() => import('pages/Scraper').then(({ Scraper }) => ({ default: Scraper })))
-const Topics = lazy(() => import('pages/Topics').then(({ Topics }) => ({ default: Topics })))
 const Workshops = lazy(() => import('pages/Workshops').then(({ Workshops }) => ({ default: Workshops })))
 
 export const Main = () => {
@@ -41,7 +40,7 @@ export const Main = () => {
             <Route path='/mentors' element={<Mentors />} />
 
             {/* TOPICS */}
-            <Route path='/topics' element={<Topics />} />
+            <Route path='/topics' element={<Navigate to='/projects?browse=topics' replace />} />
 
             {/* LOCATION */}
             <Route path='/location' element={<Location />} />

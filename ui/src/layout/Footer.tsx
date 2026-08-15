@@ -19,9 +19,6 @@ export const Footer = () => (
           <Anchor component={RouterLink} to='/projects' c='gray.4'>
             Projects
           </Anchor>
-          <Anchor component={RouterLink} to='/topics' c='gray.4'>
-            Topics
-          </Anchor>
           <Anchor component={RouterLink} to='/parents' c='gray.4'>
             Parent information
           </Anchor>

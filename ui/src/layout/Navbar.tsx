@@ -5,7 +5,6 @@ import { Link as RouterLink, useLocation } from 'react-router'
 
 const navItems = [
   { label: 'Projects', to: '/projects' },
-  { label: 'Topics', to: '/topics' },
   { label: 'Coders', to: '/coders' },
   { label: 'Parents', to: '/parents' },
   { label: 'Visit us', to: '/location' },

@@ -3,22 +3,10 @@ import { Project } from 'types/Project'
 
 export type ProjectCatalog = {
   projects: Project[]
-  raspberryPiProjects: Project[]
-  pythonProjects: Project[]
-  christmasProjects: Project[]
-  microBitProjects: Project[]
-  storyProjects: Project[]
-  printingProjects: Project[]
 }
 
 const emptyCatalog: ProjectCatalog = {
   projects: [],
-  raspberryPiProjects: [],
-  pythonProjects: [],
-  christmasProjects: [],
-  microBitProjects: [],
-  storyProjects: [],
-  printingProjects: [],
 }
 
 const ProjectCatalogContext = createContext<{ catalog: ProjectCatalog; loading: boolean; refresh: () => Promise<void> } | undefined>(undefined)
