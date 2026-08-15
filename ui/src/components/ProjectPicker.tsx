@@ -93,6 +93,7 @@ export const ProjectPicker = () => {
                     variant={topic === option.slug ? 'filled' : 'light'}
                     color='clubOrange'
                     aria-pressed={topic === option.slug}
+                    leftSection={<FontAwesomeIcon icon={option.icon} />}
                     onClick={() => updateSearch({ topic: option.slug, language: undefined, level: undefined })}>
                     <Stack gap={4} w='100%'>
                       <Text component='span' fw={900}>

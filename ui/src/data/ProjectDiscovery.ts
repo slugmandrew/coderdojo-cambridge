@@ -1,3 +1,6 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
+import { faBookOpen, faCube, faGamepad, faGift, faGlobe, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { ComponentType } from 'react'
 import christmasJumper from 'image/christmas_jumper.png'
 import birthdayCard from 'image/birthday-card.png'
@@ -29,6 +32,7 @@ export type TopicDefinition = {
   ages: string
   equipment: string
   image: string
+  icon: IconDefinition
   Guide: ComponentType
 }
 
@@ -42,6 +46,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: makecodeEditor,
+    icon: faGamepad,
     Guide: Games,
   },
   {
@@ -53,6 +58,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: bookReader,
+    icon: faBookOpen,
     Guide: Stories,
   },
   {
@@ -64,6 +70,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 9+',
     equipment: 'No special equipment',
     image: birthdayCard,
+    icon: faGlobe,
     Guide: WebDesign,
   },
   {
@@ -75,6 +82,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 9+',
     equipment: '3D printer session',
     image: schematic,
+    icon: faCube,
     Guide: Printing,
   },
   {
@@ -86,6 +94,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'micro:bit available at the club',
     image: microBitInHands,
+    icon: faMicrochip,
     Guide: MicroBit,
   },
   {
@@ -97,6 +106,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 7+',
     equipment: 'No special equipment',
     image: christmasJumper,
+    icon: faGift,
     Guide: Christmas,
   },
   {
@@ -108,6 +118,7 @@ export const topicDefinitions: TopicDefinition[] = [
     ages: 'Ages 11+',
     equipment: 'Raspberry Pi and Sense HAT',
     image: senseHatGif,
+    icon: faRaspberryPi,
     Guide: SenseHat,
   },
 ]
