@@ -56,6 +56,19 @@ test('marks the current route in site navigation', () => {
   expect(screen.getAllByRole('link', { name: 'Projects' }).some((link) => link.getAttribute('aria-current') === 'page')).toBe(true)
 })
 
+test('shows a ticket icon on every Get tickets link', async () => {
+  const user = userEvent.setup()
+  renderApp()
+
+  for (const link of screen.getAllByRole('link', { name: 'Get tickets' })) {
+    expect(link.querySelector('[data-icon="ticket"]')).toBeInTheDocument()
+  }
+
+  await user.click(screen.getByRole('button', { name: 'Toggle menu' }))
+  const dialog = await screen.findByRole('dialog', { name: 'Menu' })
+  expect(within(dialog).getByRole('link', { name: 'Get tickets' }).querySelector('[data-icon="ticket"]')).toBeInTheDocument()
+})
+
 test('offers two ways to find a project', async () => {
   renderApp('/projects')
 

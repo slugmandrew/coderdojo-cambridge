@@ -1,4 +1,6 @@
 import { Anchor, Burger, Button, Divider, Drawer, Group, Stack } from '@mantine/core'
+import { faTicket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMentor } from 'auth/MentorContext'
 import React, { FC, ReactNode, useState } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router'
@@ -45,7 +47,13 @@ export const Navbar = () => {
             Mentor tools
           </Anchor>
         )}
-        <Button component='a' href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace' target='_blank' ml='sm' color='clubOrange'>
+        <Button
+          component='a'
+          href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace'
+          target='_blank'
+          ml='sm'
+          color='clubOrange'
+          leftSection={<FontAwesomeIcon icon={faTicket} />}>
           Get tickets
         </Button>
       </Group>
@@ -63,7 +71,13 @@ export const Navbar = () => {
             </Anchor>
           )}
           <Divider my='lg' />
-          <Button component='a' href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace' target='_blank' size='lg' color='clubOrange'>
+          <Button
+            component='a'
+            href='https://codeclub.org/en/clubs/gb/cambridge/cambridge-makespace'
+            target='_blank'
+            size='lg'
+            color='clubOrange'
+            leftSection={<FontAwesomeIcon icon={faTicket} />}>
             Get tickets
           </Button>
         </Stack>
