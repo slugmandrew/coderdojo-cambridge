@@ -53,7 +53,7 @@ test('starts the guided project picker with coding choices', async () => {
   expect(screen.queryByRole('button', { name: 'Level 1' })).not.toBeInTheDocument()
 })
 
-test.each(['Ages 7–10', 'Ages 9–13', 'Ages 11–15', 'Ages 14–17'])('shows the %s project recommendation', async (ages) => {
+test.each(['Ages 7+', 'Ages 9+', 'Ages 11+', 'Ages 14+'])('shows the %s project recommendation', async (ages) => {
   renderApp('/projects')
 
   expect(await screen.findByText(ages)).toBeInTheDocument()

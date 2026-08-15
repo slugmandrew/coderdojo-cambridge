@@ -8,10 +8,10 @@ import { LanguageName } from 'types/LanguageName'
 import { Level } from 'types/Level'
 
 const languageOptions = [
-  { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7–10' },
-  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9–13' },
-  { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11–15' },
-  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14–17' },
+  { value: LanguageName.scratch, description: 'Make games and animations', ages: 'Ages 7+' },
+  { value: LanguageName.html, description: 'Build web pages', ages: 'Ages 9+' },
+  { value: LanguageName.python, description: 'Write real code', ages: 'Ages 11+' },
+  { value: LanguageName.unity, description: 'Build in 3D', ages: 'Ages 14+' },
 ]
 
 export const ProjectPicker = () => {
