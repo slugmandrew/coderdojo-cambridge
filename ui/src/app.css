@@ -132,6 +132,51 @@ body {
   box-shadow: 0 16px 32px rgba(18, 58, 52, 0.09);
 }
 
+.project-picker h2 {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.project-picker {
+  overflow: hidden;
+  border: 0;
+  background: radial-gradient(circle at 4% 10%, rgba(255, 255, 255, 0.7) 0 5%, transparent 5.5%), linear-gradient(135deg, #ffd2b2, #fff4eb 55%, #d5f0ec);
+}
+
+.picker-step-two {
+  animation: picker-step-in 220ms ease-out;
+}
+
+.picker-language-choice {
+  height: auto;
+  min-height: 58px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  white-space: normal;
+}
+
+.picker-language-choice .mantine-Button-label {
+  width: 100%;
+  overflow: visible;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
+}
+
+@keyframes picker-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 62em) {
   .hero-gallery {
     min-height: 480px;
