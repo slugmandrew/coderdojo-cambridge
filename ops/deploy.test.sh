@@ -4,11 +4,12 @@ set -euo pipefail
 
 readonly script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly repo_dir="$(cd "$script_dir/.." && pwd)"
-readonly production_url='https://code-club-host.exe.xyz'
+readonly production_url='https://codeclubcambridge.uk'
 source "$script_dir/deploy.sh"
 
 grep -Fq "PUBLIC_URL: $production_url" "$repo_dir/.github/workflows/deploy-exe-dev.yml"
 grep -Fq "PUBLIC_URL: \${PUBLIC_URL:-$production_url}" "$repo_dir/compose.yaml"
+grep -Fq "$production_url/healthz" "$repo_dir/.github/workflows/deploy-exe-dev.yml"
 
 if grep -R -Fq 'https://club-host.exe.xyz' \
   "$repo_dir/.github" \
