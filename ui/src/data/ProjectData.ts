@@ -12,6 +12,7 @@ const getProjects: () => {
   storyProjects: Project[]
   printingProjects: Project[]
   gameProjects: Project[]
+  creativeProjects: Project[]
   webDesignProjects: Project[]
 } = () => {
   const { three, one, two } = Level
@@ -575,12 +576,46 @@ const getProjects: () => {
   const gameProjects = selectProjects([
     'space-talk',
     'catch-the-bus',
+    'dont-fall-in',
+    'this-sprite-needs-you',
+    'nature-rover',
+    'puzzle-room',
+    'target-practice',
+    'dont-collide',
+    'hour-of-python-bullseye',
+    'codecraft',
     'snowball-fight',
     'code-an-adventure',
     'flappy-astronaut',
+    'cd-beginner-python-sushi',
+    'turtle-race',
     'rpg',
+    'fortune-teller',
+    'reaction',
     'reaction-game',
     'explore-a-3d-world',
+  ])
+
+  const storyProjectsWithCatalog = [...storyProjects, ...selectProjects(['find-the-bug', 'next-customer-please', 'welcome-to-my-world', 'about-me'])]
+
+  const creativeProjects = selectProjects([
+    'silly-eyes',
+    'surprise-animation',
+    'broadcasting-spells',
+    'grow-a-dragonfly',
+    'drum-star',
+    'mandala',
+    'swarms-schools-flocks',
+    'music-maker',
+    'hello-world',
+    'rocket-launch',
+    'make-a-face',
+    'powerful-patterns',
+    'hour-of-python-with-turtles',
+    'hour-of-python-holiday-tree',
+    'colourful-creations',
+    'turtley-amazing',
+    'secret-agent-chat',
   ])
 
   const webDesignProjects: Project[] = [
@@ -614,9 +649,10 @@ const getProjects: () => {
     pythonProjects,
     christmasProjects,
     microBitProjects,
-    storyProjects,
+    storyProjects: storyProjectsWithCatalog,
     printingProjects,
     gameProjects,
+    creativeProjects,
     webDesignProjects,
   }
 }

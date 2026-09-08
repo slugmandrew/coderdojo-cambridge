@@ -197,5 +197,16 @@ test('shows project publishing controls to an authenticated mentor', async () =>
 
   expect(await screen.findByRole('textbox', { name: 'Project title' })).toBeInTheDocument()
   expect(screen.getByText('Signed in as Test Mentor')).toBeInTheDocument()
-  expect(screen.getByRole('combobox', { name: 'Topics (optional)' })).toBeInTheDocument()
+  expect(screen.getByRole('combobox', { name: 'Interests' })).toBeInTheDocument()
+})
+
+test('shows projects from different coding tools under an interest and labels their cards', async () => {
+  const user = userEvent.setup()
+  renderApp('/projects?browse=topics')
+
+  await user.click(await screen.findByRole('button', { name: /i want to make a game/i }))
+
+  expect(screen.getByRole('heading', { level: 3, name: 'Space talk' })).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 3, name: 'Target practice' })).toBeInTheDocument()
+  expect(screen.getAllByText('Game').length).toBeGreaterThan(1)
 })

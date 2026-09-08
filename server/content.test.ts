@@ -31,7 +31,10 @@ test('lists one unified project catalogue with topic memberships', () => {
   expect(catalog.projects.length).toBeGreaterThan(60)
   expect(new Set(catalog.projects.map((project) => project.slug)).size).toBe(catalog.projects.length)
   expect(catalog.projects.find((project) => project.slug === 'storytime')?.collections).toEqual(expect.arrayContaining(['pythonProjects', 'storyProjects']))
+  expect(catalog.projects.find((project) => project.slug === 'target-practice')?.collections).toContain('gameProjects')
+  expect(catalog.projects.find((project) => project.slug === 'mandala')?.collections).toContain('creativeProjects')
   expect(catalog.projects.find((project) => project.slug === 'web-design-module-1')?.collections).toContain('webDesignProjects')
+  expect(catalog.projects.every((project) => project.collections.some((collection) => !['projects', 'pythonProjects'].includes(collection)))).toBe(true)
   expect(catalog.projects.flatMap((project) => project.level)).not.toContain('Intro')
 
   store.close()
@@ -76,5 +79,24 @@ test('publishes a project into the main catalogue and selected topics', () => {
   expect(store.listProjects().projects.find((project) => project.slug === 'a-new-story')?.collections).toEqual(
     expect.arrayContaining(['projects', 'storyProjects', 'gameProjects']),
   )
+  store.close()
+})
+
+test('requires every new project to have an interest', () => {
+  const store = createContentStore(':memory:')
+
+  expect(() =>
+    store.addProject(
+      {
+        title: 'Unclassified project',
+        url: 'https://example.com/unclassified',
+        language: '🐍 Python',
+        level: ['Level 1'],
+        collections: [],
+      },
+      'mentor-123',
+    ),
+  ).toThrow('Choose at least one supported project interest.')
+
   store.close()
 })

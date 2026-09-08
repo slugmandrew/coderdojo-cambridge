@@ -110,8 +110,9 @@ export const ManageProjects = () => {
               />
               <MultiSelect label='Levels' required data={Object.values(Level)} value={levels} onChange={setLevels} />
               <MultiSelect
-                label='Topics (optional)'
-                description='Choose every special topic where this project should appear.'
+                label='Interests'
+                required
+                description='Choose everything this project helps a coder make or explore.'
                 data={topicDefinitions.map((topic) => ({ value: topic.collection, label: topic.title }))}
                 value={collections}
                 onChange={setCollections}
@@ -124,7 +125,7 @@ export const ManageProjects = () => {
                   type='submit'
                   color='clubOrange'
                   loading={saving}
-                  disabled={!title || !url || !language || levels.length === 0}
+                  disabled={!title || !url || !language || levels.length === 0 || collections.length === 0}
                   leftSection={<FontAwesomeIcon icon={faFolderPlus} />}>
                   Publish project
                 </Button>

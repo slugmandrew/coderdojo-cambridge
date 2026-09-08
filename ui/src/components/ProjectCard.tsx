@@ -1,13 +1,16 @@
-import { Box, Button, Group, Image, Paper, Stack, Title } from '@mantine/core'
+import { Badge, Box, Button, Group, Image, Paper, Stack, Title } from '@mantine/core'
 import { faPython, faRaspberryPi } from '@fortawesome/free-brands-svg-icons'
 import { faArrowRight, faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LanguageTag } from 'components/LanguageTag'
 import { LevelTag } from 'components/LevelTag'
+import { topicDefinitions } from 'data/ProjectDiscovery'
 import React, { FC } from 'react'
 import { Project } from 'types/Project'
 
-export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, domain = 'raspberrypi.org', imageUrl }) => {
+export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, domain = 'raspberrypi.org', imageUrl, collections = [] }) => {
+  const interests = topicDefinitions.filter((interest) => collections.includes(interest.collection))
+
   return (
     <Paper withBorder shadow='xs' radius='md' style={(theme) => ({ height: '100%', backgroundColor: theme.white })}>
       <Box style={{ overflow: 'hidden' }}>
@@ -20,6 +23,11 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
         <Group gap='xs' align='flex-start'>
           <LanguageTag language={language} />
           <LevelTag levels={level} />
+          {interests.map((interest) => (
+            <Badge key={interest.slug} size='lg' color='clubOrange' variant='light' leftSection={<FontAwesomeIcon icon={interest.icon} />}>
+              {interest.label}
+            </Badge>
+          ))}
         </Group>
         <Group justify='flex-end'>
           <Button

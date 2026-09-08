@@ -31,7 +31,7 @@ export type ProjectCatalog = {
   projects: Project[]
 }
 
-export type NewProject = Pick<Project, 'title' | 'url' | 'language' | 'level'> & { imageUrl?: string; collections?: string[] }
+export type NewProject = Pick<Project, 'title' | 'url' | 'language' | 'level' | 'collections'> & { imageUrl?: string }
 
 const defaultSchedule: Schedule = {
   updatedAt: null,
@@ -112,8 +112,12 @@ const validateProject = (value: NewProject) => {
   if (!Array.isArray(value.level) || value.level.length === 0 || !value.level.every((level) => allowedLevels.has(level))) {
     throw new ContentValidationError('Choose at least one supported project level.')
   }
-  if (value.collections && (!Array.isArray(value.collections) || !value.collections.every((collection) => topicCollectionNames.includes(collection)))) {
-    throw new ContentValidationError('Choose supported project topics.')
+  if (
+    !Array.isArray(value.collections) ||
+    value.collections.length === 0 ||
+    !value.collections.every((collection) => topicCollectionNames.includes(collection))
+  ) {
+    throw new ContentValidationError('Choose at least one supported project interest.')
   }
   if (value.imageUrl) {
     try {
@@ -314,7 +318,7 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
         url: input.url,
         language: input.language,
         level: [...new Set(input.level)],
-        collections: ['projects', ...new Set(input.collections ?? [])],
+        collections: ['projects', ...new Set(input.collections)],
         domain,
         ...(input.imageUrl ? { imageUrl: input.imageUrl } : {}),
       }
@@ -339,7 +343,7 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
           }
         ).position
         insertCollection.run(slug, 'projects', position)
-        for (const collection of new Set(input.collections ?? [])) {
+        for (const collection of new Set(input.collections)) {
           const topicPosition = (
             database.prepare('SELECT COALESCE(MAX(position), -1) + 1 AS position FROM project_collections WHERE collection = ?').get(collection) as {
               position: number
