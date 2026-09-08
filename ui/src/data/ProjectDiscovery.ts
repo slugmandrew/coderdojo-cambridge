@@ -1,15 +1,17 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faHtml5, faRaspberryPi, faUnity } from '@fortawesome/free-brands-svg-icons'
-import { faBookOpen, faCube, faGamepad, faGift, faGlobe, faMicrochip } from '@fortawesome/free-solid-svg-icons'
+import { faBookOpen, faCube, faGamepad, faGift, faGlobe, faMicrochip, faPalette } from '@fortawesome/free-solid-svg-icons'
 import { ComponentType } from 'react'
 import christmasJumper from 'image/christmas_jumper.png'
 import birthdayCard from 'image/birthday-card.png'
 import bookReader from 'image/book-reader.png'
 import makecodeEditor from 'image/makecode-arcade.png'
 import microBitInHands from 'image/microbit_in_hands.png'
+import pixelArt from 'image/pixel-art.png'
 import schematic from 'image/printing-schematic.png'
 import senseHatGif from 'image/raspberry-pi-sense-hat.gif'
 import { Christmas } from 'topics/Christmas'
+import { CreativeCoding } from 'topics/CreativeCoding'
 import { Games } from 'topics/Games'
 import { MicroBit } from 'topics/MicroBit'
 import { Printing } from 'topics/Printing'
@@ -21,12 +23,13 @@ import { Level } from 'types/Level'
 import { Project } from 'types/Project'
 
 export type BrowseMode = 'topics' | 'languages'
-export type TopicSlug = 'games' | 'stories' | 'web-design' | '3d-printing' | 'microbit' | 'christmas' | 'sense-hat'
+export type TopicSlug = 'games' | 'stories' | 'creative-coding' | 'web-design' | '3d-printing' | 'microbit' | 'christmas' | 'sense-hat'
 
 export type TopicDefinition = {
   slug: TopicSlug
   collection: string
   prompt: string
+  label: string
   title: string
   summary: string
   ages: string
@@ -41,6 +44,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: 'games',
     collection: 'gameProjects',
     prompt: 'I want to make a game',
+    label: 'Game',
     title: 'Make a game',
     summary: 'Create your own rules, characters, challenges, and worlds.',
     ages: 'Ages 7+',
@@ -53,6 +57,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: 'stories',
     collection: 'storyProjects',
     prompt: 'I want to write a story',
+    label: 'Story',
     title: 'Code your own stories',
     summary: 'Tell an interactive story with blocks, web pages, or Python.',
     ages: 'Ages 7+',
@@ -62,9 +67,23 @@ export const topicDefinitions: TopicDefinition[] = [
     Guide: Stories,
   },
   {
+    slug: 'creative-coding',
+    collection: 'creativeProjects',
+    prompt: 'I want to make art or an animation',
+    label: 'Art & animation',
+    title: 'Make art and animations',
+    summary: 'Draw, animate, make music, and create colourful patterns with code.',
+    ages: 'Ages 7+',
+    equipment: 'No special equipment',
+    image: pixelArt,
+    icon: faPalette,
+    Guide: CreativeCoding,
+  },
+  {
     slug: 'web-design',
     collection: 'webDesignProjects',
     prompt: 'I want to build a website',
+    label: 'Website',
     title: 'Web design',
     summary: 'Use HTML, CSS, and JavaScript to make something for the web.',
     ages: 'Ages 9+',
@@ -77,6 +96,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: '3d-printing',
     collection: 'printingProjects',
     prompt: 'I want to 3D print something',
+    label: '3D print',
     title: '3D printing',
     summary: 'Design a real object and learn how a 3D printer builds it.',
     ages: 'Ages 9+',
@@ -89,6 +109,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: 'microbit',
     collection: 'microBitProjects',
     prompt: 'I want to make a micro:bit gadget',
+    label: 'micro:bit',
     title: 'A bit of micro:bit',
     summary: 'Use buttons, lights, sensors, and radio to build a tiny gadget.',
     ages: 'Ages 7+',
@@ -101,6 +122,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: 'christmas',
     collection: 'christmasProjects',
     prompt: 'I want to make something festive',
+    label: 'Festive',
     title: 'Christmas coding',
     summary: 'Make a winter game, pattern, animation, or musical project.',
     ages: 'Ages 7+',
@@ -113,6 +135,7 @@ export const topicDefinitions: TopicDefinition[] = [
     slug: 'sense-hat',
     collection: 'raspberryPiProjects',
     prompt: 'I want to explore a Raspberry Pi',
+    label: 'Raspberry Pi',
     title: 'Raspberry Pi and Sense HAT',
     summary: 'Use a tiny computer, colourful display, joystick, and sensors.',
     ages: 'Ages 11+',
