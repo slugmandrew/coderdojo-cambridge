@@ -38,7 +38,7 @@ jobs:
       - name: Upload release
         env:
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
-          PUBLIC_URL: https://code-club-host.exe.xyz
+          PUBLIC_URL: https://codeclubcambridge.uk
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           AUTH_ALLOWED_EMAILS: ${{ secrets.AUTH_ALLOWED_EMAILS }}
@@ -63,4 +63,4 @@ jobs:
             "cd /home/exedev/apps/codeclub-cambridge && DEPLOY_SHA=$DEPLOY_SHA PUBLIC_URL=$public_url_escaped GOOGLE_CLIENT_ID=$google_client_id_escaped GOOGLE_CLIENT_SECRET=$google_client_secret_escaped AUTH_ALLOWED_EMAILS=$allowed_emails_escaped SESSION_SECRET=$session_secret_escaped ./ops/deploy.sh"
 
       - name: Verify public mirror
-        run: curl --fail --show-error --silent --retry 6 --retry-all-errors https://code-club-host.exe.xyz/healthz
+        run: curl --fail --show-error --silent --retry 6 --retry-all-errors https://codeclubcambridge.uk/healthz
