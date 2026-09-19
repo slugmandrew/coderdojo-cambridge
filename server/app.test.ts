@@ -1,12 +1,17 @@
 import { AddressInfo } from 'net'
+import { mkdtempSync, readFileSync, rmSync } from 'fs'
+import { tmpdir } from 'os'
+import path from 'path'
 import { afterEach, describe, expect, test } from 'vitest'
 import { IdentityClaims, IdentityProvider } from './auth'
 import { createApp } from './app'
 
 const openServers: Array<{ close: () => void }> = []
+const temporaryDirectories: string[] = []
 
 afterEach(() => {
   while (openServers.length) openServers.pop()?.close()
+  while (temporaryDirectories.length) rmSync(temporaryDirectories.pop()!, { recursive: true })
 })
 
 const identityProvider = (claims: IdentityClaims): IdentityProvider => ({
@@ -23,6 +28,8 @@ const identityProvider = (claims: IdentityClaims): IdentityProvider => ({
 })
 
 const startApp = (email = 'mentor@example.com') => {
+  const imageDirectory = mkdtempSync(path.join(tmpdir(), 'codeclub-project-images-'))
+  temporaryDirectories.push(imageDirectory)
   const instance = createApp({
     databaseFile: ':memory:',
     allowedEmails: ['mentor@example.com'],
@@ -30,6 +37,7 @@ const startApp = (email = 'mentor@example.com') => {
     publicUrl: 'https://club.example',
     production: true,
     identityProvider: identityProvider({ subject: 'google-123', email, emailVerified: true, name: 'Test Mentor' }),
+    projectImageDirectory: imageDirectory,
   })
   const server = instance.app.listen(0)
   const port = (server.address() as AddressInfo).port
@@ -39,7 +47,7 @@ const startApp = (email = 'mentor@example.com') => {
       instance.close()
     },
   })
-  return `http://127.0.0.1:${port}`
+  return { baseUrl: `http://127.0.0.1:${port}`, imageDirectory }
 }
 
 const signIn = async (baseUrl: string) => {
@@ -56,7 +64,7 @@ const signIn = async (baseUrl: string) => {
 
 describe('mentor content management', () => {
   test('rejects schedule changes without a mentor session', async () => {
-    const baseUrl = startApp()
+    const { baseUrl } = startApp()
     const response = await fetch(`${baseUrl}/api/schedule`, {
       method: 'PUT',
       headers: { Origin: 'https://club.example', 'Content-Type': 'application/json' },
@@ -68,7 +76,7 @@ describe('mentor content management', () => {
   })
 
   test('signs in an allowlisted Google account and publishes content', async () => {
-    const baseUrl = startApp()
+    const { baseUrl, imageDirectory } = startApp()
     const callback = await signIn(baseUrl)
     expect(callback.status).toBe(302)
     expect(callback.headers.get('location')).toBe('/manage/projects')
@@ -97,16 +105,49 @@ describe('mentor content management', () => {
 
     const catalog = (await (await fetch(`${baseUrl}/api/projects`)).json()) as { projects: Array<{ slug: string; collections: string[] }> }
     expect(catalog.projects.find(({ slug }) => slug === 'mentor-project')?.collections).toEqual(expect.arrayContaining(['projects', 'storyProjects']))
+
+    const image = Buffer.from([0xff, 0xd8, 0xff, 0xd9])
+    const imageResponse = await fetch(`${baseUrl}/api/project-images`, {
+      method: 'POST',
+      headers: { Cookie: sessionCookie, Origin: 'https://club.example', 'Content-Type': 'image/jpeg' },
+      body: image,
+    })
+    expect(imageResponse.status).toBe(201)
+    const { imageUrl } = (await imageResponse.json()) as { imageUrl: string }
+    expect(readFileSync(path.join(imageDirectory, path.basename(imageUrl)))).toEqual(image)
+
+    const updateResponse = await fetch(`${baseUrl}/api/projects/mentor-project`, {
+      method: 'PATCH',
+      headers: { Cookie: sessionCookie, Origin: 'https://club.example', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: 'Updated mentor project',
+        url: 'https://example.com/project',
+        language: '🐍 Python',
+        level: ['Level 2'],
+        collections: ['gameProjects'],
+        imageUrl,
+      }),
+    })
+    expect(updateResponse.status).toBe(200)
+    await expect(updateResponse.json()).resolves.toMatchObject({ slug: 'mentor-project', title: 'Updated mentor project', imageUrl })
   })
 
   test('rejects a verified account that is not on the mentor allowlist', async () => {
-    const callback = await signIn(startApp('visitor@example.com'))
+    const callback = await signIn(startApp('visitor@example.com').baseUrl)
     expect(callback.status).toBe(403)
     await expect(callback.text()).resolves.toContain('not on the mentor allowlist')
   })
 
   test('reports when production sign-in configuration is incomplete', async () => {
-    const instance = createApp({ databaseFile: ':memory:', allowedEmails: [], publicUrl: 'https://club.example', production: true })
+    const imageDirectory = mkdtempSync(path.join(tmpdir(), 'codeclub-project-images-'))
+    temporaryDirectories.push(imageDirectory)
+    const instance = createApp({
+      databaseFile: ':memory:',
+      allowedEmails: [],
+      publicUrl: 'https://club.example',
+      production: true,
+      projectImageDirectory: imageDirectory,
+    })
     const server = instance.app.listen(0)
     const port = (server.address() as AddressInfo).port
     openServers.push({ close: () => (server.close(), instance.close()) })
