@@ -16,13 +16,16 @@ import { Project } from 'types/Project'
 const editableCollections = new Set(topicDefinitions.map((topic) => topic.collection))
 
 const ProjectForm = ({ project, refresh }: { project?: Project; refresh: () => Promise<void> }) => {
+  const savedImageZoom = project?.imageZoom ?? 1
+  const savedImagePositionX = project?.imagePositionX ?? 50
+  const savedImagePositionY = project?.imagePositionY ?? 50
   const [title, setTitle] = useState(project?.title ?? '')
   const [url, setUrl] = useState(project?.url ?? '')
   const [imageUrl, setImageUrl] = useState(project?.imageUrl ?? '')
   const [imageFile, setImageFile] = useState<File | null>(null)
-  const [imageZoom, setImageZoom] = useState(1)
-  const [imagePositionX, setImagePositionX] = useState(50)
-  const [imagePositionY, setImagePositionY] = useState(50)
+  const [imageZoom, setImageZoom] = useState(savedImageZoom)
+  const [imagePositionX, setImagePositionX] = useState(savedImagePositionX)
+  const [imagePositionY, setImagePositionY] = useState(savedImagePositionY)
   const [language, setLanguage] = useState<string | null>(project?.language ?? null)
   const [levels, setLevels] = useState<string[]>(project?.level ?? [])
   const [collections, setCollections] = useState<string[]>(project?.collections?.filter((collection) => editableCollections.has(collection)) ?? [])
@@ -51,16 +54,32 @@ const ProjectForm = ({ project, refresh }: { project?: Project; refresh: () => P
     setCollections([])
   }
 
+  const changeImageFile = (file: File | null) => {
+    setImageFile(file)
+    setImageZoom(file ? 1 : savedImageZoom)
+    setImagePositionX(file ? 50 : savedImagePositionX)
+    setImagePositionY(file ? 50 : savedImagePositionY)
+  }
+
   const submit = async (event: FormEvent) => {
     event.preventDefault()
     setSaving(true)
     setMessage(null)
     try {
       const submittedImageUrl = await uploadCroppedImage()
+      const savedCrop = imageFile ? { imageZoom: 1, imagePositionX: 50, imagePositionY: 50 } : { imageZoom, imagePositionX, imagePositionY }
       const response = await fetch(project ? `/api/projects/${encodeURIComponent(project.slug)}` : '/api/projects', {
         method: project ? 'PATCH' : 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, url, language, level: levels, collections, ...(submittedImageUrl ? { imageUrl: submittedImageUrl } : {}) }),
+        body: JSON.stringify({
+          title,
+          url,
+          language,
+          level: levels,
+          collections,
+          ...savedCrop,
+          ...(submittedImageUrl ? { imageUrl: submittedImageUrl } : {}),
+        }),
       })
       const body = (await response.json()) as { title?: string; message?: string }
       if (!response.ok) throw new Error(body.message || `The project could not be ${project ? 'updated' : 'published'}.`)
@@ -72,6 +91,11 @@ const ProjectForm = ({ project, refresh }: { project?: Project; refresh: () => P
       else {
         setImageUrl(submittedImageUrl ?? '')
         setImageFile(null)
+        if (imageFile) {
+          setImageZoom(1)
+          setImagePositionX(50)
+          setImagePositionY(50)
+        }
       }
       await refresh()
     } catch (error: unknown) {
@@ -96,7 +120,7 @@ const ProjectForm = ({ project, refresh }: { project?: Project; refresh: () => P
             zoom={imageZoom}
             positionX={imagePositionX}
             positionY={imagePositionY}
-            onFileChange={setImageFile}
+            onFileChange={changeImageFile}
             onZoomChange={setImageZoom}
             onPositionXChange={setImagePositionX}
             onPositionYChange={setImagePositionY}

@@ -11,5 +11,8 @@ export type Project = {
   track?: TrackInfo
   domain?: string // for non-raspberry pi
   imageUrl?: string
+  imageZoom?: number
+  imagePositionX?: number
+  imagePositionY?: number
   collections?: string[]
 }

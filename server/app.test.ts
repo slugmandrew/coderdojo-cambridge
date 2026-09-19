@@ -126,10 +126,20 @@ describe('mentor content management', () => {
         level: ['Level 2'],
         collections: ['gameProjects'],
         imageUrl,
+        imageZoom: 1.5,
+        imagePositionX: 25,
+        imagePositionY: 75,
       }),
     })
     expect(updateResponse.status).toBe(200)
-    await expect(updateResponse.json()).resolves.toMatchObject({ slug: 'mentor-project', title: 'Updated mentor project', imageUrl })
+    await expect(updateResponse.json()).resolves.toMatchObject({
+      slug: 'mentor-project',
+      title: 'Updated mentor project',
+      imageUrl,
+      imageZoom: 1.5,
+      imagePositionX: 25,
+      imagePositionY: 75,
+    })
   })
 
   test('rejects a verified account that is not on the mentor allowlist', async () => {
