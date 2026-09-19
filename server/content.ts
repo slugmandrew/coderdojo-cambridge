@@ -24,6 +24,9 @@ export type Project = {
   track?: { name: string; position: number }
   domain?: string
   imageUrl?: string
+  imageZoom?: number
+  imagePositionX?: number
+  imagePositionY?: number
   collections: string[]
 }
 
@@ -31,7 +34,8 @@ export type ProjectCatalog = {
   projects: Project[]
 }
 
-export type ProjectInput = Pick<Project, 'title' | 'url' | 'language' | 'level' | 'collections'> & { imageUrl?: string }
+export type ProjectInput = Pick<Project, 'title' | 'url' | 'language' | 'level' | 'collections'> &
+  Partial<Pick<Project, 'imageUrl' | 'imageZoom' | 'imagePositionX' | 'imagePositionY'>>
 
 const defaultSchedule: Schedule = {
   updatedAt: null,
@@ -127,6 +131,11 @@ const validateProject = (value: ProjectInput) => {
       throw new ContentValidationError('The image must be an uploaded picture or use a valid HTTPS link.')
     }
   }
+  const validCropNumber = (cropValue: unknown, minimum: number, maximum: number) =>
+    cropValue === undefined || (typeof cropValue === 'number' && Number.isFinite(cropValue) && cropValue >= minimum && cropValue <= maximum)
+  if (!validCropNumber(value.imageZoom, 1, 3) || !validCropNumber(value.imagePositionX, 0, 100) || !validCropNumber(value.imagePositionY, 0, 100)) {
+    throw new ContentValidationError('Choose valid picture crop settings.')
+  }
 }
 
 type ProjectRow = {
@@ -136,6 +145,9 @@ type ProjectRow = {
   language: string
   domain: string | null
   image_url: string | null
+  image_zoom: number
+  image_position_x: number
+  image_position_y: number
   track_name: string | null
   track_position: number | null
 }
@@ -166,6 +178,9 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
       language TEXT NOT NULL,
       domain TEXT,
       image_url TEXT,
+      image_zoom REAL NOT NULL DEFAULT 1,
+      image_position_x REAL NOT NULL DEFAULT 50,
+      image_position_y REAL NOT NULL DEFAULT 50,
       track_name TEXT,
       track_position INTEGER,
       created_by TEXT,
@@ -183,6 +198,10 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
       PRIMARY KEY (project_slug, collection)
     ) STRICT;
   `)
+  const projectColumns = new Set((database.prepare('PRAGMA table_info(projects)').all() as Array<{ name: string }>).map(({ name }) => name))
+  if (!projectColumns.has('image_zoom')) database.exec('ALTER TABLE projects ADD COLUMN image_zoom REAL NOT NULL DEFAULT 1')
+  if (!projectColumns.has('image_position_x')) database.exec('ALTER TABLE projects ADD COLUMN image_position_x REAL NOT NULL DEFAULT 50')
+  if (!projectColumns.has('image_position_y')) database.exec('ALTER TABLE projects ADD COLUMN image_position_y REAL NOT NULL DEFAULT 50')
 
   const insertSession = database.prepare('INSERT INTO club_sessions (id, date, title, time, booking_url, note, cancelled) VALUES (?, ?, ?, ?, ?, ?, ?)')
   const seedSchedule = legacySchedule(legacyScheduleFile) ?? defaultSchedule
@@ -197,8 +216,8 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
 
   const insertProject = database.prepare(
     `INSERT OR IGNORE INTO projects
-      (slug, url, title, language, domain, image_url, track_name, track_position, created_by, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (slug, url, title, language, domain, image_url, image_zoom, image_position_x, image_position_y, track_name, track_position, created_by, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   )
   const insertLevel = database.prepare('INSERT OR IGNORE INTO project_levels (project_slug, level) VALUES (?, ?)')
   const insertCollection = database.prepare('INSERT OR IGNORE INTO project_collections (project_slug, collection, position) VALUES (?, ?, ?)')
@@ -212,6 +231,9 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
         project.language,
         project.domain ?? null,
         null,
+        1,
+        50,
+        50,
         project.track?.name ?? null,
         project.track?.position ?? null,
         null,
@@ -239,6 +261,9 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
       collections: collectionRows.map(({ collection }) => collection),
       ...(row.domain ? { domain: row.domain } : {}),
       ...(row.image_url ? { imageUrl: row.image_url } : {}),
+      imageZoom: row.image_zoom,
+      imagePositionX: row.image_position_x,
+      imagePositionY: row.image_position_y,
       ...(row.track_name && row.track_position ? { track: { name: row.track_name, position: row.track_position } } : {}),
     }
   }
@@ -296,7 +321,8 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
     listProjects(): ProjectCatalog {
       const rows = database
         .prepare(
-          `SELECT p.slug, p.url, p.title, p.language, p.domain, p.image_url, p.track_name, p.track_position
+          `SELECT p.slug, p.url, p.title, p.language, p.domain, p.image_url, p.image_zoom, p.image_position_x, p.image_position_y,
+                  p.track_name, p.track_position
            FROM projects p
            ORDER BY p.created_at, p.title`,
         )
@@ -322,6 +348,9 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
         collections: ['projects', ...new Set(input.collections)],
         domain,
         ...(input.imageUrl ? { imageUrl: input.imageUrl } : {}),
+        imageZoom: input.imageZoom ?? 1,
+        imagePositionX: input.imagePositionX ?? 50,
+        imagePositionY: input.imagePositionY ?? 50,
       }
       database.exec('BEGIN IMMEDIATE')
       try {
@@ -332,6 +361,9 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
           project.language,
           domain,
           project.imageUrl ?? null,
+          project.imageZoom ?? 1,
+          project.imagePositionX ?? 50,
+          project.imagePositionY ?? 50,
           null,
           null,
           mentorSubject,
@@ -372,8 +404,20 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
       database.exec('BEGIN IMMEDIATE')
       try {
         database
-          .prepare('UPDATE projects SET url = ?, title = ?, language = ?, domain = ?, image_url = ? WHERE slug = ?')
-          .run(input.url, input.title.trim(), input.language, domain, input.imageUrl ?? null, slug)
+          .prepare(
+            'UPDATE projects SET url = ?, title = ?, language = ?, domain = ?, image_url = ?, image_zoom = ?, image_position_x = ?, image_position_y = ? WHERE slug = ?',
+          )
+          .run(
+            input.url,
+            input.title.trim(),
+            input.language,
+            domain,
+            input.imageUrl ?? null,
+            input.imageZoom ?? 1,
+            input.imagePositionX ?? 50,
+            input.imagePositionY ?? 50,
+            slug,
+          )
         database.prepare('DELETE FROM project_levels WHERE project_slug = ?').run(slug)
         for (const level of new Set(input.level)) insertLevel.run(slug, level)
 
@@ -394,7 +438,7 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
 
       const row = database
         .prepare(
-          `SELECT slug, url, title, language, domain, image_url, track_name, track_position
+          `SELECT slug, url, title, language, domain, image_url, image_zoom, image_position_x, image_position_y, track_name, track_position
            FROM projects WHERE slug = ?`,
         )
         .get(slug) as ProjectRow

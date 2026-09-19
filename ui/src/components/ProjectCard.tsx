@@ -10,7 +10,19 @@ import React, { FC } from 'react'
 import { Link } from 'react-router'
 import { Project } from 'types/Project'
 
-export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, domain = 'raspberrypi.org', imageUrl, collections = [] }) => {
+export const ProjectCard: FC<Project> = ({
+  language,
+  level,
+  url,
+  title,
+  slug,
+  domain = 'raspberrypi.org',
+  imageUrl,
+  imageZoom = 1,
+  imagePositionX = 50,
+  imagePositionY = 50,
+  collections = [],
+}) => {
   const auth = useMentor()
   const interests = topicDefinitions.filter((interest) => collections.includes(interest.collection))
 
@@ -31,8 +43,20 @@ export const ProjectCard: FC<Project> = ({ language, level, url, title, slug, do
           </ActionIcon>
         </Tooltip>
       )}
-      <Box style={{ overflow: 'hidden' }}>
-        <Image src={imageUrl || `/screenshot/${slug}.png`} fallbackSrc='/project-placeholder.svg' alt={title} height={180} fit='cover' />
+      <Box style={{ overflow: 'hidden', aspectRatio: '16 / 9' }}>
+        <Image
+          src={imageUrl || `/screenshot/${slug}.png`}
+          fallbackSrc='/project-placeholder.svg'
+          alt={title}
+          width='100%'
+          height='100%'
+          fit='cover'
+          style={{
+            objectPosition: `${imagePositionX}% ${imagePositionY}%`,
+            transform: `scale(${imageZoom})`,
+            transformOrigin: `${imagePositionX}% ${imagePositionY}%`,
+          }}
+        />
       </Box>
       <Stack p='md' gap='md'>
         <Title order={3} c='clubTeal.7'>

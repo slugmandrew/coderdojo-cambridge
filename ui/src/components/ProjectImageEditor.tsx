@@ -61,7 +61,7 @@ export const ProjectImageEditor = ({
         <div>
           <Text fw={700}>Project picture</Text>
           <Text size='sm' c='dimmed'>
-            Choose a picture from your device, then crop it to fit the project card.
+            Crop the current picture to fit the project card, or choose a replacement from your device.
           </Text>
         </div>
         <FileInput
@@ -76,36 +76,40 @@ export const ProjectImageEditor = ({
           {file ? (
             <SelectedImagePreview key={`${file.name}:${file.size}:${file.lastModified}`} file={file} zoom={zoom} positionX={positionX} positionY={positionY} />
           ) : (
-            <Image src={fallbackSrc} fallbackSrc='/project-placeholder.svg' alt='Project picture crop preview' className='project-image-crop-preview-image' />
+            <Image
+              src={fallbackSrc}
+              fallbackSrc='/project-placeholder.svg'
+              alt='Project picture crop preview'
+              className='project-image-crop-preview-image'
+              style={{ objectPosition: `${positionX}% ${positionY}%`, transform: `scale(${zoom})`, transformOrigin: `${positionX}% ${positionY}%` }}
+            />
           )}
         </Box>
-        {file && (
-          <Stack gap='sm'>
-            <div>
-              <Text size='sm' fw={700}>
-                Zoom
-              </Text>
-              <Slider thumbLabel='Picture zoom' min={1} max={3} step={0.05} value={zoom} onChange={onZoomChange} />
-            </div>
-            <div>
-              <Text size='sm' fw={700}>
-                Horizontal crop
-              </Text>
-              <Slider thumbLabel='Horizontal crop position' min={0} max={100} value={positionX} onChange={onPositionXChange} />
-            </div>
-            <div>
-              <Text size='sm' fw={700}>
-                Vertical crop
-              </Text>
-              <Slider thumbLabel='Vertical crop position' min={0} max={100} value={positionY} onChange={onPositionYChange} />
-            </div>
-            <Group justify='flex-end'>
-              <Button variant='subtle' color='gray' size='compact-sm' leftSection={<FontAwesomeIcon icon={faRotateLeft} />} onClick={resetCrop}>
-                Reset crop
-              </Button>
-            </Group>
-          </Stack>
-        )}
+        <Stack gap='sm'>
+          <div>
+            <Text size='sm' fw={700}>
+              Zoom
+            </Text>
+            <Slider thumbLabel='Picture zoom' min={1} max={3} step={0.05} value={zoom} onChange={onZoomChange} />
+          </div>
+          <div>
+            <Text size='sm' fw={700}>
+              Horizontal crop
+            </Text>
+            <Slider thumbLabel='Horizontal crop position' min={0} max={100} value={positionX} onChange={onPositionXChange} />
+          </div>
+          <div>
+            <Text size='sm' fw={700}>
+              Vertical crop
+            </Text>
+            <Slider thumbLabel='Vertical crop position' min={0} max={100} value={positionY} onChange={onPositionYChange} />
+          </div>
+          <Group justify='flex-end'>
+            <Button variant='subtle' color='gray' size='compact-sm' leftSection={<FontAwesomeIcon icon={faRotateLeft} />} onClick={resetCrop}>
+              Reset crop
+            </Button>
+          </Group>
+        </Stack>
       </Stack>
     </Paper>
   )

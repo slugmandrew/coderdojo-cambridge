@@ -62,6 +62,24 @@ test('migrates existing Intro projects to Level 1', () => {
   migrated.close()
 })
 
+test('adds default crop settings when opening an existing project database', () => {
+  const directory = mkdtempSync(path.join(tmpdir(), 'codeclub-content-'))
+  temporaryDirectories.push(directory)
+  const databaseFile = path.join(directory, 'content.sqlite')
+  const legacyDatabase = new DatabaseSync(databaseFile)
+  legacyDatabase.exec(`
+    CREATE TABLE projects (
+      slug TEXT PRIMARY KEY, url TEXT NOT NULL, title TEXT NOT NULL, language TEXT NOT NULL,
+      domain TEXT, image_url TEXT, track_name TEXT, track_position INTEGER, created_by TEXT, created_at TEXT NOT NULL
+    ) STRICT;
+  `)
+  legacyDatabase.close()
+
+  const migrated = createContentStore(databaseFile)
+  expect(migrated.listProjects().projects[0]).toMatchObject({ imageZoom: 1, imagePositionX: 50, imagePositionY: 50 })
+  migrated.close()
+})
+
 test('publishes a project into the main catalogue and selected topics', () => {
   const store = createContentStore(':memory:')
 
@@ -111,6 +129,9 @@ test('updates an existing project without changing its stable slug', () => {
     level: ['Level 2', 'Level 3'],
     collections: ['gameProjects'],
     imageUrl: '/project-images/123e4567-e89b-12d3-a456-426614174000.jpg',
+    imageZoom: 1.75,
+    imagePositionX: 20,
+    imagePositionY: 80,
   })
 
   expect(updated).toMatchObject({
@@ -119,6 +140,9 @@ test('updates an existing project without changing its stable slug', () => {
     domain: 'example.com',
     level: ['Level 2', 'Level 3'],
     imageUrl: '/project-images/123e4567-e89b-12d3-a456-426614174000.jpg',
+    imageZoom: 1.75,
+    imagePositionX: 20,
+    imagePositionY: 80,
   })
   expect(updated.collections).toContain('gameProjects')
   expect(updated.collections).not.toContain('storyProjects')
