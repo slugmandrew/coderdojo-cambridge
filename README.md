@@ -47,7 +47,7 @@ Approved mentors sign in with Google at `/manage/schedule` to publish calendar c
 Create a Google OAuth client with the **Web application** type and register these redirect URIs:
 
 - `http://localhost:5173/auth/google/callback` for local development
-- `https://code-club-host.exe.xyz/auth/google/callback` for production
+- `https://codeclubcambridge.uk/auth/google/callback` for production
 
 The application requests only the OpenID, email, and profile scopes. Configure it with:
 
@@ -83,6 +83,24 @@ The VM must be public and proxy port 8000:
 ssh exe.dev share port code-club-host 8000
 ssh exe.dev share set-public code-club-host
 ```
+
+The public site uses `codeclubcambridge.uk` as its canonical domain. Point the domain to the production VM at the DNS provider before registering it with exe.dev:
+
+```text
+codeclubcambridge.uk      ALIAS  code-club-host.exe.xyz
+www.codeclubcambridge.uk  CNAME  code-club-host.exe.xyz
+```
+
+Some DNS providers call the apex `ALIAS` record an `ANAME` or flattened `CNAME`. If none of those are available, use an `A` record with the current IP address of `code-club-host.exe.xyz` and remember that it may change. Cloudflare records must be set to **DNS only**.
+
+Once DNS resolves, register both hostnames so exe.dev can issue their TLS certificates:
+
+```sh
+ssh exe.dev domain add code-club-host codeclubcambridge.uk
+ssh exe.dev domain add code-club-host www.codeclubcambridge.uk
+```
+
+Also add `https://codeclubcambridge.uk/auth/google/callback` to the production Google OAuth client's authorised redirect URIs before deploying the new canonical URL.
 
 For a manual deployment from an uploaded checkout:
 
