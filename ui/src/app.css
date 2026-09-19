@@ -193,17 +193,96 @@ body {
   box-shadow: 0 16px 36px rgba(18, 58, 52, 0.08);
 }
 
-.project-image-crop-preview {
-  aspect-ratio: 16 / 9;
+.project-image-crop-stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--mantine-radius-md);
-  background: var(--mantine-color-gray-1);
+  background: var(--mantine-color-dark-8);
+  user-select: none;
+  touch-action: none;
 }
 
-.project-image-crop-preview-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.project-image-crop-source {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+}
+
+.project-image-crop-selection {
+  position: absolute;
+  border: 2px solid white;
+  outline: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 9999px rgba(6, 20, 22, 0.68);
+  cursor: move;
+}
+
+.project-image-crop-selection:focus-visible {
+  outline: 3px solid var(--mantine-color-blue-4);
+  outline-offset: 3px;
+}
+
+.project-image-crop-grid {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.project-image-crop-selection:hover .project-image-crop-grid,
+.project-image-crop-selection:focus .project-image-crop-grid {
+  opacity: 1;
+}
+
+.project-image-crop-grid-vertical {
+  inset: 0 33.333%;
+  border-right: 1px solid rgba(255, 255, 255, 0.65);
+  border-left: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.project-image-crop-grid-horizontal {
+  inset: 33.333% 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.project-image-crop-handle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid white;
+}
+
+.project-image-crop-handle-north-west {
+  top: -3px;
+  left: -3px;
+  border-right: 0;
+  border-bottom: 0;
+  cursor: nwse-resize;
+}
+
+.project-image-crop-handle-north-east {
+  top: -3px;
+  right: -3px;
+  border-bottom: 0;
+  border-left: 0;
+  cursor: nesw-resize;
+}
+
+.project-image-crop-handle-south-west {
+  bottom: -3px;
+  left: -3px;
+  border-top: 0;
+  border-right: 0;
+  cursor: nesw-resize;
+}
+
+.project-image-crop-handle-south-east {
+  right: -3px;
+  bottom: -3px;
+  border-top: 0;
+  border-left: 0;
+  cursor: nwse-resize;
 }
 
 .topic-guide-details {
