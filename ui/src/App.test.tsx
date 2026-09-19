@@ -211,8 +211,7 @@ test('lets an authenticated mentor open a project card in the shared editing for
   expect(await screen.findByRole('heading', { level: 1, name: 'Edit project' })).toBeInTheDocument()
   expect(await screen.findByRole('textbox', { name: 'Project title' })).toHaveValue('Full of Stories')
   expect(screen.getByRole('slider', { name: 'Picture zoom' })).toBeInTheDocument()
-  expect(screen.getByRole('slider', { name: 'Horizontal crop position' })).toBeInTheDocument()
-  expect(screen.getByRole('slider', { name: 'Vertical crop position' })).toBeInTheDocument()
+  expect(screen.getByText('Drag the frame to move it. Drag any corner to resize it; the project card shape stays fixed.')).toBeInTheDocument()
   expect(screen.getByRole('button', { name: 'Save changes' })).toBeInTheDocument()
 })
 
@@ -221,13 +220,12 @@ test('shows crop and zoom controls after a mentor selects a project picture', as
   mockFetch({ configured: true, authenticated: true, mentor: { subject: 'google-123', email: 'mentor@example.com', name: 'Test Mentor' } })
   const { container } = renderApp('/manage/projects')
 
-  await screen.findByText('Crop the current picture to fit the project card, or choose a replacement from your device.')
+  await screen.findByText('Choose the part of the picture that will appear on the project card, or select a replacement from your device.')
   const input = container.querySelector<HTMLInputElement>('input[type="file"]')!
   await user.upload(input, new File(['picture'], 'project.png', { type: 'image/png' }))
 
   expect(screen.getByRole('slider', { name: 'Picture zoom' })).toBeInTheDocument()
-  expect(screen.getByRole('slider', { name: 'Horizontal crop position' })).toBeInTheDocument()
-  expect(screen.getByRole('slider', { name: 'Vertical crop position' })).toBeInTheDocument()
+  expect(screen.getByText('Drag the frame to move it. Drag any corner to resize it; the project card shape stays fixed.')).toBeInTheDocument()
 })
 
 test('shows projects from different coding tools under an interest and labels their cards', async () => {
