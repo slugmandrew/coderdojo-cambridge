@@ -100,3 +100,43 @@ test('requires every new project to have an interest', () => {
 
   store.close()
 })
+
+test('updates an existing project without changing its stable slug', () => {
+  const store = createContentStore(':memory:')
+
+  const updated = store.updateProject('storytime', {
+    title: 'Storytime remixed',
+    url: 'https://example.com/storytime-remixed',
+    language: '🐍 Python',
+    level: ['Level 2', 'Level 3'],
+    collections: ['gameProjects'],
+    imageUrl: '/project-images/123e4567-e89b-12d3-a456-426614174000.jpg',
+  })
+
+  expect(updated).toMatchObject({
+    slug: 'storytime',
+    title: 'Storytime remixed',
+    domain: 'example.com',
+    level: ['Level 2', 'Level 3'],
+    imageUrl: '/project-images/123e4567-e89b-12d3-a456-426614174000.jpg',
+  })
+  expect(updated.collections).toContain('gameProjects')
+  expect(updated.collections).not.toContain('storyProjects')
+  store.close()
+})
+
+test('does not update a project that does not exist', () => {
+  const store = createContentStore(':memory:')
+
+  expect(() =>
+    store.updateProject('missing-project', {
+      title: 'Missing project',
+      url: 'https://example.com/missing',
+      language: '🐍 Python',
+      level: ['Level 1'],
+      collections: ['storyProjects'],
+    }),
+  ).toThrow('That project could not be found.')
+
+  store.close()
+})

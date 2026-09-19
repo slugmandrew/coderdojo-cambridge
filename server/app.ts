@@ -1,8 +1,10 @@
 import express from 'express'
+import { mkdirSync, writeFileSync } from 'fs'
+import { randomUUID } from 'crypto'
 import path from 'path'
 import puppeteer from 'puppeteer'
 import { createGoogleIdentityProvider, createMentorAuth, IdentityProvider, MentorRequest } from './auth'
-import { ContentStore, ContentValidationError, createContentStore, NewProject } from './content'
+import { ContentStore, ContentValidationError, createContentStore, ProjectInput } from './content'
 
 type AppOptions = {
   contentStore?: ContentStore
@@ -16,6 +18,7 @@ type AppOptions = {
   googleClientId?: string
   googleClientSecret?: string
   googleRedirectUri?: string
+  projectImageDirectory?: string
 }
 
 const emailsFromEnvironment = () =>
@@ -35,12 +38,11 @@ export const createApp = (options: AppOptions = {}) => {
     (googleClientId && googleClientSecret
       ? createGoogleIdentityProvider({ clientId: googleClientId, clientSecret: googleClientSecret, redirectUri: googleRedirectUri })
       : undefined)
-  const content =
-    options.contentStore ??
-    createContentStore(
-      options.databaseFile ?? process.env.CONTENT_DATABASE_FILE ?? path.resolve(__dirname, '../data/codeclub.sqlite'),
-      options.legacyScheduleFile ?? process.env.SCHEDULE_DATA_FILE,
-    )
+  const databaseFile = options.databaseFile ?? process.env.CONTENT_DATABASE_FILE ?? path.resolve(__dirname, '../data/codeclub.sqlite')
+  const content = options.contentStore ?? createContentStore(databaseFile, options.legacyScheduleFile ?? process.env.SCHEDULE_DATA_FILE)
+  const projectImageDirectory =
+    options.projectImageDirectory ?? path.resolve(path.dirname(databaseFile === ':memory:' ? 'data/codeclub.sqlite' : databaseFile), 'project-images')
+  mkdirSync(projectImageDirectory, { recursive: true })
   const auth = createMentorAuth({
     allowedEmails: options.allowedEmails ?? emailsFromEnvironment(),
     sessionSecret: options.sessionSecret ?? process.env.SESSION_SECRET,
@@ -51,6 +53,7 @@ export const createApp = (options: AppOptions = {}) => {
 
   const app = express()
   app.use(express.static(path.resolve(__dirname, '../ui/build')))
+  app.use('/project-images', express.static(projectImageDirectory, { fallthrough: false }))
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
   app.use(auth.router)
@@ -80,13 +83,48 @@ export const createApp = (options: AppOptions = {}) => {
 
   app.post('/api/projects', auth.requireSameOrigin, auth.requireMentor, (req: MentorRequest, res) => {
     try {
-      const project = content.addProject(req.body as NewProject, req.mentor!.subject)
+      const project = content.addProject(req.body as ProjectInput, req.mentor!.subject)
       res.status(201).json(project)
     } catch (error) {
       if (error instanceof ContentValidationError) return res.status(400).json({ message: error.message })
       throw error
     }
   })
+
+  app.patch('/api/projects/:slug', auth.requireSameOrigin, auth.requireMentor, (req, res) => {
+    try {
+      const slug = Array.isArray(req.params.slug) ? req.params.slug[0] : req.params.slug
+      res.json(content.updateProject(slug, req.body as ProjectInput))
+    } catch (error) {
+      if (error instanceof ContentValidationError) return res.status(error.message.includes('not be found') ? 404 : 400).json({ message: error.message })
+      throw error
+    }
+  })
+
+  app.post(
+    '/api/project-images',
+    auth.requireSameOrigin,
+    auth.requireMentor,
+    express.raw({ type: ['image/jpeg', 'image/png', 'image/webp'], limit: '2mb' }),
+    (req, res) => {
+      const contentType = req.get('Content-Type')?.split(';')[0]
+      const extensions: Record<string, string> = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' }
+      const extension = contentType ? extensions[contentType] : undefined
+      if (!extension || !Buffer.isBuffer(req.body) || req.body.length === 0) {
+        return res.status(400).json({ message: 'Choose a JPEG, PNG, or WebP picture.' })
+      }
+      const signatures = {
+        jpg: req.body[0] === 0xff && req.body[1] === 0xd8 && req.body[2] === 0xff,
+        png: req.body.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])),
+        webp: req.body.subarray(0, 4).toString() === 'RIFF' && req.body.subarray(8, 12).toString() === 'WEBP',
+      }
+      if (!signatures[extension as keyof typeof signatures]) return res.status(400).json({ message: 'The uploaded picture is not a valid image.' })
+
+      const filename = `${randomUUID()}.${extension}`
+      writeFileSync(path.join(projectImageDirectory, filename), req.body, { flag: 'wx' })
+      res.status(201).json({ imageUrl: `/project-images/${filename}` })
+    },
+  )
 
   app.get('/api', (_req, res) => {
     setTimeout(() => res.json({ message: 'Hello from server, buddy!' }), 500)

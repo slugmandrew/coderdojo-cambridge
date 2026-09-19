@@ -200,6 +200,33 @@ test('shows project publishing controls to an authenticated mentor', async () =>
   expect(screen.getByRole('combobox', { name: 'Interests' })).toBeInTheDocument()
 })
 
+test('lets an authenticated mentor open a project card in the shared editing form', async () => {
+  const user = userEvent.setup()
+  mockFetch({ configured: true, authenticated: true, mentor: { subject: 'google-123', email: 'mentor@example.com', name: 'Test Mentor' } })
+  renderApp('/projects?browse=topics')
+
+  await user.click(await screen.findByRole('button', { name: /i want to write a story/i }))
+  await user.click(screen.getByRole('link', { name: 'Edit Full of Stories' }))
+
+  expect(await screen.findByRole('heading', { level: 1, name: 'Edit project' })).toBeInTheDocument()
+  expect(await screen.findByRole('textbox', { name: 'Project title' })).toHaveValue('Full of Stories')
+  expect(screen.getByRole('button', { name: 'Save changes' })).toBeInTheDocument()
+})
+
+test('shows crop and zoom controls after a mentor selects a project picture', async () => {
+  const user = userEvent.setup()
+  mockFetch({ configured: true, authenticated: true, mentor: { subject: 'google-123', email: 'mentor@example.com', name: 'Test Mentor' } })
+  const { container } = renderApp('/manage/projects')
+
+  await screen.findByText('Choose a picture from your device, then crop it to fit the project card.')
+  const input = container.querySelector<HTMLInputElement>('input[type="file"]')!
+  await user.upload(input, new File(['picture'], 'project.png', { type: 'image/png' }))
+
+  expect(screen.getByRole('slider', { name: 'Picture zoom' })).toBeInTheDocument()
+  expect(screen.getByRole('slider', { name: 'Horizontal crop position' })).toBeInTheDocument()
+  expect(screen.getByRole('slider', { name: 'Vertical crop position' })).toBeInTheDocument()
+})
+
 test('shows projects from different coding tools under an interest and labels their cards', async () => {
   const user = userEvent.setup()
   renderApp('/projects?browse=topics')

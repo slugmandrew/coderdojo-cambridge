@@ -31,7 +31,7 @@ export type ProjectCatalog = {
   projects: Project[]
 }
 
-export type NewProject = Pick<Project, 'title' | 'url' | 'language' | 'level' | 'collections'> & { imageUrl?: string }
+export type ProjectInput = Pick<Project, 'title' | 'url' | 'language' | 'level' | 'collections'> & { imageUrl?: string }
 
 const defaultSchedule: Schedule = {
   updatedAt: null,
@@ -98,7 +98,7 @@ const projectSlug = (title: string) =>
     .replace(/^-|-$/g, '')
     .slice(0, 80)
 
-const validateProject = (value: NewProject) => {
+const validateProject = (value: ProjectInput) => {
   if (typeof value.title !== 'string' || value.title.trim().length < 2 || value.title.trim().length > 120) {
     throw new ContentValidationError('Give the project a title between 2 and 120 characters.')
   }
@@ -121,9 +121,10 @@ const validateProject = (value: NewProject) => {
   }
   if (value.imageUrl) {
     try {
-      if (new URL(value.imageUrl).protocol !== 'https:') throw new Error()
+      const isUploadedImage = /^\/project-images\/[a-f0-9-]+\.(?:jpe?g|png|webp)$/.test(value.imageUrl)
+      if (!isUploadedImage && new URL(value.imageUrl).protocol !== 'https:') throw new Error()
     } catch {
-      throw new ContentValidationError('The image must use a valid HTTPS link.')
+      throw new ContentValidationError('The image must be an uploaded picture or use a valid HTTPS link.')
     }
   }
 }
@@ -303,7 +304,7 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
       return { projects: rows.map(projectFromRow) }
     },
 
-    addProject(input: NewProject, mentorSubject: string): Project {
+    addProject(input: ProjectInput, mentorSubject: string): Project {
       validateProject(input)
       const baseSlug = projectSlug(input.title) || 'project'
       let slug = baseSlug
@@ -357,6 +358,47 @@ export const createContentStore = (databaseFile: string, legacyScheduleFile?: st
         throw error
       }
       return project
+    },
+
+    updateProject(slug: string, input: ProjectInput): Project {
+      validateProject(input)
+      if (!database.prepare('SELECT 1 FROM projects WHERE slug = ?').get(slug)) {
+        throw new ContentValidationError('That project could not be found.')
+      }
+
+      const parsedUrl = new URL(input.url)
+      const hostname = parsedUrl.hostname.replace(/^www\./, '')
+      const domain = hostname === 'projects.raspberrypi.org' ? 'raspberrypi.org' : hostname
+      database.exec('BEGIN IMMEDIATE')
+      try {
+        database
+          .prepare('UPDATE projects SET url = ?, title = ?, language = ?, domain = ?, image_url = ? WHERE slug = ?')
+          .run(input.url, input.title.trim(), input.language, domain, input.imageUrl ?? null, slug)
+        database.prepare('DELETE FROM project_levels WHERE project_slug = ?').run(slug)
+        for (const level of new Set(input.level)) insertLevel.run(slug, level)
+
+        database.prepare("DELETE FROM project_collections WHERE project_slug = ? AND collection != 'projects'").run(slug)
+        for (const collection of new Set(input.collections)) {
+          const position = (
+            database.prepare('SELECT COALESCE(MAX(position), -1) + 1 AS position FROM project_collections WHERE collection = ?').get(collection) as {
+              position: number
+            }
+          ).position
+          insertCollection.run(slug, collection, position)
+        }
+        database.exec('COMMIT')
+      } catch (error) {
+        database.exec('ROLLBACK')
+        throw error
+      }
+
+      const row = database
+        .prepare(
+          `SELECT slug, url, title, language, domain, image_url, track_name, track_position
+           FROM projects WHERE slug = ?`,
+        )
+        .get(slug) as ProjectRow
+      return projectFromRow(row)
     },
 
     close() {
